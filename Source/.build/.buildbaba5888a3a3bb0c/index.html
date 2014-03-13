@@ -1,0 +1,386 @@
+<!-- Copyright (C) Jaguar Land Rover - All Rights Reserved -->
+
+<!-- Proprietary and confidential -->
+<!-- Unauthorized copying of this file, via any medium, is strictly prohibited -->
+
+<!-- THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY  -->
+<!-- KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE -->
+<!-- IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A -->
+<!-- PARTICULAR PURPOSE. -->
+
+<!-- Filename:   header.txt -->
+<!-- Version:              1.0 -->
+<!-- Date:                 January 2013 -->
+<!-- Project:              Widget incorporation -->
+<!-- Contributors:         XXXXXXX -->
+<!--                       xxxxxxx -->
+
+<!-- Incoming Code:        GStreamer 0.93, <link> -->
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+
+<meta name="viewport" content="width=720, height=1280, user-scalable=no" />
+
+<title>Boilerplate application</title>
+
+<script type="text/javascript"
+	src="./css/car/components/jQuery/jquery-1.8.2.js"></script>
+<script type="text/javascript"
+	src="./css/car/components/knockout/knockout.js"></script>
+
+<!-- jsRender Library Import -->
+<script type="text/javascript"
+	src="./css/car/components/jsViews/jsrender.js"></script>
+<script type="text/javascript"
+	src="./css/car/components/jsViews/template.js"></script>
+
+<script type="text/javascript" src="./js/main.js" charset="utf-8"></script>
+
+<link rel="stylesheet"
+	href="./css/car/components/incomingCall/incomingCall.css" />
+
+<link rel="stylesheet" href="./css/car/car.css" />
+<script type="text/javascript" src="./css/car/car.js"></script>
+<script type="text/javascript" src="./js/services/bootstrap.js"></script>
+
+<script type="text/javascript"
+	src="./css/car/components/boxCaption/boxCaption.js"></script>
+<link rel="stylesheet"
+	href="./css/car/components/boxCaption/boxCaption.css" />
+
+<script type="text/javascript"
+	src="./css/car/components/alphabetBookmark/alphabetBookmark.js"></script>
+<link rel="stylesheet"
+	href="./css/car/components/alphabetBookmark/alphabetBookmark.css" />
+
+<script type="text/javascript"
+	src="./css/car/components/library/library.js"></script>
+<link rel="stylesheet" href="./css/car/components/library/library.css" />
+
+<script type="text/javascript"
+	src="./css/car/components/topBarIcons/topBarIcons.js"></script>
+<link rel="stylesheet"
+	href="./css/car/components/topBarIcons/topBarIcons.css" />
+
+<script type="text/javascript"
+	src="./css/car/components/bottomPanel/bottomPanel.js"></script>
+
+<script type="text/javascript"
+	src="./css/car/components/dateTime/dateTime.js"></script>
+<link rel="stylesheet" href="./css/car/components/dateTime/dateTime.css" />
+
+<link rel="stylesheet" type="text/css" href="./css/style.css" />
+
+<script type="text/javascript" src="./js/email/email.js"></script>
+<script type="text/javascript" src="./js/email/emailManager.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="./css/email/green/email.css" />
+<script src="tizen-web-ui-fw/latest/js/tizen-web-ui-fw-libs.js"></script>
+<script src="tizen-web-ui-fw/latest/js/tizen-web-ui-fw.js"
+	data-framework-theme="tizen-white"></script>
+<title>Application Template</title>
+</head>
+
+<body>
+
+	<div id="topBarIcons"></div>
+
+	<div id="clockElement"></div>
+
+
+	<!-- BEGIN HTML ELEMENTS style="visibility: hidden"-->
+
+	<div id="mainDiv">
+
+
+		<!-- Screen to add New Account    style="visibility: hidden" -->
+		<div id="addAccountDiv" class="homeScreenBgImg"
+			style="visibility: hidden">
+
+			<a id="addHome" onclick="homeSelected()"></a> <a id="addMsExchange"
+				onclick="addAccount('MsExchange')"></a> <a id="addMobileMe"
+				onclick="addAccount('MobileMe')"></a> <a id="addGmail"
+				onclick="addAccount('Gmail')"></a> <a id="addYahoo"
+				onclick="addAccount('Yahoo')"></a> <a id="addAol"
+				onclick="addAccount('Aol')"></a> <a id="addOther"
+				onclick="addAccount('Other')"></a>
+
+
+
+
+
+		</div>
+
+
+
+		<!-- Screen to get details for adding new account  -->
+		<div id="addAccountDetailsDiv" class="homeScreenBgImg"
+			style="visibility: hidden">
+			<form>
+				<div id="addHome" onclick="homeSelected()"></div>
+				<div id="addDetails" class="AddEmailContact">
+					<Label class="AddAccountLabelCtrl"
+						style="padding-left: 4%; padding-top: 4%">Email address:</Label> <Input
+						id="EmailAddressTextbox" class="TextBox" required type="email" />
+
+					<Label class="AddAccountLabelCtrl"
+						style="padding-left: 4%; padding-top: 20%">User Name:</Label> <Label
+						id="AddAccountUserNameDescription" class="Description">The
+						username you sign-in with at your email provider.</Label> <Input
+						id="UsernameTextbox" class="TextBox" required value="" /> <Label
+						class="AddAccountLabelCtrl"
+						style="padding-left: 4%; padding-top: 36%">Password:</Label> <Label
+						id="AddAccountPasswordDescription" class="Description">The
+						password you use with your username at your email provider.</Label> <Input
+						id="PasswordTextbox" class="TextBox" required type="password" />
+					<Label class="AddAccountLabelCtrl"
+						style="padding-left: 4%; padding-top: 53%">Description:</Label> <Label
+						id="AddAccountDescription" class="Description">This will
+						identify the account to access when multiple email accounts exist.</Label>
+					<Input id="DescriptionTextbox" class="TextBox" />
+
+				</div>
+				<input type="submit" value="" id="SaveAccountCtrl"
+					onclick="saveDetails()"></input>
+			</form>
+		</div>
+
+
+
+		<!-- Screen to Choose Email Account   style="visibility: hidden" -->
+		<div id="chooseEmailAccount" class="chooseEmailAccountBgImg"
+			style="visibility: hidden">
+
+			<a id="addHome" onclick="homeSelected()"></a>
+			<div id="emailAccounts" class="AddEmailContact"></div>
+			<div id="useThisAccount" onclick="useThisAccount()"></div>
+			<div id="deleteThisAccount" onclick="deleteThisAccount()"></div>
+		</div>
+
+
+
+
+
+		<!-- Inbox Screen    style="visibility: hidden" -->
+		<div id="inboxScreen" class="inboxBgImg" style="visibility: hidden">
+
+			<a id="addHome" onclick="homeSelected()"></a>
+			<div id="ChangeAccountButton" class="ChangeAccountButton"
+				onclick="loadChangeAccountScreen()"></div>
+			<div id="AddAccount" class="AddAccount"
+				onclick="loadAddAccountScreen()"></div>
+			<div id="Trash" class="Trash" onclick="deleteMail()"></div>
+			<div id="Sync" class="Sync" onclick="syncEmails()"></div>
+			<div id="searchMail" class="searchMail" onclick=""></div>
+			<input type="text" id="searchMailText"></input>
+			<div id="searchMailButton" class="searchMailButton"
+				onclick="searchMailCall()"></div>
+			<div id="InboxButton" class="InboxButton"
+				onclick="inboxButtonSeleted()"></div>
+			<div id="ComposeButton" class="ComposeButton"
+				onclick="loadComposeScreen()"></div>
+			<div id="" class="draftIcon" onclick="draftSelected()"></div>
+			<Label id="InboxLabelCtrl" class="InboxLabelCtrl"></Label> <input
+				type="checkbox" id="CheckBoxSelectAll" class="CheckBoxSelectAll"
+				onclick="selectCheckBox('All')" />
+			<div id="InboxDiv" class="InboxHandler"></div>
+
+
+
+		</div>
+
+
+
+		<!-- Inbox Full View Screen   style="visibility: hidden" -->
+		<div id="inboxScreenFullView" class="inboxBgImg"
+			style="visibility: hidden">
+
+			<a id="addHome" onclick="homeSelected()"></a>
+			<div id="ChangeAccountButton" class="ChangeAccountButton"
+				onclick="loadChangeAccountScreen()"></div>
+			<div id="AddAccount" class="AddAccount"
+				onclick="loadAddAccountScreen()"></div>
+			<div id="Trash" class="Trash" onclick="deleteMailFromCompose()"></div>
+			<div id="Sync" class="Sync" onclick="syncEmails()"></div>
+			<div id="InboxButton" class="InboxButton"
+				onclick="inboxButtonSeleted()"></div>
+			<div id="ComposeButton" class="ComposeButton"
+				onclick="loadComposeScreen()"></div>
+			<div id="" class="draftIcon" onclick="Drafts()"></div>
+			<Label id="InboxFullViewLabelCtrl" class="InboxLabelCtrl"></Label>
+			<div id="ReplyAll" class="ReplyAll"
+				onclick="loadComposeScreen('ReplyAll')"></div>
+			<div id="Reply" class="Reply" onclick="loadComposeScreen('Reply')"></div>
+			<div id="Forward" class="Forward"
+				onclick="loadComposeScreen('Forward')"></div>
+			<div id="Next" class="Next" onclick="retriveMailFilterWithNextId()"></div>
+
+			<div id="MailHandler" class="MailHandler">
+
+				<div id="" class="MailCtrl"
+					style="padding-left: 2%; padding-top: 0.9%; font-size: 100%;">From
+					:</div>
+				<div id="from" class="MailCtrlValue"
+					style="padding-left: 13%; padding-top: 1.3%"></div>
+				<div id="" class="MailCtrl"
+					style="padding-left: 2%; padding-top: 4.2%; font-size: 100%;">To
+					:</div>
+				<div id="to" class="MailCtrlValue"
+					style="padding-left: 9%; padding-top: 4.3%"></div>
+				<div id="subject" class="MailCtrl"
+					style="padding-left: 2%; padding-top: 12%"></div>
+				<div id="date" class="MailCtrlValue"
+					style="padding-left: 0%; padding-top: 20%"></div>
+				<div id="mailBody" class="MailBodyValue"></div>
+				<div id="viewAttachment"></div>
+				<!--<img id="attachmentDiv" class="MailAttachmentDiv" src = "./css/email/green/images/email/Inbox.png" ></img>
+				<a id="" class="MailCtrlValue"
+					style="padding-top: 110%; text-decoration: underline; color: blue"
+					href="">Save attachments</a> <a id="" class="MailCtrlValue"
+					style="padding-left: 35%; padding-top: 110%; text-decoration: underline; color: blue"
+					href="">View attachments</a> <a id="" class="MailCtrlValue"
+					style="padding-top: 115%; text-decoration: underline; color: blue"
+					href="">Add Senders to Contacts</a>-->
+
+			</div>
+
+		</div>
+
+
+
+		<!-- Compose Screen   style="visibility: hidden" -->
+
+		<div id="composeCtrlDiv" class="inboxBgImg" style="visibility: hidden">
+			<a id="addHome" onclick="homeSelected()"></a>
+			<div id="ChangeAccountButton" class="ChangeAccountButton"
+				onclick="loadChangeAccountScreen()"></div>
+			<div id="AddAccount" class="AddAccount"
+				onclick="loadAddAccountScreen()"></div>
+
+			<div id="Sync" class="Sync" onclick="syncEmails()"></div>
+			<div id="InboxButton" class="InboxButton"
+				onclick="inboxButtonSeleted()"></div>
+			<div id="ComposeButton" class="ComposeButton"
+				onclick="loadComposeScreen()"></div>
+			<div id="draftIcon" class="draftIcon" onclick="draftSelected()"></div>
+			<div id="attachments" onclick="loadAttachmentScreen()"></div>
+			<Label id="InboxComposeLabelCtrl" class="InboxLabelCtrl">Inbox:</Label>
+			<div id="sendDiv" class="sendDiv" onclick="sendMail()"></div>
+
+			<div id="structureMail">
+				<Label class="MailCtrl"
+					style="position: absolute; left: 4%; top: 16%; font-size: 110%;">To:</Label>
+				<input id="toMember" class="TextBox" type="text"
+					style="width: 80%; top: 16%; left: 10%; height: 10%"> <Label
+					class="MailCtrl"
+					style="position: absolute; left: 22%; top: 29%; font-size: 110%;">cc:
+				</Label> <input id="ccMember" class="TextBox" type="text"
+					style="top: 29%; left: 27%; height: 10%; width: 28%;"> <Label
+					class="MailCtrl"
+					style="position: absolute; left: 58%; top: 29%; font-size: 110%;">bcc:
+				</Label> <input id="bccMember" class="TextBox" type="text"
+					style="top: 29%; left: 67%; height: 10%; width: 23%;"> <Label
+					class="MailCtrl"
+					style="position: absolute; left: 4%; top: 61%; font-size: 110%;">From:
+				</Label> <Label id="fromComposeDiv" class="fromDetails"
+					style="position: absolute; left: 15%; top: 62%; font-size: 100%;">
+				</Label> <Label class="MailCtrl"
+					style="position: absolute; left: 4%; top: 74%; font-size: 110%;">Subject:
+				</Label> <input id="subMember" class="TextBox" type="text"
+					style="top: 75%; left: 18%; width: 70%; height: 10%">
+			</div>
+
+			<textarea id="bodyDetails"></textarea>
+			<div id="composeAttach"></div>
+		</div>
+
+
+
+
+
+
+
+		<!-- Draft Screen    style="visibility: hidden" -->
+		<div id="draftScreen" class="inboxBgImg">
+
+			<a id="addHome" onclick="homeSelected()"></a>
+			<div id="ChangeAccountButton" class="ChangeAccountButton"
+				onclick="loadChangeAccountScreen()"></div>
+			<div id="AddAccount" class="AddAccount"
+				onclick="loadAddAccountScreen()"></div>
+			<div id="Trash" class="Trash" onclick="deleteMail()"></div>
+			<div id="Sync" class="Sync" onclick="syncEmails()"></div>
+			<div id="InboxButton" class="InboxButton"
+				onclick="inboxButtonSeleted()"></div>
+			<div id="ComposeButton" class="ComposeButton"
+				onclick="loadComposeScreen()"></div>
+			<div id="draftScreen" class="draftIcon" onclick="draftSelected()"></div>
+			<Label id="DraftLabelCtrl" class="InboxLabelCtrl">Drafts
+				Saved</Label>
+			<div id="sendDraftDiv" class="sendDiv" onclick="sendDraftMail()"></div>
+			<div id="DraftDiv" class="InboxHandler"></div>
+			<div id="editContinue" class="editContinue"
+				onclick="editContinueCompose()"></div>
+			<div id="cancel" class="cancel" onclick="inboxButtonSeleted()"></div>
+
+
+		</div>
+		<div id="deleteEmailPopDiv" class="deleteAccountPop"
+			style="padding-left: 6%; visibility: hidden">
+
+			<Label class="DeleteAccountLabelCtrl"
+				style="padding-left: 10%; padding-top: 5%">Delete the
+				selected message(s)?</Label>
+			<div id="deleteEmailYesDiv" class="deleteYesDiv"
+				onclick="deleteEmailYes()"></div>
+			<div id="deleteEmailNoDiv" class="deleteNoDiv"
+				onclick="deleteEmailNo()"></div>
+
+		</div>
+		<!-- Delete Account confirmation Screen   style="visibility: hidden" -->
+		<div id="deleteAccountDiv" class="chooseEmailAccountBgImg"
+			style="visibility: hidden">
+
+			<div id="addHome" onclick="homeSelected()"></div>
+			<div id="deleteAccountPopDiv" class="deleteAccountPop">
+
+				<Label class="DeleteAccountLabelCtrl"
+					style="padding-left: 10%; padding-top: 5%">Delete the
+					selected account(s)?</Label>
+				<div class="deleteYesDiv" onclick="deleteAccountYes()"></div>
+				<div class="deleteNoDiv" onclick="deleteAccountNo()"></div>
+
+			</div>
+
+		</div>
+
+		<!-- Add Attachemnt Screen Style="Visibility: hidden" -->
+
+		<div id="fileAttachmentDiv" class="attachFileScreenImg"
+			style="visibility: hidden">
+
+			<div id="addHome" onclick="homeSelected()"></div>
+			<div id="attachFiledDiv" class="attachFile"></div>
+
+			<div id="attachFileButton" onclick="attachFile()"></div>
+			<div id="cancelButton" onclick="cancelFileAttachment()"></div>
+
+		</div>
+
+
+
+
+	</div>
+	<!-- END HTML ELEMENTS -->
+
+	<div id="bottomPanel" class="bottomPanel bottomPanelImg"></div>
+
+</body>
+
+</html>

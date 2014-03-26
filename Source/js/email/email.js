@@ -69,6 +69,7 @@ function homeSelected() {
 function useThisAccount() {
 	console.log("Inside use This Account Function");
 	currentEmailAccountSelected = $('#chooseEmailAccount').find('input[type=checkbox]:checked').filter(':last').val();
+	console.log("Inside use This Account Function, currentEmailAccountSelected :: "+currentEmailAccountSelected);
 	loadInboxScreen();
 
 }
@@ -145,6 +146,9 @@ function loadMailFullViewScreen() {
 
 
 function loadInboxScreen(type) {
+	
+	console.log("Inside Load Inbox screen");
+	console.log("Inside Load Inbox screen, type : "+type);
 	if(!type){
 		saveMailToDraft();
 	}
@@ -213,6 +217,7 @@ function addAccount(accountType)
 	$("#fileAttachmentDiv").hide();
 	currentScreenLoaded = "AddAccount";
 	$("#searchMailText").val("");
+	
 }
 
 function loadComposeScreen(type){
@@ -523,6 +528,9 @@ var populateInbox = function ()
 }
 
 function fillDraftCount() {
+	
+	console.log("Inside fillDraft count :: "+draftMailTypeCounter);
+	
 	$(".draftIcon").html(draftMailTypeCounter);
 }
 
@@ -578,19 +586,14 @@ function setInboxTitle() {
 
 	var index = getArrayItemByProperty(accountInfo,"id",currentEmailAccountSelected);
 
-	for(var i in accountInfo)
+	console.log("Stringify of ACC = "+JSON.stringify(accountInfo));
+	
+	if(index && index.index)
 	{
-		console.log("Aproperty = "+i);
-		console.log("Aproperty VALUE = "+accountInfo[i]);
+		currentEmailSelectedName = accountInfo[index.index].name;
+	}else{
+		currentEmailSelectedName = "";
 	}
-
-	for(var i in index)
-	{
-		console.log("Iproperty = "+i);
-		console.log("Iproperty VALUE = "+index[i]);
-	}
-
-	currentEmailSelectedName = accountInfo[index.index].name;
 
 	var inboxDiv = document.getElementById('InboxLabelCtrl');
 	inboxDiv.innerText = INBOX + currentEmailSelectedName;
@@ -792,7 +795,12 @@ function selectCheckBox(type) {
 
 
 function saveMailToDraft() {
+	
+	console.log("Inside Save mail to Draft");
 	if(currentScreenLoaded === "ComposeScreen" && ($("#subMember").val() || $("#bodyDetails").val())){
+		
+		console.log("Drafts,Inside the Draft save mail");
+		
 		var to = [];
 		var cc = [];
 		var bcc = [];
@@ -847,7 +855,8 @@ function saveMailToDraft() {
 		}else{
 
 			var msg = new tizen.Message("messaging.email",{to:to,cc:cc,bcc:bcc,from:from,subject:subject,plainBody:mailbody,hasAttachment : hasAttachment}); 
-
+			
+			console.log("Drafts,Message saved in Drafts");
 
 			for (var i = 0 ; i < fileAttached.length; i++){
 				attachmentArray.push(new tizen.MessageAttachment(fileAttached[i]));
@@ -860,7 +869,8 @@ function saveMailToDraft() {
 }
 
 function draftSentSuccessCallback() {
-	console.log("Draft Saved Successfully")
+	console.log("Draft Saved Successfully");
+	loadInboxScreen();
 }
 
 function editContinueCompose() {

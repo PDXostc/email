@@ -17,6 +17,9 @@
 @import url("./library.css");
 @import url("./tabs.css");
 
+/* KEYBOARD */
+@import url("./keyboard.css");
+
 .libraryButton {	
 	background-image: url("images/common/bt_library_green.png");
 }

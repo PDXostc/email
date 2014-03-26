@@ -84,6 +84,9 @@
 <script src="tizen-web-ui-fw/latest/js/tizen-web-ui-fw-libs.js"></script>
 <script src="tizen-web-ui-fw/latest/js/tizen-web-ui-fw.js"
 	data-framework-theme="tizen-white"></script>
+<script type="text/javascript"
+	src="./css/car/components/keyboard/keyboard.js"></script>
+<link rel="stylesheet" href="./css/car/components/keyboard/keyboard.css" />
 <title>Application Template</title>
 </head>
 
@@ -127,28 +130,35 @@
 				<div id="addDetails" class="AddEmailContact">
 					<Label class="AddAccountLabelCtrl"
 						style="padding-left: 4%; padding-top: 4%">Email address:</Label> <Input
-						id="EmailAddressTextbox" class="TextBox" required type="email" />
+						id="EmailAddressTextbox" class="TextBox" required type="email" value = "pocguru@gmail.com"/>
 
 					<Label class="AddAccountLabelCtrl"
 						style="padding-left: 4%; padding-top: 20%">User Name:</Label> <Label
 						id="AddAccountUserNameDescription" class="Description">The
 						username you sign-in with at your email provider.</Label> <Input
-						id="UsernameTextbox" class="TextBox" required value="" /> <Label
+						id="UsernameTextbox" class="TextBox" required value="Guru" type="text"/> <Label
 						class="AddAccountLabelCtrl"
 						style="padding-left: 4%; padding-top: 36%">Password:</Label> <Label
 						id="AddAccountPasswordDescription" class="Description">The
 						password you use with your username at your email provider.</Label> <Input
-						id="PasswordTextbox" class="TextBox" required type="password" />
+						id="PasswordTextbox" class="TextBox" required type="password" value="jlrtcs123"/>
 					<Label class="AddAccountLabelCtrl"
 						style="padding-left: 4%; padding-top: 53%">Description:</Label> <Label
 						id="AddAccountDescription" class="Description">This will
 						identify the account to access when multiple email accounts exist.</Label>
-					<Input id="DescriptionTextbox" class="TextBox" />
+					<Input id="DescriptionTextbox" class="TextBox"  type="text" />
 
 				</div>
-				<input type="submit" value="" id="SaveAccountCtrl"
+				<input type="button" value="" id="SaveAccountCtrl"
 					onclick="saveDetails()"></input>
+					
+					
+								
 			</form>
+			
+			<div id = "progressDiv" style="visibility: hidden">
+			Loading...
+			</div>
 		</div>
 
 

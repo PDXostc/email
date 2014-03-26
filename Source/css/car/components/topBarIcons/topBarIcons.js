@@ -285,9 +285,9 @@ function launchApplication(id) {
 				console.error(exc.message);
 			} finally {
 				// Workaround due to https://bugs.tizen.org/jira/browse/TIVI-2018
-				/*window.setTimeout(function() {
+				window.setTimeout(function() {
 					TopBarIcons._getApps();
-				}, 1000);*/
+				}, 1000);
 			}
 		},
 

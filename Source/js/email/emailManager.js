@@ -19,6 +19,11 @@ var filesArray = new Array();
 var fileAttached = new Array();
 var fileCounter = 0;
 
+var timerStarted = null;
+var lastAccountId = 0;
+
+var _TIMER_ACCOUNT = 30000;
+
 /************Services Variables Declaration***************************/
 var emailService = new Array();
 var selectedService = {};
@@ -105,7 +110,7 @@ function checkAccountAvailablity(){
 		if (accountInfo.length > 0) {
 
 			loadChangeAccountScreen();
-
+			lastAccountId = accountInfo[accountInfo.length-1].id ;
 		} else {
 			$("#addAccountDiv").css({"visibility":"visible"});
 			$("#addAccountDetailsDiv").show();
@@ -125,6 +130,14 @@ function checkAccountAvailablity(){
 //Save the user details and add the account
 function saveDetails()
 {
+	console.log("Save button Pressed");
+	
+	//alert("hi")
+	var emailAddress = $("#EmailAddressTextbox").val();
+	var userName = $("#UsernameTextbox").val();
+	var password = $("#PasswordTextbox").val();
+	var description = $("#DescriptionTextbox").val();
+	var emailType = selectedAccountType;
 	if(stubTesting){
 		try{
 			var emailAddress = $("#EmailAddressTextbox").val();
@@ -132,12 +145,8 @@ function saveDetails()
 			var password = $("#PasswordTextbox").val();
 			var description = $("#DescriptionTextbox").val();
 
-			$("#EmailAddressTextbox").val('');
-			$("#UsernameTextbox").val('');
-			$("#PasswordTextbox").val('');
-			$("#DescriptionTextbox").val('');
 
-			var emailType = selectedAccountType;
+			
 			currentEmailAccountSelected = emailAddress;
 			console.log("Email Address :: "+emailAddress);
 			console.log("User Name :: "+userName);
@@ -147,21 +156,71 @@ function saveDetails()
 
 			accountInfo.push({id : emailAddress, name : emailAddress});
 			accountDetails.push({emailAddress:emailAddress,userName:userName,password:password,description:description,emailType:emailType})
-
-			loadInboxScreen();
+			
+			$("#progressDiv").css({"visibility":"visible"});
 		}catch (e) {
 			// TODO: handle exception
-			alert(e);
+			console.error(e);
 		}
 	}else {
 		//TODO: Need to CALL WRT API and verify newly added Acount
-		alert("WRT Plugin not available to Add Account, Please add acount manually");
+		console.log("Email Address :: "+emailAddress);
+		console.log("User Name :: "+userName);
+		console.log("Password :: "+password);
+		console.log("Email Descriptions :: "+description);
+		console.log("Email Type :: "+emailType);
+		
+		console.log("WRT Plugin called for ");
+		
+		//Added to display visibility of progress div
+		$("#progressDiv").css({"visibility":"visible"});
+		
+		tizen.emailplugin.addAccount(emailAddress,userName,password,emailType,successCB,errorCB);
+		
 	}
+	if(timerStarted){
+		clearTimeout(timerStarted);
+	}
+	
+	console.log("Timer started for "+_TIMER_ACCOUNT)
+	
+	//$("#progressDiv").css({"visibility":"visible"});
+		timerStarted = setTimeout(_timer,_TIMER_ACCOUNT);
+}
+
+var _timer = function(){
+	console.log("Timer completed")
+	
+	$("#progressDiv").css({"visibility":"hidden"});
+	
+	$("#EmailAddressTextbox").val('');
+	$("#UsernameTextbox").val('');
+	$("#PasswordTextbox").val('');
+	$("#DescriptionTextbox").val('');
+	//Check for the newly added Account
+	checkAccountAvailablity();
+	console.log("lastAccountId  "+lastAccountId);
+	//Recent added account would be current selected
+	currentEmailAccountSelected = lastAccountId ;
+	loadInboxScreen();
+}
+
+
+var successCB = function(){
+	console.log("Account Added succesfully");
+}
+
+var errorCB = function(){
+	console.log("Account not added");
 }
 
 //Retrieve mail list filtering filter key(If present else get all mail list)
 var retriveMail = function(type) {
 
+	console.log("Inside Retrive mail");
+	
+	console.log("Inside Retrive mail,type:: "+type);
+	
 	draftMailTypeCounter = 0;
 
 	mailType = type;
@@ -181,6 +240,9 @@ var retriveMail = function(type) {
 	} else {
 		//CALL WRT API and update ARRAY : "mailMessages"
 		mailMessages = new Array();
+		
+		console.log("Inside Retrive mail, currentEmailAccountSelected :: "+currentEmailAccountSelected);
+		
 		var id = currentEmailAccountSelected;
 		console.log("EmailService  "+JSON.stringify(emailService));
 		var index = getArrayItemByProperty(emailService,"id",id);
@@ -189,7 +251,8 @@ var retriveMail = function(type) {
 			selectedService = emailService[index.index];
 			console.log("SelectedService Stringfy:: "+JSON.stringify(selectedService));
 			selectedService.messageStorage.findMessages( 
-					new tizen.AttributeFilter("id", "CONTAINS", id), messageArrayCB);
+					new tizen.AttributeFilter("id", "CONTAINS", id), messageArrayCB,errorCallbackAccount);
+//				new tizen.AttributeFilter("type", "EXACTLY", "messaging.email"), messageArrayCB);
 		}
 		else
 		{
@@ -295,14 +358,41 @@ function deleteAccountRequest(searchIDs) {
 				accountInfo.splice(index.index, 1);
 			}
 		}
-		if(accountInfo.length > 0){
-			loadChangeAccountScreen();
-		}else{
-			loadAddAccountScreen();
-		}
+		
 	}else{
 		//TODO: Need to call delete account WRT Plug-in calls
+		console.log("searchIDs[i] ID :: "+searchIDs[i]);
+		//tizen.emailplugin.deleteAccount()
+		for (var i= 0 ; i< searchIDs.length; i++){
+			console.log("JSON stringify :: "+JSON.stringify(accountInfo))
+			var index = getArrayItemByProperty(accountInfo,"id",searchIDs[i]);
+			if (index && index.index > -1) {
+				console.log("Index of Service ID for deletion :: "+index.index)
+				console.log("Calling Delete Account WRT with ID :: "+accountInfo[index.index].id);
+				tizen.emailplugin.deleteAccount(accountInfo[index.index].id,deleteAccSuccessCB,deleteErrCB);
+				accountInfo.splice(index.index, 1);
+			}
+		}
+		
 	}
+	if(accountInfo.length > 0){
+		loadChangeAccountScreen();
+	}else{
+		loadAddAccountScreen();
+	}
+}
+
+var deleteAccSuccessCB = function(){
+	console.log("Account deleted succes");
+	if(accountInfo.length > 0){
+		loadChangeAccountScreen();
+	}else{
+		loadAddAccountScreen();
+	}
+}
+
+var deleteErrCB = function(){
+	console.log("Account not deleted");
 }
 
 /*
@@ -333,6 +423,7 @@ var getArrayItemByProperty = function(array, property, value)
 //Sync with the Services
 function syncEmails() {
 	if(!stubTesting){
+		console.log("Sync, inside function");
 		console.log("Sync ID:" +syncId);
 		if (syncId) {
 			console.log("Other sync is in progress");
@@ -367,18 +458,27 @@ function errorCallback(err) {
 //List of all the services available
 function serviceListCB(services) { 
 	accountInfo = new Array();
+	console.log("Service  :: "+services);
+	console.log("Service JSON.stringify :: "+JSON.stringify(services));
 	if(services.length > 0 && services[0].name){
 
+		console.log("Service callback :: "+services.length);
+		
 		for(var i = 0 ; i < services.length ; i++)
 		{
+			console.log("Service id :: "+services[i].id);
+			console.log("Service name :: "+services[i].name);
 			accountInfo.push({id : services[i].id , name : services[i].name});
+			lastAccountId = services[i].id ;
 		}
 		emailService = services; 
 		loadChangeAccountScreen();
 	}else
 	{
-		$("#addAccountDiv").css({"visibility":"visible"});
-		$("#addAccountDetailsDiv").show();
+		//$("#addAccountDiv").css({"visibility":"visible"});
+		//$("#addAccountDetailsDiv").show();
+		loadAddAccountScreen();
+		console.log("Service Not available callback :: showing loadAddAccountScreen");
 	}
 }
 
@@ -471,7 +571,8 @@ function messageArrayCB(messages) {
 			if(messages[i].folderId == "6"){
 				draftMailTypeCounter = draftMailTypeCounter + 1;
 			}
-
+			
+			console.log("Checking mail type draft or inbox : "+mailType);
 			if(mailType === "draft"){
 				populateDraftScreen(mailMsg);
 			}else{
@@ -583,7 +684,8 @@ function sendMail() {
 
 		selectedService.sendMessage(msg, messageSentCallback, errorCallback);
 
-		inboxButtonSeleted();
+		//inboxButtonSeleted();
+		loadInboxScreen("saveToDraft");
 	}
 
 }
@@ -702,4 +804,8 @@ function listAllFiles() {
 			}, "r"
 	);
 }
+
+
+
+
 

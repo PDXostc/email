@@ -169,6 +169,15 @@
 	background-repeat: no-repeat;
 }
 
+#progressDiv {
+	position: absolute;
+	top: 78%;
+	left: 45%;
+	height: 5%;
+	font-size: 150%;
+}
+
+
 .LabelCtrl {
 	position: absolute;
 	width: 10%;

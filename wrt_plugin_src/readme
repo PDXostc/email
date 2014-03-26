@@ -1,0 +1,7 @@
+wrt-plugins-tizen-emailplugin.pc.in  should go to 
+/prj/wrt-plugins-ivi/wrt-plugins-ivi-0.13.0/pkconfigs folder
+
+CmakeLists.txt contains all the 3 modules.
+
+This is common across all modules.
+

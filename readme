@@ -1,0 +1,38 @@
+WRT Plug in:
+Assuming the code has been checked out on the host PC please folllow the below steps.
+
+WGT project can be imported into the TIZEN SDK as is.
+
+
+wrt_src/wrt-plugins-tizen-emailplugin.pc.in  should go to 
+/prj/wrt-plugins-ivi/wrt-plugins-ivi-0.13.0/pkconfigs folder in the target.
+
+copy the wrt_src/emailplugin  to /prj/wrt-plugins-ivi/wrt-plugins-ivi-0.13.0/src
+
+CmakeLists.txt contains all the 3 modules.This is common across all modules.
+This can be takne as is as long as other 3 modules also part of the build.Or else 
+We need to merge the chnages from this file into 
+/prj/wrt-plugins-ivi/wrt-plugins-ivi-0.13.0/src/CmakeLists.txt
+
+copy vcon.sh to anywhere int the target.
+
+#Build steps on target:
+
+cd /prj/wrt-plugins-ivi/wrt-plugins-ivi-0.13.0
+cmake .
+make
+make install
+cp -r /usr/local/lib/wrt-plugins/*  /usr/lib/wrt-plugins/
+wrt-installer -p
+wrt-installer -i Email.wgt
+
+#launch followng daemons.Mostly you need to do zypper install.
+ss-server
+msg-server &
+contacts-service-ipcd  &
+email-service &
+
+Then run vcon.sh
+./vcon.sh
+
+Finally launch the email application.

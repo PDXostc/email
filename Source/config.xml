@@ -19,6 +19,22 @@
     <tizen:privilege name="http://tizen.org/privilege/contact.write"/>
     <tizen:privilege name="http://tizen.org/privilege/download"/>
     <tizen:privilege name="http://tizen.org/privilege/websetting"/>
-    <tizen:setting screen-orientation="portrait" context-menu="enable" background-support="disable" encryption="disable" install-location="auto"/>	
-     	 
+    <tizen:privilege name="http://tizen.org/privilege/emailplugin.read"/>
+    <tizen:privilege name="http://tizen.org/privilege/emailplugin.write"/>
+    <tizen:privilege name="http://tizen.org/privilege/datasync"/>
+    <tizen:privilege name="http://tizen.org/privilege/networkbearerselection"/>
+    <tizen:privilege name="http://tizen.org/privilege/notification"/>
+    <tizen:privilege name="http://tizen.org/privilege/secureelement"/>
+    <tizen:privilege name="http://tizen.org/privilege/system"/>
+    <tizen:privilege name="http://tizen.org/privilege/systemmanager"/>
+    <tizen:privilege name="http://tizen.org/privilege/unlimitedstorage"/>
+    <tizen:setting screen-orientation="portrait" context-menu="enable" background-support="disable" encryption="disable" install-location="auto"/>
+    
+     
+    
+    
+          
+    
+    
+     	
 </widget>

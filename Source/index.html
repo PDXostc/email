@@ -77,10 +77,9 @@
 
 <link rel="stylesheet" type="text/css" href="./css/style.css" />
 
-<script type="text/javascript" src="./js/email/email.js"></script>
-<script type="text/javascript" src="./js/email/emailManager.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="./css/email/green/email.css" />
+<script type="text/javascript" src="./css/car/components/email/email.js"></script>
+<script type="text/javascript" src="./css/car/components/email/emailManager.js"></script>
+
 <script src="tizen-web-ui-fw/latest/js/tizen-web-ui-fw-libs.js"></script>
 <script src="tizen-web-ui-fw/latest/js/tizen-web-ui-fw.js"
 	data-framework-theme="tizen-white"></script>
@@ -96,7 +95,7 @@
 
 	<div id="clockElement"></div>
 
-          <!-- BEGIN HTML ELEMENTS -->
+
 	<!-- BEGIN HTML ELEMENTS style="visibility: hidden"-->
 
 	<div id="mainDiv">
@@ -105,7 +104,7 @@
 		<!-- Screen to add New Account    style="visibility: hidden" -->
 		<div id="addAccountDiv" class="homeScreenBgImg"
 			style="visibility: hidden">
-
+			<div class="addAccountsHeader" ></div>
 			<a id="addHome" onclick="homeSelected()"></a> <a id="addMsExchange"
 				onclick="addAccount('MsExchange')"></a> <a id="addMobileMe"
 				onclick="addAccount('MobileMe')"></a> <a id="addGmail"
@@ -125,7 +124,9 @@
 		<!-- Screen to get details for adding new account  -->
 		<div id="addAccountDetailsDiv" class="homeScreenBgImg"
 			style="visibility: hidden">
+			<div class="addAccountsHeader"></div>
 			<form>
+				
 				<div id="addHome" onclick="homeSelected()"></div>
 				<div id="addDetails" class="AddEmailContact">
 					<Label class="AddAccountLabelCtrl"
@@ -136,24 +137,21 @@
 						style="padding-left: 4%; padding-top: 20%">User Name:</Label> <Label
 						id="AddAccountUserNameDescription" class="Description">The
 						username you sign-in with at your email provider.</Label> <Input
-						id="UsernameTextbox" class="TextBox" required  type="text"/> <Label
+						id="UsernameTextbox" class="TextBox" required type="text"/> <Label
 						class="AddAccountLabelCtrl"
 						style="padding-left: 4%; padding-top: 36%">Password:</Label> <Label
 						id="AddAccountPasswordDescription" class="Description">The
 						password you use with your username at your email provider.</Label> <Input
-						id="PasswordTextbox" class="TextBox" required type="password"/>
+						id="PasswordTextbox" class="TextBox" required type="password" />
 					<Label class="AddAccountLabelCtrl"
 						style="padding-left: 4%; padding-top: 53%">Description:</Label> <Label
 						id="AddAccountDescription" class="Description">This will
 						identify the account to access when multiple email accounts exist.</Label>
 					<Input id="DescriptionTextbox" class="TextBox"  type="text" />
 
-
-
-
-				</div>sssss
+				</div>
 				<input type="button" value="" id="SaveAccountCtrl"
-					onclick="saveDetails()"></input>
+					class = "themeColor" onclick="saveDetails()"></input>
 					
 					
 								
@@ -169,11 +167,11 @@
 		<!-- Screen to Choose Email Account   style="visibility: hidden" -->
 		<div id="chooseEmailAccount" class="chooseEmailAccountBgImg"
 			style="visibility: hidden">
-
+			<div id="emailAccountsHeader" class=""></div>
 			<a id="addHome" onclick="homeSelected()"></a>
 			<div id="emailAccounts" class="AddEmailContact"></div>
-			<div id="useThisAccount" onclick="useThisAccount()"></div>
-			<div id="deleteThisAccount" onclick="deleteThisAccount()"></div>
+			<div id="useThisAccount" class = "themeColor" onclick="useThisAccount()"></div>
+			<div id="deleteThisAccount" class = "themeColor" onclick="deleteThisAccount()"></div>
 		</div>
 
 
@@ -252,14 +250,7 @@
 					style="padding-left: 0%; padding-top: 20%"></div>
 				<div id="mailBody" class="MailBodyValue"></div>
 				<div id="viewAttachment"></div>
-				<!--<img id="attachmentDiv" class="MailAttachmentDiv" src = "./css/email/green/images/email/Inbox.png" ></img>
-				<a id="" class="MailCtrlValue"
-					style="padding-top: 110%; text-decoration: underline; color: blue"
-					href="">Save attachments</a> <a id="" class="MailCtrlValue"
-					style="padding-left: 35%; padding-top: 110%; text-decoration: underline; color: blue"
-					href="">View attachments</a> <a id="" class="MailCtrlValue"
-					style="padding-top: 115%; text-decoration: underline; color: blue"
-					href="">Add Senders to Contacts</a>-->
+
 
 			</div>
 
@@ -338,9 +329,9 @@
 				Saved</Label>
 			<div id="sendDraftDiv" class="sendDiv" onclick="sendDraftMail()"></div>
 			<div id="DraftDiv" class="InboxHandler"></div>
-			<div id="editContinue" class="editContinue"
+			<div id="editContinue" class="editContinue themeColor"
 				onclick="editContinueCompose()"></div>
-			<div id="cancel" class="cancel" onclick="inboxButtonSeleted()"></div>
+			<div id="cancel" class="themeColor" onclick="inboxButtonSeleted()"></div>
 
 
 		</div>
@@ -350,9 +341,9 @@
 			<Label class="DeleteAccountLabelCtrl"
 				style="padding-left: 10%; padding-top: 5%">Delete the
 				selected message(s)?</Label>
-			<div id="deleteEmailYesDiv" class="deleteYesDiv"
+			<div id="deleteEmailYesDiv" class="deleteYesDiv themeColor"
 				onclick="deleteEmailYes()"></div>
-			<div id="deleteEmailNoDiv" class="deleteNoDiv"
+			<div id="deleteEmailNoDiv" class="deleteNoDiv themeColor"
 				onclick="deleteEmailNo()"></div>
 
 		</div>
@@ -366,8 +357,8 @@
 				<Label class="DeleteAccountLabelCtrl"
 					style="padding-left: 10%; padding-top: 5%">Delete the
 					selected account(s)?</Label>
-				<div class="deleteYesDiv" onclick="deleteAccountYes()"></div>
-				<div class="deleteNoDiv" onclick="deleteAccountNo()"></div>
+				<div class="deleteYesDiv themeColor" onclick="deleteAccountYes()"></div>
+				<div class="deleteNoDiv themeColor" onclick="deleteAccountNo()"></div>
 
 			</div>
 
@@ -377,12 +368,12 @@
 
 		<div id="fileAttachmentDiv" class="attachFileScreenImg"
 			style="visibility: hidden">
-
+			<div id="fileAttachmentHeader" ></div>
 			<div id="addHome" onclick="homeSelected()"></div>
 			<div id="attachFiledDiv" class="attachFile"></div>
 
-			<div id="attachFileButton" onclick="attachFile()"></div>
-			<div id="cancelButton" onclick="cancelFileAttachment()"></div>
+			<div id="attachFileButton" class = "themeColor" onclick="attachFile()"></div>
+			<div id="cancelButton" class = "themeColor" onclick="cancelFileAttachment()" ></div>
 
 		</div>
 

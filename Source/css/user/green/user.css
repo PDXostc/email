@@ -20,6 +20,10 @@
 /* KEYBOARD */
 @import url("./keyboard.css");
 
+/* EMAIL */
+@import url("./email.css");
+
+
 .libraryButton {	
 	background-image: url("images/common/bt_library_green.png");
 }

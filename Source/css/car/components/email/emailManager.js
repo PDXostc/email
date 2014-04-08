@@ -359,7 +359,7 @@ function deleteMailRequestByMailIds(mailIDs) {
 function deleteAccountRequest(searchIDs) {
 	if(stubTesting){
 		for (var i= 0 ; i< searchIDs.length; i++){
-			var index = getArrayItemByProperty(accountInfo,"name",searchIDs[i]);
+			var index = getArrayItemByProperty(accountInfo,"id",searchIDs[i]);
 			if (index.index > -1) {
 				accountInfo.splice(index.index, 1);
 			}

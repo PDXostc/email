@@ -4,13 +4,16 @@
     <content src="index.html"/>
     <icon src="icon.png"/>
     <name>Email</name>
-   
+    
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.write"/>
     <tizen:privilege name="http://tizen.org/privilege/messaging.read"/>
     <tizen:privilege name="http://tizen.org/privilege/messaging.write"/>
-    
+    <tizen:privilege name="http://tizen.org/privilege/download"/>
     <tizen:privilege name="http://tizen.org/privilege/emailplugin.read"/>
     <tizen:privilege name="http://tizen.org/privilege/emailplugin.write"/>
-    
+    <tizen:privilege name="http://tizen.org/privilege/datasync"/>
+    <tizen:privilege name="http://tizen.org/privilege/systemmanager"/>
     <tizen:setting screen-orientation="portrait" context-menu="enable" background-support="disable" encryption="disable" install-location="auto"/>
     
      

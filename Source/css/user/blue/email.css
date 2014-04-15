@@ -298,9 +298,9 @@
 .AddAccount {
 	position: absolute;
 	top: 1%;
-	left: 30%;
-	width: 10%;
-	height: 5%;
+	left: 31%;
+	width: 8%;
+	height: 4.7%;
 	background-image: url(./images/email/add_contact_icon.png);
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
@@ -358,7 +358,7 @@
 	top: 1.5%;
 	left: 71%;
 	width: 5%;
-	height: 2.3%;
+	height: 2.1%;
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-image: url(./images/email/search_button.png);
@@ -568,8 +568,8 @@
 #attachments {
 	position: absolute;
 	top: 22%;
-	left: 1%;
-	width: 6%;
+	left: 2%;
+	width: 3%;
 	height: 5%;
 	background-image: url(./images/email/paperclip_attachment_icon.png);
 	background-size: 100% 100%;
@@ -652,7 +652,7 @@
 
 .sendDiv {
 	position: absolute;
-	top: 8%;
+	top: 7%;
 	left: 80%;
 	width: 5%;
 	height: 5%;

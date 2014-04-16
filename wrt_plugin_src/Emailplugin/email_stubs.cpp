@@ -141,22 +141,22 @@ gboolean  create_account_object(email_account_t **result_account,const char* add
 
                 case 0:/*  MsExchange*/
                         account->incoming_server_type  = EMAIL_SERVER_TYPE_POP3;
-                        account->incoming_server_address= strdup("pop.gmail.com");
-                        account->incoming_server_port_number = 995;
+                        account->incoming_server_address= strdup("outlook.office365.com");
+                        account->incoming_server_port_number = 993;
                         account->incoming_server_secure_connection      = 1;
-                        account->outgoing_server_address    = strdup("smtp.gmail.com");
-                        account->outgoing_server_port_number = 465;
+                        account->outgoing_server_address    = strdup("smtp.office365.com");
+                        account->outgoing_server_port_number = 587;
                         account->outgoing_server_secure_connection = 1;
                         account->outgoing_server_need_authentication = 1;
                         break;
 
                 case 1:/*  MobileMe*/
                         account->incoming_server_type  = EMAIL_SERVER_TYPE_POP3;
-                        account->incoming_server_address= strdup("pop.gmail.com");
-                        account->incoming_server_port_number = 995;
+                        account->incoming_server_address= strdup("mail.me.com");
+                        account->incoming_server_port_number = 143;
                         account->incoming_server_secure_connection      = 1;
-                        account->outgoing_server_address    = strdup("smtp.gmail.com");
-                        account->outgoing_server_port_number = 465;
+                        account->outgoing_server_address    = strdup("mail.me.com");
+                        account->outgoing_server_port_number = 25;
                         account->outgoing_server_secure_connection = 1;
                         account->outgoing_server_need_authentication = 1;
                         break;
@@ -186,10 +186,10 @@ gboolean  create_account_object(email_account_t **result_account,const char* add
 
 		case 3: /* Yahoo IMAP ID */
 			account->incoming_server_type  = EMAIL_SERVER_TYPE_IMAP4;
-			account->incoming_server_address= strdup("samsung.imap.mail.yahoo.com");
+			account->incoming_server_address= strdup("imap.mail.yahoo.com");
 			account->incoming_server_port_number = 993;
 			account->incoming_server_secure_connection	= 1;
-			account->outgoing_server_address    = strdup("samsung.smtp.mail.yahoo.com");
+			account->outgoing_server_address    = strdup("smtp.mail.yahoo.com");
 			account->outgoing_server_port_number = 465;
 			account->outgoing_server_secure_connection = 1;
 			account->outgoing_server_need_authentication = 1;
@@ -198,10 +198,10 @@ gboolean  create_account_object(email_account_t **result_account,const char* add
 		case 4: /*  AOL */
 			account->incoming_server_type  = EMAIL_SERVER_TYPE_IMAP4;
 			account->incoming_server_address= strdup("imap.aol.com");
-			account->incoming_server_port_number = 143;
+			account->incoming_server_port_number = 993;
 			account->incoming_server_secure_connection	= 0;
 			account->outgoing_server_address    = strdup("smtp.aol.com");
-			account->outgoing_server_port_number = 587;
+			account->outgoing_server_port_number = 465;
 			account->outgoing_server_secure_connection = 0;
 			account->outgoing_server_need_authentication = 1;
 			break;

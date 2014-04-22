@@ -2244,7 +2244,11 @@
 </Reference>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<<<<<<< HEAD
 <DigestValue>H4gmNjDLBsTpXjqIOkrOuBq63fQcHfx2ZWlcZKjHHvc=</DigestValue>
+=======
+<DigestValue>PvewYC3/B16egs6YZzlCqiZXLi9xD5nOmW2wS4gvuTU=</DigestValue>
+>>>>>>> a05e66dd54ac34e44b1a8d0d689e805d22f5417f
 </Reference>
 <Reference URI="js/jquery-1.9.1.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -2291,9 +2295,15 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
+<<<<<<< HEAD
 eQXwj99kruPIP9fuX1QIpIr0R/qJaVODNTYHvn4GF8A2DJNsZOYmVFQRchNyuT78Q6pNiutCIeTb
 f17x8rAa5q9IM726BGDWY75HM+y4yTXSI3WCZXtog7vQGnK+AXlF4jEl3aVi+kSBDu36GS2lIoRj
 BAl+Ha2xlgK4CUfFqgc=
+=======
+RpW6Rhkhc0EKPco0cOxKqMv3UEXAWSy2VgD63MjinBg/84nEEqAkd0q+Sp7REW8zdkGB9zhYUHNW
+MgGs43vw1bDu67X58wkGAEAmm9xPdVmerrNw7lil5KAs7p2LwyKmLego81AWalXFXjJv9fME3fto
+jCd73GoaM9/yochqkb8=
+>>>>>>> a05e66dd54ac34e44b1a8d0d689e805d22f5417f
 </SignatureValue>
 <KeyInfo>
 <X509Data>

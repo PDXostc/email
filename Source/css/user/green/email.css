@@ -1,16 +1,15 @@
-.themeColor{
+.themeColor {
 	background-position: right;
 	background-color: #3ca107;
 }
 
-.addAccountsHeader{
+.addAccountsHeader {
 	top: 8%;
 	left: 35%;
 	width: 35%;
 	height: 4%;
 	background-image: url('./images/email/AddEmailAccount.png');
 	background-size: 100% 100%;
-	
 }
 
 .homeScreenBgImg {
@@ -20,7 +19,7 @@
 	width: 100%;
 }
 
-#emailAccountsHeader{
+#emailAccountsHeader {
 	top: 8%;
 	left: 18%;
 	width: 64%;
@@ -128,7 +127,6 @@
 	background-size: 100% 100%;
 	width: 85%;
 	height: 50%;
-	
 }
 
 .AddAccountLabelCtrl {
@@ -200,7 +198,6 @@
 	height: 5%;
 	font-size: 150%;
 }
-
 
 .LabelCtrl {
 	position: absolute;
@@ -298,9 +295,9 @@
 .AddAccount {
 	position: absolute;
 	top: 1%;
-	left: 30%;
-	width: 10%;
-	height: 5%;
+	left: 31%;
+	width: 8%;
+	height: 4.7%;
 	background-image: url(./images/email/add_contact_icon.png);
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
@@ -358,7 +355,7 @@
 	top: 1.5%;
 	left: 71%;
 	width: 5%;
-	height: 2.3%;
+	height: 2.1%;
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-image: url(./images/email/search_button.png);
@@ -568,14 +565,14 @@
 #attachments {
 	position: absolute;
 	top: 22%;
-	left: 1%;
-	width: 6%;
+	left: 2%;
+	width: 3%;
 	height: 5%;
 	background-image: url(./images/email/paperclip_attachment_icon.png);
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	font-size: 250%;
-	color : #3ca107;
+	color: #3ca107;
 }
 
 #structureMail {
@@ -616,6 +613,19 @@
 	background-color: transparent;
 }
 
+#bodyswer {
+	position: absolute;
+	top: 36%;
+	left: 10%;
+	width: 85%;
+	height: 40%;
+	resize: none;
+	font-size: 200%;
+	border: 1px solid black;
+	background-color: white;
+	z-index: 10;
+}
+
 #composeAttach {
 	position: absolute;
 	top: 78%;
@@ -652,7 +662,7 @@
 
 .sendDiv {
 	position: absolute;
-	top: 8%;
+	top: 7%;
 	left: 80%;
 	width: 5%;
 	height: 5%;
@@ -673,7 +683,7 @@
 	font-size: 250%;
 	text-align: center;
 	vertical-align: bottom;
-	color : #3ca107;
+	color: #3ca107;
 }
 
 #DraftDiv {
@@ -705,7 +715,6 @@
 	background-size: 100% 100%;
 	width: 25%;
 	height: 4%;
-	
 }
 /**** Delete Account confirmation CSS ******/
 .deleteAccountPop {
@@ -725,7 +734,7 @@
 	font-size: 150%;
 	top: 10%;
 	left: 10%;
-	color:#3ca107;
+	color: #3ca107;
 }
 
 .deleteYesDiv {
@@ -750,7 +759,7 @@
 	background-repeat: no-repeat;
 }
 /****Attachment Screen CSS********/
-#fileAttachmentHeader{
+#fileAttachmentHeader {
 	top: 8%;
 	left: 30%;
 	width: 40%;
@@ -795,7 +804,6 @@
 	left: 55%;
 	width: 20%;
 	height: 5%;
-
 	background-image: url(./images/email/cancel.png);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;

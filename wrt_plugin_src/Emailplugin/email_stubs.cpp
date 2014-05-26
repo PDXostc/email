@@ -199,10 +199,10 @@ gboolean  create_account_object(email_account_t **result_account,const char* add
 			account->incoming_server_type  = EMAIL_SERVER_TYPE_IMAP4;
 			account->incoming_server_address= strdup("imap.aol.com");
 			account->incoming_server_port_number = 993;
-			account->incoming_server_secure_connection	= 0;
+			account->incoming_server_secure_connection	= 1;
 			account->outgoing_server_address    = strdup("smtp.aol.com");
-			account->outgoing_server_port_number = 465;
-			account->outgoing_server_secure_connection = 0;
+			account->outgoing_server_port_number = 587;
+			account->outgoing_server_secure_connection = 1;
 			account->outgoing_server_need_authentication = 1;
 			break;
 

@@ -201,6 +201,14 @@
 	font-size: 150%;
 }
 
+#syncDiv {
+	position: absolute;
+	top: 90%;
+	left: 45%;
+	height: 6%;
+	font-size: 200%;
+}
+
 
 .LabelCtrl {
 	position: absolute;
@@ -321,8 +329,8 @@
 	position: absolute;
 	top: 1%;
 	left: 78%;
-	width: 9%;
-	height: 5%;
+	width: 10%;
+	height: 6%;
 	background-image: url(./images/email/refresh_icon.png);
 	background-size: 100% 100%;
 	background-repeat: no-repeat;

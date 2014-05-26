@@ -609,7 +609,7 @@ function setInboxTitle() {
 }
 
 function populateDraftScreen(msg) {
-	if(msg.folderId == "6"){
+	if(msg.folderId == "4"){
 		var outputInboxScreen = document.getElementById("DraftDiv");
 		var messageItemBody = document.createElement('div');
 		messageItemBody.className = "MsgItemBody";
@@ -852,7 +852,8 @@ function saveMailToDraft() {
 			mailMsg["folderId"] = "6";
 
 			mailMessages.push(mailMsg);
-		}else{
+		}
+		else{
 
 			var msg = new tizen.Message("messaging.email",{to:to,cc:cc,bcc:bcc,from:from,subject:subject,plainBody:mailbody,hasAttachment : hasAttachment}); 
 			
@@ -863,13 +864,19 @@ function saveMailToDraft() {
 			}
 			msg.attachments = attachmentArray;
 
-			selectedService.messageStorage.addDraftMessage(msg, draftSentSuccessCallback, errorCallback);
+			selectedService.messageStorage.addDraftMessage(msg, draftSentSuccessCallback, DrafterrorCallback);
 		}
 	}
 }
 
 function draftSentSuccessCallback() {
 	console.log("Draft Saved Successfully");
+	loadInboxScreen();
+}
+
+function DrafterrorCallback()
+{
+	console.log("Error::"+error);
 	loadInboxScreen();
 }
 

@@ -152,7 +152,8 @@ function checkAccountAvailablity() {
 		}
 	} else {
 		// TODO:
-		tizen.messaging.getMessageServices("messaging.email", serviceListCB, errorCallbackAccount);
+		tizen.messaging.getMessageServices("messaging.email", serviceListCB,
+				errorCallbackAccount);
 
 		$(".Sync").bind("vclick", registerListeners);
 		console.log("Email Services have been read");
@@ -218,7 +219,8 @@ function saveDetails() {
 			"visibility" : "visible"
 		});
 
-		tizen.emailplugin.addAccount(emailAddress, userName, password, emailType, successCB, errorCB);
+		tizen.emailplugin.addAccount(emailAddress, userName, password,
+				emailType, successCB, errorCB);
 
 	}
 	if (timerStarted) {
@@ -291,7 +293,8 @@ var retriveMail = function(type) {
 		// CALL WRT API and update ARRAY : "mailMessages"
 		mailMessages = new Array();
 
-		console.log("Inside Retrive mail, currentEmailAccountSelected :: " + currentEmailAccountSelected);
+		console.log("Inside Retrive mail, currentEmailAccountSelected :: "
+				+ currentEmailAccountSelected);
 
 		var id = currentEmailAccountSelected;
 		console.log("EmailService  " + JSON.stringify(emailService));
@@ -300,7 +303,9 @@ var retriveMail = function(type) {
 			selectedService = emailService[index.index];
 			// console.log("SelectedService Stringfy::
 			// "+JSON.stringify(selectedService));
-			selectedService.messageStorage.findMessages(new tizen.AttributeFilter("id", "CONTAINS", id), messageArrayCB, errorCallbackAccount);
+			selectedService.messageStorage.findMessages(
+					new tizen.AttributeFilter("id", "CONTAINS", id),
+					messageArrayCB, errorCallbackAccount);
 			// new tizen.AttributeFilter("type", "EXACTLY", "messaging.email"),
 			// messageArrayCB);
 		} else {
@@ -329,7 +334,8 @@ var retriveMailFilterWithNextId = function() {
 		var nextMailItem = mailMessages[nextMailItemIndex];
 		console.log("Next mail Item:" + JSON.stringify(nextMailItem))
 		try {
-			if (nextMailItem.folderId != "4" || nextMailItem.folderId != "6" || nextMailItem.folderId != "14") {
+			if (nextMailItem.folderId != "4" || nextMailItem.folderId != "6"
+					|| nextMailItem.folderId != "14") {
 				setViewMails(nextMailItem);
 			} else {
 				currentMailId = nextMailItem.mailId;
@@ -359,7 +365,8 @@ function deleteMessageArrayCB(messages) {
 	if (messages.length > 0) {
 		console.log("deleting messages... " + messages.length);
 
-		selectedService.messageStorage.removeMessages(messages, deleteSuccessCallback, errorCallback);
+		selectedService.messageStorage.removeMessages(messages,
+				deleteSuccessCallback, errorCallback);
 	} else {
 		console.log("No messages found");
 	}
@@ -369,7 +376,8 @@ function deleteMessageArrayCB(messages) {
 function deleteMailRequestByMailIds(mailIDs) {
 	if (stubTesting) {
 		for ( var i = 0; i < mailIDs.length; i++) {
-			var index = getArrayItemByProperty(mailMessages, "mailId", mailIDs[i]);
+			var index = getArrayItemByProperty(mailMessages, "mailId",
+					mailIDs[i]);
 			if (index.index > -1) {
 				mailMessages.splice(index.index, 1);
 			}
@@ -379,9 +387,12 @@ function deleteMailRequestByMailIds(mailIDs) {
 		// Called delete mails Web API
 		try {
 			for ( var i = 0; i < mailIDs.length; i++) {
-				console.log("Mail Ids to be deleted are :" + JSON.stringify(mailIDs));
-				var filter = new tizen.AttributeFilter("id", "CONTAINS", mailIDs[i]);
-				selectedService.messageStorage.findMessages(filter, deleteMessageArrayCB);
+				console.log("Mail Ids to be deleted are :"
+						+ JSON.stringify(mailIDs));
+				var filter = new tizen.AttributeFilter("id", "CONTAINS",
+						mailIDs[i]);
+				selectedService.messageStorage.findMessages(filter,
+						deleteMessageArrayCB);
 			}
 		} catch (e) {
 			console.log(e);
@@ -407,9 +418,12 @@ function deleteAccountRequest(searchIDs) {
 			console.log("JSON stringify :: " + JSON.stringify(accountInfo))
 			var index = getArrayItemByProperty(accountInfo, "id", searchIDs[i]);
 			if (index && index.index > -1) {
-				console.log("Index of Service ID for deletion :: " + index.index)
-				console.log("Calling Delete Account WRT with ID :: " + accountInfo[index.index].id);
-				tizen.emailplugin.deleteAccount(accountInfo[index.index].id, deleteAccSuccessCB, deleteErrCB);
+				console.log("Index of Service ID for deletion :: "
+						+ index.index)
+				console.log("Calling Delete Account WRT with ID :: "
+						+ accountInfo[index.index].id);
+				tizen.emailplugin.deleteAccount(accountInfo[index.index].id,
+						deleteAccSuccessCB, deleteErrCB);
 				accountInfo.splice(index.index, 1);
 			}
 		}
@@ -461,6 +475,11 @@ var getArrayItemByProperty = function(array, property, value) {
  */
 // Sync with the Services
 function syncEmails() {
+	
+	$("#syncDiv").css({
+		"visibility" : "visible"
+	});
+	
 	if (!stubTesting) {
 		console.log("Sync, inside function");
 		console.log("Sync ID:" + syncId);
@@ -470,9 +489,21 @@ function syncEmails() {
 			try {
 				syncId = selectedService.sync(function() {
 					console.log("Synchronization succeeded");
+					loadInboxScreen();
+					
+					$("#syncDiv").css({
+						"visibility" : "hidden"
+					});
+					
 					syncId = null;
 				}, function(err) {
 					console.log("Synchronization failed:" + err.message);
+					loadInboxScreen();
+					
+					$("#syncDiv").css({
+						"visibility" : "hidden"
+					});
+					
 					syncId = null;
 				});
 				console.log("Sync all started");
@@ -518,7 +549,8 @@ function serviceListCB(services) {
 		// $("#addAccountDiv").css({"visibility":"visible"});
 		// $("#addAccountDetailsDiv").show();
 		loadAddAccountScreen();
-		console.log("Service Not available callback :: showing loadAddAccountScreen");
+		console
+				.log("Service Not available callback :: showing loadAddAccountScreen");
 	}
 }
 
@@ -563,13 +595,17 @@ function searchMailCall() {
 				console.log("Need to Search::: " + searchItem);
 				if (searchItem.startsWith("to:", 0)) {
 					searchItem = searchItem.replace('to:', '');
-					var filter = new tizen.AttributeFilter("to", "CONTAINS", searchItem);
+					var filter = new tizen.AttributeFilter("to", "CONTAINS",
+							searchItem);
 				} else if (searchItem.startsWith("from:", 0)) {
 					searchItem = searchItem.replace('from:', '');
-					var filter = new tizen.AttributeFilter("from", "CONTAINS", searchItem);
+					var filter = new tizen.AttributeFilter("from", "CONTAINS",
+							searchItem);
 				} else
-					var filter = new tizen.AttributeFilter("body.plainBody", "CONTAINS", searchItem);
-				selectedService.messageStorage.findMessages(filter, messageArrayCB, SearcherrorCallback);
+					var filter = new tizen.AttributeFilter("body.plainBody",
+							"CONTAINS", searchItem);
+				selectedService.messageStorage.findMessages(filter,
+						messageArrayCB, SearcherrorCallback);
 
 				function SearcherrorCallback(err) {
 					console.log(err.name + " error: " + err.message);
@@ -589,7 +625,8 @@ function messageArrayCB(messages) {
 	console.log('Messages: ' + messages.length);
 	for ( var i = 0; i < messages.length; i++) {
 		try {
-			console.log(i + " message one by one:: " + JSON.stringify(messages[i]));
+			console.log(i + " message one by one:: "
+					+ JSON.stringify(messages[i]));
 			var mailMsg = {};
 			var attachments = new Array();
 			mailMsg["subject"] = messages[i].subject;
@@ -612,7 +649,8 @@ function messageArrayCB(messages) {
 			mailMsg["hasAttachment"] = messages[i].hasAttachment;
 			console.log('hasAttachment:' + mailMsg["hasAttachment"]);
 
-			console.log('messages[i].attachments.length:  ' + messages[i].attachments.length);
+			console.log('messages[i].attachments.length:  '
+					+ messages[i].attachments.length);
 
 			for ( var j = 0; j < messages[i].attachments.length; j++) {
 				attachments.push({
@@ -620,16 +658,19 @@ function messageArrayCB(messages) {
 					id : messages[i].attachments[j].id,
 					mimeType : messages[i].attachments[j].mimeType
 				})
-				console.log("Attachment:" + JSON.stringify(messages[i].attachments[j]));
-				console.log(j + ' file Path :' + messages[i].attachments[j].filePath);
+				console.log("Attachment:"
+						+ JSON.stringify(messages[i].attachments[j]));
+				console.log(j + ' file Path :'
+						+ messages[i].attachments[j].filePath);
 				console.log(j + ' file id :' + messages[i].attachments[j].id);
-				console.log(j + ' mimeType :' + messages[i].attachments[j].mimeType);
+				console.log(j + ' mimeType :'
+						+ messages[i].attachments[j].mimeType);
 			}
 
 			mailMsg["attachments"] = attachments;
 			mailMessages.push(mailMsg);
 
-			// If folder id is 6 then increase the draft mail counter by 1
+			// If folder id is 4 then increase the draft mail counter by 1
 			// if(messages[i].folderId == "6"|| messages[i].folderId == "14"){
 			if (messages[i].folderId == "4") {
 				draftMailTypeCounter = draftMailTypeCounter + 1;
@@ -680,7 +721,8 @@ function sendMailWithId(id) {
 		} else {
 			bcc = null;
 		}
-		console.log(to + " " + cc + " " + bcc + " " + from + " " + subject + " " + mailbody);
+		console.log(to + " " + cc + " " + bcc + " " + from + " " + subject
+				+ " " + mailbody);
 		if (stubTesting) {
 			deleteMailRequestByMailIds(id);
 			loadDraftScreen();
@@ -689,7 +731,8 @@ function sendMailWithId(id) {
 				id : id
 			});
 
-			selectedService.sendMessage(msg, messageSentCallback, errorCallback);
+			selectedService
+					.sendMessage(msg, messageSentCallback, errorCallback);
 			inboxButtonSeleted();
 		}
 	} else {
@@ -762,26 +805,31 @@ function sendMail() {
 
 // Define the success callback.
 var messageSentCallback = function(recipients) {
-	console.log("Message sent successfully to " + recipients.length + " recipients.");
+	console.log("Message sent successfully to " + recipients.length
+			+ " recipients.");
 }
 
 // Listener registered
 function registerListeners() {
 	var messagesChangeCB = {
 		messagesadded : function(messages) {
-			console.log("Tracking message :<br/>" + messages.length + " message(s) added");
+			console.log("Tracking message :<br/>" + messages.length
+					+ " message(s) added");
 		},
 		messagesupdated : function(messages) {
-			console.log("Tracking message :<br/>" + messages.length + " message(s) updated");
+			console.log("Tracking message :<br/>" + messages.length
+					+ " message(s) updated");
 		},
 		messagesremoved : function(messages) {
-			console.log("Tracking message :<br/>" + messages.length + " message(s) removed");
+			console.log("Tracking message :<br/>" + messages.length
+					+ " message(s) removed");
 		}
 	}
 
 	try {
 
-		gMessagesListenerId = selectedService.messageStorage.addMessagesChangeListener(messagesChangeCB);
+		gMessagesListenerId = selectedService.messageStorage
+				.addMessagesChangeListener(messagesChangeCB);
 		console.log("Listening for Messages Change started");
 
 		$(".Sync").unbind("vclick", registerListeners);
@@ -820,7 +868,8 @@ function onsuccessFile(files) {
 
 // Error callback while listing files
 function onerrorFile(error) {
-	console.log("The error " + error.message + " occurred when listing the files in the selected folder");
+	console.log("The error " + error.message
+			+ " occurred when listing the files in the selected folder");
 }
 
 // List all the files from the root folders like

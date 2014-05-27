@@ -62,8 +62,8 @@ function deleteEmailNo() {
 
 function homeSelected() {
 	saveMailToDraft();
-
-	tizen.application.getCurrentApplication().exit();
+	loadChangeAccountScreen();
+	//tizen.application.getCurrentApplication().exit();
 }
 
 function useThisAccount() {

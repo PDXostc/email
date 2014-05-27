@@ -1,16 +1,15 @@
-.themeColor{
+.themeColor {
 	background-position: right;
 	background-color: rgb(100, 149, 237);
 }
 
-.addAccountsHeader{
+.addAccountsHeader {
 	top: 8%;
 	left: 35%;
 	width: 35%;
 	height: 4%;
 	background-image: url('./images/email/AddEmailAccount.png');
 	background-size: 100% 100%;
-
 }
 
 .homeScreenBgImg {
@@ -20,7 +19,7 @@
 	width: 100%;
 }
 
-#emailAccountsHeader{
+#emailAccountsHeader {
 	top: 8%;
 	left: 18%;
 	width: 64%;
@@ -128,7 +127,6 @@
 	background-size: 100% 100%;
 	width: 85%;
 	height: 50%;
-
 }
 
 .AddAccountLabelCtrl {
@@ -208,7 +206,6 @@
 	height: 6%;
 	font-size: 200%;
 }
-
 
 .LabelCtrl {
 	position: absolute;
@@ -303,15 +300,17 @@
 	background-repeat: no-repeat;
 }
 
-.AddAccount {
+#AddAccount {
 	position: absolute;
-	top: 1%;
-	left: 31%;
-	width: 8%;
-	height: 4.7%;
-	background-image: url(./images/email/add_contact_icon.png);
+	bottom: 19%;
+	left: 30%;
+	width: 42%;
+	height: 4%;
+	padding: 0.5% 1%;
+	color: white;
+	font-size: 230%;
+	font-weight: bolder;
 	background-size: 100% 100%;
-	background-repeat: no-repeat;
 }
 
 .Trash {
@@ -583,7 +582,7 @@
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	font-size: 250%;
-	color : rgb(100, 149, 237);
+	color: rgb(100, 149, 237);
 }
 
 #structureMail {
@@ -681,7 +680,7 @@
 	font-size: 250%;
 	text-align: center;
 	vertical-align: bottom;
-	color : rgb(100, 149, 237);
+	color: rgb(100, 149, 237);
 }
 
 #DraftDiv {
@@ -713,7 +712,6 @@
 	background-size: 100% 100%;
 	width: 25%;
 	height: 4%;
-	
 }
 /**** Delete Account confirmation CSS ******/
 .deleteAccountPop {
@@ -733,7 +731,7 @@
 	font-size: 150%;
 	top: 10%;
 	left: 10%;
-	color:rgb(100, 149, 237);
+	color: rgb(100, 149, 237);
 }
 
 .deleteYesDiv {
@@ -758,7 +756,7 @@
 	background-repeat: no-repeat;
 }
 /****Attachment Screen CSS********/
-#fileAttachmentHeader{
+#fileAttachmentHeader {
 	top: 8%;
 	left: 30%;
 	width: 40%;
@@ -803,7 +801,6 @@
 	left: 55%;
 	width: 20%;
 	height: 5%;
-
 	background-image: url(./images/email/cancel.png);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;

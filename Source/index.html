@@ -164,10 +164,8 @@
 				onclick="useThisAccount()"></div>
 			<div id="deleteThisAccount" class="themeColor"
 				onclick="deleteThisAccount()"></div>
+			<div id="AddAccount" class="themeColor"	onclick="loadAddAccountScreen()">ADD ANOTHER ACCOUNT</div>
 		</div>
-
-
-
 
 
 		<!-- Inbox Screen    style="visibility: hidden" -->
@@ -193,7 +191,7 @@
 				onclick="selectCheckBox('All')" />
 			<div id="InboxDiv" class="InboxHandler"></div>
 
-
+			<div id="syncDiv" style="visibility: hidden">Loading...</div>
 
 		</div>
 
@@ -221,6 +219,8 @@
 			<div id="Forward" class="Forward"
 				onclick="loadComposeScreen('Forward')"></div>
 			<div id="Next" class="Next" onclick="retriveMailFilterWithNextId()"></div>
+			
+			<div id="syncDiv" style="visibility: hidden">Loading...</div>
 
 			<div id="MailHandler" class="MailHandler">
 
@@ -265,6 +265,8 @@
 			<div id="attachments" onclick="loadAttachmentScreen()"></div>
 			<Label id="InboxComposeLabelCtrl" class="InboxLabelCtrl">Inbox:</Label>
 			<div id="sendDiv" class="sendDiv" onclick="sendMail()"></div>
+			
+			<div id="syncDiv" style="visibility: hidden">Loading...</div>
 
 			<div id="structureMail">
 				<Label class="MailCtrl"
@@ -320,6 +322,8 @@
 			<div id="editContinue" class="editContinue themeColor"
 				onclick="editContinueCompose()"></div>
 			<div id="cancel" class="themeColor" onclick="inboxButtonSeleted()"></div>
+			
+			<div id="syncDiv" style="visibility: hidden">Loading...</div>
 
 
 		</div>

@@ -292,15 +292,18 @@
 	background-repeat: no-repeat;
 }
 
-.AddAccount {
+#AddAccount {
 	position: absolute;
-	top: 1%;
-	left: 31%;
-	width: 8%;
-	height: 4.7%;
-	background-image: url(./images/email/add_contact_icon.png);
+	bottom: 19%;
+	left: 30%;
+	width: 42%;
+	height: 4%;
+	padding: 0.5% 1%;
+	color: white;
+	font-size : 230%;
+	font-weight: bolder;
 	background-size: 100% 100%;
-	background-repeat: no-repeat;
+	font-size: 220%;
 }
 
 .Trash {

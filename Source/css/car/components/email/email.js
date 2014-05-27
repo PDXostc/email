@@ -609,7 +609,26 @@ function setInboxTitle() {
 }
 
 function populateDraftScreen(msg) {
-	if(msg.folderId == "4"){
+	
+	//added to rectify the discripencies in draft folder ID in diffrent email clients.
+	var draftFolId = "4";
+	
+	console.log("selectedAccountType for mail ::"+selectedAccountType);
+	if(selectedAccountType == "Gmail" || selectedAccountType == "Yahoo")
+	{
+		draftFolId="4";
+	}
+	else
+	if(selectedAccountType == "Aol")
+	{
+		draftFolId="5";
+	}
+	
+	
+	//if(msg.folderId == "4")
+		
+		if(msg.folderId == draftFolId)		
+	{
 		var outputInboxScreen = document.getElementById("DraftDiv");
 		var messageItemBody = document.createElement('div');
 		messageItemBody.className = "MsgItemBody";

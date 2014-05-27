@@ -334,8 +334,8 @@ var retriveMailFilterWithNextId = function() {
 		var nextMailItem = mailMessages[nextMailItemIndex];
 		console.log("Next mail Item:" + JSON.stringify(nextMailItem))
 		try {
-			if (nextMailItem.folderId != "4" || nextMailItem.folderId != "6"
-					|| nextMailItem.folderId != "14") {
+			if (nextMailItem.folderId != "4" || nextMailItem.folderId != "6") 
+			{
 				setViewMails(nextMailItem);
 			} else {
 				currentMailId = nextMailItem.mailId;
@@ -672,7 +672,24 @@ function messageArrayCB(messages) {
 
 			// If folder id is 4 then increase the draft mail counter by 1
 			// if(messages[i].folderId == "6"|| messages[i].folderId == "14"){
-			if (messages[i].folderId == "4") {
+			
+			//added to rectify the discripencies in draft folder ID in diffrent email clients.
+			var draftFolId = "4";
+			
+			console.log("selectedAccountType for mail ::"+selectedAccountType);
+			if(selectedAccountType == "Gmail" || selectedAccountType == "Yahoo")
+			{
+				draftFolId="4";
+			}
+			else
+			if(selectedAccountType == "Aol")
+			{
+				draftFolId="5";
+			}
+			console.log("draftFolId::"+draftFolId);
+			//if (messages[i].folderId == "4")
+			if (messages[i].folderId == draftFolId)
+			{
 				draftMailTypeCounter = draftMailTypeCounter + 1;
 			}
 

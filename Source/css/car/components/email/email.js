@@ -667,7 +667,9 @@ function populateDraftScreen(msg) {
 
 function populateInboxScreen(msg)
 {
-	if(msg.folderId != "4" && msg.folderId != "6"){
+	//if(msg.folderId != "4" || msg.folderId != "6")
+	if(msg.folderId == "1")
+	{
 		var outputInboxScreen = document.getElementById('InboxDiv');
 		var messageItemBody = document.createElement('div');
 		messageItemBody.className = "MsgItemBody";
@@ -690,7 +692,7 @@ function populateInboxScreen(msg)
 				retriveMailFilterWithId.bind(this, msg.mailId), false);
 
 		var messageItemBodyBody = document.createElement('label');
-		messageItemBodyBody.innerText = msg.mailBody;
+		messageItemBodyBody.innerHTML = msg.mailBody;
 		messageItemBodyBody.className = "MsgItemBodyBody";
 		messageItemBodyBody.addEventListener("click",
 				retriveMailFilterWithId.bind(this, msg.mailId), false);
@@ -791,7 +793,7 @@ function setViewMails(message){
 		$("#to").text(messageTo);
 		$("#subject").text(messageSubject);
 		$("#date").text(messageDate);
-		$("#mailBody").text(messageBody);
+		$("#mailBody").html(messageBody);
 
 	}catch(e)
 	{

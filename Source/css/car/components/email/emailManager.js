@@ -334,7 +334,8 @@ var retriveMailFilterWithNextId = function() {
 		var nextMailItem = mailMessages[nextMailItemIndex];
 		console.log("Next mail Item:" + JSON.stringify(nextMailItem))
 		try {
-			if (nextMailItem.folderId != "4" || nextMailItem.folderId != "6") 
+			//if (nextMailItem.folderId != "4" || nextMailItem.folderId != "6")
+			if (nextMailItem.folderId == "1" )
 			{
 				setViewMails(nextMailItem);
 			} else {
@@ -564,7 +565,7 @@ function loadMessageBody(message) {
 	mailMsg["to"] = message.to[0];
 	mailMsg["mailId"] = message.id;
 	mailMsg["isRead"] = message.isRead;
-	mailMsg["mailBody"] = message.body.plainBody;
+	mailMsg["mailBody"] = message.body.htmlBody;
 	mailMsg["date"] = message.timestamp.toString();
 	mailMsg["folderId"] = message.folderId;
 
@@ -639,7 +640,7 @@ function messageArrayCB(messages) {
 			console.log('mailId:: ' + mailMsg["mailId"]);
 			mailMsg["isRead"] = messages[i].isRead;
 			console.log('isRead:: ' + mailMsg["isRead"]);
-			mailMsg["mailBody"] = messages[i].body.plainBody;
+			mailMsg["mailBody"] = messages[i].body.htmlBody;
 			console.log('mailBody:: ' + mailMsg["mailBody"]);
 			mailMsg["date"] = messages[i].timestamp.toString();
 			console.log('date:: ' + mailMsg["date"]);
@@ -680,11 +681,13 @@ function messageArrayCB(messages) {
 			if(selectedAccountType == "Gmail" || selectedAccountType == "Yahoo")
 			{
 				draftFolId="4";
+				console.log("Gmail & yahoo draftFolId::"+draftFolId);
 			}
 			else
 			if(selectedAccountType == "Aol")
 			{
 				draftFolId="5";
+				console.log("AOL draftFolId::"+draftFolId);
 			}
 			console.log("draftFolId::"+draftFolId);
 			//if (messages[i].folderId == "4")

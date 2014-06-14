@@ -13,12 +13,6 @@ INCLUDE_DIRECTORIES(
 	${wrt-plugins-tizen-common_INCLUDE_DIRS}
 	${wrt-plugins-commons-javascript_INCLUDE_DIRS}
 	${json-glib_INCLUDE_DIRS}
-	${CMAKE_SOURCE_DIR}/utilities/test-application/include
-	${CMAKE_SOURCE_DIR}/email-api/include
-	${CMAKE_SOURCE_DIR}/email-common-use/include
-	${CMAKE_SOURCE_DIR}/email-core/include
-	${CMAKE_SOURCE_DIR}/email-core/email-storage/include
-	${CMAKE_SOURCE_DIR}/email-ipc/include
 	/usr/include/email-service	
 )
 
@@ -59,6 +53,11 @@ SET(SRCS_IMPL
 ADD_LIBRARY(${TARGET_IMPL_NAME} SHARED ${SRCS_IMPL})
 
 TARGET_LINK_LIBRARIES(${TARGET_IMPL_NAME}
+	${dpl_LDFLAGS}
+	${wrt-plugins-types_LDFLAGS}
+	${wrt-plugins-tizen-common_LDFLAGS}
+	${wrt-plugins-commons-javascript_LDFLAGS}
+        ${json-glib_LDFLAGS}
 	-L/usr/lib/wrt-plugins/tizen-tizen
 )
 

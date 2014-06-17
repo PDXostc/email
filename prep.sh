@@ -1,11 +1,16 @@
 #!/bin/sh
 clear
-zypper install ss-server
-zypper install msg-service
-zypper install msg-service-tools
-zypper install contacts-service2
-zypper install email-service 
-cp -r ./wrt_plugin_src/Emailplugin /prj/wrt-plugins-ivi/wrt-plugins-ivi-0.13.0/src/
-cp ./wrt_plugin_src/wrt-plugins-tizen-emailplugin.pc.in /prj/wrt-plugins-ivi/wrt-plugins-ivi-0.13.0/pkgconfigs/
-cd /prj/wrt-plugins-ivi/wrt-plugins-ivi-0.13.0/src 
-
+zypper --non-interactive install git
+zypper --non-interactive install cmake
+zypper --non-interactive install libuuid-devel
+zypper --non-interactive install make
+zypper --non-interactive install gcc
+zypper --non-interactive install gcc-c++
+zypper --non-interactive install boost-devel
+zypper --non-interactive install json-glib-devel
+zypper --non-interactive install dlogutil
+zypper --non-interactive install ss-server
+zypper --non-interactive install msg-service-tools
+zypper --non-interactive install libuw-imap-toolkit-devel
+zypper --non-interactive install drm-client-devel
+zypper --non-interactive install wrt-plugins-tizen-devel

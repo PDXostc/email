@@ -1,12 +1,12 @@
 <?xml version="1.0" ?>
 <!DOCTYPE plugin-properties SYSTEM "/usr/etc/tizen-apis/config.dtd">
 <plugin-properties>
-    <library-name>libwrt-plugins-tizen-emailplugin.so</library-name>
-    <feature-install-uri>emailplugin.install.uri</feature-install-uri>
+    <library-name>libwrt-plugins-tizen-email.so</library-name>
+    <feature-install-uri>email.install.uri</feature-install-uri>
     
 	<api-feature>
-        	<name>http://tizen.org/privilege/emailplugin</name>
-	        <device-capability>emailplugin</device-capability>
+        	<name>http://tizen.org/privilege/email</name>
+	        <device-capability>email</device-capability>
 	</api-feature>
 
 </plugin-properties>

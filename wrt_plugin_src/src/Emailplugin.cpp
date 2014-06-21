@@ -124,10 +124,8 @@ EmailpluginMaster::ErrorType EmailpluginMaster::addAccount(std::string emailid,s
         cbObj->context = context;
 	LoggerE("email id param %s, %s, %s %s",emailid.c_str(),acntId.c_str(),pwd.c_str(),server.c_str());
 
-   	bool  flag=false;
-
-	flag = add_account_with_validation(emailid.c_str(),acntId.c_str(),pwd.c_str(),server.c_str());
-        JSObjectCallAsFunction(cbObj->context, cbObj->callback, NULL, 0, NULL, NULL);
+	int flag = add_account_with_validation(emailid.c_str(),acntId.c_str(),pwd.c_str(),server.c_str());
+        JSObjectCallAsFunction(cbObj->context, flag==TRUE?cbObj->callback:cbObj->errorCallback, NULL, 0, NULL, NULL);
 	LoggerE("addAccount exiting %d",flag);
 	return None;
 }

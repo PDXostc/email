@@ -26,10 +26,7 @@ var filesArray = new Array();
 var fileAttached = new Array();
 var fileCounter = 0;
 
-var timerStarted = null;
 var lastAccountId = 0;
-
-var _TIMER_ACCOUNT = 30000;
 
 /** **********Services Variables Declaration************************** */
 var emailService = new Array();
@@ -223,19 +220,10 @@ function saveDetails() {
 				emailType, successCB, errorCB);
 
 	}
-	if (timerStarted) {
-		clearTimeout(timerStarted);
-	}
-
-	console.log("Timer started for " + _TIMER_ACCOUNT)
-
-	// $("#progressDiv").css({"visibility":"visible"});
-	timerStarted = setTimeout(_timer, _TIMER_ACCOUNT);
 }
 
-var _timer = function() {
-	console.log("Timer completed")
-
+var successCB = function() {
+	console.log("Account Added succesfully");
 	$("#progressDiv").css({
 		"visibility" : "hidden"
 	});
@@ -254,10 +242,6 @@ var _timer = function() {
 	currentEmailAccountSelected = lastAccountId;
 
 	loadInboxScreen();
-}
-
-var successCB = function() {
-	console.log("Account Added succesfully");
 }
 
 var errorCB = function() {
@@ -414,7 +398,6 @@ function deleteAccountRequest(searchIDs) {
 	} else {
 		// TODO: Need to call delete account WRT Plug-in calls
 		console.log("searchIDs[i] ID :: " + searchIDs[i]);
-		// tizen.emailplugin.deleteAccount()
 		for ( var i = 0; i < searchIDs.length; i++) {
 			console.log("JSON stringify :: " + JSON.stringify(accountInfo))
 			var index = getArrayItemByProperty(accountInfo, "id", searchIDs[i]);
@@ -550,8 +533,8 @@ function serviceListCB(services) {
 		// $("#addAccountDiv").css({"visibility":"visible"});
 		// $("#addAccountDetailsDiv").show();
 		loadAddAccountScreen();
-		console
-				.log("Service Not available callback :: showing loadAddAccountScreen");
+		console.log("Service not yet available trying again...");
+		checkAccountAvailablity();
 	}
 }
 

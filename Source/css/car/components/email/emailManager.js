@@ -26,8 +26,8 @@ var filesArray = new Array();
 var fileAttached = new Array();
 var fileCounter = 0;
 
+var poll_account_availability = null;
 var lastAccountId = 0;
-
 /** **********Services Variables Declaration************************** */
 var emailService = new Array();
 var selectedService = {};
@@ -233,19 +233,14 @@ var successCB = function() {
 	$("#PasswordTextbox").val('');
 	$("#DescriptionTextbox").val('');
 
-	// Check for the newly added Account
-	checkAccountAvailablity();
-
-	console.log("lastAccountId  " + lastAccountId);
-
-	// Recent added account would be current selected
-	currentEmailAccountSelected = lastAccountId;
-
-	loadInboxScreen();
+	// Check for the newly added Account once every second
+	poll_account_availability=setInterval(checkAccountAvailablity,1000);
+	
 }
 
 var errorCB = function() {
-	console.log("Account not added");
+	console.log("Account not added, returning to add account screen");
+	loadAddAccountScreen();
 }
 
 // Retrieve mail list filtering filter key(If present else get all mail list)
@@ -526,15 +521,23 @@ function serviceListCB(services) {
 				name : services[i].name
 			});
 			lastAccountId = services[i].id;
+			console.log("lastAccountId  " + lastAccountId);
+
+			// Recent added account would be current selected
+			currentEmailAccountSelected = lastAccountId;
 		}
 		emailService = services;
+		if(poll_account_availability)
+		{
+			clearInterval(poll_account_availability);
+			poll_account_availability=null;
+		}
 		loadChangeAccountScreen();
 	} else {
 		// $("#addAccountDiv").css({"visibility":"visible"});
 		// $("#addAccountDetailsDiv").show();
 		loadAddAccountScreen();
-		console.log("Service not yet available trying again...");
-		checkAccountAvailablity();
+		console.log("Email service not available or still retrying");
 	}
 }
 

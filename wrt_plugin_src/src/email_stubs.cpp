@@ -1,10 +1,16 @@
-/*
- This file is partilally  reused from the email-service/utilite/test-account.c file.
- This provides two basic functions to add and delete accounts.
-*/
-
-
-
+/*******************************************************************************
+*File name:        email_stubs.cpp
+*Functionality:    This file exports the email functions which are  called from
+                   Emailplugin.cpp. This file provides just 2 functions.
+                   This file is partilally  reused from the email-service/utilite/test-account.c file.
+                   This provides two basic functions to add and delete accounts.
+                   1. addAccount.
+                   2. Delete Account.
+  
+* Author      : TCS & JLR
+* Owner       : JLR
+* Last Date Modified: 23/07/2014
+********************************************************************************/
 /* common header */
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,41 +32,28 @@
 #include "email_stubs.h"
 
 /* internal defines */
-
-#define GWB_RECV_SERVER_ADDR  	    "pop.gawab.com"
-#define GWB_SMTP_SERVER_ADDR  	    "smtp.gawab.com"
-#define VDF_RECV_SERVER_ADDR        "imap.email.vodafone.de"
-#define VDF_SMTP_SERVER_ADDR        "smtp.email.vodafone.de"
-
-/*  SAMSUNG 3G TEST */
-#define S3G_RECV_SERVER_ADDR		"165.213.73.235"
-#define S3G_RECV_SERVER_PORT		EMAIL_POP3_PORT
-#define S3G_RECV_USE_SECURITY		0
-#define S3G_RECV_IMAP_USE_SECURITY	1
-#define S3G_SMTP_SERVER_ADDR		"165.213.73.235"
-#define S3G_SMTP_SERVER_PORT		465
-#define S3G_SMTP_AUTH		        1
-#define S3G_SMTP_USE_SECURITY	        1
-#define S3G_KEEP_ON_SERVER		1
-
-
-
-/*****************************************************************************************************
-    This function creates an email_acount structure with all the necessary parameters 
-    like server,username,pasword etc.
-    input params:
-   	 emailid: email id to be added.
-	 actn:Account name
-	 pwd:password
-    outparams:
-         result_account: filled in email acnt structure for further processing.
-    
-    Return: TRUE   :On successfull addition
-            FALSE  :On failure 
-******************************************************************************************************/
+//Define an array with the supported mail servers.We can create accounts only for these.
+//If you want to add new server support update the count and list.
+//also, add a new switch Case with relevent port details.
 #define MAIL_SERVER_COUNT  10
 char *emailServer[MAIL_SERVER_COUNT]= {"MsExchange","MobileMe","Gmail","Yahoo","Aol","Other"};
 
+/******************************************************************** 
+ * Function Name: create_account_object()
+ * Details      : This functions creates an email account structure with all
+ *                the relevent fields filled in. this structure is passed to
+ *                the email-services library to create the account.
+ * Input Params:
+ *              address_string = email Id of the user for whom an account needs to be created
+ *              id_string = Account IDentification string.
+ *              password_string= Password for the mail.
+ *              server = server name.
+ * Out Params:
+ *             result_account = Populated email structure based on input params.
+ *                              To be used in verifying and creating account
+ *  Return: TRUE   :On successfull addition
+ *          FALSE  :On failure                                                    
+ *************************************************************** */
 gboolean  create_account_object(email_account_t **result_account,const char* address_string,const char* id_string,const char* password_string,const char *server )
 {
 	email_account_t *account = NULL;
@@ -68,6 +61,8 @@ gboolean  create_account_object(email_account_t **result_account,const char* add
 	int result_from_scanf = 0;
 	int account_type=0xff;
 
+	 // Verify if the new account to be created is listed in the server list.
+	 //If not flag the error.
         for(int i=0;i <MAIL_SERVER_COUNT;i++)
 	{
 	  if(strcmp(emailServer[i],server)==0)
@@ -81,7 +76,7 @@ gboolean  create_account_object(email_account_t **result_account,const char* add
 	   LoggerE("Invaldi server name %s\n",server);
            return false;  
 	}
-
+    //Create email account structure.
 	account = (email_account_t*)malloc(sizeof(email_account_t));
 	memset(account, 0x00, sizeof(email_account_t));
 
@@ -96,7 +91,7 @@ gboolean  create_account_object(email_account_t **result_account,const char* add
 	/* You need to serialize user_data to buffer and then take its length */
 	int data_length = sizeof(data);
 
-	/* Common Options */
+	/* Common Options.Set up the structure */
 	account->retrieval_mode                          = EMAIL_IMAP4_RETRIEVAL_MODE_ALL;
 	account->incoming_server_secure_connection	     = 1;
 	account->outgoing_server_type                    = EMAIL_SERVER_TYPE_SMTP;
@@ -125,7 +120,7 @@ gboolean  create_account_object(email_account_t **result_account,const char* add
 	account->check_interval                          = 0;
 	account->keep_mails_on_pop_server_after_download = 1;
 	account->default_mail_slot_size                  = 200;
-
+    //Now pass the user inputs like email id,password ,server name etc.
 	account->account_name                            = strdup(address_string);
 	account->user_display_name                       = strdup(id_string);
 	account->user_email_address                      = strdup(address_string);
@@ -136,7 +131,10 @@ gboolean  create_account_object(email_account_t **result_account,const char* add
 	account->incoming_server_password                = strdup(password_string);
 	account->outgoing_server_user_name               = strdup(address_string);
 	account->outgoing_server_password	         = strdup(password_string);
-
+   //Now pass the server specific details like incoming,outgoing port numbers.
+   //connection type, authentication etc.These should match with the
+   //server side details. The details of which can be found online.
+	//If you want to add a new server,add a new 'case' with appropriate details.
 	switch (account_type) {
 
                 case 0:/*  MsExchange*/
@@ -246,25 +244,29 @@ gboolean  create_account_object(email_account_t **result_account,const char* add
 }
 
 /*****************************************************************************************************
-    This is the main function called from the Emailplugin object to add account.
-    input params:
-   	 emailid: email id to be added.
-	 actn:Account name
-	 pwd:password
-    
-    Return: TRUE   :On successfull addition
-            FALSE  :On failure 
+ * Function Name: delete_account()
+* Details:This is the  function called from the Emailplugin object to
+*         delete account.
+* Input params:
+*   	 account_id: email id to be deleted.
+*   	 
+* Out Params:None
+*    
+* Return: 
+*     TRUE   :On successfull addition.
+*     FALSE  :On failure. 
 ******************************************************************************************************/
 gboolean delete_account(int account_id)
 {
         email_account_t *account=NULL;
         int err = EMAIL_ERROR_NONE;
-
+        //Check if  the account is already created and available in the system.
         if( (err = email_get_account(account_id, WITHOUT_OPTION,&account)) < 0) {
                 LoggerE ("email_get_account failed \n");
                 LoggerE("delete_account failed\n");
         }
         else {
+        	    //Account is locally created.You can go ahead with the delete.
                 LoggerE("email_get_account result account_name - %s \n", account->account_name);
 
                 if((err = email_delete_account(account_id)) < 0)
@@ -276,14 +278,19 @@ gboolean delete_account(int account_id)
 }
 
 /*****************************************************************************************************
-    This is the main function called from the Emailplugin object to add account.
-    input params:
-   	 emailid: email id to be added.
-	 actn:Account name
-	 pwd:password
-    
-    Return: TRUE   :On successfull addition
-            FALSE  :On failure 
+ * Function Name: add_account_with_validation()
+ * Details      : This is the main function called from Emailplugin.cpp to create the account.
+ *                This internally calls other fucntions from email-services library.
+ * Input Params:
+ *              emailid = email Id of the user for whom an account needs to be created
+ *              acnt = Account IDentification string.
+ *              pwd= Password for the mail.
+ *              server = server name.
+ * 
+ * Out Params  :None              
+ * 
+ *  Return: TRUE   :On successfull addition
+ *          FALSE  :On failure     
 ******************************************************************************************************/
 gboolean add_account_with_validation(const char* emailid,const char* acnt,const char* pwd,const char* server )
 {
@@ -292,12 +299,15 @@ gboolean add_account_with_validation(const char* emailid,const char* acnt,const 
 	int err = EMAIL_ERROR_NONE;
 	email_account_t *account = NULL;
 	int handle;
-
+    //first create an account objects. This object will have all the details needed to
+	//create an email account using the email library.
+	//Hence pass on the input params. 
 	if(!create_account_object(&account,emailid,acnt,pwd,server)) {
 		LoggerE ("add_account_with_validation error\n");
 		return FALSE;
 	}
-
+    //Actually account creation addition happens here.
+	//Structure filled from previous call is passed here.
 	err = email_add_account_with_validation(account, &handle);
 	if( err < 0) {
 		LoggerE ("email_add_account_with_validation error : %d\n", err);
@@ -306,7 +316,8 @@ gboolean add_account_with_validation(const char* emailid,const char* acnt,const 
 	}
 
 	LoggerE ("email_add_account succeed. account_id =%d \n", account->account_id);
-
+    //Just delete the temporary structure malloced earlier inside the
+	//'create_account_object function.
 	err = email_free_account(&account, 1);
 
 	return TRUE;

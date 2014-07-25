@@ -1,12 +1,21 @@
+/*******************************************************************************
+*File name           :JSEmailplugin.h
+*Functionality       :This file defines JSemailPlugin object and exports webapp 
+					  callable functions.   
+* Author             :TCS & JLR
+* Owner              :JLR
+* Last Date Modified :23/07/2014
+********************************************************************************/
 #ifndef JSTESTPLUGIN_H
 #define JSEMAILPLUGIN_H
-
+//common header files needed by the JS Object
 #include "Emailplugin.h"
 #include <dpl/shared_ptr.h>
 #include <JavaScriptCore/JavaScript.h>
 #include <CommonsJavaScript/JSPendingOperationPrivateObject.h>
 #include <CommonsJavaScript/PrivateObject.h>
 
+//declare the email plugin JS object class.
 namespace DeviceAPI {
 namespace Emailplugin {
 
@@ -38,13 +47,14 @@ private:
 							JSObjectRef constructor,
 							JSValueRef possibleInstance,
 							JSValueRef* exception);
-
+   //Add account function
 	static JSValueRef addAccount(JSContextRef context,
 				JSObjectRef object,
 				JSObjectRef thisObject,
 				size_t argumentCount,
 				const JSValueRef arguments[],
 				JSValueRef* exception);
+	//delete account function.
 	static JSValueRef deleteAccount(JSContextRef context,
 				JSObjectRef object,
 				JSObjectRef thisObject,

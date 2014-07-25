@@ -1,3 +1,12 @@
+/*******************************************************************************
+*File name           :JsEmailPlugin.cpp
+*Functionality       :Provides JS email plugin object.This is the entry point
+        			  WRT plugin.This is based on the existing vehicle WRT plugin 
+        			  template from the Tizen.
+* Author             :TCS & JLR
+* Owner              :JLR
+* Last Date Modified :23/07/2014
+********************************************************************************/
 #include "JSEmailplugin.h"
 #include "Emailplugin.h"
 
@@ -14,6 +23,7 @@
 
 #include <json-glib/json-gvariant.h>	
 
+//Define email plugin JS class
 namespace DeviceAPI {
 namespace Emailplugin {
 
@@ -25,7 +35,7 @@ using namespace WrtDeviceApis::CommonsJavaScript;
 JSClassDefinition JSEmailplugin::m_classInfo = {
 	0,
 	kJSClassAttributeNone,
-	"Emailplugin",
+	"Emailplugin",    //class name
 	0,
 	NULL,
 	m_function,
@@ -41,7 +51,7 @@ JSClassDefinition JSEmailplugin::m_classInfo = {
 	hasInstance,
 	NULL, //ConvertToType
 };
-
+//functions to be exported to webapp.
 JSStaticFunction JSEmailplugin::m_function[] = {
 	{ "addAccount", JSEmailplugin::addAccount, kJSPropertyAttributeNone },
 	{ "deleteAccount", JSEmailplugin::deleteAccount, kJSPropertyAttributeNone },
@@ -63,7 +73,7 @@ const JSClassDefinition* JSEmailplugin::getClassInfo()
 }
 
 JSClassRef JSEmailplugin::m_jsClassRef = JSClassCreate(JSEmailplugin::getClassInfo());
-
+////helper function part of the template
 void JSEmailplugin::initialize(JSContextRef context, JSObjectRef object)
 {
 	EmailpluginPrivObject* priv = static_cast<EmailpluginPrivObject*>(JSObjectGetPrivate(object));
@@ -80,7 +90,7 @@ void JSEmailplugin::initialize(JSContextRef context, JSObjectRef object)
 
 	LoggerD("JSEmailplugin::initialize ");
 }
-
+//helper function part of the template
 void JSEmailplugin::finalize(JSObjectRef object)
 {
 	EmailpluginPrivObject* priv = static_cast<EmailpluginPrivObject*>(JSObjectGetPrivate(object));
@@ -88,7 +98,7 @@ void JSEmailplugin::finalize(JSObjectRef object)
 	LoggerD("Deleting timeutil");
 	delete priv;
 }
-
+//helper function part of the template
 bool JSEmailplugin::hasInstance(JSContextRef context,
 		JSObjectRef constructor,
 		JSValueRef possibleInstance,
@@ -97,6 +107,20 @@ bool JSEmailplugin::hasInstance(JSContextRef context,
 	return JSValueIsObjectOfClass(context, possibleInstance, getClassRef());
 }
 
+/*****************************************************************************************************
+* Function Name: addAccount() 
+* Details:This function is caled from webapp to add account. 
+*
+* Input params: Has default set of parameters as part of the JS function prototype.
+*               Arguments are retrieved from 'arguments'arry.  
+*   
+*   	 
+* Out Params:
+*       None
+*    
+* Return:None 
+ 
+******************************************************************************************************/
 
 JSValueRef JSEmailplugin::addAccount(JSContextRef context,
 				JSObjectRef object,
@@ -112,7 +136,8 @@ JSValueRef JSEmailplugin::addAccount(JSContextRef context,
 		LoggerE("private object is null");
                 return JSValueMakeUndefined(context);
 	}
-
+    //Get Email plugin object handle.Creation of the object has already happened while
+	//loading the WRT.
 	EmailpluginPtr emailplugin(privateObject->getObject());
 
         JSContextRef gContext = privateObject->getContext();
@@ -122,6 +147,7 @@ JSValueRef JSEmailplugin::addAccount(JSContextRef context,
         std::stringstream json;
         json<<"";
         Converter converter(context);
+        //retrieve all the input params to be sent to email plugin cpp class.
 	std::string emailId = validator.toString(0);
 	std::string acntId = validator.toString(1);
 	std::string passWord = validator.toString(2);
@@ -132,13 +158,27 @@ JSValueRef JSEmailplugin::addAccount(JSContextRef context,
         JSValueProtect(context, errorCallback);
 
 	LoggerD("calling emailplugin::addAccount");
+	//Calling the emailplugin to add account.
 	int error = emailplugin->addAccount(emailId,acntId,passWord,server,successCallback, errorCallback, gContext);
 	LoggerD("ugin::addAccount %d",error);
         JSStringRef jsonString = converter.toJSStringRef(json.str());
         return JSValueMakeFromJSONString(context, jsonString);
 }
 
-
+/*****************************************************************************************************
+* Function Name: deleteAccount() 
+* Details:This function is caled from webapp to add account. 
+*
+* Input params: Has default set of parameters as part of the JS function prototype.
+*               Arguments are retrieved from 'arguments'arry.  
+*   
+*   	 
+* Out Params:
+*       None
+*    
+* Return:None 
+ 
+******************************************************************************************************/
 JSValueRef JSEmailplugin::deleteAccount(JSContextRef context,
 				JSObjectRef object,
 				JSObjectRef thisObject,
@@ -153,26 +193,29 @@ JSValueRef JSEmailplugin::deleteAccount(JSContextRef context,
 		LoggerE("private object is null");
                 return JSValueMakeUndefined(context);
 	}
-
+    //Get Email plugin object handle.Creation of the object has already happened while
+	//loading the WRT.
 	EmailpluginPtr emailplugin(privateObject->getObject());
 
         JSContextRef gContext = privateObject->getContext();
         LoggerD("Validating arguments: " << argumentCount);
-	ArgumentValidator validator(context, argumentCount, arguments);
+        ArgumentValidator validator(context, argumentCount, arguments);
 
         std::stringstream json;
         json<<"";
         Converter converter(context);
-	int acntId = validator.toNumber(0,true);
+        //retrieve all the input params to be sent to email plugin cpp class.        
+        int acntId = validator.toNumber(0,true);
         JSObjectRef successCallback = validator.toFunction(1, false);
         JSObjectRef errorCallback = validator.toFunction(2, true);
         JSValueProtect(context, successCallback);
         JSValueProtect(context, errorCallback);
 
-	LoggerD("calling emailplugin::deleteAccount");
-	int error = emailplugin->deleteAccount(acntId,successCallback, errorCallback, gContext);
+        LoggerD("calling emailplugin::deleteAccount");
+        //Delate tha account.
+        int error = emailplugin->deleteAccount(acntId,successCallback, errorCallback, gContext);
         JSStringRef jsonString = converter.toJSStringRef(json.str());
-	LoggerD("ugin::addAccount %d",error);
+        LoggerD("ugin::addAccount %d",error);
         return JSValueMakeFromJSONString(context, jsonString);
 }
 

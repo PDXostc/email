@@ -2,7 +2,7 @@ Name:       wrt-plugins-tizen-email
 Summary:    JavaScript plugin to access email services for WebRuntime
 Version:    0.1
 Release:    1
-Group:      Development/Libraries
+Group:      Messaging/Email 
 License:    Apache-2.0
 Source0:    %{name}-%{version}.tar.gz
 
@@ -21,6 +21,7 @@ BuildRequires:  pkgconfig(email-service)
 BuildRequires:  boost-devel
 BuildRequires:  wrt-plugins-tizen-devel
 BuildRequires:  cmake
+Requires:  ss-server
 Requires:  msg-service-tools
 
 %description
@@ -35,7 +36,8 @@ Requires:   %{name} = %{version}
 wrt-plugins-tizen-email development headers
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}
+
 
 %build
 

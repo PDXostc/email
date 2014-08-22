@@ -6,36 +6,32 @@ PACKAGE = $(PROJECT)-$(VERSION)
 
 INSTALL_DIR = $(DESTDIR)/opt/usr/apps/.preinstallWidgets
 
-dev: dev-common
-	zip -r $(PROJECT). config.xml css icon.png index.html js images components
+dev: 	clean dev-common
+	zip -r $(PROJECT).wgt config.xml css icon.png index.html js images components
 
 all:
 	@echo "Nothing to build"
 
-wgtPkg: 
+wgtPkg:	common 
 	zip -r $(INSTALL_FILES) config.xml css icon.png index.html js images components
 
 clean:
 	rm -rf js/services
 	rm -rf css/car
 	rm -rf css/user
-	rm -f $(PROJECT).
+	rm -f $(PROJECT).wgt
 
-common: /opt/usr/apps/_common
-	cp -r /opt/usr/apps/_common/js/* js/
-	cp -r /opt/usr/apps/_common/css/* css/
+common: /opt/usr/apps/common
+	cp -r /opt/usr/apps/common/js/* js/
+	cp -r /opt/usr/apps/common/css/* css/
 
-/opt/usr/apps/_common:
+/opt/usr/apps/common:
 	echo "Please install Common Assets"
 	exit 1
 
-dev-common: ../_common
-	cp -r ../_common/js/* js/
-	cp -r ../_common/css/* css/
-
-../_common:
-	echo "Please checkout Common Assets"
-	exit 1
+dev-common: 
+	cp -r ../../common/js/* js/
+	cp -r ../../common/css/* css/
 
 install:
 	@echo "Installing $(PROJECT), stand by..."
@@ -44,4 +40,3 @@ install:
 
 dist:
 	tar czf ../$(PROJECT).tar.bz2 .
-

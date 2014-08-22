@@ -295,7 +295,7 @@ gboolean delete_account(int account_id)
 gboolean add_account_with_validation(const char* emailid,const char* acnt,const char* pwd,const char* server )
 {
 
-		LoggerE ("inside add_account_with_validation\n");
+	LoggerE ("inside add_account_with_validation\n");
 	int err = EMAIL_ERROR_NONE;
 	email_account_t *account = NULL;
 	int handle;

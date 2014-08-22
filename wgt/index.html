@@ -66,76 +66,79 @@
 		<title>Application Template</title>
 	</head>
 	<body>
+		<div id="topBarIcons"></div>
+		<!-- BEGIN HTML ELEMENTS style="visibility: hidden"-->
+		<div id="mainDiv">
+			<!-- Add New Account Screen -->
+			<div id="addAccountDiv" class="inner" style="visibility: hidden">
+				<a id="addHome" onclick="homeSelected()"></a>
+			  <section class="inner-content">
+			    <header><h1>Add Email Account</h1></header>
+			    <ul>
+			    	<li>
+					    <a id="addMsExchange" class="account-logo" onclick="addAccount('MsExchange')">
+					      <img src="css/user/blue/images/email/microsoft_exchange_logo.png" alt="msExchange" />
+					    </a>
+			    	</li>
+				    <li>
+					    <a id="addGmail" class="account-logo" onclick="addAccount('Gmail')">
+	  			      <img src="css/user/blue/images/email/gmail_logo.png" alt="Gmail" />
+	  			    </a>
+				    </li>
+				    <li>
+				    	<a id="addMobileMe" class="account-logo" onclick="addAccount('MobileMe')">
+					      <img src="css/user/blue/images/email/mobile_me_logo.png" alt="MobileMe" />
+					    </a>
+				    </li>
+				    <li>
+					    <a id="addYahoo" class="account-logo" onclick="addAccount('Yahoo')">
+					      <img src="css/user/blue/images/email/yahoo_logo.png" alt="Yahoo" />
+					    </a>
+				    </li>
+				    <li>
+					    <a id="addAol" class="account-logo" onclick="addAccount('Aol')">
+					      <img src="css/user/blue/images/email/Aol_logo.png" alt="Aol" />
+					    </a>
+				    </li>
+				    <li>
+					    <a id="addOther" class="account-logo" onclick="addAccount('Other')">Other</a>
+				    </li>
+			    </ul>
+			    <footer>&nbsp;</footer>
+			  </section>
+			</div>
+			<!-- Add Account Details Screen -->
+			<div id="addAccountDetailsDiv" class="inner" style="visibility: hidden">
+				<a id="addHome" onclick="homeSelected()"></a>
+			  <section class="inner-content">
+					<header><h1>Add Email Account</h1></header>
+				<form id="addDetails">
+					<div>
+						<label for="EmailAddressTextbox">Email address:</label>
+						<input id="EmailAddressTextbox" class="TextBox" required type="email">
+					</div>
 
-	<div id="topBarIcons"></div>
+					<div>
+						<label for="AddAccountUserNameDescription">User Name:</label>
+						<input id="UsernameTextbox" class="TextBox" required type="text"><br>
+						<p class="description">The username you sign-in with at your email provider.</p>
+					</div>
+					
+					<div>
+						<label for="PasswordTextbox">Password:</label>
+						<input id="PasswordTextbox" class="TextBox" required type="password"><br>
+						<p id="AddAccountPasswordDescription" class="description">The password you use with your username at your email provider.</p>
+					</div>
 
-	<!-- BEGIN HTML ELEMENTS style="visibility: hidden"-->
-
-	<div id="mainDiv">
-
-		<!-- Add New Account Screen -->
-		<div id="addAccountDiv" class="inner" style="visibility: hidden">
-			<a id="addHome" onclick="homeSelected()"></a>
-		  <section class="inner-content">
-		    <header><h1>Add Email Account</h1></header>
-		    <ul>
-		    	<li>
-				    <a id="addMsExchange" class="account-logo" onclick="addAccount('MsExchange')">
-				      <img src="css/user/blue/images/email/microsoft_exchange_logo.png" alt="msExchange" />
-				    </a>
-		    	</li>
-			    <li>
-				    <a id="addGmail" class="account-logo" onclick="addAccount('Gmail')">
-  			      <img src="css/user/blue/images/email/gmail_logo.png" alt="Gmail" />
-  			    </a>
-			    </li>
-			    <li>
-			    	<a id="addMobileMe" class="account-logo" onclick="addAccount('MobileMe')">
-				      <img src="css/user/blue/images/email/mobile_me_logo.png" alt="MobileMe" />
-				    </a>
-			    </li>
-			    <li>
-				    <a id="addYahoo" class="account-logo" onclick="addAccount('Yahoo')">
-				      <img src="css/user/blue/images/email/yahoo_logo.png" alt="Yahoo" />
-				    </a>
-			    </li>
-			    <li>
-				    <a id="addAol" class="account-logo" onclick="addAccount('Aol')">
-				      <img src="css/user/blue/images/email/Aol_logo.png" alt="Aol" />
-				    </a>
-			    </li>
-			    <li>
-				    <a id="addOther" class="account-logo" onclick="addAccount('Other')">Other</a>
-			    </li>
-		    </ul>
-		    <footer>&nbsp;</footer>
-		  </section>
-		</div>
-
-		<!-- Add Account Details Screen -->
-		<div id="addAccountDetailsDiv" class="inner" style="visibility: hidden">
-			<a id="addHome" onclick="homeSelected()"></a>
-		  <section class="inner-content">
-				<header><h1>Add Email Account</h1></header>
-			<form>
-				<div id="addDetails" class="AddEmailContact">
-					<label class="AddAccountLabelCtrl" style="padding-left: 4%; padding-top: 4%">Email address:</label>
-					<input id="EmailAddressTextbox" class="TextBox" required type="email" />
-					<label class="AddAccountLabelCtrl" style="padding-left: 4%; padding-top: 20%">User Name:</label>
-					<label id="AddAccountUserNameDescription" class="Description">The username you sign-in with at your email provider.</label>
-					<input id="UsernameTextbox" class="TextBox" required type="text" />
-					<label class="AddAccountLabelCtrl" style="padding-left: 4%; padding-top: 36%">Password:</label>
-					<label id="AddAccountPasswordDescription" class="Description">The password you use with your username at your email provider.</label>
-					<input id="PasswordTextbox" class="TextBox" required type="password" />
-					<label class="AddAccountLabelCtrl" style="padding-left: 4%; padding-top: 53%">Description:</label>
-					<label id="AddAccountDescription" class="Description">This will identify the account to access when multiple email accounts exist.</label>
-					<input id="DescriptionTextbox" class="TextBox" type="text" />
-				</div>
-				<input type="button" value="" id="SaveAccountCtrl" class="themeColor" onclick="saveDetails()"></input>
-			</form>
-
-			<div id="progressDiv" style="visibility: hidden">Loading...</div>
-		</div>
+					<div>
+						<label for="DescriptionTextbox">Description:</label>
+						<input id="DescriptionTextbox" class="TextBox" type="text"><br>
+						<p id="AddAccountDescription" class="description">This will identify the account to access when multiple email accounts exist.</p>
+					</div>
+				</form>
+				<input type="button" value="" id="SaveAccountCtrl" class="themeColor" onclick="saveDetails()">
+				<div id="progressDiv" style="visibility: hidden">Loading...</div>
+			</div>
 
 
 

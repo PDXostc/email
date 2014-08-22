@@ -108,67 +108,33 @@ footer {
 	width: 100%;
 }
 
-
-
-.AddEmailContact {
-	position: absolute;
-	top: 15%;
-	left: 8%;
-	background-image: url(./images/email/add_account_box_bg.png);
-	background-size: auto 100%;
-	width: 85%;
-	height: 50%;
-}
-
-.AddAccountLabelCtrl {
-	position: absolute;
+label {
 	font-weight: bold;
 	font-size: 150%;
 }
 
-.TextBox {
+form#addDetails {
+	padding: 5%;
+	margin: 5%;
+	background-color: rgb(218,255,255);
+	height: 50%;
+}
+
+form#addDetails div {
+	margin-bottom: 4%;
+}
+
+form#addDetails input {
 	position: absolute;
+	right: 0;
 	width: 67%;
-	height: 5%;
 	border: 1px solid rgb(135, 206, 235);
 	background: white;
-	left: 27%;
 }
 
-.Description {
-	position: absolute;
+.description {
 	width: 67%;
-	height: 5%;
-	left: 27%;
-}
-
-#EmailAddressTextbox {
-	top: 5%;
-	left: 27%;
-}
-
-#UsernameTextbox {
-	top: 25%;
-}
-
-#PasswordTextbox {
-	top: 45%;
-}
-
-#DescriptionTextbox {
-	top: 65%;
-}
-
-#AddAccountUserNameDescription {
-	top: 31%;
-}
-
-#AddAccountPasswordDescription {
-	top: 51%;
-}
-
-#AddAccountDescription {
-	top: 71%;
+	margin-left: 33%;
 }
 
 #SaveAccountCtrl {

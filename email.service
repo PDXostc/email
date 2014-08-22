@@ -1,0 +1,10 @@
+[Unit]
+Description=Services used by Email
+After=ac.target
+
+[Service]
+ExecStart=/usr/lib/systemd/system/vcon.sh
+Type=forking
+
+[Install]
+WantedBy=graphical.target

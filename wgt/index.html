@@ -91,54 +91,65 @@
 
 	<div id="mainDiv">
 
-		<!-- Screen to add New Account    style="visibility: hidden" -->
-		<div id="addAccountDiv" class="homeScreenBgImg"
-			style="visibility: hidden">
-			<div class="addAccountsHeader"></div>
-			<a id="addHome" onclick="homeSelected()"></a> <a id="addMsExchange"
-				onclick="addAccount('MsExchange')"></a> <a id="addMobileMe"
-				onclick="addAccount('MobileMe')"></a> <a id="addGmail"
-				onclick="addAccount('Gmail')"></a> <a id="addYahoo"
-				onclick="addAccount('Yahoo')"></a> <a id="addAol"
-				onclick="addAccount('Aol')"></a> <a id="addOther"
-				onclick="addAccount('Other')"></a>
-
+		<!-- Add New Account Screen -->
+		<div id="addAccountDiv" class="inner" style="visibility: hidden">
+			<a id="addHome" onclick="homeSelected()"></a>
+		  <section class="inner-content">
+		    <header><h1>Add Email Account</h1></header>
+		    <ul>
+		    	<li>
+				    <a id="addMsExchange" class="account-logo" onclick="addAccount('MsExchange')">
+				      <img src="css/user/blue/images/email/microsoft_exchange_logo.png" alt="msExchange" />
+				    </a>
+		    	</li>
+			    <li>
+				    <a id="addGmail" class="account-logo" onclick="addAccount('Gmail')">
+  			      <img src="css/user/blue/images/email/gmail_logo.png" alt="Gmail" />
+  			    </a>
+			    </li>
+			    <li>
+			    	<a id="addMobileMe" class="account-logo" onclick="addAccount('MobileMe')">
+				      <img src="css/user/blue/images/email/mobile_me_logo.png" alt="MobileMe" />
+				    </a>
+			    </li>
+			    <li>
+				    <a id="addYahoo" class="account-logo" onclick="addAccount('Yahoo')">
+				      <img src="css/user/blue/images/email/yahoo_logo.png" alt="Yahoo" />
+				    </a>
+			    </li>
+			    <li>
+				    <a id="addAol" class="account-logo" onclick="addAccount('Aol')">
+				      <img src="css/user/blue/images/email/Aol_logo.png" alt="Aol" />
+				    </a>
+			    </li>
+			    <li>
+				    <a id="addOther" class="account-logo" onclick="addAccount('Other')">Other</a>
+			    </li>
+		    </ul>
+		    <footer>&nbsp;</footer>
+		  </section>
 		</div>
 
-		<!-- Screen to get details for adding new account  -->
-		<div id="addAccountDetailsDiv" class="homeScreenBgImg"
-			style="visibility: hidden">
-			<div class="addAccountsHeader"></div>
+		<!-- Add Account Details Screen -->
+		<div id="addAccountDetailsDiv" class="inner" style="visibility: hidden">
+			<a id="addHome" onclick="homeSelected()"></a>
+		  <section class="inner-content">
+				<header><h1>Add Email Account</h1></header>
 			<form>
-
-				<div id="addHome" onclick="homeSelected()"></div>
 				<div id="addDetails" class="AddEmailContact">
-					<Label class="AddAccountLabelCtrl"
-						style="padding-left: 4%; padding-top: 4%">Email address:</Label> <Input
-						id="EmailAddressTextbox" class="TextBox" required type="email" />
-
-					<Label class="AddAccountLabelCtrl"
-						style="padding-left: 4%; padding-top: 20%">User Name:</Label> <Label
-						id="AddAccountUserNameDescription" class="Description">The
-						username you sign-in with at your email provider.</Label> <Input
-						id="UsernameTextbox" class="TextBox" required type="text" /> <Label
-						class="AddAccountLabelCtrl"
-						style="padding-left: 4%; padding-top: 36%">Password:</Label> <Label
-						id="AddAccountPasswordDescription" class="Description">The
-						password you use with your username at your email provider.</Label> <Input
-						id="PasswordTextbox" class="TextBox" required type="password" />
-					<Label class="AddAccountLabelCtrl"
-						style="padding-left: 4%; padding-top: 53%">Description:</Label> <Label
-						id="AddAccountDescription" class="Description">This will
-						identify the account to access when multiple email accounts exist.</Label>
-					<Input id="DescriptionTextbox" class="TextBox" type="text" />
-
+					<label class="AddAccountLabelCtrl" style="padding-left: 4%; padding-top: 4%">Email address:</label>
+					<input id="EmailAddressTextbox" class="TextBox" required type="email" />
+					<label class="AddAccountLabelCtrl" style="padding-left: 4%; padding-top: 20%">User Name:</label>
+					<label id="AddAccountUserNameDescription" class="Description">The username you sign-in with at your email provider.</label>
+					<input id="UsernameTextbox" class="TextBox" required type="text" />
+					<label class="AddAccountLabelCtrl" style="padding-left: 4%; padding-top: 36%">Password:</label>
+					<label id="AddAccountPasswordDescription" class="Description">The password you use with your username at your email provider.</label>
+					<input id="PasswordTextbox" class="TextBox" required type="password" />
+					<label class="AddAccountLabelCtrl" style="padding-left: 4%; padding-top: 53%">Description:</label>
+					<label id="AddAccountDescription" class="Description">This will identify the account to access when multiple email accounts exist.</label>
+					<input id="DescriptionTextbox" class="TextBox" type="text" />
 				</div>
-				<input type="button" value="" id="SaveAccountCtrl"
-					class="themeColor" onclick="saveDetails()"></input>
-
-
-
+				<input type="button" value="" id="SaveAccountCtrl" class="themeColor" onclick="saveDetails()"></input>
 			</form>
 
 			<div id="progressDiv" style="visibility: hidden">Loading...</div>
@@ -180,7 +191,7 @@
 			<div id="ComposeButton" class="ComposeButton"
 				onclick="loadComposeScreen()"></div>
 			<div id="" class="draftIcon" onclick="draftSelected()"></div>
-			<Label id="InboxLabelCtrl" class="InboxLabelCtrl"></Label> <input
+			<label id="InboxLabelCtrl" class="InboxLabelCtrl"></label> <input
 				type="checkbox" id="CheckBoxSelectAll" class="CheckBoxSelectAll"
 				onclick="selectCheckBox('All')" />
 			<div id="InboxDiv" class="InboxHandler"></div>
@@ -206,7 +217,7 @@
 			<div id="ComposeButton" class="ComposeButton"
 				onclick="loadComposeScreen()"></div>
 			<div id="" class="draftIcon" onclick="Drafts()"></div>
-			<Label id="InboxFullViewLabelCtrl" class="InboxLabelCtrl"></Label>
+			<label id="InboxFullViewLabelCtrl" class="InboxLabelCtrl"></label>
 			<div id="ReplyAll" class="ReplyAll"
 				onclick="loadComposeScreen('ReplyAll')"></div>
 			<div id="Reply" class="Reply" onclick="loadComposeScreen('Reply')"></div>
@@ -257,31 +268,31 @@
 				onclick="loadComposeScreen()"></div>
 			<div id="draftIcon" class="draftIcon" onclick="draftSelected()"></div>
 			<div id="attachments" onclick="loadAttachmentScreen()"></div>
-			<Label id="InboxComposeLabelCtrl" class="InboxLabelCtrl">Inbox:</Label>
+			<label id="InboxComposeLabelCtrl" class="InboxLabelCtrl">Inbox:</label>
 			<div id="sendDiv" class="sendDiv" onclick="sendMail()"></div>
 			
 			<div id="syncDiv" style="visibility: hidden">Loading...</div>
 
 			<div id="structureMail">
-				<Label class="MailCtrl"
-					style="position: absolute; left: 4%; top: 16%; font-size: 110%;">To:</Label>
+				<label class="MailCtrl"
+					style="position: absolute; left: 4%; top: 16%; font-size: 110%;">To:</label>
 				<input id="toMember" class="TextBox" type="text"
-					style="width: 80%; top: 16%; left: 10%; height: 10%"> <Label
+					style="width: 80%; top: 16%; left: 10%; height: 10%"> <label
 					class="MailCtrl"
 					style="position: absolute; left: 22%; top: 29%; font-size: 110%;">cc:
-				</Label> <input id="ccMember" class="TextBox" type="text"
-					style="top: 29%; left: 27%; height: 10%; width: 28%;"> <Label
+				</label> <input id="ccMember" class="TextBox" type="text"
+					style="top: 29%; left: 27%; height: 10%; width: 28%;"> <label
 					class="MailCtrl"
 					style="position: absolute; left: 58%; top: 29%; font-size: 110%;">bcc:
-				</Label> <input id="bccMember" class="TextBox" type="text"
-					style="top: 29%; left: 67%; height: 10%; width: 23%;"> <Label
+				</label> <input id="bccMember" class="TextBox" type="text"
+					style="top: 29%; left: 67%; height: 10%; width: 23%;"> <label
 					class="MailCtrl"
 					style="position: absolute; left: 4%; top: 61%; font-size: 110%;">From:
-				</Label> <Label id="fromComposeDiv" class="fromDetails"
+				</label> <label id="fromComposeDiv" class="fromDetails"
 					style="position: absolute; left: 15%; top: 62%; font-size: 100%;">
-				</Label> <Label class="MailCtrl"
+				</label> <label class="MailCtrl"
 					style="position: absolute; left: 4%; top: 74%; font-size: 110%;">Subject:
-				</Label> <input id="subMember" class="TextBox" type="text"
+				</label> <input id="subMember" class="TextBox" type="text"
 					style="top: 75%; left: 18%; width: 70%; height: 10%">
 			</div>
 
@@ -309,8 +320,8 @@
 			<div id="ComposeButton" class="ComposeButton"
 				onclick="loadComposeScreen()"></div>
 			<div id="draftScreen" class="draftIcon" onclick="draftSelected()"></div>
-			<Label id="DraftLabelCtrl" class="InboxLabelCtrl">Drafts
-				Saved</Label>
+			<label id="DraftLabelCtrl" class="InboxLabelCtrl">Drafts
+				Saved</label>
 			<div id="sendDraftDiv" class="sendDiv" onclick="sendDraftMail()"></div>
 			<div id="DraftDiv" class="InboxHandler"></div>
 			<div id="editContinue" class="editContinue themeColor"
@@ -324,9 +335,9 @@
 		<div id="deleteEmailPopDiv" class="deleteAccountPop"
 			style="padding-left: 6%; visibility: hidden">
 
-			<Label class="DeleteAccountLabelCtrl"
+			<label class="DeleteAccountLabelCtrl"
 				style="padding-left: 10%; padding-top: 5%">Delete the
-				selected message(s)?</Label>
+				selected message(s)?</label>
 			<div id="deleteEmailYesDiv" class="deleteYesDiv themeColor"
 				onclick="deleteEmailYes()"></div>
 			<div id="deleteEmailNoDiv" class="deleteNoDiv themeColor"
@@ -340,9 +351,9 @@
 			<div id="addHome" onclick="homeSelected()"></div>
 			<div id="deleteAccountPopDiv" class="deleteAccountPop">
 
-				<Label class="DeleteAccountLabelCtrl"
+				<label class="DeleteAccountLabelCtrl"
 					style="padding-left: 10%; padding-top: 5%">Delete the
-					selected account(s)?</Label>
+					selected account(s)?</label>
 				<div class="deleteYesDiv themeColor" onclick="deleteAccountYes()"></div>
 				<div class="deleteNoDiv themeColor" onclick="deleteAccountNo()"></div>
 

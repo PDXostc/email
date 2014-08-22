@@ -50,8 +50,9 @@ cmake wrt_plugin/ -DCMAKE_INSTALL_PREFIX=%{_prefix} -DDPL_LOG="ON" -DENABLE_TIME
 make %{?jobs:-j%jobs} VERBOSE=1
 
 %install
-mkdir -p %{buildroot}/etc/profile.d
-cp vcon.sh %{buildroot}/etc/profile.d/vcon.sh
+mkdir -p %{buildroot}/usr/lib/systemd/system
+cp vcon.sh %{buildroot}/usr/lib/systemd/system
+cp email.service %{buildroot}/usr/lib/systemd/system
 %make_install
 
 %clean
@@ -59,13 +60,15 @@ rm -rf %{buildroot}
 
 %post
 wrt-installer -p
+systemctl enable email
 
 %postun
 
 %files
 %manifest wrt_plugin/wrt-plugins-tizen-email.manifest
 %{_libdir}/wrt-plugins/*
-%{_sysconfdir}/profile.d/vcon.sh
+%{_libdir}/systemd/system/vcon.sh
+%{_libdir}/systemd/system/email.service
 
 %files devel
 %{_includedir}/*

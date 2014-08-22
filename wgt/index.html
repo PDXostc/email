@@ -112,7 +112,7 @@
 				<a id="addHome" onclick="homeSelected()"></a>
 			  <section class="inner-content">
 					<header><h1>Add Email Account</h1></header>
-				<form id="addDetails">
+				<form class="details">
 					<div>
 						<label for="EmailAddressTextbox">Email address:</label>
 						<input id="EmailAddressTextbox" class="TextBox" required type="email">
@@ -140,23 +140,19 @@
 				<div id="progressDiv" style="visibility: hidden">Loading...</div>
 			</div>
 
-
-
-		<!-- Screen to Choose Email Account   style="visibility: hidden" -->
-		<div id="chooseEmailAccount" class="chooseEmailAccountBgImg"
-			style="visibility: hidden">
-			<div id="emailAccountsHeader" class=""></div>
-			<a id="addHome" onclick="homeSelected()"></a>
-			<div id="emailAccounts" class="AddEmailContact"></div> 
-			<div id="useThisAccount" class="themeColor"
-				onclick="useThisAccount()"></div>
-			<div id="deleteThisAccount" class="themeColor"
-				onclick="deleteThisAccount()"></div>
-	<!-- 
-			<div id="AddAccount" class="themeColor"	onclick="loadAddAccountScreen()">ADD ANOTHER ACCOUNT</div>
-	 -->
-		</div>
-
+			<!-- Choose Email Account Screen style="visibility: hidden" -->
+			<div id="chooseEmailAccount" class="inner" style="visibility: hidden">
+				<a id="addHome" onclick="homeSelected()"></a>
+			  <section class="inner-content">
+					<header><h1>Select An Email</h1></header>
+					<div id="emailAccounts" class="details"></div> 
+					<div class="button-group">
+						<button type="button" id="useThisAccount" class="themeColor" onclick="useThisAccount()">Use This Account</button>
+						<button type="button" id="deleteThisAccount" class="themeColor" onclick="deleteThisAccount()">Delete This Account</button>
+						<button type="button" id="AddAccount" class="themeColor" onclick="loadAddAccountScreen()">Add Another Account</button>
+					</div>
+				</section>
+			</div>
 
 		<!-- Inbox Screen    style="visibility: hidden" -->
 		<div id="inboxScreen" class="inboxBgImg" style="visibility: hidden">

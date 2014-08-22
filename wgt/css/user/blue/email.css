@@ -1,11 +1,20 @@
 /******** global ********/
 
+button,
 input[type="button"] {
   -webkit-appearance: none;
   border: none;
   padding: 2%;
+  margin: 1.5%;
   font-size: 1.75em;
+  font-family: inherit;
+  font-weight: bold;
   color: white;
+}
+
+.button-group {
+	text-align: center;
+	margin: 5%;
 }
 
 #addHome {
@@ -79,18 +88,16 @@ footer {
 	font-weight: 600;
 }
 
+.inner {
+	background-color: rgba(100, 149, 237, 0.5);
+	height: 100%;
+	width: 100%;
+}
 
 /******** Add Account Details Screen ********/
 
 #addAccountDetailsDiv.inner {
   padding: 0;
-}
-
-/* additional styles */
-.inner {
-	background-color: rgba(100, 149, 237, 0.5);
-	height: 100%;
-	width: 100%;
 }
 
 #emailAccountsHeader {
@@ -121,18 +128,18 @@ label {
 	font-size: 150%;
 }
 
-form#addDetails {
+.details {
 	padding: 5%;
 	margin: 5%;
 	background-color: rgb(218,255,255);
-	height: 50%;
+	min-height: 50%;
 }
 
-form#addDetails div {
+.details div {
 	margin-bottom: 4%;
 }
 
-form#addDetails input {
+.details input {
 	position: absolute;
 	right: 0;
 	width: 67%;
@@ -231,28 +238,6 @@ form#addDetails input {
 	height: 40%;
 }
 
-#useThisAccount {
-	position: absolute;
-	top: 70%;
-	left: 8%;
-	width: 35%;
-	height: 5%;
-	background-image: url(./images/email/use_this_account.png);
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-}
-
-#deleteThisAccount {
-	position: absolute;
-	top: 70%;
-	left: 50%;
-	width: 43%;
-	height: 5%;
-	background-image: url(./images/email/delete_this_account.png);
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-}
-
 .ChangeAccountButton {
 	position: absolute;
 	top: 1%;
@@ -262,19 +247,6 @@ form#addDetails input {
 	background-image: url(./images/email/change_account_icon.png);
 	background-size: auto 100%;
 	background-repeat: no-repeat;
-}
-
-#AddAccount {
-	position: absolute;
-	bottom: 19%;
-	left: 30%;
-	width: 42%;
-	height: 4%;
-	padding: 0.5% 1%;
-	color: white;
-	font-size: 230%;
-	font-weight: bolder;
-	background-size: auto 100%;
 }
 
 .Trash {

@@ -104,7 +104,6 @@
 					    <a id="addOther" class="account-logo" onclick="addAccount('Other')">Other</a>
 				    </li>
 			    </ul>
-			    <footer>&nbsp;</footer>
 			  </section>
 			</div>
 			<!-- Add Account Details Screen -->
@@ -145,7 +144,7 @@
 				<a id="addHome" onclick="homeSelected()"></a>
 			  <section class="inner-content">
 					<header><h1>Select An Email</h1></header>
-					<div id="emailAccounts" class="details"></div> 
+					<div id="emailAccounts" class="AddEmailContact details"></div>  
 					<div class="button-group">
 						<button type="button" id="useThisAccount" class="themeColor" onclick="useThisAccount()">Use This Account</button>
 						<button type="button" id="deleteThisAccount" class="themeColor" onclick="deleteThisAccount()">Delete This Account</button>
@@ -154,31 +153,46 @@
 				</section>
 			</div>
 
-		<!-- Inbox Screen    style="visibility: hidden" -->
-		<div id="inboxScreen" class="inboxBgImg" style="visibility: hidden">
+		<!-- Inbox Screen style="visibility: hidden" -->
+		<div id="inboxScreen" class="inner" style="visibility: hidden">
+			<div class="icon-wrapper" id="InboxButton" class="InboxButton" onclick="inboxButtonSeleted()">
+				<div class="icon"></div>
+			</div>
 
-			<a id="addHome" onclick="homeSelected()"></a>
-			<div id="ChangeAccountButton" class="ChangeAccountButton"
-				onclick="loadChangeAccountScreen()"></div>
+			<div class="icon-wrapper" id="changeAccountButton" onclick="loadChangeAccountScreen()">
+				<div class="icon"></div>
+				<p>Change Accounts</p>
+			</div>
+
+			<div class="icon-wrapper" id="searchMail" class="searchMail">
+				<input type="text" id="searchMailText"></input>
+				<div id="searchMailButton" class="searchMailButton icon" onclick="searchMailCall()"></div>
+			</div>
+
+
+			<div class="icon-wrapper" id="Sync" class="Sync" onclick="syncEmails()">
+				<div class="icon"></div>
+			</div>
+
+			<div class="icon-wrapper" id="addHome">
+				<a class="icon" onclick="homeSelected()"></a>
+			</div>
+
+			<aside>
+				<div id="ComposeButton" class="ComposeButton" onclick="loadComposeScreen()"></div>
+				<div id="" class="draftIcon" onclick="draftSelected()"></div>
+			</aside>
+			
+			<section class="inner-content sidebar-left">
 			<!-- <div id="AddAccount" class="AddAccount"	onclick="loadAddAccountScreen()"></div> -->
-			<div id="Trash" class="Trash" onclick="deleteMail()"></div>
-			<div id="Sync" class="Sync" onclick="syncEmails()"></div>
-			<div id="searchMail" class="searchMail" onclick=""></div>
-			<input type="text" id="searchMailText"></input>
-			<div id="searchMailButton" class="searchMailButton"
-				onclick="searchMailCall()"></div>
-			<div id="InboxButton" class="InboxButton"
-				onclick="inboxButtonSeleted()"></div>
-			<div id="ComposeButton" class="ComposeButton"
-				onclick="loadComposeScreen()"></div>
-			<div id="" class="draftIcon" onclick="draftSelected()"></div>
-			<label id="InboxLabelCtrl" class="InboxLabelCtrl"></label> <input
-				type="checkbox" id="CheckBoxSelectAll" class="CheckBoxSelectAll"
-				onclick="selectCheckBox('All')" />
-			<div id="InboxDiv" class="InboxHandler"></div>
-
-			<div id="syncDiv" style="visibility: hidden">Loading...</div>
-
+				<header id="InboxLabelCtrl" class="InboxLabelCtrl"></header>
+				<input type="checkbox" id="CheckBoxSelectAll" class="CheckBoxSelectAll" onclick="selectCheckBox('All')" />
+				<div id="InboxDiv" class="InboxHandler"></div>
+				<div id="syncDiv" style="visibility: hidden">Loading...</div>
+			</section>
+			<footer>	
+				<div id="Trash" class="Trash" onclick="deleteMail()"></div>
+			</footer>
 		</div>
 
 
@@ -289,7 +303,6 @@
 
 		<!-- Draft Screen    style="visibility: hidden" -->
 		<div id="draftScreen" class="inboxBgImg">
-
 			<a id="addHome" onclick="homeSelected()"></a>
 			<div id="ChangeAccountButton" class="ChangeAccountButton"
 				onclick="loadChangeAccountScreen()"></div>
@@ -307,15 +320,11 @@
 			<div id="DraftDiv" class="InboxHandler"></div>
 			<div id="editContinue" class="editContinue themeColor"
 				onclick="editContinueCompose()"></div>
-			<div id="cancel" class="themeColor" onclick="inboxButtonSeleted()"></div>
-			
+			<div id="cancel" class="themeColor" onclick="inboxButtonSeleted()"></div>		
 			<div id="syncDiv" style="visibility: hidden">Loading...</div>
-
-
 		</div>
 		<div id="deleteEmailPopDiv" class="deleteAccountPop"
 			style="padding-left: 6%; visibility: hidden">
-
 			<label class="DeleteAccountLabelCtrl"
 				style="padding-left: 10%; padding-top: 5%">Delete the
 				selected message(s)?</label>
@@ -323,23 +332,21 @@
 				onclick="deleteEmailYes()"></div>
 			<div id="deleteEmailNoDiv" class="deleteNoDiv themeColor"
 				onclick="deleteEmailNo()"></div>
-
 		</div>
-		<!-- Delete Account confirmation Screen   style="visibility: hidden" -->
-		<div id="deleteAccountDiv" class="chooseEmailAccountBgImg"
-			style="visibility: hidden">
 
-			<div id="addHome" onclick="homeSelected()"></div>
-			<div id="deleteAccountPopDiv" class="deleteAccountPop">
-
-				<label class="DeleteAccountLabelCtrl"
-					style="padding-left: 10%; padding-top: 5%">Delete the
-					selected account(s)?</label>
-				<div class="deleteYesDiv themeColor" onclick="deleteAccountYes()"></div>
-				<div class="deleteNoDiv themeColor" onclick="deleteAccountNo()"></div>
-
-			</div>
-
+		<!-- Delete Account Confirmation Screen | style="visibility: hidden" -->
+		<div id="deleteAccountDiv" class="inner" style="visibility: hidden">
+				<a id="addHome" onclick="homeSelected()"></a>
+				  <section class="inner-content">
+				  <header><h1>Select An Email</h1></header>
+						<div id="deleteAccountPopDiv" class="modal">
+							<h2>Delete the selected account(s)?</h2>
+								<div class="button-group">
+									<button type="button" id="useThisAccount" class="themeColor" onclick="deleteAccountYes()">YES</button>
+									<button type="button" id="useThisAccount" class="themeColor" onclick="deleteAccountNo()">NO</button>
+								</div>
+						</div>
+					</section>
 		</div>
 
 		<!-- Add Attachemnt Screen Style="Visibility: hidden" -->

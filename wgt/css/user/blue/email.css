@@ -10,6 +10,7 @@ input[type="button"] {
   font-family: inherit;
   font-weight: bold;
   color: white;
+  min-width: 100px;
 }
 
 .button-group {
@@ -17,25 +18,90 @@ input[type="button"] {
 	margin: 5%;
 }
 
-#addHome {
-	position: absolute;
-	display: block;
-	top: 1%;
-	right: 4%;
+/****** Icons ********/
+
+.icon {
 	width: 48px;
 	height: 48px;
-	background-image: url(./images/email/home_icon_white.png);
+	margin: auto;
+} 
+
+.icon-wrapper {
+	position: absolute;
+	top: 1%;
+	display: block;
+	min-width: 48px;
+	height: 48px;
 	background-size: auto;
 	background-repeat: no-repeat;
+	background-position-x: 50%;
+}
+
+#addHome {
+	right: 4%;
+	background-image: url(./images/email/home_icon_white.png);
+}
+
+.icon-wrapper p {
+	color: white;
+	position: relative;
+	bottom: 0;
+	text-align: center;
+	margin-top: -12px;
+}
+
+#changeAccountButton {
+	left: 20%;
+	background-image: url(./images/email/users_icon_white.png);
+}
+
+#Sync {
+	left: 78%;
+	background-image: url(./images/email/refresh_icon_white.png);
+}
+
+#InboxButton {
+	left: 10%;
+	background-image: url(./images/email/inbox_icon_white.png);
+}
+
+#searchMail {
+	left: 42%;
+	line-height: 48px;
+}
+
+#searchMail input {
+	font-weight: normal;
+	font-size: 
+	height: 50%;
+	margin-right: 5%;
+	padding: 0 10px;
+	box-sizing: border-box;
+	border: none;
+	box-shadow: none;
+	outline: none;
+	border-radius: 16px;
+	width: 150px;
+}
+
+#searchMailButton {
+	height: 48px;
+	width: 48px;
+	position: absolute;
+	top: 0;
+	left: 100%;
+	background-image: url(./images/email/search_icon_white.png);
 }
 
 section, h1 {
 	position: relative;
-	}
+	}	
 
-.inner-content header {
-	margin-bottom: 10%;
-}	
+.inner-content ul, .modal {
+	position: relative;
+	top:25%;
+	margin-top: -12.5%;
+}
 
 h1 {
 	font-size: 2.5em;
@@ -44,16 +110,34 @@ h1 {
 	padding: 2% 0;
 	}
 
+h2 {
+	font-weight: bold;
+	font-size: 2em;
+	text-align: center;
+	color: rgb(100, 149, 237);
+	margin-bottom: 10%;
+}
+
 .themeColor {
 	background-position: right;
 	background-color: rgb(100, 149, 237);
+}
+
+.modal {
+	width: 80%;
+	min-height: 10%;
+	margin: auto;
+	padding: 5%;
+	box-sizing: border-box;
+	background-color: rgba(100, 149, 237, 0.25);
+	border: 1px solid rgb(100, 149, 237)
 }
 
 .inner-content {
 	background-color: white;
 	top: 7%;
 	width: 92%;
-	height: 89%;
+	height: 909px;
 	margin: 0 auto;
 }
 
@@ -70,6 +154,7 @@ footer {
 .inner-content footer {
 	background-color: #6495ed;
 	min-height: 65px;
+	line-height: 65px;
 	}
 
 .account-logo {
@@ -114,6 +199,15 @@ footer {
 	background-size: auto 100%;
 	height: 100%;
 	width: 100%;
+}
+
+/******** Inbox Screen ********/
+
+.inner-content.sidebar-left {
+	margin: 0;
+	width: 82%;
+	left: 14%;
+	right: 4%;
 }
 
 .inboxBgImg {
@@ -238,17 +332,6 @@ label {
 	height: 40%;
 }
 
-.ChangeAccountButton {
-	position: absolute;
-	top: 1%;
-	left: 20%;
-	width: 10%;
-	height: 5%;
-	background-image: url(./images/email/change_account_icon.png);
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-}
-
 .Trash {
 	position: absolute;
 	top: 90%;
@@ -256,64 +339,6 @@ label {
 	width: 8%;
 	height: 7%;
 	background-image: url(./images/email/trash_icon.png);
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-}
-
-.Sync {
-	position: absolute;
-	top: 1%;
-	left: 78%;
-	width: 10%;
-	height: 6%;
-	background-image: url(./images/email/refresh_icon.png);
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-}
-
-#searchMail {
-	position: absolute;
-	top: 1.2%;
-	left: 42%;
-	width: 35%;
-	height: 5%;
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-	background-image: url(./images/email/search_box_bg.png);
-}
-
-#searchMailText {
-	position: absolute;
-	top: 1%;
-	left: 43.4%;
-	width: 28%;
-	height: 3%;
-	background: transparent;
-	border: 0;
-	border: none ! important;
-	box-shadow: none ! important;
-	outline: none ! important;
-	background-color: transparent;
-}
-
-#searchMailButton {
-	position: absolute;
-	top: 1.5%;
-	left: 71%;
-	width: 5%;
-	height: 2.1%;
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-	background-image: url(./images/email/search_button.png);
-}
-
-.InboxButton {
-	position: absolute;
-	top: 1%;
-	left: 10%;
-	width: 9%;
-	height: 5%;
-	background-image: url(./images/email/mail_icon.png);
 	background-size: auto 100%;
 	background-repeat: no-repeat;
 }
@@ -338,12 +363,9 @@ label {
 }
 
 .InboxLabelCtrl {
-	position: absolute;
 	font-weight: bold;
-	font-size: 120%;
-	left: 10%;
-	top: 9%;
 	color: white;
+	padding: 0 5%;
 }
 
 .InboxHandler {
@@ -649,48 +671,7 @@ label {
 	width: 25%;
 	height: 4%;
 }
-/**** Delete Account confirmation CSS ******/
-.deleteAccountPop {
-	position: absolute;
-	top: 20%;
-	left: 10%;
-	width: 80%;
-	height: 30%;
-	background-image: url(./images/email/alert_screen_bg.png);
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-}
 
-.DeleteAccountLabelCtrl {
-	position: absolute;
-	font-weight: bold;
-	font-size: 150%;
-	top: 10%;
-	left: 10%;
-	color: rgb(100, 149, 237);
-}
-
-.deleteYesDiv {
-	position: absolute;
-	top: 60%;
-	left: 20%;
-	width: 15%;
-	height: 12%;
-	background-image: url(./images/email/yesButton.png);
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-}
-
-.deleteNoDiv {
-	position: absolute;
-	top: 60%;
-	left: 60%;
-	width: 15%;
-	height: 12%;
-	background-image: url(./images/email/NoButton.png);
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-}
 /****Attachment Screen CSS********/
 #fileAttachmentHeader {
 	top: 8%;
@@ -740,4 +721,5 @@ label {
 	background-image: url(./images/email/cancel.png);
 	background-repeat: no-repeat;
 	background-size: auto 100%;
+>>>>>>> Adds Inbox Styling
 }

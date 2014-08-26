@@ -25,9 +25,9 @@
 	position: absolute;
 }
 #mainDiv {
-	top: 0;
+	top: 85px;
 	left: 0;
 	position: relative;
-	height: 995px;
+	height: 1195px;
 	width: 100%;
 }

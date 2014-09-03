@@ -18,6 +18,64 @@ input[type="button"] {
 	margin: 5%;
 }
 
+/******** Form Styles ********/
+
+input[type=text],
+input[type=email],
+input[type=password] {
+	position: absolute;
+	right: 0;
+	width: 67%;
+	border: 1px solid rgb(135, 206, 235);
+	background: white;
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus {
+  padding: 3px 0px 3px 3px;
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  -webkit-transition: all 0.30s ease-in-out;
+}
+
+input[type="checkbox"] {
+  height: 1.2em;
+  width: 1.2em;
+  vertical-align: middle;
+  margin: 0 0.4em 0.4em 0;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: white;
+  -webkit-appearance: none;
+  -webkit-transition: box-shadow 200ms;
+   box-shadow:inset 1px 1px 0 #fff, 0 1px 1px rgba(0,0,0,0.1);
+  -webkit-border-radius:2px;
+}
+
+input[type="checkbox"]:checked {
+  border-color:rgba(0, 0, 0, 0.5);
+	background-image: url(images/email/input_checkbox_checkmark_black.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.input-group {
+	border: none;
+	position: relative;
+	padding: 1%;
+}
+
+/******** End Form Style ********/
+
+.template {
+	display: none;
+}
+
+
 /****** Icons ********/
 
 .icon {
@@ -201,6 +259,30 @@ footer {
 	width: 100%;
 }
 
+/******** Select Account Screen ********/
+
+#emailAccounts {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.account {
+	background-image: url('images/email/email_icon_small_black.png');
+  background-repeat: no-repeat;
+  background-position: 0px center; 
+  padding-left: 5%; 
+	overflow: visible;
+}
+
+.account p {
+	display: inline-block;
+}
+
+.account input[type="checkbox"] {
+	float: right;
+}
+
 /******** Inbox Screen ********/
 
 .inner-content.sidebar-left {
@@ -233,17 +315,11 @@ label {
 	margin-bottom: 4%;
 }
 
-.details input {
-	position: absolute;
-	right: 0;
-	width: 67%;
-	border: 1px solid rgb(135, 206, 235);
-	background: white;
-}
-
 .description {
+	position: absolute;
 	width: 67%;
-	margin-left: 33%;
+	right: 0;
+	padding: 3px;
 }
 
 #SaveAccountCtrl {
@@ -270,23 +346,6 @@ label {
 	color: white;
 	padding :1%;
 	border: 1px solid white;
-}
-
-.LabelCtrl {
-	position: absolute;
-	width: 10%;
-	height: 10%;
-	font-weight: bold;
-	font-size: 150%;
-}
-
-.MessagIcon {
-	position: absolute;
-	width: 30%;
-	height: 30%;
-	background-image: url(./images/email/envelope_icon.png);
-	background-size: auto 100%;
-	background-repeat: no-repeat;
 }
 
 #pdfIcon {
@@ -721,5 +780,4 @@ label {
 	background-image: url(./images/email/cancel.png);
 	background-repeat: no-repeat;
 	background-size: auto 100%;
->>>>>>> Adds Inbox Styling
 }

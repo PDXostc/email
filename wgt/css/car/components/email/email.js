@@ -32,8 +32,8 @@ function deleteMailFromCompose() {
 }
 
 function deleteEmailYes() {
-	$(".CheckBoxSelectAll").removeAttr("checked");
-	var searchMailIDs = $(".InboxHandler input:checkbox:checked").map(function(){
+	$("#CheckBoxSelectAll").removeAttr("checked");
+	var searchMailIDs = $("#inbox input:checkbox:checked").map(function(){
 		return $(this).val();
 	}).toArray();
 	console.log(searchMailIDs);
@@ -536,7 +536,7 @@ function fillDraftCount() {
 	
 	console.log("Inside fillDraft count :: "+draftMailTypeCounter);
 	
-	$(".draftIcon").html(draftMailTypeCounter);
+	$("#draftButton .label").html(draftMailTypeCounter);
 }
 
 
@@ -626,8 +626,8 @@ function setInboxTitle() {
 		currentEmailSelectedName = "";
 	}
 
-	var inboxDiv = document.getElementById('InboxLabelCtrl');
-	inboxDiv.innerText = INBOX + currentEmailSelectedName;
+	var inboxHeader = document.getElementById('InboxLabelCtrl');
+	inboxHeader.innerText = INBOX + currentEmailSelectedName;
 
 	var inboxFullDiv = document.getElementById('InboxFullViewLabelCtrl');
 	inboxFullDiv.innerText = INBOX + currentEmailSelectedName;
@@ -644,17 +644,16 @@ function populateDraftScreen(msg) {
 		
 	var outputInboxScreen = document.getElementById("DraftDiv");
 	var messageItemBody = document.createElement('div');
-	messageItemBody.className = "MsgItemBody";
-	messageItemBody.id = "MsgItemID" + count;
+	messageItemBody.dataset.id = count;
 
 	messageItemBody.style.top = (count + FIXED) + "%";
 
 
-	var messageItemBodySubject = document.createElement('label');
+	var messageItemBodySubject = document.createElement('h3');
 	messageItemBodySubject.innerText = msg.subject;
 	messageItemBodySubject.className = "MsgItemBodySubject";
 
-	var messageItemBodyBody = document.createElement('label');
+	var messageItemBodyBody = document.createElement('h4');
 	messageItemBodyBody.innerText = msg.mailBody;
 	messageItemBodyBody.className = "MsgItemBodyBody";
 
@@ -677,56 +676,39 @@ function populateDraftScreen(msg) {
 	FIXED = FIXED + 10;
 }
 
-function populateInboxScreen(msg)
-{
-	var outputInboxScreen = document.getElementById('InboxDiv');
-	var messageItemBody = document.createElement('div');
-	messageItemBody.className = "MsgItemBody";
-	messageItemBody.id = "MsgItemID" + count;
+function populateInboxScreen(msg) {
+	var inbox = document.getElementById('inbox');
+	var inboxItemTemplate = document.getElementById("inboxItemTemplate");
+	var itemClone = inboxItemTemplate.cloneNode(true);
+	itemClone.removeAttribute("id");
+	itemClone.dataset.id = msg.mailId;
 
-	messageItemBody.style.top = (count + FIXED) + "%";
-
-	var messageItemIsRead = document.createElement('div');
-	messageItemIsRead.className = "MsgItemBodyIsRead";
 	if (msg.isRead) {
-		messageItemIsRead.style.visibility = 'hidden';
-	} else {
-		messageItemIsRead.style.visibility = 'visible';
+		itemClone.className += " unread";
 	}
 
-	var messageItemBodySubject = document.createElement('label');
-	messageItemBodySubject.innerText = msg.subject;
-	messageItemBodySubject.className = "MsgItemBodySubject";
-	messageItemBodySubject.addEventListener("click",
+	var subject = itemClone.querySelector("h3");
+	subject.innerHTML = msg.subject;
+	subject.addEventListener("click",
 			retriveMailFilterWithId.bind(this, msg.mailId), false);
 
-	var messageItemBodyBody = document.createElement('label');
-	messageItemBodyBody.innerHTML = msg.mailBody;
-	messageItemBodyBody.className = "MsgItemBodyBody";
-	messageItemBodyBody.addEventListener("click",
+	var msgBody = itemClone.querySelector("h4");
+	msgBody.innerHTML = msg.mailBody;
+	msgBody.addEventListener("click",
 			retriveMailFilterWithId.bind(this, msg.mailId), false);
 
-	var messageItemBodyCheckBox = document.createElement('input');
-	messageItemBodyCheckBox.type = "checkbox";
-	messageItemBodyCheckBox.className = "MessageItemBodyCheckBox";
-	messageItemBodyCheckBox.id = "messageItemBodyCheckBox" +count;
-	messageItemBodyCheckBox.value = msg.mailId;
-	messageItemBodyCheckBox.addEventListener("click",
+	var msgCheckBox = itemClone.querySelector("input[type='checkbox']");
+	msgCheckBox.dataset.id = count;
+	msgCheckBox.value = msg.mailId;
+	msgCheckBox.addEventListener("click",
 			selectCheckBox.bind(this, msg.mailId), false);
 
-	messageItemBody.appendChild(messageItemIsRead);
-	messageItemBody.appendChild(messageItemBodySubject);
-	messageItemBody.appendChild(messageItemBodyBody);
-	messageItemBody.appendChild(messageItemBodyCheckBox);
-
-	outputInboxScreen.appendChild(messageItemBody);
-
-	FIXED = FIXED + 10;
+	inbox.appendChild(itemClone);
 }
 
 //Clear the populated mails if any
 function clearInboxMails() {
-	var el = document.getElementById('InboxDiv');
+	var el = document.getElementById('inbox');
 	while (el.hasChildNodes()) {
 		el.removeChild(el.lastChild);
 	}
@@ -810,14 +792,15 @@ function setViewMails(message){
 }
 
 function selectCheckBox(type) {
+	var checkboxes = $("#inbox input[type='checkbox']");
 	if(type === "All"){
-		if($(".CheckBoxSelectAll").is(':checked')){
-			$(".MessageItemBodyCheckBox").attr("checked", "checked");
-		}else{
-			$(".MessageItemBodyCheckBox").removeAttr("checked");
+		if ($("#CheckBoxSelectAll").is(':checked')){
+			checkboxes.attr("checked", "checked");
+		} else {
+			checkboxes.removeAttr("checked");
 		}
-	}else{
-		$(".CheckBoxSelectAll").removeAttr("checked");
+	} else {
+		$("#CheckBoxSelectAll").removeAttr("checked");
 	}
 }
 

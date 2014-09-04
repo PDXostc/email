@@ -161,40 +161,56 @@
 
 		<!-- Inbox Screen style="visibility: hidden" -->
 		<div id="inboxScreen" class="inner" style="visibility: hidden">
-			<div class="icon-wrapper" id="InboxButton" class="InboxButton" onclick="inboxButtonSeleted()">
-				<div class="icon"></div>
-			</div>
+			<section class="inner-content">
 
-			<div class="icon-wrapper" id="changeAccountButton" onclick="loadChangeAccountScreen()">
-				<div class="icon"></div>
-				<p>Change Accounts</p>
-			</div>
-
-			<div class="icon-wrapper" id="searchMail" class="searchMail">
-				<input type="text" id="searchMailText"></input>
-				<div id="searchMailButton" class="searchMailButton icon" onclick="searchMailCall()"></div>
-			</div>
-
-
-			<div class="icon-wrapper" id="Sync" class="Sync" onclick="syncEmails()">
-				<div class="icon"></div>
-			</div>
-
-			<div class="icon-wrapper" id="addHome">
-				<a class="icon" onclick="homeSelected()"></a>
-			</div>
-
-			<aside>
-				<div id="ComposeButton" class="ComposeButton" onclick="loadComposeScreen()"></div>
-				<div id="" class="draftIcon" onclick="draftSelected()"></div>
-			</aside>
+				<aside class="left">
+					<ul class="controls">
+						<li class="icon"></li>
+						<li class="icon" id="composeButton" onclick="loadComposeScreen()"></li>
+						<li class="icon" id="draftButton" onclick="draftSelected()">
+							<p class="label"></p>
+						</li>
+					</ul>
+				</aside>
 			
-			<section class="inner-content sidebar-left">
 			<!-- <div id="AddAccount" class="AddAccount"	onclick="loadAddAccountScreen()"></div> -->
-				<header id="InboxLabelCtrl" class="InboxLabelCtrl"></header>
-				<input type="checkbox" id="CheckBoxSelectAll" class="CheckBoxSelectAll" onclick="selectCheckBox('All')" />
-				<div id="InboxDiv" class="InboxHandler"></div>
-				<div id="syncDiv" style="visibility: hidden">Loading...</div>
+				<section class="main right">
+					<div class="controls">
+						<ul class="left">
+							<li class="icon" id="InboxButton" class="InboxButton" onclick="inboxButtonSeleted()"></li>
+							<li class="icon" id="changeAccountButton" onclick="loadChangeAccountScreen()">
+								<p class="label">Change Accounts</p>
+							</li>
+							<li class="icon" id="searchMail" onclick="searchMailCall()">
+								<input type="text" id="searchMailText"></input>
+							</li>
+						</ul>
+						<ul class="right">
+							<li class="icon" id="Sync" onclick="syncEmails()"></li>
+							<li class="icon" id="addHome" onclick="homeSelected()"></li>
+						</ul>
+					</div>
+
+
+					<div class="content">
+						<header id="InboxLabelCtrl" class="InboxLabelCtrl"></header>
+						
+						<ul>
+							<li class="inbox-item"><span style="text-align: right; margin-right: 10px;">All</span><input type="checkbox" id="CheckBoxSelectAll" onclick="selectCheckBox('All')"></li>
+							<!-- 'Template' for email list item -->
+							<li id="inboxItemTemplate" class="inbox-item" data-id="">
+								<div class="status" style="visibility: hidden"></div>
+								<h3></h3>
+								<h4></h4>
+								<input type="checkbox">
+							</li>
+						</ul>
+						<ul id="inbox" class="inbox"></ul>
+						<div style="visibility: hidden">Loading...</div>
+					</div>
+
+
+				</section>
 			</section>
 			<footer>	
 				<div id="Trash" class="Trash" onclick="deleteMail()"></div>
@@ -226,7 +242,7 @@
 				onclick="loadComposeScreen('Forward')"></div>
 			<div id="Next" class="Next" onclick="retriveMailFilterWithNextId()"></div>
 			
-			<div id="syncDiv" style="visibility: hidden">Loading...</div>
+			<div style="visibility: hidden">Loading...</div>
 
 			<div id="MailHandler" class="MailHandler">
 
@@ -272,7 +288,7 @@
 			<label id="InboxComposeLabelCtrl" class="InboxLabelCtrl">Inbox:</label>
 			<div id="sendDiv" class="sendDiv" onclick="sendMail()"></div>
 			
-			<div id="syncDiv" style="visibility: hidden">Loading...</div>
+			<div style="visibility: hidden">Loading...</div>
 
 			<div id="structureMail">
 				<label class="MailCtrl"
@@ -327,7 +343,7 @@
 			<div id="editContinue" class="editContinue themeColor"
 				onclick="editContinueCompose()"></div>
 			<div id="cancel" class="themeColor" onclick="inboxButtonSeleted()"></div>		
-			<div id="syncDiv" style="visibility: hidden">Loading...</div>
+			<div style="visibility: hidden">Loading...</div>
 		</div>
 		<div id="deleteEmailPopDiv" class="deleteAccountPop"
 			style="padding-left: 6%; visibility: hidden">

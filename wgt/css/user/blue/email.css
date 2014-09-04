@@ -1,5 +1,14 @@
 /******** global ********/
 
+h3 {
+	font-size: 1.5em;
+	color: inherit;
+}
+
+h4 {
+	font-size: 1.17em;
+}
+
 button,
 input[type="button"] {
   -webkit-appearance: none;
@@ -16,6 +25,21 @@ input[type="button"] {
 .button-group {
 	text-align: center;
 	margin: 5%;
+}
+
+.left {
+	left: 0;
+	display: inline-block;
+}
+
+.right {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.content {
+	background-color: white;
 }
 
 /******** Form Styles ********/
@@ -81,74 +105,91 @@ input[type="checkbox"]:checked {
 .icon {
 	width: 48px;
 	height: 48px;
-	margin: auto;
-} 
-
-.icon-wrapper {
-	position: absolute;
-	top: 1%;
-	display: block;
-	min-width: 48px;
-	height: 48px;
-	background-size: auto;
 	background-repeat: no-repeat;
-	background-position-x: 50%;
+	background-size: 36px;
+	background-position: top center;
+	margin: 10px;
 }
 
-#addHome {
-	right: 4%;
+.icon .label {
+	color: white;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	font-size: 0.6em;
+	width: inherit;
+}
+
+#addHome.icon {
 	background-image: url(./images/email/home_icon_white.png);
 }
 
-.icon-wrapper p {
-	color: white;
-	position: relative;
-	bottom: 0;
-	text-align: center;
-	margin-top: -12px;
-}
-
-#changeAccountButton {
-	left: 20%;
+#changeAccountButton.icon {
 	background-image: url(./images/email/users_icon_white.png);
+	width: 128px;
 }
 
-#Sync {
-	left: 78%;
+#Sync.icon {
 	background-image: url(./images/email/refresh_icon_white.png);
 }
 
-#InboxButton {
-	left: 10%;
+#InboxButton.icon {
 	background-image: url(./images/email/inbox_icon_white.png);
 }
 
-#searchMail {
-	left: 42%;
+#searchMail.icon {
+	width: 175px;
 	line-height: 48px;
+	background-image: url(./images/email/search_icon_white.png);
+	background-position-x: 106%;
+	background-position-y: center;
+	background-size: 36px 36px;
+}
+
+#draftButton.icon {
+	background-image: url(./images/email/draft_icon_white.png);
+}
+
+#composeButton.icon {
+	background-image: url(./images/email/new_icon_white.png);
+	background-size: 32px;
+}
+
+/* Inbox Screen */
+
+aside {
+	float: left;
+	width: 8%;
+	height: 100%;
+}
+
+.controls {
+	display: block;
+	margin-bottom: 2%;
+}
+
+.controls li {
+	display: inline-block;
+	margin: 0;
+}
+
+aside .controls li {
+	display: block;
 }
 
 #searchMail input {
-	font-weight: normal;
-	font-size: 
-	height: 50%;
-	margin-right: 5%;
-	padding: 0 10px;
-	box-sizing: border-box;
-	border: none;
-	box-shadow: none;
-	outline: none;
-	border-radius: 16px;
-	width: 150px;
-}
-
-#searchMailButton {
-	height: 48px;
-	width: 48px;
 	position: absolute;
 	top: 0;
-	left: 100%;
-	background-image: url(./images/email/search_icon_white.png);
+	left: 0;
+	margin: 16px 5% 16px 0;
+	padding: 0 10px;
+	width: 150px;
+	box-sizing: border-box;
+	box-shadow: none;
+	border: none;
+	border-radius: 16px;
+	outline: none;
+	font-weight: normal;
 }
 
 section, h1 {
@@ -156,9 +197,9 @@ section, h1 {
 	}	
 
 .inner-content ul, .modal {
-	position: relative;
-	top:25%;
-	margin-top: -12.5%;
+	/*position: relative;*/
+	/*top:25%;*/
+	/*margin-top: -12.5%;*/
 }
 
 h1 {
@@ -195,7 +236,7 @@ h2 {
 	background-color: white;
 	top: 7%;
 	width: 92%;
-	height: 909px;
+	height: 966px;
 	margin: 0 auto;
 }
 
@@ -285,11 +326,18 @@ footer {
 
 /******** Inbox Screen ********/
 
-.inner-content.sidebar-left {
+#inboxScreen .inner-content {
+	background: none;
+	top: 2%;
+}
+
+#inboxScreen .main {
+	float: right;
 	margin: 0;
-	width: 82%;
-	left: 14%;
-	right: 4%;
+	width: 92%;
+	height: inherit;
+	top: 0;
+	background: none;
 }
 
 .inboxBgImg {
@@ -334,18 +382,6 @@ label {
 	margin: auto;
 	width: 20%;
 	text-align: center;
-}
-
-#syncDiv {
-	position: absolute;
-	top: 91%;
-	left: 42%;
-	height: 4%;
-	font-size: 300%;
-	font-weight:bold;
-	color: white;
-	padding :1%;
-	border: 1px solid white;
 }
 
 #pdfIcon {
@@ -413,73 +449,37 @@ label {
 	background-repeat: no-repeat;
 }
 
-.CheckBoxSelectAll {
-	position: absolute;
-	top: 8.5%;
-	left: 89%;
-	width: 3%;
-	height: 3%;
-}
-
 .InboxLabelCtrl {
 	font-weight: bold;
 	color: white;
 	padding: 0 5%;
 }
 
-.InboxHandler {
-	position: absolute;
-	top: 13%;
-	left: 9%;
-	background-color: white;
-	width: 88%;
-	height: 76%;
-	overflow-y: auto;
-	overflow-x: hidden;
-}
-
-.MsgItemBody {
-	position: absolute;
-	top: 0%;
-	left: 0%;
-	width: 100%;
-	height: 10%;
-	border-style: solid;
-	border: 1px solid grey;
-	border-style: hidden hidden solid hidden;
-}
-
-.MsgItemBodyIsRead {
-	position: absolute;
-	top: 16%;
+.status {
 	left: 3%;
 	width: 3%;
 	height: 23%;
-	background-image: url(./images/email/readableIcon.png);
-	background-size: auto 100%;
+	border-radius: 16px;
+	background-color: lightblue;
+	display: inline-block;
+	visibility: hidden;
 }
 
-.MsgItemBodySubject {
-	position: absolute;
-	top: 10%;
-	left: 10%;
+.unread {
+	visibility: visible;
+}
+
+h3 {
 	width: 77%;
-	height: 40%;
-	font-size: 150%;
-	font-weight: bold;
+	font-size: 1.5em;
 	overflow: hidden;
 	white-space: nowrap;
 }
 
-.MsgItemBodyBody {
-	position: absolute;
-	top: 50%;
-	left: 10%;
+h4 {
 	width: 80%;
-	height: 45%;
-	font-size: 120%;
+	font-size: 1.17em;
 	overflow: hidden;
-	text-wrap: none;
 }
 
 .MessageItemBodyCheckBox {
@@ -662,10 +662,26 @@ label {
 	overflow-y: auto;
 }
 
+#inboxItemTemplate {
+	display: none;
+}
+
 .inbox {
+	overflow-y: scroll;
+	max-height: 826px;
+}
+
+.inbox-item {
+	border-bottom: 1px solid lightgrey;
+	padding: 10px 0;
+	margin: 0 10px;
+	min-height: 20px;
+}
+
+.inbox-item input[type='checkbox'] {
 	position: absolute;
-	top: 5%;
-	left: 5%;
+	top: 10px;
+	right: 10px;
 }
 
 .name {
@@ -683,21 +699,6 @@ label {
 	background-image: url(./images/email/send_icon.png);
 	background-size: auto 100%;
 	background-repeat: no-repeat;
-}
-
-.draftIcon {
-	position: absolute;
-	top: 15%;
-	left: 1%;
-	width: 6%;
-	height: 5%;
-	background-image: url(./images/email/drafts_icon.png);
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-	font-size: 250%;
-	text-align: center;
-	vertical-align: bottom;
-	color: rgb(100, 149, 237);
 }
 
 #DraftDiv {

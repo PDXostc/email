@@ -106,7 +106,7 @@ function loadDraftScreen() {
 	$("#addAccountDetailsDiv").hide();
 	$("#chooseEmailAccount").hide();
 	$("#inboxScreen").hide();
-	$("#inboxScreenFullView").hide();
+	$("#mailView").hide();
 	$("#composeCtrlDiv").hide();
 	$("#deleteAccountDiv").hide();
 	$("#draftScreen").css({"visibility":"visible"});
@@ -122,7 +122,7 @@ function loadDeleteAccConfirmationScreen() {
 	$("#addAccountDetailsDiv").hide();
 	$("#chooseEmailAccount").hide();
 	$("#inboxScreen").hide();
-	$("#inboxScreenFullView").hide();
+	$("#mailView").hide();
 	$("#composeCtrlDiv").hide();
 	$("#deleteAccountDiv").css({"visibility":"visible"});
 	$("#deleteAccountDiv").show();
@@ -138,8 +138,8 @@ function loadMailFullViewScreen() {
 	$("#addAccountDetailsDiv").hide();
 	$("#chooseEmailAccount").hide();
 	$("#inboxScreen").hide();
-	$("#inboxScreenFullView").css({"visibility":"visible"});
-	$("#inboxScreenFullView").show();
+	$("#mailView").css({"visibility":"visible"});
+	$("#mailView").show();
 	$("#composeCtrlDiv").hide();
 	$("#deleteAccountDiv").hide();
 	$("#draftScreen").hide();
@@ -164,7 +164,7 @@ function loadInboxScreen(type) {
 	$("#chooseEmailAccount").hide();
 	$("#inboxScreen").css({"visibility":"visible"});
 	$("#inboxScreen").show(400,populateInbox);
-	$("#inboxScreenFullView").hide();
+	$("#mailView").hide();
 	$("#composeCtrlDiv").hide();
 	$("#deleteAccountDiv").hide();
 	$("#draftScreen").hide();
@@ -180,7 +180,7 @@ function loadAddAccountScreen() {
 	$("#addAccountDetailsDiv").hide();
 	$("#chooseEmailAccount").hide();
 	$("#inboxScreen").hide();
-	$("#inboxScreenFullView").hide();
+	$("#mailView").hide();
 	$("#composeCtrlDiv").hide();
 	$("#deleteAccountDiv").hide();
 	$("#draftScreen").hide();
@@ -199,7 +199,7 @@ function loadChangeAccountScreen() {
 		chooseEmailAccount();
 	});
 	$("#inboxScreen").hide();
-	$("#inboxScreenFullView").hide();
+	$("#mailView").hide();
 	$("#composeCtrlDiv").hide();
 	$("#deleteAccountDiv").hide();
 	$("#draftScreen").hide();
@@ -233,7 +233,7 @@ function loadComposeScreen(type){
 	$("#addAccountDetailsDiv").hide();
 	$("#chooseEmailAccount").hide();
 	$("#inboxScreen").hide();
-	$("#inboxScreenFullView").hide();
+	$("#mailView").hide();
 	$("#deleteAccountDiv").hide();
 	$("#composeCtrlDiv").css({"visibility":"visible"});
 	$("#composeCtrlDiv").show();
@@ -250,7 +250,7 @@ function loadAttachmentScreen(){
 	$("#addAccountDetailsDiv").hide();
 	$("#chooseEmailAccount").hide();
 	$("#inboxScreen").hide();
-	$("#inboxScreenFullView").hide();
+	$("#mailView").hide();
 	$("#deleteAccountDiv").hide();
 	$("#composeCtrlDiv").hide();
 	$("#composeCtrlDiv").hide();
@@ -271,7 +271,7 @@ function populateComposeScreen(type) {
 	var mailBody = $("#mailBody").text();
 	var attachmentSrc = $("#attachmentDiv").attr('src');
 	switch(type){
-	case "ReplyAll":
+	case "replyAll":
 		clearAttachmentsCompose();
 		var allToAddress = from+","+to;
 		$("#toMember").val(allToAddress);
@@ -282,7 +282,7 @@ function populateComposeScreen(type) {
 		subject = "Re:"+subject;
 		$("#subMember").val(subject);
 		break;
-	case "Reply":
+	case "reply":
 		clearAttachmentsCompose();
 		$("#toMember").val(from);
 		$("#ccMember").val('');
@@ -292,7 +292,7 @@ function populateComposeScreen(type) {
 		subject = "Re:"+subject;
 		$("#subMember").val(subject);
 		break;
-	case "Forward":
+	case "forward":
 		$("#toMember").val('');
 		$("#ccMember").val('');
 		$("#bccMember").val('');

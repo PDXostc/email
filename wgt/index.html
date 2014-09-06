@@ -144,8 +144,8 @@
 				<a id="addHome" onclick="homeSelected()"></a>
 			  <section class="inner-content">
 					<header><h1>Select An Email</h1></header>
-					<li id="accountTemplate" class="account template">
-						<p>This is my account</p>
+					<li id="accountTemplate" class="account template" onclick="toggleCheckbox()">
+						<p></p>
 						<input class="checkbox" type="checkbox" data-id="" value="">
 					</li>
 					<div class="details">
@@ -161,8 +161,62 @@
 
 		<!-- Inbox Screen style="visibility: hidden" -->
 		<div id="inboxScreen" class="inner" style="visibility: hidden">
-			<section class="inner-content">
+				<section class="inner-content">
+					<aside class="left">
+						<ul class="controls">
+							<li class="icon"></li>
+							<li class="icon" id="composeButton" onclick="loadComposeScreen()"></li>
+							<li class="icon" id="draftButton" onclick="draftSelected()">
+								<p class="label"></p>
+							</li>
+						</ul>
+					</aside>
+					<section class="main right">
+						<div class="controls">
+							<ul class="left">
+								<li class="icon" id="InboxButton" class="InboxButton" onclick="inboxButtonSeleted()"></li>
+								<li class="icon" id="changeAccountButton" onclick="loadChangeAccountScreen()">
+									<p class="label">Change Accounts</p>
+								</li>
+								<li class="icon" id="searchMail" onclick="searchMailCall()">
+									<input type="text" id="searchMailText"></input>
+								</li>
+							</ul>
+							<ul class="right">
+								<li class="icon" id="Sync" onclick="syncEmails()"></li>
+								<li class="icon" id="addHome" onclick="homeSelected()"></li>
+							</ul>
+						</div>
+						<div class="content">
+							<header>
+								<h3 id="InboxLabelCtrl" class="InboxLabelCtrl"></h3>
+							</header>
+							<ul class="mass-selection">
+								<li class="inbox-item">
+									<span style="text-align: right; margin-right: 10px;">All</span>
+									<input type="checkbox" id="CheckBoxSelectAll" onclick="selectCheckBox('All')">
+								</li>
+								<!-- 'Template' for email list item -->
+								<li id="inboxItemTemplate" class="inbox-item" data-id="">
+									<div class="status" style="visibility: hidden"></div>
+									<h3></h3>
+									<h4></h4>
+									<input type="checkbox">
+								</li>
+							</ul>
+							<ul id="inbox" class="inbox"></ul>
+							<div id="progressDiv" style="visibility: visible">Loading...</div>
+						</div>
+					</section>
+				</section>
+				<footer>	
+					<div id="Trash" class="Trash" onclick="deleteMail()"></div>
+				</footer>
+			</div>
 
+		<!-- Mail View Screen  -->
+		<div id="mailView" class="inner" style="visibility: hidden">
+			<section class="inner-content">
 				<aside class="left">
 					<ul class="controls">
 						<li class="icon"></li>
@@ -172,8 +226,6 @@
 						</li>
 					</ul>
 				</aside>
-			
-			<!-- <div id="AddAccount" class="AddAccount"	onclick="loadAddAccountScreen()"></div> -->
 				<section class="main right">
 					<div class="controls">
 						<ul class="left">
@@ -190,83 +242,37 @@
 							<li class="icon" id="addHome" onclick="homeSelected()"></li>
 						</ul>
 					</div>
-
-
 					<div class="content">
-						<header id="InboxLabelCtrl" class="InboxLabelCtrl"></header>
-						
-						<ul>
-							<li class="inbox-item"><span style="text-align: right; margin-right: 10px;">All</span><input type="checkbox" id="CheckBoxSelectAll" onclick="selectCheckBox('All')"></li>
-							<!-- 'Template' for email list item -->
-							<li id="inboxItemTemplate" class="inbox-item" data-id="">
-								<div class="status" style="visibility: hidden"></div>
-								<h3></h3>
-								<h4></h4>
-								<input type="checkbox">
-							</li>
-						</ul>
-						<ul id="inbox" class="inbox"></ul>
-						<div style="visibility: hidden">Loading...</div>
+						<header>
+							<h3 id="InboxFullViewLabelCtrl"></h3>
+							<div class="controls right">
+								<ul>
+									<li id="replyAll" class="icon" onclick="loadComposeScreen('replyAll')"></li>
+									<li id="reply" class="icon" onclick="loadComposeScreen('Reply')"></li>
+									<li id="forward" class="icon" onclick="loadComposeScreen('Forward')"></li>
+									<li id="next" class="icon right" onclick="retriveMailFilterWithNextId()"></li>
+								</ul>
+							</div>
+						</header>
+						<article id="MailHandler" class="email">
+							<header>
+								<p>From: <span id="from"></span></p>
+								<p>To: <span id="to"></span></p>
+								<p id="subject"></p>
+								<p id="emailDate"></p>
+							</header>
+							<p id="mailBody" class="body"></p>
+							<div id="viewAttachment"></div>
+						</article>
+						<div id="progressDiv" style="visibility: hidden">Loading...</div>
 					</div>
-
-
 				</section>
 			</section>
-			<footer>	
-				<div id="Trash" class="Trash" onclick="deleteMail()"></div>
+			<footer>
+				<div id="Trash" class="Trash" onclick="deleteMailFromCompose()"></div>
 			</footer>
 		</div>
-
-
-
-		<!-- Inbox Full View Screen   style="visibility: hidden" -->
-		<div id="inboxScreenFullView" class="inboxBgImg"
-			style="visibility: hidden">
-
-			<a id="addHome" onclick="homeSelected()"></a>
-			<div id="ChangeAccountButton" class="ChangeAccountButton"
-				onclick="loadChangeAccountScreen()"></div>
-			<!-- <div id="AddAccount" class="AddAccount"	onclick="loadAddAccountScreen()"></div> -->
-			<div id="Trash" class="Trash" onclick="deleteMailFromCompose()"></div>
-			<div id="Sync" class="Sync" onclick="syncEmails()"></div>
-			<div id="InboxButton" class="InboxButton"
-				onclick="inboxButtonSeleted()"></div>
-			<div id="ComposeButton" class="ComposeButton"
-				onclick="loadComposeScreen()"></div>
-			<div id="" class="draftIcon" onclick="Drafts()"></div>
-			<label id="InboxFullViewLabelCtrl" class="InboxLabelCtrl"></label>
-			<div id="ReplyAll" class="ReplyAll"
-				onclick="loadComposeScreen('ReplyAll')"></div>
-			<div id="Reply" class="Reply" onclick="loadComposeScreen('Reply')"></div>
-			<div id="Forward" class="Forward"
-				onclick="loadComposeScreen('Forward')"></div>
-			<div id="Next" class="Next" onclick="retriveMailFilterWithNextId()"></div>
 			
-			<div style="visibility: hidden">Loading...</div>
-
-			<div id="MailHandler" class="MailHandler">
-
-				<div id="" class="MailCtrl"
-					style="padding-left: 2%; padding-top: 0.9%; font-size: 100%;">From
-					:</div>
-				<div id="from" class="MailCtrlValue"
-					style="padding-left: 13%; padding-top: 1.3%"></div>
-				<div id="" class="MailCtrl"
-					style="padding-left: 2%; padding-top: 4.2%; font-size: 100%;">To
-					:</div>
-				<div id="to" class="MailCtrlValue"
-					style="padding-left: 9%; padding-top: 4.3%"></div>
-				<div id="subject" class="MailCtrl"
-					style="padding-left: 2%; padding-top: 12%"></div>
-				<div id="emailDate" class="MailCtrlValue"
-					style="padding-left: 0%; padding-top: 20%"></div>
-				<div id="mailBody" class="MailBodyValue"></div>
-				<div id="viewAttachment"></div>
-
-
-			</div>
-
-		</div>
 
 
 

@@ -54,7 +54,7 @@ char *emailServer[MAIL_SERVER_COUNT]= {"MsExchange","MobileMe","Gmail","Yahoo","
  *  Return: TRUE   :On successfull addition
  *          FALSE  :On failure                                                    
  *************************************************************** */
-gboolean  create_account_object(email_account_t **result_account,const char* address_string,const char* id_string,const char* password_string,const char *server )
+bool create_account_object(email_account_t **result_account,const char* address_string,const char* id_string,const char* password_string,const char *server )
 {
 	email_account_t *account = NULL;
 	int samsung3g_account_index;
@@ -71,16 +71,16 @@ gboolean  create_account_object(email_account_t **result_account,const char* add
              break;
 	  }
 	}       
-        if(account_type == 0xff)
+        
+	if(account_type == 0xff)
 	{
 	   LoggerE("Invaldi server name %s\n",server);
            return false;  
 	}
-    //Create email account structure.
+        
+	//Create email account structure.
 	account = (email_account_t*)malloc(sizeof(email_account_t));
 	memset(account, 0x00, sizeof(email_account_t));
-
-	LoggerE("1\n");
 
 	typedef struct {
 		int is_preset_account;
@@ -231,16 +231,15 @@ gboolean  create_account_object(email_account_t **result_account,const char* add
 
 		default:
 			LoggerE("Invalid Account Number\n");
-			return FALSE;
-			break;
+			email_free_account(&account, 1);
+			return false;
 	}
-	account->account_svc_id = 77;
+	account->account_svc_id = 77; // omg!!
 
-	LoggerE("2\n");
 	if(result_account)
 		*result_account = account;
 
-	return TRUE;
+	return (*result_account!=0);
 }
 
 /*****************************************************************************************************
@@ -253,10 +252,10 @@ gboolean  create_account_object(email_account_t **result_account,const char* add
 * Out Params:None
 *    
 * Return: 
-*     TRUE   :On successfull addition.
-*     FALSE  :On failure. 
+*     true   :On successfull addition.
+*     false  :On failure. 
 ******************************************************************************************************/
-gboolean delete_account(int account_id)
+bool delete_account(int account_id)
 {
         email_account_t *account=NULL;
         int err = EMAIL_ERROR_NONE;
@@ -274,7 +273,7 @@ gboolean delete_account(int account_id)
                 else
                         LoggerE ("email_delete_account successful \n");
         }
-        return err;
+        return (err==EMAIL_ERROR_NONE);
 }
 
 /*****************************************************************************************************
@@ -289,37 +288,41 @@ gboolean delete_account(int account_id)
  * 
  * Out Params  :None              
  * 
- *  Return: TRUE   :On successfull addition
- *          FALSE  :On failure     
+ *  Return: true   :On successful addition
+ *          false  :On failure     
 ******************************************************************************************************/
-gboolean add_account_with_validation(const char* emailid,const char* acnt,const char* pwd,const char* server )
+bool add_account_with_validation(const char* emailid,const char* acnt,const char* pwd,const char* server )
 {
 
 	LoggerE ("inside add_account_with_validation\n");
 	int err = EMAIL_ERROR_NONE;
 	email_account_t *account = NULL;
 	int handle;
-    //first create an account objects. This object will have all the details needed to
-	//create an email account using the email library.
-	//Hence pass on the input params. 
+        
+	// first create an account objects. This object will have all the details needed to
+	// create an email account using the email library.
+	// Hence pass on the input params. 
 	if(!create_account_object(&account,emailid,acnt,pwd,server)) {
 		LoggerE ("add_account_with_validation error\n");
-		return FALSE;
+		return false;
 	}
-    //Actually account creation addition happens here.
-	//Structure filled from previous call is passed here.
+        
+	// Actually account creation addition happens here.
+	// Structure filled from previous call is passed here.
 	err = email_add_account_with_validation(account, &handle);
-	if( err < 0) {
+	if( err < 0)
 		LoggerE ("email_add_account_with_validation error : %d\n", err);
-		err = email_free_account(&account, 1);
-		return FALSE;
-	}
-
-	LoggerE ("email_add_account succeed. account_id =%d \n", account->account_id);
-    //Just delete the temporary structure malloced earlier inside the
-	//'create_account_object function.
+	else	
+		LoggerE("email_add_account succeeded. account_id =%d \n", account->account_id);
+        
+	// Just delete the temporary structure malloced earlier inside the
+	// create_account_object function.
 	err = email_free_account(&account, 1);
 
-	return TRUE;
+	return (err==EMAIL_ERROR_NONE);
 }
 
+bool update_seen_flag(int accID, int mailID, bool change_status)
+{
+    return (accID > -1 && EMAIL_ERROR_NONE != email_set_flags_field(accID, &mailID, 0, EMAIL_FLAGS_SEEN_FIELD, change_status, 1));
+}

@@ -44,10 +44,10 @@ private:
 		* The callback invoked when an object is used as the target of an 'instanceof' expression.
 		*/
 	static bool hasInstance(JSContextRef ctx,
-							JSObjectRef constructor,
-							JSValueRef possibleInstance,
-							JSValueRef* exception);
-   //Add account function
+				JSObjectRef constructor,
+				JSValueRef possibleInstance,
+				JSValueRef* exception);
+	//Add account function
 	static JSValueRef addAccount(JSContextRef context,
 				JSObjectRef object,
 				JSObjectRef thisObject,
@@ -62,6 +62,12 @@ private:
 				const JSValueRef arguments[],
 				JSValueRef* exception);
 	
+	static JSValueRef updateSeenFlag(JSContextRef context,
+				JSObjectRef object,
+				JSObjectRef thisObject,
+				size_t argumentCount,
+				const JSValueRef arguments[],
+				JSValueRef* exception);
 	/**
 		 * This structure contains properties and callbacks that define a type of object.
 		 */

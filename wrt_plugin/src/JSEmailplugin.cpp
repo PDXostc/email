@@ -5,7 +5,7 @@
         			  template from the Tizen.
 * Author             :TCS & JLR
 * Owner              :JLR
-* Last Date Modified :23/07/2014
+* Last Date Modified :09/08/2014
 ********************************************************************************/
 #include "JSEmailplugin.h"
 #include "Emailplugin.h"
@@ -17,11 +17,7 @@
 #include <JSWebAPIErrorFactory.h>
 #include <ArgumentValidator.h>
 #include <CommonsJavaScript/Converter.h>
-#include <dpl/scoped_ptr.h>
 #include <sstream>
-#include <map>
-
-#include <json-glib/json-gvariant.h>	
 
 //Define email plugin JS class
 namespace DeviceAPI {
@@ -55,6 +51,7 @@ JSClassDefinition JSEmailplugin::m_classInfo = {
 JSStaticFunction JSEmailplugin::m_function[] = {
 	{ "addAccount", JSEmailplugin::addAccount, kJSPropertyAttributeNone },
 	{ "deleteAccount", JSEmailplugin::deleteAccount, kJSPropertyAttributeNone },
+	{ "updateSeenFlag", JSEmailplugin::updateSeenFlag, kJSPropertyAttributeNone },
 	{ 0, 0, 0 }
 };
 
@@ -159,7 +156,7 @@ JSValueRef JSEmailplugin::addAccount(JSContextRef context,
 
 	LoggerD("calling emailplugin::addAccount");
 	//Calling the emailplugin to add account.
-	int error = emailplugin->addAccount(emailId,acntId,passWord,server,successCallback, errorCallback, gContext);
+	emailplugin->addAccount(emailId,acntId,passWord,server,successCallback, errorCallback, gContext);
 	LoggerD("ugin::addAccount %d",error);
         JSStringRef jsonString = converter.toJSStringRef(json.str());
         return JSValueMakeFromJSONString(context, jsonString);
@@ -213,13 +210,48 @@ JSValueRef JSEmailplugin::deleteAccount(JSContextRef context,
 
         LoggerD("calling emailplugin::deleteAccount");
         //Delate tha account.
-        int error = emailplugin->deleteAccount(acntId,successCallback, errorCallback, gContext);
+        emailplugin->deleteAccount(acntId,successCallback, errorCallback, gContext);
         JSStringRef jsonString = converter.toJSStringRef(json.str());
-        LoggerD("ugin::addAccount %d",error);
+        LoggerD("plugin::addAccount %d",error);
         return JSValueMakeFromJSONString(context, jsonString);
 }
 
+JSValueRef JSEmailplugin::updateSeenFlag(JSContextRef context, JSObjectRef object, JSObjectRef thisObject, size_t argumentCount,
+					      const JSValueRef arguments[], JSValueRef* exception)
+{
+	EmailpluginPrivObject* privateObject = static_cast<EmailpluginPrivObject*>(JSObjectGetPrivate(thisObject));
+	if(!privateObject)
+	{
+		DeviceAPI::Common::UnknownException err("Private object is NULL.");
+		return JSWebAPIErrorFactory::postException(context, exception, err);
+	}
 
+	EmailpluginPtr emailplugin(privateObject->getObject());
+	if(!emailplugin)
+	{
+		DeviceAPI::Common::UnknownException err("Email plugin object is NULL.");
+		return JSWebAPIErrorFactory::postException(context, exception, err);
+	}
+
+	ArgumentValidator validator(context, argumentCount, arguments);
+	JSContextRef gContext=privateObject->getContext();
+
+	// mandatory args
+	int accID=validator.toNumber(0);
+	int mailID=validator.toNumber(1);
+	bool seenFlag=validator.toBool(2);
+
+	// optional args
+	JSObjectRef successCallback=validator.toFunction(3, true);
+	JSObjectRef errorCallback=validator.toFunction(4, true);
+	JSValueProtect(context, successCallback);
+	JSValueProtect(context, errorCallback);
+
+	LoggerE("calling updateSeenFlag now");
+	emailplugin->updateSeenFlag(accID,mailID,seenFlag,successCallback,errorCallback,gContext);
+
+	return JSValueMakeUndefined(context);
+}
 
 }
 }

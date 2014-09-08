@@ -6,16 +6,16 @@
   
 * Author      : TCS & JLR
 * Owner       : JLR
-* Last Date Modified: 23/07/2014
+* Last Date Modified: 09/08/2014
 ********************************************************************************/
 #ifndef EMAIL_STUBS_H
 #define EMAIL_STUBS_H
 
-#include <stdio.h>
 /* These functions are exported to the Emailplugin.cpp*/
 //Delete an account.
-gboolean delete_account(int acntId );
+bool delete_account(int acntId );
 //Add an account matching to the email id.
-gboolean add_account_with_validation(const char* emailid,const char* acnt,const char* pwd,const char *server );
+bool add_account_with_validation(const char* emailid,const char* acnt,const char* pwd,const char *server );
+bool update_seen_flag(int accID, int mailID, bool change_status);
 
 #endif //EMAIL_STUBS_H

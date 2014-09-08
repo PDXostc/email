@@ -8,65 +8,34 @@
   
 * Author      : TCS & JLR
 * Owner       : JLR
-* Modified Date: 23/07/2013
+* Modified Date: 09/08/2014
 **********************************************************************************/
 
 #ifndef EMAILPLUGIN_H
 #define EMAILPLUGIN_H
 
 //The below header files taken as is from the original Vehicle example. 
-#include <list>
 #include <string>
-#include <map>
-#include <dpl/mutex.h>
 #include <dpl/shared_ptr.h>
 #include <JavaScriptCore/JavaScript.h>
-#include <gio/gio.h>
-#include <Logger.h>
-
-class AbstractPropertyType;
 
 namespace DeviceAPI {
 namespace Emailplugin {
 
-class EmailpluginSubscribeCB
-{
-public: 
-	JSObjectRef callback;
-	JSObjectRef errorCallback;
-	JSContextRef context;
-};
-
-
 class EmailpluginMaster
 {
 public:
-        //Error codes for the API
-	enum ErrorType {
-		None = 0,
-		NotSupported = 1,
-		PermissionDenied = 2,
-		InvalidArguments = 3,
-		Unknown = 10
-	};
-
-
-	EmailpluginMaster();
-	
-private: /// methods:
-
-public:
-        //Called from JS object 
-       
         //Adds am account based on the input acnt ID.
-	EmailpluginMaster::ErrorType addAccount(std::string email,std::string acnt,std::string pass, std::string server,JSObjectRef successCallback, JSObjectRef errorCallback, JSContextRef context );
-        //Deletes am account based on the input acnt ID
-	EmailpluginMaster::ErrorType deleteAccount(int acntId,JSObjectRef successCallback, JSObjectRef errorCallback, JSContextRef context);
+	void addAccount(const std::string &email,const std::string &acnt,const std::string &pass, const std::string &server,
+	                                        JSObjectRef successCallback, JSObjectRef errorCallback, JSContextRef context);
+        //Deletes an account based on the input acnt ID
+	void deleteAccount(int acntId,JSObjectRef successCallback, JSObjectRef errorCallback, JSContextRef context);
 
+	// update seen flag (wrt-plugin-tizen contains a bug which causes IMAP server to be out of sync)	
+	void updateSeenFlag(int accountId, int mailId, bool isReadChangeStatus, JSObjectRef successCallback, JSObjectRef errorCallback, JSContextRef context);
 };
 
 typedef DPL::SharedPtr<EmailpluginMaster> EmailpluginPtr;
-
 
 }
 }

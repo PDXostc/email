@@ -107,7 +107,7 @@ function loadDraftScreen() {
 	$("#chooseEmailAccount").hide();
 	$("#inboxScreen").hide();
 	$("#mailView").hide();
-	$("#composeCtrlDiv").hide();
+	$("#composeView").hide();
 	$("#deleteAccountDiv").hide();
 	$("#draftScreen").css({"visibility":"visible"});
 	$("#draftScreen").show(400,populateDraft);
@@ -123,7 +123,7 @@ function loadDeleteAccConfirmationScreen() {
 	$("#chooseEmailAccount").hide();
 	$("#inboxScreen").hide();
 	$("#mailView").hide();
-	$("#composeCtrlDiv").hide();
+	$("#composeView").hide();
 	$("#deleteAccountDiv").css({"visibility":"visible"});
 	$("#deleteAccountDiv").show();
 	$("#draftScreen").hide();
@@ -140,7 +140,7 @@ function loadMailFullViewScreen() {
 	$("#inboxScreen").hide();
 	$("#mailView").css({"visibility":"visible"});
 	$("#mailView").show();
-	$("#composeCtrlDiv").hide();
+	$("#composeView").hide();
 	$("#deleteAccountDiv").hide();
 	$("#draftScreen").hide();
 	$("#fileAttachmentDiv").hide();
@@ -165,7 +165,7 @@ function loadInboxScreen(type) {
 	$("#inboxScreen").css({"visibility":"visible"});
 	$("#inboxScreen").show(400,populateInbox);
 	$("#mailView").hide();
-	$("#composeCtrlDiv").hide();
+	$("#composeView").hide();
 	$("#deleteAccountDiv").hide();
 	$("#draftScreen").hide();
 	$("#fileAttachmentDiv").hide();
@@ -181,7 +181,7 @@ function loadAddAccountScreen() {
 	$("#chooseEmailAccount").hide();
 	$("#inboxScreen").hide();
 	$("#mailView").hide();
-	$("#composeCtrlDiv").hide();
+	$("#composeView").hide();
 	$("#deleteAccountDiv").hide();
 	$("#draftScreen").hide();
 	$("#fileAttachmentDiv").hide();
@@ -200,7 +200,7 @@ function loadChangeAccountScreen() {
 	});
 	$("#inboxScreen").hide();
 	$("#mailView").hide();
-	$("#composeCtrlDiv").hide();
+	$("#composeView").hide();
 	$("#deleteAccountDiv").hide();
 	$("#draftScreen").hide();
 	$("#fileAttachmentDiv").hide();
@@ -215,7 +215,7 @@ function addAccount(accountType)
 	console.log("Accont type Selected is :: "+selectedAccountType);
 	$("#addAccountDiv").css({"visibility":"hidden"});
 	$("#addAccountDiv").hide();
-	$("#composeCtrlDiv").hide();
+	$("#composeView").hide();
 	$("#deleteAccountDiv").hide();
 	$("#addAccountDetailsDiv").css({"visibility":"visible"});
 	$("#addAccountDetailsDiv").show();
@@ -235,8 +235,8 @@ function loadComposeScreen(type){
 	$("#inboxScreen").hide();
 	$("#mailView").hide();
 	$("#deleteAccountDiv").hide();
-	$("#composeCtrlDiv").css({"visibility":"visible"});
-	$("#composeCtrlDiv").show();
+	$("#composeView").css({"visibility":"visible"});
+	$("#composeView").show();
 	$("#draftScreen").hide();
 	$("#fileAttachmentDiv").hide();
 	fillDraftCount();
@@ -252,8 +252,8 @@ function loadAttachmentScreen(){
 	$("#inboxScreen").hide();
 	$("#mailView").hide();
 	$("#deleteAccountDiv").hide();
-	$("#composeCtrlDiv").hide();
-	$("#composeCtrlDiv").hide();
+	$("#composeView").hide();
+	$("#composeView").hide();
 	$("#draftScreen").hide();
 	$("#fileAttachmentDiv").css({"visibility":"visible"});
 	$("#fileAttachmentDiv").show(400,listAllFiles);
@@ -265,52 +265,52 @@ function loadAttachmentScreen(){
 
 function populateComposeScreen(type) {
 	var to = $("#to").text();
-	var from = $("#from").text();
+	var from = $("#from").val();
 	var date = $("#date").text();
-	var subject = $("#subject").text();
+	var subject = $("#composeBcc").text();
 	var mailBody = $("#mailBody").text();
 	var attachmentSrc = $("#attachmentDiv").attr('src');
 	switch(type){
 	case "replyAll":
 		clearAttachmentsCompose();
 		var allToAddress = from+","+to;
-		$("#toMember").val(allToAddress);
-		$("#ccMember").val('');
-		$("#bccMember").val('');
+		$("#composeTo").val(allToAddress);
+		$("#composeCc").val('');
+		$("#composeBcc").val('');
 		mailBody = "\n\n\n\n\n\n\n\n\n\n--------------------------------------------------------------------\nFrom : "+from+"\n"+"To : "+to+"\n\n\n"+subject+"\n\n"+date+"\n\n\n"+mailBody+"";
-		$("#bodyDetails").val(mailBody);
+		$("#composeBody").val(mailBody);
 		subject = "Re:"+subject;
-		$("#subMember").val(subject);
+		$("#composeBcc").val(subject);
 		break;
 	case "reply":
 		clearAttachmentsCompose();
-		$("#toMember").val(from);
-		$("#ccMember").val('');
-		$("#bccMember").val('');
+		$("#composeTo").val(from);
+		$("#composeCc").val('');
+		$("#composeBcc").val('');
 		mailBody = "\n\n\n\n\n\n\n\n\n\n--------------------------------------------------------------------\nFrom : "+from+"\n"+"To : "+to+"\n\n\n"+subject+"\n\n"+date+"\n\n\n"+mailBody+"";
-		$("#bodyDetails").val(mailBody);
+		$("#composeBody").val(mailBody);
 		subject = "Re:"+subject;
-		$("#subMember").val(subject);
+		$("#composeBcc").val(subject);
 		break;
 	case "forward":
-		$("#toMember").val('');
-		$("#ccMember").val('');
-		$("#bccMember").val('');
+		$("#composeTo").val('');
+		$("#composeCc").val('');
+		$("#composeBcc").val('');
 		mailBody = "\n\n\n\n\n\n\n\n\n\n--------------------------------------------------------------------\nFrom : "+from+"\n"+"To : "+to+"\n\n\n"+subject+"\n\n"+date+"\n\n\n"+mailBody+"";
-		$("#bodyDetails").val(mailBody);
+		$("#composeBody").val(mailBody);
 		subject = "Fw:"+subject;
-		$("#subMember").val(subject);
+		$("#composeBcc").val(subject);
 		clearAttachmentsCompose();
 		break;
 	case "draft":
 		//Do nothing
 		break;
 	default :
-		$("#toMember").val('');
-	$("#ccMember").val('');
-	$("#bccMember").val('');
-	$("#subMember").val('');
-	$("#bodyDetails").val('');
+		$("#composeTo").val('');
+	$("#composeCc").val('');
+	$("#composeBcc").val('');
+	$("#composeBcc").val('');
+	$("#composeBody").val('');
 	clearAttachmentsCompose();
 	break;
 	}
@@ -635,8 +635,8 @@ function setInboxTitle() {
 	var inboxComposeDiv = document.getElementById('InboxComposeLabelCtrl');
 	inboxComposeDiv.innerText = INBOX + currentEmailSelectedName;
 
-	var inboxComposeFromDiv = document.getElementById('fromComposeDiv');
-	inboxComposeFromDiv.innerText = currentEmailSelectedName;
+	var inboxComposeFrom = document.getElementById("composeFrom");
+	inboxComposeFrom.value = currentEmailSelectedName;
 }
 
 function populateDraftScreen(msg) {
@@ -779,9 +779,9 @@ function setViewMails(message){
 			populateAttachFilesOnViewMail(attachFilesArray)
 		}
 
-		$("#from").text(messageFrom);
+		$("#from").val(messageFrom);
 		$("#to").text(messageTo);
-		$("#subject").text(messageSubject);
+		$("#composeBcc").text(messageSubject);
 		$("#date").text(messageDate);
 		$("#mailBody").html(messageBody);
 
@@ -809,16 +809,16 @@ function selectCheckBox(type) {
 function saveMailToDraft() {
 	
 	console.log("Inside Save mail to Draft");
-	if(currentScreenLoaded === "ComposeScreen" && ($("#subMember").val() || $("#bodyDetails").val())){
+	if(currentScreenLoaded === "ComposeScreen" && ($("#composeBcc").val() || $("#composeBody").val())){
 		
 		console.log("Drafts,Inside the Draft save mail");
 		
 		var to = [];
 		var cc = [];
 		var bcc = [];
-		var from = $("#fromComposeDiv").text();;
-		var subject = $("#subMember").val();
-		var mailbody = $("#bodyDetails").val();
+		var from = $("#from").val();;
+		var subject = $("#composeBcc").val();
+		var mailbody = $("#composeBody").val();
 
 		var hasAttachment = false;
 		var attachmentArray = new Array();
@@ -827,20 +827,20 @@ function saveMailToDraft() {
 			hasAttachment = true;
 		}
 
-		if($("#toMember").val()){
-			to = $("#toMember").val().split(';');
+		if($("#composeTo").val()){
+			to = $("#composeTo").val().split(';');
 		}else{
 			to = null;
 		}
 
-		if($("#ccMember").val()){
-			cc = $("#ccMember").val().split(';');
+		if($("#composeCc").val()){
+			cc = $("#composeCc").val().split(';');
 		}else{
 			cc = null;
 		}
 
-		if($("#bccMember").val()){
-			bcc = $("#bccMember").val().split(';');
+		if($("#composeBcc").val()){
+			bcc = $("#composeBcc").val().split(';');
 		}else{
 			bcc = null;
 		}
@@ -907,27 +907,27 @@ function editContinueCompose() {
 
 
 		if(index.item.to){
-			$("#toMember").val(index.item.to);
+			$("#composeTo").val(index.item.to);
 		}else{
-			$("#toMember").val("");
+			$("#composeTo").val("");
 		}
 
 		if(index.item.cc){
-			$("#ccMember").val(index.item.cc);
+			$("#composeCc").val(index.item.cc);
 		}else{
-			$("#ccMember").val("");
+			$("#composeCc").val("");
 		}
 
 		if(index.item.bcc){
-			$("#bccMember").val(index.item.bcc);
+			$("#composeBcc").val(index.item.bcc);
 		}else{
-			$("#bccMember").val("");
+			$("#composeBcc").val("");
 		}
 
-		$("#bodyDetails").val(index.item.mailBody);
+		$("#composeBody").val(index.item.mailBody);
 
 		subject = "Re:"+subject;
-		$("#subMember").val(index.item.subject);
+		$("#composeBcc").val(index.item.subject);
 
 		//While editing any old draft msg , attachment wont be available 
 		clearAttachmentsCompose();

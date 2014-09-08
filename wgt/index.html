@@ -114,24 +114,24 @@
 				<form class="details">
 					<div class="input-group">
 						<label for="EmailAddressTextbox">Email address:</label>
-						<input id="EmailAddressTextbox" class="TextBox" required type="email">
+						<input id="EmailAddressTextbox" required type="email">
 					</div>
 
 					<div class="input-group">
 						<label for="AddAccountUserNameDescription">User Name:</label>
-						<input id="UsernameTextbox" class="TextBox" required type="text">
+						<input id="UsernameTextbox" required type="text">
 						<p class="description">The username you sign-in with at your email provider.</p>
 					</div>
 					
 					<div class="input-group">
 						<label for="PasswordTextbox">Password:</label>
-						<input id="PasswordTextbox" class="TextBox" required type="password">
+						<input id="PasswordTextbox" required type="password">
 						<p  class="description">The password you use with your username at your email provider.</p>
 					</div>
 
 					<div class="input-group">
 						<label for="DescriptionTextbox">Description:</label>
-						<input id="DescriptionTextbox" class="TextBox" type="text">
+						<input id="DescriptionTextbox" type="text">
 						<p class="description">This will identify the account to access when multiple email accounts exist.</p>
 					</div>
 				</form>
@@ -189,7 +189,7 @@
 						</div>
 						<div class="content">
 							<header>
-								<h3 id="InboxLabelCtrl" class="InboxLabelCtrl"></h3>
+								<h3 id="InboxLabelCtrl"></h3>
 							</header>
 							<ul class="mass-selection">
 								<li class="inbox-item">
@@ -256,9 +256,9 @@
 						</header>
 						<article id="MailHandler" class="email">
 							<header>
-								<p>From: <span id="from"></span></p>
-								<p>To: <span id="to"></span></p>
-								<p id="subject"></p>
+								<p>From: <span id="viewFrom"></span></p>
+								<p>To: <span id="viewTo"></span></p>
+								<p id="viewSubject"></p>
 								<p id="emailDate"></p>
 							</header>
 							<p id="mailBody" class="body"></p>
@@ -278,56 +278,73 @@
 
 		<!-- Compose Screen   style="visibility: hidden" -->
 
-		<div id="composeCtrlDiv" class="inboxBgImg" style="visibility: hidden">
-			<a id="addHome" onclick="homeSelected()"></a>
-			<div id="ChangeAccountButton" class="ChangeAccountButton"
-				onclick="loadChangeAccountScreen()"></div>
-			<!-- <div id="AddAccount" class="AddAccount"	onclick="loadAddAccountScreen()"></div> -->
+		<div id="composeView" class="inner" style="visibility: hidden">
+			<section class="inner-content">
+				<aside class="left">
+					<ul class="controls">
+						<li class="icon"></li>
+						<li class="icon" id="draftButton" onclick="draftSelected()">
+							<p class="label"></p>
+						</li>
+						<li class="icon" id="attachments" onclick="loadAttachmentScreen()"></li>
+					</ul>
+				</aside>
+				<section class="main right">
+					<div class="controls">
+						<ul class="left">
+							<li class="icon" id="InboxButton" class="InboxButton" onclick="inboxButtonSeleted()"></li>
+							<li class="icon" id="changeAccountButton" onclick="loadChangeAccountScreen()">
+								<p class="label">Change Accounts</p>
+							</li>
+						</ul>
+						<ul class="right">
+							<li class="icon" id="addHome" onclick="homeSelected()"></li>
+						</ul>
+					</div>
 
-			<div id="Sync" class="Sync" onclick="syncEmails()"></div>
-			<div id="InboxButton" class="InboxButton"
-				onclick="inboxButtonSeleted()"></div>
-			<div id="ComposeButton" class="ComposeButton"
-				onclick="loadComposeScreen()"></div>
-			<div id="draftIcon" class="draftIcon" onclick="draftSelected()"></div>
-			<div id="attachments" onclick="loadAttachmentScreen()"></div>
-			<label id="InboxComposeLabelCtrl" class="InboxLabelCtrl">Inbox:</label>
-			<div id="sendDiv" class="sendDiv" onclick="sendMail()"></div>
-			
-			<div style="visibility: hidden">Loading...</div>
+					<div class="content">
+						<header>
+							<h3 id="InboxComposeLabelCtrl">Inbox:</h3>
+							<div class="controls right">
+							<ul>
+								<li id="send" class="icon right" onclick="sendMail()"></li>
+							</ul>
+							</div>
+						</header>
+						<form class="compose">
+							<div class="details">
+								<div class="input-group">
+									<label for="composeTo">To:</label>
+									<input id="composeTo" type="text">
+								</div>
+								<div class="input-group">
+									<label for="composeCc">cc:</label>
+									<input id="composeCc" type="text">
+								</div>
+								<div class="input-group">
+									<label for="composeBcc">bcc:</label>
+									<input id="composeBcc" type="text">
+								</div>
+								<div class="input-group">
+									<label for="composeFrom">From:</label>
+									<input id="composeFrom" type="text">
+								</div>
+								<div class="input-group">
+									<label for="composeSubject">Subject:</label>
+									<input id="composeSubject" type="text">
+								</div>
+							</div>
+							<div class="input-group">
+								<textarea id="composeBody" placeholder="This is where you type your message..."></textarea>
+							</div>
+						</form>
+						<div style="visibility: hidden">Loading...</div>
 
-			<div id="structureMail">
-				<label class="MailCtrl"
-					style="position: absolute; left: 4%; top: 16%; font-size: 110%;">To:</label>
-				<input id="toMember" class="TextBox" type="text"
-					style="width: 80%; top: 16%; left: 10%; height: 10%"> <label
-					class="MailCtrl"
-					style="position: absolute; left: 22%; top: 29%; font-size: 110%;">cc:
-				</label> <input id="ccMember" class="TextBox" type="text"
-					style="top: 29%; left: 27%; height: 10%; width: 28%;"> <label
-					class="MailCtrl"
-					style="position: absolute; left: 58%; top: 29%; font-size: 110%;">bcc:
-				</label> <input id="bccMember" class="TextBox" type="text"
-					style="top: 29%; left: 67%; height: 10%; width: 23%;"> <label
-					class="MailCtrl"
-					style="position: absolute; left: 4%; top: 61%; font-size: 110%;">From:
-				</label> <label id="fromComposeDiv" class="fromDetails"
-					style="position: absolute; left: 15%; top: 62%; font-size: 100%;">
-				</label> <label class="MailCtrl"
-					style="position: absolute; left: 4%; top: 74%; font-size: 110%;">Subject:
-				</label> <input id="subMember" class="TextBox" type="text"
-					style="top: 75%; left: 18%; width: 70%; height: 10%">
-			</div>
-
-			<textarea id="bodyDetails"></textarea>
-			<div id="composeAttach"></div>
+					</div>
+					<div id="composeAttach"></div>
+				</section>
+			</section>
 		</div>
-
-
-
-
-
-
 
 		<!-- Draft Screen    style="visibility: hidden" -->
 		<div id="draftScreen" class="inboxBgImg">
@@ -342,8 +359,7 @@
 			<div id="ComposeButton" class="ComposeButton"
 				onclick="loadComposeScreen()"></div>
 			<div id="draftScreen" class="draftIcon" onclick="draftSelected()"></div>
-			<label id="DraftLabelCtrl" class="InboxLabelCtrl">Drafts
-				Saved</label>
+			<label id="DraftLabelCtrl">Drafts Saved</label>
 			<div id="sendDraftDiv" class="sendDiv" onclick="sendDraftMail()"></div>
 			<div id="DraftDiv" class="InboxHandler"></div>
 			<div id="editContinue" class="editContinue themeColor"

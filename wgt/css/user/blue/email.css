@@ -57,22 +57,47 @@ ul {
 
 /******** Form Styles ********/
 
+textarea {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+textarea,
+input[type="checkbox"],
+input[type=text],
+input[type=email],
+input[type=password] {
+	-webkit-appearance: none;
+}
+
+textarea,
+input[type=text],
+input[type=email],
+input[type=password] {
+	border: 1px solid rgb(135, 206, 235);
+	background: white;
+}
+
 input[type=text],
 input[type=email],
 input[type=password] {
 	position: absolute;
 	right: 0;
 	width: 67%;
-	border: 1px solid rgb(135, 206, 235);
-	background: white;
 }
 
+textarea,
+input[type=text],
+input[type=email],
+input[type=password],
+textarea:focus,
 input[type=text]:focus,
 input[type=email]:focus,
 input[type=password]:focus {
   padding: 3px 0px 3px 3px;
 }
 
+textarea:focus,
 input[type=text]:focus,
 input[type=email]:focus,
 input[type=password]:focus {
@@ -87,7 +112,6 @@ input[type="checkbox"] {
   margin: 0 0.4em 0.4em 0;
   border: 1px solid rgba(0, 0, 0, 0.3);
   background-color: white;
-  -webkit-appearance: none;
   -webkit-transition: box-shadow 200ms;
    box-shadow:inset 1px 1px 0 #fff, 0 1px 1px rgba(0,0,0,0.1);
   -webkit-border-radius:2px;
@@ -103,7 +127,7 @@ input[type="checkbox"]:checked {
 .input-group {
 	border: none;
 	position: relative;
-	padding: 1%;
+	/*padding: 1%;*/
 }
 
 /******** End Form Style ********/
@@ -357,13 +381,15 @@ footer {
 }
 
 #inboxScreen .inner-content,
-#mailView .inner-content {
+#mailView .inner-content,
+#composeView .inner-content {
 	background: none;
 	top: 2%;
 }
 
 #inboxScreen .main,
-#mailView .main {
+#mailView .main,
+#composeView .main {
 	float: right;
 	margin: 0;
 	width: 92%;
@@ -381,7 +407,6 @@ footer {
 
 label {
 	font-weight: bold;
-	font-size: 150%;
 }
 
 .details {
@@ -393,6 +418,11 @@ label {
 
 .details div {
 	margin-bottom: 4%;
+}
+
+.compose .details {
+	margin: 0;
+	min-height: 0;
 }
 
 .description {
@@ -472,22 +502,6 @@ label {
 	background-repeat: no-repeat;
 }
 
-.ComposeButton {
-	position: absolute;
-	top: 7%;
-	left: 0%;
-	width: 8%;
-	height: 7%;
-	background-image: url(./images/email/new_compose_message_icon.png);
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-}
-
-.InboxLabelCtrl {
-	font-weight: bold;
-	color: white;
-}
-
 .status {
 	left: 3%;
 	width: 3%;
@@ -511,6 +525,10 @@ h3 {
 .content header .icon {
 	background-position: center center;
 	height: inherit;
+}
+
+.content header .icon.right {
+	margin-right: 4%;
 }
 
 .content header ul {
@@ -566,6 +584,16 @@ h4 {
 	background-image: url(./images/email/next_icon_white.png);
 }
 
+#send.icon {
+	background-image: url(./images/email/send_icon_white.png);
+}
+
+#attachments.icon {
+	background-image: url(./images/email/attachment_icon_white.png);
+	background-position: center center;
+}
+
+
 .MailHandler {
 	background-color: white;
 	width: 86%;
@@ -608,19 +636,6 @@ h4 {
 	height: 15%;
 	background-size: auto 100%;
 	background-repeat: no-repeat;
-}
-
-#attachments {
-	position: absolute;
-	top: 22%;
-	left: 2%;
-	width: 3%;
-	height: 5%;
-	background-image: url(./images/email/paperclip_attachment_icon.png);
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-	font-size: 250%;
-	color: rgb(100, 149, 237);
 }
 
 #structureMail {

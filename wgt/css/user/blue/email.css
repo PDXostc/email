@@ -41,6 +41,11 @@ input[type="button"] {
 	display: inline-block;
 }
 
+/* Overrides audiocontrols.css */
+.left:active {
+	background: none;
+}
+
 .right {
 	position: absolute;
 	right: 0;
@@ -386,14 +391,16 @@ footer {
 
 #inboxScreen .inner-content,
 #mailView .inner-content,
-#composeView .inner-content {
+#composeView .inner-content,
+#draftScreen .inner-content {
 	background: none;
 	top: 2%;
 }
 
 #inboxScreen .main,
 #mailView .main,
-#composeView .main {
+#composeView .main,
+#draftScreen .main {
 	float: right;
 	margin: 0;
 	width: 92%;
@@ -622,7 +629,7 @@ h4 {
 	background-image: url(./images/email/next_icon_white.png);
 }
 
-#send.icon {
+#send.icon, #sendDraft.icon {
 	background-image: url(./images/email/send_icon_white.png);
 }
 
@@ -714,21 +721,38 @@ h4 {
 	background-color: transparent;
 }
 
-#inboxItemTemplate {
+#inboxItemTemplate,
+#draftItemTemplate {
 	display: none;
 }
 
-.inbox, .email {
+.email {
 	height: 92%;
 }
 
-.inbox, .email, .attachments {
+.inbox, .email, .draftbox, .attachments {
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
 
 .inbox {
 	height: 87%;
+}
+
+.draftbox {
+	position: absolute;
+	bottom: 13%;
+	top: 13%;
+}
+
+#draftScreen .button-group {
+	position: absolute;
+	bottom: 0;
+	top: 87%;
+	width: 100%;
+	background-color: #eee;
+	margin: 0;
+	line-height: 88px;
 }
 
 .email {
@@ -743,18 +767,19 @@ h4 {
 	height: auto;
 }
 
-.inbox-item, .email header, .attachments li {
+.inbox-item, .draft-item, .email header, .attachments li {
 	border-bottom: 1px solid lightgrey;
 }
 
-.inbox-item {
+.inbox-item, .draft-item {
 	padding: 10px 0;
 	margin: 0 10px;
 	min-height: 20px;
 }
 
 .inbox-item .checkbox,
-.attachments .checkbox {
+.attachments .checkbox,
+.draft-item .checkbox {
 	position: absolute;
 	top: 10px;
 	right: 10px;
@@ -775,35 +800,4 @@ h4 {
 	background-image: url(./images/email/send_icon.png);
 	background-size: auto 100%;
 	background-repeat: no-repeat;
-}
-
-#DraftDiv {
-	position: absolute;
-	top: 13%;
-	left: 9%;
-	background-color: white;
-	width: 88%;
-	height: 66%;
-	overflow-y: auto;
-	overflow-x: hidden;
-}
-
-#editContinue {
-	position: absolute;
-	top: 80%;
-	left: 15%;
-	background-image: url(./images/email/edit_continue.png);
-	background-size: auto 100%;
-	width: 35%;
-	height: 4%;
-}
-
-#cancel {
-	position: absolute;
-	top: 80%;
-	left: 55%;
-	background-image: url(./images/email/cancel.png);
-	background-size: auto 100%;
-	width: 25%;
-	height: 4%;
 }

@@ -347,26 +347,73 @@
 			</div>
 
 			<!-- Draft Screen    style="visibility: hidden" -->
-			<div id="draftScreen" class="inboxBgImg">
-				<a id="addHome" onclick="homeSelected()"></a>
-				<div id="ChangeAccountButton" class="ChangeAccountButton"
-					onclick="loadChangeAccountScreen()"></div>
-				<!-- <div id="AddAccount" class="AddAccount"	onclick="loadAddAccountScreen()"></div> -->
-				<div id="Trash" class="Trash" onclick="deleteMail()"></div>
-				<div id="Sync" class="Sync" onclick="syncEmails()"></div>
-				<div id="InboxButton" class="InboxButton"
-					onclick="inboxButtonSeleted()"></div>
-				<div id="ComposeButton" class="ComposeButton"
-					onclick="loadComposeScreen()"></div>
-				<div id="draftScreen" class="draftIcon" onclick="draftSelected()"></div>
-				<label id="DraftLabelCtrl">Drafts Saved</label>
-				<div id="sendDraftDiv" class="sendDiv" onclick="sendDraftMail()"></div>
-				<div id="DraftDiv" class="InboxHandler"></div>
-				<div id="editContinue" class="editContinue themeColor"
-					onclick="editContinueCompose()"></div>
-				<div id="cancel" class="themeColor" onclick="inboxButtonSeleted()"></div>		
-				<div style="visibility: hidden">Loading...</div>
+			<div id="draftScreen" class="inner">
+				<section class="inner-content">
+					<aside class="left">
+						<ul class="controls">
+							<li class="icon"></li>
+							<li class="icon" id="composeButton" onclick="loadComposeScreen()"></li>
+							<li class="icon" id="draftButton" onclick="draftSelected()">
+								<p class="label"></p>
+							</li>
+						</ul>
+					</aside>
+					<section class="main right">
+						<div class="controls">
+							<ul class="left">
+								<li class="icon" id="InboxButton" class="InboxButton" onclick="inboxButtonSeleted()"></li>
+								<li class="icon" id="changeAccountButton" onclick="loadChangeAccountScreen()">
+									<p class="label">Change Accounts</p>
+								</li>
+								<li class="icon" id="searchMail" onclick="searchMailCall()">
+									<input type="text" id="searchMailText"></input>
+								</li>
+							</ul>
+							<ul class="right">
+								<li class="icon" id="Sync" onclick="syncEmails()"></li>
+								<li class="icon" id="addHome" onclick="homeSelected()"></li>
+							</ul>
+						</div>
+						<div class="content">
+							<header>
+								<h3 id="DraftLabelCtrl">Drafts Saved</h3>
+								<div class="controls right">
+									<ul>
+										<li id="sendDraft" class="icon right" onclick="sendDraftMail()"></li>
+									</ul>
+								</div>
+							</header>
+							<ul class="mass-selection">
+								<li class="draft-item">
+									<span>All</span>
+									<input type="checkbox" class="checkbox" id="CheckBoxSelectAll" onclick="selectCheckBox('All')">
+								</li>
+								<!-- 'Template' for draft list item -->
+								<li id="draftItemTemplate" class="draft-item" data-id="">
+									<h3></h3>
+									<h4></h4>
+									<input type="checkbox" class="checkbox">
+								</li>
+							</ul>
+							<ul id="drafts" class="draftbox"></ul>
+							<!-- buttons -->
+							<div class="button-group">
+								<button type="button" id="editContinue" class="themeColor" onclick="editContinueCompose()">Continue editing</button>
+								<button type="button" id="cancel" class="themeColor" onclick="inboxButtonSeleted()">Cancel</button>
+							</div>
+							<!-- End buttons -->
+							<!-- <div id="editContinue" class="editContinue themeColor" onclick="editContinueCompose()"></div> -->
+							<!-- <div id="cancel" class="themeColor" onclick="inboxButtonSeleted()"></div> -->
+							<div id="progressDiv" style="visibility: hidden">Loading...</div>
+						</div>
+					</section>	
+				</section>
+				<footer>	
+					<div id="Trash" class="Trash" onclick="deleteMail()"></div>
+				</footer>
 			</div>
+
+			<!-- Delete Email Confirmation -->
 			<div id="deleteEmailPopDiv" class="deleteAccountPop"
 				style="padding-left: 6%; visibility: hidden">
 				<label class="DeleteAccountLabelCtrl"

@@ -556,40 +556,25 @@ function setInboxTitle() {
 }
 
 function populateDraftScreen(msg) {
-	
+	var draftbox = document.getElementById('drafts');
+	var draftItemTemplate = document.getElementById("draftItemTemplate");
+	var itemClone = draftItemTemplate.cloneNode(true);
+	itemClone.removeAttribute("id");
+	itemClone.dataset.id = msg.mailId;
 		
-	var outputInboxScreen = document.getElementById("DraftDiv");
-	var messageItemBody = document.createElement('div');
-	messageItemBody.dataset.id = count;
+	var msgSubject = itemClone.querySelector('h3');
+	msgSubject.innerText = msg.subject;
 
-	messageItemBody.style.top = (count + FIXED) + "%";
+	var msgBody = itemClone.querySelector('h4');
+	msgBody.innerText = msg.mailBody;
 
-
-	var messageItemBodySubject = document.createElement('h3');
-	messageItemBodySubject.innerText = msg.subject;
-	messageItemBodySubject.className = "MsgItemBodySubject";
-
-	var messageItemBodyBody = document.createElement('h4');
-	messageItemBodyBody.innerText = msg.mailBody;
-	messageItemBodyBody.className = "MsgItemBodyBody";
-
-	var messageItemBodyCheckBox = document.createElement('input');
-	messageItemBodyCheckBox.type = "checkbox";
-	messageItemBodyCheckBox.className = "MessageItemBodyCheckBox";
-	messageItemBodyCheckBox.id = "messageItemBodyCheckBox" +count;
-	messageItemBodyCheckBox.value = msg.mailId;
-	messageItemBodyCheckBox.addEventListener("click",
+	var msgCheckBox = itemClone.querySelector('.checkbox');
+	msgCheckBox.id = count;
+	msgCheckBox.value = msg.mailId;
+	msgCheckBox.addEventListener("click",
 			selectCheckBox.bind(this, msg.mailId), false);
 
-
-
-	messageItemBody.appendChild(messageItemBodySubject);
-	messageItemBody.appendChild(messageItemBodyBody);
-	messageItemBody.appendChild(messageItemBodyCheckBox);
-
-	outputInboxScreen.appendChild(messageItemBody);
-
-	FIXED = FIXED + 10;
+	draftbox.appendChild(itemClone);
 }
 
 function populateInboxScreen(msg) {
@@ -629,7 +614,7 @@ function clearInboxMails() {
 		el.removeChild(el.lastChild);
 	}
 
-	var elDraft = document.getElementById('DraftDiv');
+	var elDraft = document.getElementById('drafts');
 	while (elDraft.hasChildNodes()) {
 		elDraft.removeChild(elDraft.lastChild);
 	}
@@ -808,7 +793,7 @@ function DrafterrorCallback() {
 
 function editContinueCompose() {
 
-	var mailIdToEdit = $('#DraftDiv').find('input[type=checkbox]:checked').filter(':last').val();
+	var mailIdToEdit = $('#drafts').find('input[type=checkbox]:checked').filter(':last').val();
 
 	var index = getArrayItemByProperty(mailMessages,
 			"mailId", mailIdToEdit);
@@ -856,7 +841,7 @@ function editContinueCompose() {
 }
 
 function sendDraftMail() {
-	var mailIDsToSendMail = $("#DraftDiv input:checkbox:checked").map(function(){
+	var mailIDsToSendMail = $("#drafts input:checkbox:checked").map(function(){
 		return $(this).val();
 	}).toArray();
 	console.log(mailIDsToSendMail);

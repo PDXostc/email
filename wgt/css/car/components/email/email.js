@@ -111,7 +111,7 @@ function loadDraftScreen() {
 	$("#deleteAccountDiv").hide();
 	$("#draftScreen").css({"visibility":"visible"});
 	$("#draftScreen").show(400,populateDraft);
-	$("#fileAttachmentDiv").hide();
+	$("#fileAttachment").hide();
 
 	currentScreenLoaded = "DraftScreen";
 	$("#searchMailText").val("");
@@ -127,7 +127,7 @@ function loadDeleteAccConfirmationScreen() {
 	$("#deleteAccountDiv").css({"visibility":"visible"});
 	$("#deleteAccountDiv").show();
 	$("#draftScreen").hide();
-	$("#fileAttachmentDiv").hide();
+	$("#fileAttachment").hide();
 
 	currentScreenLoaded = "DeleteAccConfirmationScreen";
 	$("#searchMailText").val("");
@@ -143,7 +143,7 @@ function loadMailFullViewScreen() {
 	$("#composeView").hide();
 	$("#deleteAccountDiv").hide();
 	$("#draftScreen").hide();
-	$("#fileAttachmentDiv").hide();
+	$("#fileAttachment").hide();
 
 	currentScreenLoaded = "MailFullViewScreen";
 	$("#searchMailText").val("");
@@ -168,7 +168,7 @@ function loadInboxScreen(type) {
 	$("#composeView").hide();
 	$("#deleteAccountDiv").hide();
 	$("#draftScreen").hide();
-	$("#fileAttachmentDiv").hide();
+	$("#fileAttachment").hide();
 
 	currentScreenLoaded = "InboxScreen";
 }
@@ -184,7 +184,7 @@ function loadAddAccountScreen() {
 	$("#composeView").hide();
 	$("#deleteAccountDiv").hide();
 	$("#draftScreen").hide();
-	$("#fileAttachmentDiv").hide();
+	$("#fileAttachment").hide();
 	currentScreenLoaded = "AddAccountScreen";
 	$("#searchMailText").val("");
 }
@@ -203,7 +203,7 @@ function loadChangeAccountScreen() {
 	$("#composeView").hide();
 	$("#deleteAccountDiv").hide();
 	$("#draftScreen").hide();
-	$("#fileAttachmentDiv").hide();
+	$("#fileAttachment").hide();
 	currentScreenLoaded = "ChangeAccountScreen";
 	$("#searchMailText").val("");
 }
@@ -220,7 +220,7 @@ function addAccount(accountType)
 	$("#addAccountDetailsDiv").css({"visibility":"visible"});
 	$("#addAccountDetailsDiv").show();
 	$("#draftScreen").hide();
-	$("#fileAttachmentDiv").hide();
+	$("#fileAttachment").hide();
 	currentScreenLoaded = "AddAccount";
 	$("#searchMailText").val("");
 	
@@ -238,7 +238,7 @@ function loadComposeScreen(type){
 	$("#composeView").css({"visibility":"visible"});
 	$("#composeView").show();
 	$("#draftScreen").hide();
-	$("#fileAttachmentDiv").hide();
+	$("#fileAttachment").hide();
 	fillDraftCount();
 	currentScreenLoaded = "ComposeScreen";
 	$("#searchMailText").val("");
@@ -255,8 +255,8 @@ function loadAttachmentScreen(){
 	$("#composeView").hide();
 	$("#composeView").hide();
 	$("#draftScreen").hide();
-	$("#fileAttachmentDiv").css({"visibility":"visible"});
-	$("#fileAttachmentDiv").show(400,listAllFiles);
+	$("#fileAttachment").css({"visibility":"visible"});
+	$("#fileAttachment").show(400,listAllFiles);
 	currentScreenLoaded = "AddAttachment";
 	$("#searchMailText").val("");
 }
@@ -316,65 +316,60 @@ function populateComposeScreen(type) {
 	}
 }
 
-function populateAttachFilesOnCompose(array){
+function populateAttachFilesOnCompose(array) {
 	fileAttached = array;
 
 	var output = document.getElementById('composeAttach');
 	var i  = array.length - 1 ;
 	var val="";
-	while(i>=0)
-	{
-		var ele = document.createElement("div");
-		ele.style.top = "10%";
-		ele.style.left = (1+(i*30))+"%";
-		ele.className = "attachDivClass";
-		var eleImage = document.createElement("div");
-		eleImage.style.left = "8%";
-		eleImage.style.top = "1%";
-		eleImage.style.height = "70%";
-		eleImage.style.width = "40%";
+	while(i>=0) {
+		var template = document.getElementById("emailAttachTemplate");
+		var ele = template.cloneNode(true);
+		ele.removeAttribute("id");
+		ele.removeAttribute("class");
+		// var ele = document.createElement("div");
+		// ele.style.top = "10%";
+		// ele.style.left = (1+(i*30))+"%";
+		// ele.className = "attachDivClass";
+		// var eleImage = document.createElement("div");
+		// eleImage.style.left = "8%";
+		// eleImage.style.top = "1%";
+		// eleImage.style.height = "70%";
+		// eleImage.style.width = "40%";
 
 		//This Functionality is called for the Image adding for different contexts 
-		var tempName = array[i];
-		if(tempName.indexOf("pdf")!=-1)
-		{
-			eleImage.id = "pdfIcon";
-		}
-		else if(tempName.indexOf("txt")!=-1)
-		{
-			eleImage.id = "textIcon";
-		}
-		else if(tempName.indexOf("gif")!=-1)
-		{
-			eleImage.id = "gifIcon";
-		}
-		else if(tempName.indexOf("jpeg")!=-1 || tempName.indexOf("jpg")!=-1 || tempName.indexOf("png")!=-1)
-		{
-			eleImage.id = "jpegIcon";
-		}
-		else
-		{
+		var attachment = array[i];
+		if(attachment.indexOf("pdf")!=-1) {
+			ele.className = "pdf-file";
+		} else if(attachment.indexOf("txt")!=-1) {
+			ele.className = "text-file";
+		} else if(attachment.indexOf("gif")!=-1) {
+			ele.className = "gif-file";
+		} else if(attachment.indexOf("jpeg")!=-1 || attachment.indexOf("jpg")!=-1 || attachment.indexOf("png")!=-1) {
+			ele.className = "jpeg-file";
+		} else {
 			// called in Default
-			eleImage.id = "textIcon";
+			ele.className = "text-file";
 		}
 
 		var localFileNameIndex = getArrayItemByProperty(filesArray,"fullPath",array[i]);
 		var fileName = "";
-		if(localFileNameIndex){
+		if (localFileNameIndex) {
 			fileName = filesArray[localFileNameIndex.index].name;
 		}
 
-		var eleText = document.createElement("div");
-		eleText.innerHTML=fileName;
-		console.log('Account Name:' +eleText.innerHTML);
-		eleText.style.left = "8%";
-		eleText.style.top = "80%";
-		eleText.style.height = "8%";
-		eleText.style.width = "60%";
-		eleText.className = "attachName";
+		// var eleText = ele.querySelector("p");
+		ele.innerHTML = fileName;
 
-		ele.appendChild(eleText);
-		ele.appendChild(eleImage);
+		console.log('Account Name:' + ele.innerHTML);
+		// eleText.style.left = "8%";
+		// eleText.style.top = "80%";
+		// eleText.style.height = "8%";
+		// eleText.style.width = "60%";
+		// eleText.className = "attachName";
+
+		// ele.appendChild(eleText);
+		// ele.appendChild(eleImage);
 		output.appendChild(ele);
 
 		i--;
@@ -447,67 +442,37 @@ function populateAttachFilesOnViewMail(array){
 function populateAttachmentScreen() {
 
 
-	var output = document.getElementById('attachFiledDiv');
+	var output = document.getElementById('attachFiles');
 	var i =filesArray.length - 1;
 	var val="";
 
-	while(i>=0)
-	{
-		var ele = document.createElement("div");
-		ele.style.top = (15+(i*5))+"%";
-		var eleImage = document.createElement("div");
-		eleImage.style.top = (1+(i*90))+"%";
-		eleImage.style.left = "470%";
-		eleImage.style.height = "110%";
-		eleImage.style.width = "90%";
-		eleImage.className = "MessagIcon";
+	while(i >= 0) {
+		var template = document.getElementById("attachmentTemplate");
+		var ele = template.cloneNode(true);
+		ele.removeAttribute("id");
+		ele.removeAttribute("class");
 
 		//This Functionality is called for the Image adding for diffrent contexts 
 		var tempName = filesArray[i].name;
-		if(tempName.indexOf("pdf")!=-1)
-		{
-			eleImage.id = "pdfIcon";
-		}
-		else if(tempName.indexOf("txt")!=-1)
-		{
-			eleImage.id = "textIcon";
-		}
-		else if(tempName.indexOf("gif")!=-1)
-		{
-			eleImage.id = "gifIcon";
-		}
-		else if(tempName.indexOf("jpeg")!=-1 || tempName.indexOf("jpg")!=-1 || tempName.indexOf("png")!=-1)
-		{
-			eleImage.id = "jpegIcon";
-		}
-		else
-		{
+		if(tempName.indexOf("pdf")!=-1) {
+			ele.className = "pdf-file";
+		} else if(tempName.indexOf("txt")!=-1) {
+			ele.className = "text-file";
+		} else if(tempName.indexOf("gif")!=-1) {
+			ele.className = "gif-file";
+		} else if(tempName.indexOf("jpeg")!=-1 || tempName.indexOf("jpg")!=-1 || tempName.indexOf("png")!=-1) {
+			ele.className = "jpeg-file";
+		} else {
 			// called in Default
-			eleImage.id = "textIcon";
+			ele.className = "text-file";
 		}
 
-		var eleText = document.createElement("div");
-		eleText.innerHTML=filesArray[i].name;
+		var eleText = ele.querySelector("p");
+		eleText.innerHTML = filesArray[i].name;
 		console.log('Account Name:' +eleText.innerHTML);
-		eleText.style.top = (29+(i*90))+"%";
-		eleText.style.left = "30%";
-		eleText.className = "LabelCtrl";
 
-		var attachmentCheckBox = document.createElement('input');
-		attachmentCheckBox.type = "checkbox";
-		attachmentCheckBox.className = "chooseEmailCheckBox";
-		attachmentCheckBox.style.top = (20+(i*90))+"%";
-		attachmentCheckBox.style.left = "700%";
-		attachmentCheckBox.style.height = "70%";
-		attachmentCheckBox.style.width = "70%";
-		attachmentCheckBox.id = "chooseAttachmentCheckBox" + i;
-		attachmentCheckBox.value = filesArray[i].fullPath;
-
-		ele.className = "mailDivPart";
-
-		ele.appendChild(eleImage);
-		ele.appendChild(eleText);
-		ele.appendChild(attachmentCheckBox);
+		var attachCheckbox = ele.querySelector(".checkbox");
+		attachCheckbox.setAttribute("value", filesArray[i].fullPath);
 
 		output.appendChild(ele);
 
@@ -533,15 +498,12 @@ var populateInbox = function ()
 }
 
 function fillDraftCount() {
-	
 	console.log("Inside fillDraft count :: "+draftMailTypeCounter);
-	
 	$("#draftButton .label").html(draftMailTypeCounter);
 }
 
 
-function chooseEmailAccount()
-{
+function chooseEmailAccount() {
 	var output = document.getElementById('emailAccounts');
 	var i = accountInfo.length - 1;
 
@@ -561,53 +523,7 @@ function chooseEmailAccount()
 
 		i--;
 	}
-
-
 }
-
-
-// function chooseEmailAccount()
-// {
-// 	var output = document.getElementById('emailAccounts');
-// 	var i=accountInfo.length -1 ;
-
-// 	var val="";
-// 	while(i>=0)
-// 	{
-// 		var ele = document.createElement("div");
-// 		ele.style.top = (5+(i*5))+"%";
-// 		var eleImage = document.createElement("img");
-// 		eleImage.style.top = (15+(i*90))+"%";
-// 		eleImage.style.left = "25%";
-// 		eleImage.className = "MessagIcon";
-// 		var eleText = document.createElement("div");
-// 		eleText.innerHTML=accountInfo[i].name;
-// 		console.log('Account Name:' +eleText.innerHTML);
-// 		eleText.style.top = (4+(i*90))+"%";
-// 		eleText.style.left = "100%";
-// 		eleText.className = "LabelCtrl";
-
-// 		var emailCheckBox = document.createElement('input');
-// 		emailCheckBox.type = "checkbox";
-// 		emailCheckBox.className = "chooseEmailCheckBox";
-// 		emailCheckBox.style.top = (20+(i*90))+"%";
-// 		emailCheckBox.style.left = "600%";
-// 		emailCheckBox.id = "chooseEmailCheckBox" + i;
-// 		emailCheckBox.value = accountInfo[i].id;
-// 		console.log('Account ID:'+accountInfo[i].id);
-// 		ele.className = "mailDivPart";
-
-// 		ele.appendChild(eleImage);
-// 		ele.appendChild(eleText);
-// 		ele.appendChild(emailCheckBox);
-
-// 		output.appendChild(ele);
-
-// 		i--;
-// 	}
-
-
-// }
 
 //Set Inbox Title
 function setInboxTitle() {
@@ -739,9 +655,9 @@ function clearAttachmentsCompose() {
 		el.removeChild(el.lastChild);
 	}
 	fileAttached = new Array();
-	var attachFiledDiv = document.getElementById('attachFiledDiv');
-	while (attachFiledDiv.hasChildNodes()) {
-		attachFiledDiv.removeChild(attachFiledDiv.lastChild);
+	var attachmentsList = document.getElementById('attachFiles');
+	while (attachmentsList.hasChildNodes()) {
+		attachmentsList.removeChild(attachmentsList.lastChild);
 	}
 }
 
@@ -807,7 +723,6 @@ function selectCheckBox(type) {
 
 
 function saveMailToDraft() {
-	
 	console.log("Inside Save mail to Draft");
 	if(currentScreenLoaded === "ComposeScreen" && ($("#composeBcc").val() || $("#composeBody").val())){
 		
@@ -886,8 +801,7 @@ function draftSentSuccessCallback() {
 	loadInboxScreen();
 }
 
-function DrafterrorCallback()
-{
+function DrafterrorCallback() {
 	console.log("Error::"+error);
 	loadInboxScreen();
 }
@@ -952,13 +866,13 @@ function sendDraftMail() {
 }
 
 function attachFile() {
-	console.log("Before:::: "+JSON.stringify(attachFiles));
-	var attachFiles = $("#attachFiledDiv input:checkbox:checked").map(function(){
+	// console.log("Before:::: "+JSON.stringify(attachFiles));
+	var attachmentsList = $("#attachFiles input:checkbox:checked").map(function(){
 		return $(this).val();
 	}).toArray();
-	console.log(JSON.stringify(attachFiles));
-	populateAttachFilesOnCompose(attachFiles);
-	$("#attachFiledDiv").removeAttr("checked");
+	console.log(JSON.stringify(attachmentsList));
+	populateAttachFilesOnCompose(attachmentsList);
+	$("#attachFiles .checkbox").removeAttr("checked");
 }
 
 function cancelFileAttachment() {

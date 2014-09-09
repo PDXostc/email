@@ -42,8 +42,12 @@ input[type="button"] {
 }
 
 /* Overrides audiocontrols.css */
-.left:active {
+div.right:hover { 
 	background: none;
+}
+
+.right:active, .left:active {
+	background-size: auto;
 }
 
 .right {
@@ -201,6 +205,10 @@ input[type="checkbox"]:checked {
 	background-size: 32px;
 }
 
+#trash.icon {
+	background-image: url(./images/email/trash_icon_white.png);
+}
+
 /* Inbox Screen */
 
 aside {
@@ -279,12 +287,15 @@ h2 {
 }
 
 .modal {
-	width: 80%;
+	position: absolute;
+	left: 10%;
+	right: 10%;
+	top: 30%;
 	min-height: 10%;
 	margin: auto;
 	padding: 5%;
 	box-sizing: border-box;
-	background-color: rgba(100, 149, 237, 0.25);
+	background-color: white;
 	border: 1px solid rgb(100, 149, 237)
 }
 
@@ -306,7 +317,6 @@ footer {
 .inner-content footer {
 	background-color: #6495ed;
 	height: 8%;
-	position: relative;
 	}
 
 .account-logo {
@@ -534,16 +544,6 @@ label {
 	height: 40%;
 }
 
-.Trash {
-	position: absolute;
-	top: 90%;
-	left: 88%;
-	width: 8%;
-	height: 7%;
-	background-image: url(./images/email/trash_icon.png);
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-}
 
 .status {
 	left: 3%;
@@ -736,23 +736,32 @@ h4 {
 }
 
 .inbox {
-	height: 87%;
+	position: absolute;
+	top: 13%;
+	bottom: 8%;
 }
 
 .draftbox {
 	position: absolute;
-	bottom: 13%;
+	bottom: 8%;
 	top: 13%;
 }
 
 #draftScreen .button-group {
-	position: absolute;
-	bottom: 0;
-	top: 87%;
-	width: 100%;
-	background-color: #eee;
+	/*position: absolute;*/
+	/*bottom: 0;*/
+	/*top: 87%;*/
+	/*width: 100%;*/
+	/*background-color: #eee;*/
 	margin: 0;
-	line-height: 88px;
+	line-height: 72px;
+	text-align: left;
+}
+
+#draftScreen .button-group button {
+	color: cornFlowerBlue;
+	background-color: white;
+	font-size: 1.25em; 
 }
 
 .email {
@@ -800,4 +809,8 @@ h4 {
 	background-image: url(./images/email/send_icon.png);
 	background-size: auto 100%;
 	background-repeat: no-repeat;
+}
+
+#trash {
+	z-index: 1;
 }

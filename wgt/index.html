@@ -140,7 +140,7 @@
 				<div id="progressDiv" style="visibility: hidden">Loading...</div>
 			</div>
 
-			<!-- Choose Email Account Screen style="visibility: hidden" -->
+			<!-- Choose Email Account Screen  -->
 			<div id="chooseEmailAccount" class="inner" style="visibility: hidden">
 				<a id="addHome" onclick="homeSelected()"></a>
 			  <section class="inner-content">
@@ -160,7 +160,7 @@
 				</section>
 			</div>
 
-			<!-- Inbox Screen style="visibility: hidden" -->
+			<!-- Inbox Screen  -->
 			<div id="inboxScreen" class="inner" style="visibility: hidden">
 				<section class="inner-content">
 					<aside class="left">
@@ -207,12 +207,12 @@
 							</ul>
 							<ul id="inbox" class="inbox"></ul>
 							<div id="progressDiv" style="visibility: hidden">Loading...</div>
+							<footer>	
+								<div id="trash" class="icon right" onclick="deleteMail()"></div>
+							</footer>
 						</div>
 					</section>
 				</section>
-				<footer>	
-					<div id="Trash" class="Trash" onclick="deleteMail()"></div>
-				</footer>
 			</div>
 
 			<!-- Mail View Screen  -->
@@ -266,15 +266,15 @@
 								<div id="viewAttachment"></div>
 							</article>
 							<div id="progressDiv" style="visibility: hidden">Loading...</div>
+							<footer>
+								<div id="trash" class="icon right" onclick="deleteMailFromCompose()"></div>
+							</footer>
 						</div>
 					</section>
 				</section>
-				<footer>
-					<div id="Trash" class="Trash" onclick="deleteMailFromCompose()"></div>
-				</footer>
 			</div>
 				
-			<!-- Compose Screen   style="visibility: hidden" -->
+			<!-- Compose Screen  -->
 			<div id="composeView" class="inner" style="visibility: hidden">
 				<section class="inner-content">
 					<aside class="left">
@@ -346,7 +346,7 @@
 				</section>
 			</div>
 
-			<!-- Draft Screen    style="visibility: hidden" -->
+			<!-- Draft Screen  -->
 			<div id="draftScreen" class="inner">
 				<section class="inner-content">
 					<aside class="left">
@@ -396,48 +396,40 @@
 								</li>
 							</ul>
 							<ul id="drafts" class="draftbox"></ul>
-							<!-- buttons -->
-							<div class="button-group">
-								<button type="button" id="editContinue" class="themeColor" onclick="editContinueCompose()">Continue editing</button>
-								<button type="button" id="cancel" class="themeColor" onclick="inboxButtonSeleted()">Cancel</button>
-							</div>
-							<!-- End buttons -->
-							<!-- <div id="editContinue" class="editContinue themeColor" onclick="editContinueCompose()"></div> -->
-							<!-- <div id="cancel" class="themeColor" onclick="inboxButtonSeleted()"></div> -->
 							<div id="progressDiv" style="visibility: hidden">Loading...</div>
+							<footer>	
+								<div id="trash" class="icon right" onclick="deleteMail()"></div>
+								<div class="button-group">
+									<button type="button" id="editContinue" class="themeColor" onclick="editContinueCompose()">Continue editing</button>
+									<button type="button" id="cancel" class="themeColor" onclick="inboxButtonSeleted()">Cancel</button>
+								</div>
+							</footer>
 						</div>
 					</section>	
 				</section>
-				<footer>	
-					<div id="Trash" class="Trash" onclick="deleteMail()"></div>
-				</footer>
 			</div>
 
 			<!-- Delete Email Confirmation -->
-			<div id="deleteEmailPopDiv" class="deleteAccountPop"
-				style="padding-left: 6%; visibility: hidden">
-				<label class="DeleteAccountLabelCtrl"
-					style="padding-left: 10%; padding-top: 5%">Delete the
-					selected message(s)?</label>
-				<div id="deleteEmailYesDiv" class="deleteYesDiv themeColor"
-					onclick="deleteEmailYes()"></div>
-				<div id="deleteEmailNoDiv" class="deleteNoDiv themeColor"
-					onclick="deleteEmailNo()"></div>
+			<div id="deleteEmailPopDiv" class="modal" style="visibility: hidden">
+			  <h2>Delete the selected message(s)?</h2>
+				<div class="button-group">
+					<button type="button" id="deleteEmailYesDiv" class="themeColor" onclick="deleteEmailYes()">YES</button>
+					<button type="button" id="deleteEmailNoDiv" class="themeColor" onclick="deleteEmailNo()">NO</button>
+				</div>
 			</div>
 
-			<!-- Delete Account Confirmation Screen | style="visibility: hidden" -->
+			<!-- Delete Account Confirmation Screen" -->
 			<div id="deleteAccountDiv" class="inner" style="visibility: hidden">
-					<a id="addHome" onclick="homeSelected()"></a>
-					  <section class="inner-content">
-					  <header><h1>Select An Email</h1></header>
-							<div id="deleteAccountPopDiv" class="modal">
-								<h2>Delete the selected account(s)?</h2>
-									<div class="button-group">
-										<button type="button" id="useThisAccount" class="themeColor" onclick="deleteAccountYes()">YES</button>
-										<button type="button" id="useThisAccount" class="themeColor" onclick="deleteAccountNo()">NO</button>
-									</div>
+			  <section class="inner-content">
+			  <header><h1>Select An Email</h1></header>
+					<div id="deleteAccountPopDiv" class="modal">
+						<h2>Delete the selected account(s)?</h2>
+							<div class="button-group">
+								<button type="button" id="useThisAccount" class="themeColor" onclick="deleteAccountYes()">YES</button>
+								<button type="button" id="useThisAccount" class="themeColor" onclick="deleteAccountNo()">NO</button>
 							</div>
-						</section>
+					</div>
+				</section>
 			</div>
 
 			<!-- Add Attachment Screen -->

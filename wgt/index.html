@@ -162,7 +162,7 @@
 			<!-- Inbox Screen  -->
 			<div id="inboxScreen" class="inner" style="visibility: hidden">
 				<section class="inner-content">
-					<aside class="left">
+					<aside class="emailLeft">
 						<ul class="controls">
 							<li class="icon"></li>
 							<li class="icon" id="composeButton" onclick="loadComposeScreen()"></li>
@@ -171,9 +171,9 @@
 							</li>
 						</ul>
 					</aside>
-					<section class="main right">
+					<section class="main emailRight">
 						<div class="controls">
-							<ul class="left">
+							<ul class="emailLeft">
 								<li class="icon" id="InboxButton" class="InboxButton" onclick="inboxButtonSeleted()"></li>
 								<li class="icon" id="changeAccountButton" onclick="loadChangeAccountScreen()">
 									<p class="label">Change Accounts</p>
@@ -182,7 +182,7 @@
 									<input type="text" id="searchMailText"></input>
 								</li>
 							</ul>
-							<ul class="right">
+							<ul class="emailRight">
 								<li class="icon" id="Sync" onclick="syncEmails()"></li>
 								<li class="icon" id="addHome" onclick="homeSelected()"></li>
 							</ul>
@@ -207,7 +207,7 @@
 							<ul id="inbox" class="inbox"></ul>
 							<div id="progressDiv" style="visibility: hidden">Loading...</div>
 							<footer>	
-								<div id="trash" class="icon right" onclick="deleteMail()"></div>
+								<div id="trash" class="icon emailRight" onclick="deleteMail()"></div>
 							</footer>
 						</div>
 					</section>
@@ -217,7 +217,7 @@
 			<!-- Mail View Screen  -->
 			<div id="mailView" class="inner" style="visibility: hidden">
 				<section class="inner-content">
-					<aside class="left">
+					<aside class="emailLeft">
 						<ul class="controls">
 							<li class="icon"></li>
 							<li class="icon" id="composeButton" onclick="loadComposeScreen()"></li>
@@ -226,9 +226,9 @@
 							</li>
 						</ul>
 					</aside>
-					<section class="main right">
+					<section class="main emailRight">
 						<div class="controls">
-							<ul class="left">
+							<ul class="emailLeft">
 								<li class="icon" id="InboxButton" class="InboxButton" onclick="inboxButtonSeleted()"></li>
 								<li class="icon" id="changeAccountButton" onclick="loadChangeAccountScreen()">
 									<p class="label">Change Accounts</p>
@@ -237,7 +237,7 @@
 									<input type="text" id="searchMailText"></input>
 								</li>
 							</ul>
-							<ul class="right">
+							<ul class="emailRight">
 								<li class="icon" id="Sync" onclick="syncEmails()"></li>
 								<li class="icon" id="addHome" onclick="homeSelected()"></li>
 							</ul>
@@ -245,12 +245,12 @@
 						<div class="content">
 							<header>
 								<h3 id="InboxFullViewLabelCtrl"></h3>
-								<div class="controls right">
+								<div class="controls emailRight">
 									<ul>
 										<li id="replyAll" class="icon" onclick="loadComposeScreen('replyAll')"></li>
 										<li id="reply" class="icon" onclick="loadComposeScreen('Reply')"></li>
 										<li id="forward" class="icon" onclick="loadComposeScreen('Forward')"></li>
-										<li id="next" class="icon right" onclick="retriveMailFilterWithNextId()"></li>
+										<li id="next" class="icon emailRight" onclick="retriveMailFilterWithNextId()"></li>
 									</ul>
 								</div>
 							</header>
@@ -266,7 +266,7 @@
 							</article>
 							<div id="progressDiv" style="visibility: hidden">Loading...</div>
 							<footer>
-								<div id="trash" class="icon right" onclick="deleteMailFromCompose()"></div>
+								<div id="trash" class="icon emailRight" onclick="deleteMailFromCompose()"></div>
 							</footer>
 						</div>
 					</section>
@@ -276,7 +276,7 @@
 			<!-- Compose Screen  -->
 			<div id="composeView" class="inner" style="visibility: hidden">
 				<section class="inner-content">
-					<aside class="left">
+					<aside class="emailLeft">
 						<ul class="controls">
 							<li class="icon"></li>
 							<li class="icon" id="draftButton" onclick="draftSelected()">
@@ -285,15 +285,15 @@
 							<li class="icon" id="attachmentButton" onclick="loadAttachmentScreen()"></li>
 						</ul>
 					</aside>
-					<section class="main right">
+					<section class="main emailRight">
 						<div class="controls">
-							<ul class="left">
+							<ul class="emailLeft">
 								<li class="icon" id="InboxButton" class="InboxButton" onclick="inboxButtonSeleted()"></li>
 								<li class="icon" id="changeAccountButton" onclick="loadChangeAccountScreen()">
 									<p class="label">Change Accounts</p>
 								</li>
 							</ul>
-							<ul class="right">
+							<ul class="emailRight">
 								<li class="icon" id="addHome" onclick="homeSelected()"></li>
 							</ul>
 						</div>
@@ -301,9 +301,9 @@
 						<div class="content">
 							<header>
 								<h3 id="InboxComposeLabelCtrl">Inbox:</h3>
-								<div class="controls right">
+								<div class="controls emailRight">
 								<ul>
-									<li id="send" class="icon right" onclick="sendMail()"></li>
+									<li id="send" class="icon emailRight" onclick="sendMail()"></li>
 								</ul>
 								</div>
 							</header>
@@ -348,7 +348,7 @@
 			<!-- Draft Screen  -->
 			<div id="draftScreen" class="inner">
 				<section class="inner-content">
-					<aside class="left">
+					<aside class="emailLeft">
 						<ul class="controls">
 							<li class="icon"></li>
 							<li class="icon" id="composeButton" onclick="loadComposeScreen()"></li>
@@ -357,9 +357,9 @@
 							</li>
 						</ul>
 					</aside>
-					<section class="main right">
+					<section class="main emailRight">
 						<div class="controls">
-							<ul class="left">
+							<ul class="emailLeft">
 								<li class="icon" id="InboxButton" class="InboxButton" onclick="inboxButtonSeleted()"></li>
 								<li class="icon" id="changeAccountButton" onclick="loadChangeAccountScreen()">
 									<p class="label">Change Accounts</p>
@@ -368,7 +368,7 @@
 									<input type="text" id="searchMailText"></input>
 								</li>
 							</ul>
-							<ul class="right">
+							<ul class="emailRight">
 								<li class="icon" id="Sync" onclick="syncEmails()"></li>
 								<li class="icon" id="addHome" onclick="homeSelected()"></li>
 							</ul>
@@ -376,9 +376,9 @@
 						<div class="content">
 							<header>
 								<h3 id="DraftLabelCtrl">Drafts Saved</h3>
-								<div class="controls right">
+								<div class="controls emailRight">
 									<ul>
-										<li id="sendDraft" class="icon right" onclick="sendDraftMail()"></li>
+										<li id="sendDraft" class="icon emailRight" onclick="sendDraftMail()"></li>
 									</ul>
 								</div>
 							</header>
@@ -397,7 +397,7 @@
 							<ul id="drafts" class="draftbox"></ul>
 							<div id="progressDiv" style="visibility: hidden">Loading...</div>
 							<footer>	
-								<div id="trash" class="icon right" onclick="deleteMail()"></div>
+								<div id="trash" class="icon emailRight" onclick="deleteMail()"></div>
 								<div class="button-group">
 									<button type="button" id="editContinue" class="themeColor" onclick="editContinueCompose()">Continue editing</button>
 									<button type="button" id="cancel" class="themeColor" onclick="inboxButtonSeleted()">Cancel</button>

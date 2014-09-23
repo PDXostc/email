@@ -157,7 +157,6 @@ JSValueRef JSEmailplugin::addAccount(JSContextRef context,
 	LoggerD("calling emailplugin::addAccount");
 	//Calling the emailplugin to add account.
 	emailplugin->addAccount(emailId,acntId,passWord,server,successCallback, errorCallback, gContext);
-	LoggerD("ugin::addAccount %d",error);
         JSStringRef jsonString = converter.toJSStringRef(json.str());
         return JSValueMakeFromJSONString(context, jsonString);
 }
@@ -212,7 +211,6 @@ JSValueRef JSEmailplugin::deleteAccount(JSContextRef context,
         //Delate tha account.
         emailplugin->deleteAccount(acntId,successCallback, errorCallback, gContext);
         JSStringRef jsonString = converter.toJSStringRef(json.str());
-        LoggerD("plugin::addAccount %d",error);
         return JSValueMakeFromJSONString(context, jsonString);
 }
 

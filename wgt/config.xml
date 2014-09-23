@@ -14,5 +14,6 @@
     <tizen:privilege name="http://tizen.org/privilege/emailplugin.write"/>
     <tizen:privilege name="http://tizen.org/privilege/datasync"/>
     <tizen:privilege name="http://tizen.org/privilege/systemmanager"/>
+    <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
     <tizen:setting screen-orientation="portrait" context-menu="enable" background-support="disable" encryption="disable" install-location="auto"/>
 </widget>

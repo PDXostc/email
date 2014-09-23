@@ -171,7 +171,18 @@ input[type="checkbox"]:checked {
 	background-position: center center;
 	background-repeat: no-repeat;
 }
-
+#viewSubject{
+       font-weight:bold;
+       width:500px;
+}
+#emailDate{
+       position: absolute;
+       right:0px;
+       top:0px;
+}
+#progressDiv{
+       top:112px;
+}
 .input-group {
 	border: none;
 	position: relative;

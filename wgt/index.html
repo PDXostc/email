@@ -207,8 +207,8 @@
 								</li>
 							</ul>
 							<ul id="inbox" class="inbox"></ul>
-							<div id="progressDiv" style="visibility: hidden">Loading...</div>
-							<footer>	
+							<div id="progressDiv" style="visibility: hidden"><center><h2>...loading...</h2></center></div>
+							<footer>
 								<div id="trash" class="icon emailRight" onclick="deleteMail()"></div>
 							</footer>
 						</div>
@@ -258,11 +258,9 @@
 							</header>
 							<article id="MailHandler" class="email">
 								<header>
+									<p><div id="viewSubject"></div><div id="emailDate"></div></p>
 									<p>From: <span id="viewFrom"></span></p>
 									<p>To: <span id="viewTo"></span></p>
-									<p>Date: <span id="viewDate"></span></p>
-									<p id="viewSubject"></p>
-									<p id="emailDate"></p>
 								</header>
 								<p id="mailBody" class="body"></p>
 								<div id="viewAttachment"></div>

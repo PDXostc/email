@@ -24,24 +24,125 @@
 	left:35px;
 	position: absolute;
 }
+
 #mainDiv {
-	top: 85px;
-	left: 0;
-	position: relative;
-	height: 1195px;
+	font-family: 'Droid Sans', sans-serif;
+	font-size: 1em !important;
+	font-weight: normal;
 	width: 100%;
-	background-color: rgba(100, 149, 237, 0.5); 
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex: 1;
+	flex: 1;
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#00476a), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  #00476a 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+	background: radial-gradient(ellipse at center,  #00476a 0%,#000000 100%); /* W3C */
 }
 
 /******** global ********/
+
+/* Fonts */
+
+/* Adobe Source Sans */
+/* SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007 */
+/* http://scripts.sil.org/OFL */
+
 @font-face {
-	font-family: 'Droid Sans';
-	src: url("../../car/fonts/DroidSans.ttf") format('truetype'),
-			 url("../../car/fonts/DroidSans-Bold.ttf") format('truetype')
+  font-family: 'Source Sans Pro';
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
 }
 
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+/******** Common Overrides ********/
+
 body {
-	font-family: 'Droid Sans', sans-serif;
+	height: 1280px !important;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: column;
+	flex-direction: column;
+}
+
+.keyboard {
+	position: relative;
+	bottom: auto;
+}
+
+.topBarIcons {
+	position: relative;
+}
+
+.bottomPanel {
+	bottom: 0;
+	position: fixed;
+}
+
+/******** headings ********/
+
+h1 {
+	font-size: 3em;
+	font-weight: normal;
+	color: white;
+	text-align: center;
+	padding: 2% 0;
+	}
+
+h2 {
+	font-weight: bold;
+	font-size: 2em;
+	text-align: center;
+	color: rgb(100, 149, 237);
+	/*margin-bottom: 10%;*/
 }
 
 h3 {
@@ -53,30 +154,195 @@ h4 {
 	font-size: 1.17em;
 }
 
+/******** containers ********/
+
+.app-wrapper,
+.app-content {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+}
+
+.app-content {
+	overflow-y: scroll;
+}
+
+#sideMenu {
+	position: absolute;
+	width: 80px;
+	top: 0;
+	bottom: 124px;
+	/*background-color: rgb(0, 128, 191);*/
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(96%,rgba(0, 128, 191, 1)), color-stop(98%,rgba(0, 128, 191, 0.5)), color-stop(100%,transparent));
+}
+
+.main {
+	float: right;
+	position: absolute;
+	width: 640px;
+	margin: 0;
+	top: 0;
+	right: 0;
+	bottom: 124px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(96%,rgba(255, 255, 255, 1)), color-stop(98%,rgba(255, 255, 255, 0.5)), color-stop(100%,transparent));
+}
+
+/******** modifiers ********/
+
+.transparent {
+	background: none;
+	color: white; 
+}
+
+.no-scroll {
+	overflow: hidden;
+	bottom: 260px;
+}
+
+.hidden {
+	opacity: 0;
+	-webkit-transition: all 1s ease;
+	transition: all 1s ease;
+}
+
+.no-display {
+	display: none;
+}
+
+.half-sec-transition {
+	-webkit-transition: all .5s ease;
+	transition: all .5s ease;
+}
+
+/******** Flex Containers ********/
+
+.flex-wrapper {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.vertical {
+	-webkit-flex-direction: column;
+	flex-direction: column;
+}
+
+/******** Buttons *********/
+
 button,
 input[type="button"] {
   -webkit-appearance: none;
   border: none;
+  background: none;
   padding: 2%;
-  margin: 1.5%;
-  font-size: 1.25em;
   font-family: inherit;
-  font-weight: bold;
+  font-size: 2.5em;
+  text-align: left;
   color: white;
-  min-width: 100px;
+  min-width: 150px;
 }
 
 .button-group {
-	text-align: center;
-	margin: 5%;
+
 }
 
-.emailLeft {
+.button-group:after{
+	content: "";
+}
+
+.button-group button:first-of-type {
+	padding-left: 0;
 	left: 0;
-	display: inline-block;
 }
 
-/* Overrides audiocontrols.css */
+.button-group button:last-of-type {
+	padding-right: 0;
+	position: absolute;
+	right: 0;
+}
+
+.next {
+	background-image: url(../images/next_icon_white.png);
+	background-repeat: no-repeat;
+	background-position: 112% 50%;
+}
+
+/******** Separators ********/
+
+.white-separator {
+	height: 1px;
+	background-color: white;
+	-webkit-flex: 1;
+	flex: 1;
+}
+
+/******** #addAccount Styles ********/
+
+.account-button {
+	display: block;
+	position:relative;
+	text-align: center;
+	margin-bottom: 5%;
+}
+
+.account-button,
+.account-button ~ form {
+	width: 100%;
+}
+
+.account-button h1 {
+	padding: 5% 0;
+}
+
+.account-button img {
+	margin: auto;
+	padding: 0 20px;
+}
+
+.account-button .top,
+.account-button .bottom {
+	display: -webkit-flex;
+	display: flex;
+	margin: 0 80px;
+}
+
+.account-button .top {
+	-webkit-align-items: flex-end;
+	align-items: flex-end;
+}
+
+.account-button .bottom {
+	-webkit-align-items: flex-start;
+	align-items: flex-start;
+}
+
+#addGmail form {
+	-webkit-flex: 0;
+	flex: 0;
+	padding: 0 80px;
+	box-sizing: border-box;
+}
+
+/******** Progress & Spinner Styles ********/
+
+.progress {
+	width: 100%;
+	text-align: center;
+}
+
+.progress .spinner {
+	-webkit-animation: spin 1.25s linear infinite;
+	animation: spin 1.25s linear infinite;
+}
+
+/******** Overrides audiocontrols.css ********/
+
 div.emailRight:hover { 
 	background: none;
 }
@@ -85,18 +351,9 @@ div.emailRight:hover {
 	background-size: auto;
 }
 
-.emailRight {
-	position: absolute;
-	right: 0;
-	top: 0;
-}
-
 .content {
-	background-color: white;
-	position: absolute;
-	bottom: 0;
-	top: 6%;
 	width: 100%;
+	height: 100%;
 }
 
 ul {
@@ -104,6 +361,11 @@ ul {
 }
 
 /******** Form Styles ********/
+
+label {
+	font-size: 24px;
+	line-height: 38px;
+}
 
 textarea {
 	width: 100%;
@@ -121,53 +383,63 @@ input[type=password] {
 textarea,
 input[type=text],
 input[type=email],
-input[type=password] {
-	border: 1px solid rgb(135, 206, 235);
-	background: white;
-}
-
-input[type=text],
-input[type=email],
-input[type=password] {
-	position: absolute;
-	right: 0;
-	width: 67%;
-}
-
-textarea,
-input[type=text],
-input[type=email],
 input[type=password],
 textarea:focus,
 input[type=text]:focus,
 input[type=email]:focus,
 input[type=password]:focus {
-  padding: 3px 0px 3px 3px;
+  padding: 6px;
+  font-weight: normal;
+  font-size: 18px;
+	width: 100%;
+	border: none;
+	box-sizing: border-box;
 }
 
 textarea:focus,
 input[type=text]:focus,
 input[type=email]:focus,
 input[type=password]:focus {
-  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-  -webkit-transition: all 0.30s ease-in-out;
+	outline: 4px solid rgb(0, 128, 191);
+  -webkit-transition: all 0.30s ease-in;
 }
 
-input[type="checkbox"] {
+.checkbox {
   height: 1.2em;
   width: 1.2em;
-  vertical-align: middle;
-  margin: 0 0.4em 0.4em 0;
+  margin: 0 10px 10px 0;
+  padding: 12px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   background-color: white;
-  -webkit-transition: box-shadow 200ms;
-   box-shadow:inset 1px 1px 0 #fff, 0 1px 1px rgba(0,0,0,0.1);
-  -webkit-border-radius:2px;
+  box-shadow:inset 1px 1px 0 #fff, 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.check-all {
+	width: 30px;
+	height: 30px;
+	border: 4px solid white;
+	float: right;
+	margin: 0;
+	background: none;
+	box-shadow: none;
+}
+
+input[type="checkbox"].dark {
+	border: 2px solid white;
+	background: none;
+	box-shadow: none;
 }
 
 input[type="checkbox"]:checked {
   border-color:rgba(0, 0, 0, 0.5);
-	background-image: url(user/blue/images/email/input_checkbox_checkmark_black.png);
+	background-image: url(../images/input_checkbox_checkmark_black.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+input[type="checkbox"].dark:checked {
+	border-color: white;
+	background-image: url(../images/input_checkbox_checkmark_white.png);
 	background-position: center center;
 	background-repeat: no-repeat;
 }
@@ -186,7 +458,8 @@ input[type="checkbox"]:checked {
 .input-group {
 	border: none;
 	position: relative;
-	/*padding: 1%;*/
+	margin-bottom: 24px;
+	font-size: 20px;
 }
 
 /******** End Form Style ********/
@@ -199,12 +472,11 @@ input[type="checkbox"]:checked {
 /****** Icons ********/
 
 .icon {
-	width: 48px;
-	height: 48px;
+	width: 80px;
+	height: 80px;
 	background-repeat: no-repeat;
-	background-size: auto;
-	background-position: top center;
-	margin: 10px;
+	background-size: 36px;
+	background-position: center center;
 }
 
 .icon .label {
@@ -216,24 +488,23 @@ input[type="checkbox"]:checked {
 	width: inherit;
 }
 
-#addHome.icon {
-	background-image: url(./user/blue/images/email/home_icon_white.png);
+.menu-icon {
+	background-image: url(../images/menu_icon_white.png);
 }
 
-#changeAccountButton.icon {
+.accounts-icon {
 	background-image: url(./user/blue/images/email/users_icon_white.png);
-	width: 128px;
 }
 
-#Sync.icon {
+.sync-icon {
 	background-image: url(./user/blue/images/email/refresh_icon_white.png);
 }
 
-#InboxButton.icon {
+.inbox-icon {
 	background-image: url(./user/blue/images/email/inbox_icon_white.png);
 }
 
-#searchMail.icon {
+.search-icon {
 	width: 175px;
 	line-height: 48px;
 	background-image: url(./user/blue/images/email/search_icon_white.png);
@@ -242,11 +513,11 @@ input[type="checkbox"]:checked {
 	background-size: 36px 36px;
 }
 
-#draftButton.icon {
+.drafts-icon {
 	background-image: url(./user/blue/images/email/draft_icon_white.png);
 }
 
-#composeButton.icon {
+.compose-icon {
 	background-image: url(./user/blue/images/email/new_icon_white.png);
 	background-size: 32px;
 }
@@ -255,12 +526,19 @@ input[type="checkbox"]:checked {
 	background-image: url(./user/blue/images/email/trash_icon_white.png);
 }
 
-/* Inbox Screen */
+/******** List Views ********/
 
-aside {
+.list.content header {
+	padding: 24px 24px 24px 52px;
+	box-sizing: border-box;
+}
+
+.list.content header h1 {
+	color: #333;
+	text-align: left;
+	font-size: 36px; 
+	padding: 0;
 	float: left;
-	width: 8%;
-	height: 100%;
 }
 
 .controls {
@@ -278,13 +556,9 @@ aside {
 	width: 100%;
 }
 
-.controls li {
-	display: inline-block;
-	margin: 0;
-}
-
 aside .controls li {
 	display: block;
+	margin: auto; 
 }
 
 #searchMail input {
@@ -306,25 +580,10 @@ section, h1 {
 	position: relative;
 	}	
 
-.inner-content ul, .modal {
+.app-content ul, .modal {
 	/*position: relative;*/
 	/*top:25%;*/
 	/*margin-top: -12.5%;*/
-}
-
-h1 {
-	font-size: 2.5em;
-	color: white;
-	text-align: center;
-	padding: 2% 0;
-	}
-
-h2 {
-	font-weight: bold;
-	font-size: 2em;
-	text-align: center;
-	color: rgb(100, 149, 237);
-	/*margin-bottom: 10%;*/
 }
 
 .themeColor {
@@ -345,11 +604,6 @@ h2 {
 	border: 1px solid rgb(100, 149, 237)
 }
 
-.inner-content {
-	background-color: white;
-	height: 100%;
-}
-
 footer {
   position: absolute;
   bottom: 0;
@@ -357,42 +611,16 @@ footer {
   width: 100%;
 }
 
-/******** Add Email Account Styles ********/
 
-.inner-content header {
+.app-content header {
 	position: relative;
 }
 
-.inner-content header,
-.inner-content footer {
-	background-color: #6495ed;
-	height: 8%;
+.app-content header,
+.app-content footer {
+	background-color: #E6E6E6;
+	height: 80px;
 	}
-
-.account-logo {
-	display: block;
-	position:relative;
-	text-align: center;
-	margin-bottom: 5%;
-}
-
-.account-logo img {
-	margin: auto;
-}
-
-#addOther {
-	font-size: 2em;
-	font-weight: 600;
-}
-
-.inner {
-	padding: 4%;
-	position: absolute;
-	top: 0;
-	bottom: 175px;
-	width: 100%;
-	box-sizing: border-box;
-}
 
 /******** Add Account Details Screen ********/
 
@@ -449,35 +677,11 @@ footer {
 	height: 5%;
 }
 
-#inboxScreen .inner-content,
-#mailView .inner-content,
-#composeView .inner-content,
-#draftScreen .inner-content {
-	background: none;
-	top: 2%;
-}
-
-#inboxScreen .main,
-#mailView .main,
-#composeView .main,
-#draftScreen .main {
-	float: right;
-	margin: 0;
-	width: 92%;
-	height: inherit;
-	top: 0;
-	background: none;
-}
-
 .inboxBgImg {
 	background-image: url(./user/blue/images/email/Inbox.png);
 	background-size: auto 100%;
 	height: 100%;
 	width: 100%;
-}
-
-label {
-	font-weight: bold;
 }
 
 .details {
@@ -501,11 +705,6 @@ label {
 	width: 67%;
 	right: 0;
 	padding: 3px;
-}
-
-#SaveAccountCtrl {
-	display: block;
-	margin: auto;
 }
 
 #progressDiv {

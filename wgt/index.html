@@ -70,80 +70,66 @@
 		<!-- BEGIN HTML ELEMENTS style="visibility: hidden"-->
 		<div id="mainDiv">
 			<!-- Add New Account Screen -->
-			<div id="addAccountDiv" class="inner" style="visibility: hidden">
-				<a id="addHome" onclick="homeSelected()"></a>
-			  <section class="inner-content">
-			    <header><h1>Add Email Account</h1></header>
-			    <ul>
-			    	<li>
-					    <a id="addMsExchange" class="account-logo" onclick="addAccount('MsExchange')">
-					      <img src="css/user/blue/images/email/microsoft_exchange_logo.png" alt="msExchange" />
-					    </a>
-			    	</li>
-				    <li>
-					    <a id="addGmail" class="account-logo" onclick="addAccount('Gmail')">
-	  			      <img src="css/user/blue/images/email/gmail_logo.png" alt="Gmail" />
-	  			    </a>
-				    </li>
-				    <li>
-				    	<a id="addMobileMe" class="account-logo" onclick="addAccount('MobileMe')">
-					      <img src="css/user/blue/images/email/mobile_me_logo.png" alt="MobileMe" />
-					    </a>
-				    </li>
-				    <li>
-					    <a id="addYahoo" class="account-logo" onclick="addAccount('Yahoo')">
-					      <img src="css/user/blue/images/email/yahoo_logo.png" alt="Yahoo" />
-					    </a>
-				    </li>
-				    <li>
-					    <a id="addAol" class="account-logo" onclick="addAccount('Aol')">
-					      <img src="css/user/blue/images/email/Aol_logo.png" alt="Aol" />
-					    </a>
-				    </li>
-				    <li>
-					    <a id="addOther" class="account-logo" onclick="addAccount('Other')">Other</a>
-				    </li>
-			    </ul>
-			  </section>
-			</div>
+			<div id="addAccount" class="app-wrapper transparent" style="visibility: hidden">
+			  <div id="addGmail" class="app-content transparent">
+					<!-- <a class="account-button" onclick="addAccount('Gmail')"> -->
 
-			<!-- Add Account Details Screen -->
-			<div id="addAccountDetailsDiv" class="inner" style="visibility: hidden">
-				<a id="addHome" onclick="homeSelected()"></a>
-			  <section class="inner-content">
-					<header><h1>Add Email Account</h1></header>
-				<form class="details">
-					<div class="input-group">
-						<label for="EmailAddressTextbox">Email address:</label>
-						<input id="EmailAddressTextbox" required type="email">
-					</div>
+					<div class="flex-wrapper vertical">
+						<!-- Add Gmail Account Button -->
+						<div class="account-button" onclick="loadAddAccountForm()">
+							<div class="top">
+								<div class="white-separator"></div>
+								<img src="images/add_account_icon_white_lg.png" alt="add account icon white large">
+								<div class="white-separator"></div>
+							</div>
+							<h1>Add Gmail Account</h1>
+							<div class="bottom">
+								<div class="white-separator"></div>
+								<img src="images/gmail_icon_white_lg.png" alt="gmail account icon white large">
+								<div class="white-separator"></div>
+							</div>
+				    </div>
+				    <!-- Credentials Form -->
+				    <form id="credentialsForm" class="no-display half-sec-transition">
+							<div class="input-group">
+								<label for="EmailAddressTextbox">Email address</label>
+								<input id="EmailAddressTextbox" required type="email">
+							</div>
+							
+							<div class="input-group">
+								<label for="PasswordTextbox">Password</label>
+								<input id="PasswordTextbox" required type="password">
+							</div>
 
-					<div class="input-group">
-						<label for="AddAccountUserNameDescription">User Name:</label>
-						<input id="UsernameTextbox" required type="text">
-						<p class="description">The username you sign-in with at your email provider.</p>
-					</div>
-					
-					<div class="input-group">
-						<label for="PasswordTextbox">Password:</label>
-						<input id="PasswordTextbox" required type="password">
-						<p  class="description">The password you use with your username at your email provider.</p>
+							<div class="input-group">
+								<input class="dark" type="checkbox" name="is-default">Save as default
+							</div>
+
+							<div class="input-group" style="display: none">
+								<input id="UsernameTextbox" value="noUsername" type="text">
+								<input id="DescriptionTextbox" value="noDescription" type="text">
+							</div>
+
+							<div class="button-group">
+								<button type="button" id="useThisAccount" onclick="useThisAccount()">Cancel</button>
+								<button class="next" type="button" id="SaveAccountCtrl" onclick="saveDetails()">Next</button>
+							</div>
+						</form>
+
+						<!-- Add Account Progress -->
+						<div class="progress no-display">
+							<img class="spinner" src="images/spinner_icon_white.png">
+							<h1>Retrieving email<br>from your account...</h1>
+						</div>
 					</div>
 
-					<div class="input-group">
-						<label for="DescriptionTextbox">Description:</label>
-						<input id="DescriptionTextbox" type="text">
-						<p class="description">This will identify the account to access when multiple email accounts exist.</p>
-					</div>
-				</form>
-				<input type="button" value="Save Account" id="SaveAccountCtrl" class="themeColor" onclick="saveDetails()">
-				<div id="progressDiv" style="visibility: hidden">Loading...</div>
+
+			  </div>
 			</div>
 
 			<!-- Choose Email Account Screen  -->
-			<div id="chooseEmailAccount" class="inner" style="visibility: hidden">
-				<a id="addHome" onclick="homeSelected()"></a>
-			  <section class="inner-content">
+			<div id="chooseEmailAccount" class="app-wrapper">
+			  <section class="app-content">
 					<header><h1>Select An Email</h1></header>
 					<li id="accountTemplate" class="account template">
 						<p></p>
@@ -161,36 +147,28 @@
 			</div>
 
 			<!-- Inbox Screen  -->
-			<div id="inboxScreen" class="inner" style="visibility: hidden">
-				<section class="inner-content">
-					<aside class="emailLeft">
+			<div id="inboxScreen" class="app-wrapper" style="visibility: hidden">
+				<section class="app-content">
+					<aside id="sideMenu">
 						<ul class="controls">
-							<li class="icon"></li>
-							<li class="icon" id="composeButton" onclick="loadComposeScreen()"></li>
-							<li class="icon" id="draftButton" onclick="draftSelected()">
-								<p class="label"></p>
-							</li>
+							<li class="icon menu-icon"></li>
+							<li class="icon inbox-icon"    id="InboxButton"         onclick="inboxButtonSeleted()"></li>
+							<li class="icon compose-icon"  id="composeButton"       onclick="loadComposeScreen()"></li>
+							<li class="icon accounts-icon" id="changeAccountButton" onclick="loadChangeAccountScreen()"></li>
+							<li class="icon drafts-icon"   id="draftButton"         onclick="draftSelected()"></li>
+							<li class="icon sync-icon"     id="Sync"                onclick="syncEmails()"></li>
 						</ul>
 					</aside>
-					<section class="main emailRight">
-						<div class="controls">
-							<ul class="emailLeft">
-								<li class="icon" id="InboxButton" class="InboxButton" onclick="inboxButtonSeleted()"></li>
-								<li class="icon" id="changeAccountButton" onclick="loadChangeAccountScreen()">
-									<p class="label">Change Accounts</p>
-								</li>
-								<li class="icon" id="searchMail" onclick="searchMailCall()">
-									<input type="text" id="searchMailText"></input>
-								</li>
-							</ul>
-							<ul class="emailRight">
-								<li class="icon" id="Sync" onclick="syncEmails()"></li>
-								<li class="icon" id="addHome" onclick="homeSelected()"></li>
-							</ul>
-						</div>
-						<div class="content">
+					<section class="main">
+						<div class="list content">
 							<header>
-								<h3 id="InboxLabelCtrl"></h3>
+								<h1 id="InboxLabelCtrl"></h1>
+								<input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectCheckBox('All')">
+								<!-- <ul> -->
+									<!-- <li class="icon search" id="searchMail" onclick="searchMailCall()">
+										<input type="text" id="searchMailText"></input>
+									</li> -->
+								<!-- </ul> -->
 							</header>
 							<ul class="mass-selection">
 								<li class="inbox-item">
@@ -207,8 +185,8 @@
 								</li>
 							</ul>
 							<ul id="inbox" class="inbox"></ul>
-							<div id="progressDiv" style="visibility: hidden"><center><h2>...loading...</h2></center></div>
-							<footer>
+							<div id="progressDiv" style="visibility: hidden">Loading...</div>
+							<footer>	
 								<div id="trash" class="icon emailRight" onclick="deleteMail()"></div>
 							</footer>
 						</div>
@@ -217,8 +195,8 @@
 			</div>
 
 			<!-- Mail View Screen  -->
-			<div id="mailView" class="inner" style="visibility: hidden">
-				<section class="inner-content">
+			<div id="mailView" class="app-wrapper" style="visibility: hidden">
+				<section class="app-content">
 					<aside class="emailLeft">
 						<ul class="controls">
 							<li class="icon"></li>
@@ -231,7 +209,7 @@
 					<section class="main emailRight">
 						<div class="controls">
 							<ul class="emailLeft">
-								<li class="icon" id="InboxButton" class="InboxButton" onclick="inboxButtonSeleted()"></li>
+								<li class="icon" id="InboxButton" onclick="inboxButtonSeleted()"></li>
 								<li class="icon" id="changeAccountButton" onclick="loadChangeAccountScreen()">
 									<p class="label">Change Accounts</p>
 								</li>
@@ -258,9 +236,11 @@
 							</header>
 							<article id="MailHandler" class="email">
 								<header>
-									<p><div id="viewSubject"></div><div id="emailDate"></div></p>
 									<p>From: <span id="viewFrom"></span></p>
 									<p>To: <span id="viewTo"></span></p>
+									<p>Date: <span id="viewDate"></span></p>
+									<p id="viewSubject"></p>
+									<p id="emailDate"></p>
 								</header>
 								<p id="mailBody" class="body"></p>
 								<div id="viewAttachment"></div>
@@ -275,8 +255,8 @@
 			</div>
 				
 			<!-- Compose Screen  -->
-			<div id="composeView" class="inner" style="visibility: hidden">
-				<section class="inner-content">
+			<div id="composeView" class="app-wrapper" style="visibility: hidden">
+				<section class="app-content">
 					<aside class="emailLeft">
 						<ul class="controls">
 							<li class="icon"></li>
@@ -288,7 +268,7 @@
 					<section class="main emailRight">
 						<div class="controls">
 							<ul class="emailLeft">
-								<li class="icon" id="InboxButton" class="InboxButton" onclick="inboxButtonSeleted()"></li>
+								<li class="icon" id="InboxButton" onclick="inboxButtonSeleted()"></li>
 								<li class="icon" id="changeAccountButton" onclick="loadChangeAccountScreen()">
 									<p class="label">Change Accounts</p>
 								</li>
@@ -346,8 +326,8 @@
 			</div>
 
 			<!-- Draft Screen  -->
-			<div id="draftScreen" class="inner">
-				<section class="inner-content">
+			<div id="draftScreen" class="app-wrapper">
+				<section class="app-content">
 					<aside class="emailLeft">
 						<ul class="controls">
 							<li class="icon"></li>
@@ -360,7 +340,7 @@
 					<section class="main emailRight">
 						<div class="controls">
 							<ul class="emailLeft">
-								<li class="icon" id="InboxButton" class="InboxButton" onclick="inboxButtonSeleted()"></li>
+								<li class="icon" id="InboxButton" onclick="inboxButtonSeleted()"></li>
 								<li class="icon" id="changeAccountButton" onclick="loadChangeAccountScreen()">
 									<p class="label">Change Accounts</p>
 								</li>
@@ -418,8 +398,8 @@
 			</div>
 
 			<!-- Delete Account Confirmation Screen" -->
-			<div id="deleteAccountDiv" class="inner" style="visibility: hidden">
-			  <section class="inner-content">
+			<div id="deleteAccountDiv" class="app-wrapper" style="visibility: hidden">
+			  <section class="app-content">
 			  <header><h1>Select An Email</h1></header>
 					<div id="deleteAccountPopDiv" class="modal">
 						<h2>Delete the selected account(s)?</h2>

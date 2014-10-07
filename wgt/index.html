@@ -68,13 +68,13 @@
 	<body>
 		<div id="topBarIcons"></div>
 		<!-- BEGIN HTML ELEMENTS style="visibility: hidden"-->
-		<div id="mainDiv">
+		<div id="mainDiv" class="app-wrapper flex-parent flex-item">
 			<!-- Add New Account Screen -->
-			<div id="addAccount" class="app-wrapper transparent" style="visibility: hidden">
-			  <div id="addGmail" class="app-content transparent">
+			<div id="addAccount" class="flex-parent flex-item vertical-flex dark" style="visibility: hidden">
+			  <div id="addGmail" class="">
 					<!-- <a class="account-button" onclick="addAccount('Gmail')"> -->
 
-					<div class="flex-wrapper vertical">
+					<div class="">
 						<!-- Add Gmail Account Button -->
 						<div class="account-button" onclick="loadAddAccountForm()">
 							<div class="top">
@@ -102,7 +102,7 @@
 							</div>
 
 							<div class="input-group">
-								<input class="dark" type="checkbox" name="is-default">Save as default
+								<input type="checkbox" class="checkbox" name="is-default">Save as default
 							</div>
 
 							<div class="input-group" style="display: none">
@@ -128,8 +128,8 @@
 			</div>
 
 			<!-- Choose Email Account Screen  -->
-			<div id="chooseEmailAccount" class="app-wrapper">
-			  <section class="app-content">
+			<div id="chooseEmailAccount" class="flex-parent flex-item vertical-flex">
+			  <section class="app-content flex-item">
 					<header><h1>Select An Email</h1></header>
 					<li id="accountTemplate" class="account template">
 						<p></p>
@@ -137,296 +137,196 @@
 					</li>
 					<div class="details">
 						<ul id="emailAccounts" class="AddEmailContact"></ul>
-					</div>  
-					<div class="button-group">
-						<button type="button" id="useThisAccount" class="themeColor" onclick="useThisAccount()">Use This Account</button>
-						<button type="button" id="deleteThisAccount" class="themeColor" onclick="deleteThisAccount()">Delete This Account</button>
-						<button type="button" id="AddAccount" class="themeColor" onclick="loadAddAccountScreen()">Add Another Account</button>
+					</div>
+					<div class="button-group center">
+						<button type="button" id="useThisAccount" onclick="useThisAccount()">Use This Account</button>
+						<button type="button" id="deleteThisAccount" onclick="deleteThisAccount()">Delete This Account</button>
+						<button type="button" id="AddAccount" onclick="loadAddAccountScreen()">Add Another Account</button>
 					</div>
 				</section>
 			</div>
 
 			<!-- Inbox Screen  -->
-			<div id="inboxScreen" class="app-wrapper" style="visibility: hidden">
-				<section class="app-content">
+			<div id="inboxScreen" class="flex-parent flex-item" style="visibility: hidden">
+				<section class="app-content flex-parent flex-item no-scroll">
 					<aside id="sideMenu">
 						<ul class="controls">
 							<li class="icon menu-icon"></li>
-							<li class="icon inbox-icon"    id="InboxButton"         onclick="inboxButtonSeleted()"></li>
-							<li class="icon compose-icon"  id="composeButton"       onclick="loadComposeScreen()"></li>
+							<li class="icon inbox-icon" id="InboxButton" onclick="inboxButtonSelected()"></li>
 							<li class="icon accounts-icon" id="changeAccountButton" onclick="loadChangeAccountScreen()"></li>
-							<li class="icon drafts-icon"   id="draftButton"         onclick="draftSelected()"></li>
-							<li class="icon sync-icon"     id="Sync"                onclick="syncEmails()"></li>
+							<li class="icon drafts-icon" id="draftButton" onclick="draftSelected()"></li>
+							<li class="icon sync-icon" id="Sync" onclick="syncEmails()"></li>
 						</ul>
 					</aside>
-					<section class="main">
-						<div class="list content">
+					<section class="main flex-parent">
+						<div class="list content flex-parent vertical-flex flex-item">
 							<header>
 								<h1 id="InboxLabelCtrl"></h1>
-								<input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectCheckBox('All')">
-								<!-- <ul> -->
-									<!-- <li class="icon search" id="searchMail" onclick="searchMailCall()">
-										<input type="text" id="searchMailText"></input>
-									</li> -->
-								<!-- </ul> -->
+								<ul class="controls">
+									<li class="icon search-icon" id="searchMail" onclick="searchMailCall()">
+										<input type="text" id="searchMailText" style="display:none"></input>
+									</li>
+									<li class="icon compose-icon" id="composeButton" onclick="loadComposeScreen()"></li>
+									<!-- JS TODO: Send icon should only be visible when one or more items are checked -->
+									<li id="sendDraft" class="icon send-icon" onclick="console.log('JS TODO: Send icon should only be visible when one or more items are checked')"></li>
+									<li class="icon trash-icon" id="trash" onclick="deleteMail()"></li>
+									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectCheckBox('All')"></li>
+								</ul>
 							</header>
-							<ul class="mass-selection">
-								<li class="inbox-item">
-									<span>All</span>
-									<input type="checkbox" class="checkbox" id="CheckBoxSelectAll" onclick="selectCheckBox('All')">
-								</li>
-								<!-- 'Template' for email list item -->
-								<li id="inboxItemTemplate" class="inbox-item" data-id="">
-									<div class="status"></div>
-									<h3></h3>
-									<p></p>
-									<h4></h4>
-									<input type="checkbox" class="checkbox">
-								</li>
-							</ul>
-							<ul id="inbox" class="inbox"></ul>
-							<div id="progressDiv" style="visibility: hidden">Loading...</div>
-							<footer>	
-								<div id="trash" class="icon emailRight" onclick="deleteMail()"></div>
-							</footer>
+							<!-- 'Template' for email list item -->
+							<li id="inboxItemTemplate" class="list-item" data-id="">
+								<div class="status"></div>
+								<h3></h3>
+								<p></p>
+								<h4></h4>
+								<input type="checkbox" class="checkbox">
+							</li>
+							<!-- End Template -->
+							<ul class="" id="inbox"></ul>
 						</div>
 					</section>
 				</section>
 			</div>
 
 			<!-- Mail View Screen  -->
-			<div id="mailView" class="app-wrapper" style="visibility: hidden">
-				<section class="app-content">
-					<aside class="emailLeft">
+			<div id="mailView" class="flex-parent flex-item" style="visibility: hidden">
+				<section class="app-content flex-parent flex-item">
+					<aside id="sideMenu">
 						<ul class="controls">
-							<li class="icon"></li>
-							<li class="icon" id="composeButton" onclick="loadComposeScreen()"></li>
-							<li class="icon" id="draftButton" onclick="draftSelected()">
-								<p class="label"></p>
-							</li>
+							<li class="icon menu-icon"></li>
+							<li class="icon inbox-icon" id="InboxButton" onclick="inboxButtonSelected()"></li>
+							<li class="icon accounts-icon" id="changeAccountButton" onclick="loadChangeAccountScreen()"></li>
+							<li class="icon drafts-icon" id="draftButton" onclick="draftSelected()"></li>
+							<li class="icon sync-icon" id="Sync" onclick="syncEmails()"></li>
 						</ul>
 					</aside>
-					<section class="main emailRight">
-						<div class="controls">
-							<ul class="emailLeft">
-								<li class="icon" id="InboxButton" onclick="inboxButtonSeleted()"></li>
-								<li class="icon" id="changeAccountButton" onclick="loadChangeAccountScreen()">
-									<p class="label">Change Accounts</p>
-								</li>
-								<li class="icon" id="searchMail" onclick="searchMailCall()">
-									<input type="text" id="searchMailText"></input>
-								</li>
-							</ul>
-							<ul class="emailRight">
-								<li class="icon" id="Sync" onclick="syncEmails()"></li>
-								<li class="icon" id="addHome" onclick="homeSelected()"></li>
-							</ul>
-						</div>
-						<div class="content">
+					<section class="main flex-parent">
+						<div class="content flex-item">
 							<header>
-								<h3 id="InboxFullViewLabelCtrl"></h3>
-								<div class="controls emailRight">
-									<ul>
-										<li id="replyAll" class="icon" onclick="loadComposeScreen('replyAll')"></li>
-										<li id="reply" class="icon" onclick="loadComposeScreen('Reply')"></li>
-										<li id="forward" class="icon" onclick="loadComposeScreen('Forward')"></li>
-										<li id="next" class="icon emailRight" onclick="retriveMailFilterWithNextId()"></li>
-									</ul>
-								</div>
+								<h1 id="InboxFullViewLabelCtrl" onclick="inboxButtonSelected()"></h1>
+								<ul class="controls">
+									<li id="reply" class="icon" onclick="loadComposeScreen('Reply')"></li>
+									<li id="replyAll" class="icon" onclick="loadComposeScreen('replyAll')"></li>
+									<li id="forward" class="icon" onclick="loadComposeScreen('Forward')"></li>
+									<li id="next" class="icon emailRight" onclick="retriveMailFilterWithNextId()"></li>
+									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectCheckBox('All')"></li>
+								</ul>
 							</header>
 							<article id="MailHandler" class="email">
 								<header>
+									<p><div id="viewSubject"></div><div id="emailDate"></div></p>
 									<p>From: <span id="viewFrom"></span></p>
 									<p>To: <span id="viewTo"></span></p>
-									<p>Date: <span id="viewDate"></span></p>
-									<p id="viewSubject"></p>
-									<p id="emailDate"></p>
 								</header>
 								<p id="mailBody" class="body"></p>
 								<div id="viewAttachment"></div>
 							</article>
-							<div id="progressDiv" style="visibility: hidden">Loading...</div>
-							<footer>
-								<div id="trash" class="icon emailRight" onclick="deleteMailFromCompose()"></div>
-							</footer>
 						</div>
 					</section>
 				</section>
 			</div>
 				
 			<!-- Compose Screen  -->
-			<div id="composeView" class="app-wrapper" style="visibility: hidden">
-				<section class="app-content">
-					<aside class="emailLeft">
-						<ul class="controls">
-							<li class="icon"></li>
-							<li class="icon" id="draftButton" onclick="draftSelected()">
-								<p class="label"></p>
-							</li>
-						</ul>
-					</aside>
-					<section class="main emailRight">
-						<div class="controls">
-							<ul class="emailLeft">
-								<li class="icon" id="InboxButton" onclick="inboxButtonSeleted()"></li>
-								<li class="icon" id="changeAccountButton" onclick="loadChangeAccountScreen()">
-									<p class="label">Change Accounts</p>
-								</li>
-							</ul>
-							<ul class="emailRight">
-								<li class="icon" id="addHome" onclick="homeSelected()"></li>
-							</ul>
-						</div>
-
-						<div class="content">
+			<div id="composeView" class="flex-parent flex-item vertical-flex" style="visibility: hidden">
+				<section class="app-content flex-parent flex-item no-sidebar">
+					<section class="main flex-parent flex-item">
+						<div class="content flex-parent flex-item vertical-flex">
 							<header>
-								<h3 id="InboxComposeLabelCtrl">Inbox:</h3>
-								<div class="controls emailRight">
-								<ul>
-									<li id="send" class="icon emailRight" onclick="sendMail()"></li>
+								<h1 id="InboxComposeLabelCtrl" onclick="inboxButtonSelected()">Previous</h1>
+								<ul class="controls">
+									<li class="icon send-icon" id="send" onclick="sendMail()"></li>
+									<li class="icon trash-icon" id="trash" onclick="deleteMailFromCompose()"></li>
 								</ul>
-								</div>
 							</header>
-							<form class="compose">
-								<div class="details">
+							<form class="compose flex-parent vertical-flex">
+							<div class="mail-header">
+								<div class="input-group">
+									<input class="text-input" id="composeFrom" type="text">
+								</div>
+								<div class="input-group">
+									<input class="text-input" id="composeTo" type="text" placeholder="To">
+								</div>
+								<div id="ccBcc" style="display: none">
 									<div class="input-group">
-										<label for="composeTo">To:</label>
-										<input id="composeTo" type="text">
+										<input class="text-input" id="composeCc" type="text" placeholder="cc">
 									</div>
 									<div class="input-group">
-										<label for="composeCc">cc:</label>
-										<input id="composeCc" type="text">
-									</div>
-									<div class="input-group">
-										<label for="composeBcc">bcc:</label>
-										<input id="composeBcc" type="text">
-									</div>
-									<div class="input-group">
-										<label for="composeFrom">From:</label>
-										<input id="composeFrom" type="text">
-									</div>
-									<div class="input-group">
-										<label for="composeSubject">Subject:</label>
-										<input id="composeSubject" type="text">
+										<input class="text-input" id="composeBcc" type="text" placeholder="bcc">
 									</div>
 								</div>
 								<div class="input-group">
-									<textarea id="composeBody" placeholder="This is where you type your message..."></textarea>
+									<input class="text-input" id="composeSubject" type="text" placeholder="Subject">
 								</div>
-							</form>
-							<div style="visibility: hidden">Loading...</div>
+							</div>
+							<textarea class="text-input text-input-area" id="composeBody" placeholder="Compose"></textarea>
+						</form>
 						</div>
-
-						<!-- Template for attachments icons -->
-						<li id="emailAttachTemplate" class="template" data-id=""></li>
-
-						<ul id="composeAttach"></ul>
 					</section>
 				</section>
 			</div>
 
 			<!-- Draft Screen  -->
-			<div id="draftScreen" class="app-wrapper">
-				<section class="app-content">
-					<aside class="emailLeft">
+			<div id="draftScreen" class="flex-parent flex-item">
+				<section class="app-content flex-parent flex-item">
+					<aside id="sideMenu">
 						<ul class="controls">
-							<li class="icon"></li>
-							<li class="icon" id="composeButton" onclick="loadComposeScreen()"></li>
-							<li class="icon" id="draftButton" onclick="draftSelected()">
-								<p class="label"></p>
-							</li>
+							<li class="icon menu-icon"></li>
+							<li class="icon inbox-icon" id="InboxButton" onclick="inboxButtonSelected()"></li>
+							<li class="icon accounts-icon" id="changeAccountButton" onclick="loadChangeAccountScreen()"></li>
+							<li class="icon drafts-icon" id="draftButton" onclick="draftSelected()"></li>
+							<li class="icon sync-icon" id="Sync" onclick="syncEmails()"></li>
 						</ul>
 					</aside>
-					<section class="main emailRight">
-						<div class="controls">
-							<ul class="emailLeft">
-								<li class="icon" id="InboxButton" onclick="inboxButtonSeleted()"></li>
-								<li class="icon" id="changeAccountButton" onclick="loadChangeAccountScreen()">
-									<p class="label">Change Accounts</p>
-								</li>
-								<li class="icon" id="searchMail" onclick="searchMailCall()">
-									<input type="text" id="searchMailText"></input>
-								</li>
-							</ul>
-							<ul class="emailRight">
-								<li class="icon" id="Sync" onclick="syncEmails()"></li>
-								<li class="icon" id="addHome" onclick="homeSelected()"></li>
-							</ul>
-						</div>
-						<div class="content">
+					<section class="main">
+						<div class="list content">
 							<header>
-								<h3 id="DraftLabelCtrl">Drafts Saved</h3>
-								<div class="controls emailRight">
-									<ul>
-										<li id="sendDraft" class="icon emailRight" onclick="sendDraftMail()"></li>
-									</ul>
-								</div>
+								<h1 id="DraftLabelCtrl">Drafts</h1>
+								<ul class="controls">
+									<li class="icon search-icon" id="searchMail" onclick="searchMailCall()">
+										<input type="text" id="searchMailText" style="display:none"></input>
+									</li>
+									<li class="icon compose-icon" id="composeButton" onclick="loadComposeScreen()"></li>
+									<!-- JS TODO: Send icon should only be visible when one or more items are checked -->
+									<li id="sendDraft" class="icon send-icon" onclick="console.log('JS TODO: Send icon should only be visible when one or more items are checked')"></li>
+									<li class="icon trash-icon" id="trash" onclick="deleteMail()"></li>
+									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectCheckBox('All')"></li>
+								</ul>
 							</header>
-							<ul class="mass-selection">
-								<li class="draft-item">
-									<span>All</span>
-									<input type="checkbox" class="checkbox" id="CheckBoxSelectAll" onclick="selectCheckBox('All')">
-								</li>
-								<!-- 'Template' for draft list item -->
-								<li id="draftItemTemplate" class="draft-item" data-id="">
-									<h3></h3>
-									<h4></h4>
-									<input type="checkbox" class="checkbox">
-								</li>
+							<!-- 'Template' for draft list item -->
+							<li id="draftItemTemplate" class="list-item" data-id="">
+								<h3></h3>
+								<h4></h4>
+								<input type="checkbox" class="checkbox">
+							</li>
+							<!-- End Template -->
 							</ul>
-							<ul id="drafts" class="draftbox"></ul>
-							<div id="progressDiv" style="visibility: hidden">Loading...</div>
-							<footer>	
-								<div id="trash" class="icon emailRight" onclick="deleteMail()"></div>
-								<div class="button-group">
-									<button type="button" id="editContinue" class="themeColor" onclick="editContinueCompose()">Continue editing</button>
-									<button type="button" id="cancel" class="themeColor" onclick="inboxButtonSeleted()">Cancel</button>
-								</div>
-							</footer>
+							<ul id="drafts"></ul>
 						</div>
 					</section>	
 				</section>
 			</div>
-
+		</div>
+			
+		<div id="modals" class="app-wrapper flex-parent flex-item" style="visibility: hidden">
 			<!-- Delete Email Confirmation -->
-			<div id="deleteEmailPopDiv" class="modal" style="visibility: hidden">
-			  <h2>Delete the selected message(s)?</h2>
-				<div class="button-group">
-					<button type="button" id="deleteEmailYesDiv" class="themeColor" onclick="deleteEmailYes()">YES</button>
-					<button type="button" id="deleteEmailNoDiv" class="themeColor" onclick="deleteEmailNo()">NO</button>
-				</div>
-			</div>
-
-			<!-- Delete Account Confirmation Screen" -->
-			<div id="deleteAccountDiv" class="app-wrapper" style="visibility: hidden">
-			  <section class="app-content">
-			  <header><h1>Select An Email</h1></header>
-					<div id="deleteAccountPopDiv" class="modal">
-						<h2>Delete the selected account(s)?</h2>
-							<div class="button-group">
-								<button type="button" id="useThisAccount" class="themeColor" onclick="deleteAccountYes()">YES</button>
-								<button type="button" id="useThisAccount" class="themeColor" onclick="deleteAccountNo()">NO</button>
-							</div>
+			<div id="deleteEmailPopDiv" class="modal flex-parent flex-item vertical-flex dark" style="visibility: hidden; display: none">
+				<section class="app-content">
+				  <h1>Delete the selected message(s)?</h1>
+					<div class="button-group">
+						<button type="button" id="deleteEmailNoDiv" class="" onclick="deleteEmailNo()">No</button>
+						<button type="button" id="deleteEmailYesDiv" class="next" onclick="deleteEmailYes()">Yes</button>
 					</div>
 				</section>
 			</div>
 
-			<!-- Add Attachment Screen -->
-			<div id="fileAttachment" class="inner" style="visibility: hidden">
-				<a id="addHome" onclick="homeSelected()"></a>
-			  <section class="inner-content">
-			  	<section class="content">
-						<header><h1>Select A File to Attach</h1></header>
-						<li id="attachmentTemplate" class="template">
-							<p></p>
-							<input class="checkbox" type="checkbox" data-id="" value="">
-						</li>
-						<ul id="attachFiles" class="attachments"></ul>
-						<div class="button-group">
-							<button type="button" id="attachFileButton" class="themeColor" onclick="attachFile()">Attach file(s)</button>
-							<button type="button" id="cancelButton" class="themeColor" onclick="cancelFileAttachment()">Cancel</button>
-						</div>
-			  	</section>
+			<!-- Delete Account Confirmation Screen" -->
+			<div id="deleteAccountDiv" class="modal flex-parent flex-item vertical-flex dark" style="visibility: hidden; display: none">
+			  <section class="app-content">
+					<h1>Are you sure?</h1>
+					<div class="button-group">
+						<button type="button" class="" onclick="deleteAccountNo()">Cancel</button>
+						<button type="button" class="next" onclick="deleteAccountYes()">Delete</button>
+					</div>
 				</section>
 			</div>
 		</div>

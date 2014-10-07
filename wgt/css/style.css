@@ -25,15 +25,19 @@
 	position: absolute;
 }
 
-#mainDiv {
+#mainDiv, #modals {
 	font-family: 'Droid Sans', sans-serif;
 	font-size: 1em !important;
 	font-weight: normal;
 	width: 100%;
+	max-height: 1052px;
 	display: -webkit-flex;
 	display: flex;
 	-webkit-flex: 1;
 	flex: 1;
+}
+
+#mainDiv {
 	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#00476a), color-stop(100%,#000000)); /* Chrome,Safari4+ */
 	background: -webkit-radial-gradient(center, ellipse cover,  #00476a 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
 	background: radial-gradient(ellipse at center,  #00476a 0%,#000000 100%); /* W3C */
@@ -132,13 +136,17 @@ body {
 h1 {
 	font-size: 3em;
 	font-weight: normal;
-	color: white;
+	color: rgb(0, 128, 191);
 	text-align: center;
 	padding: 2% 0;
 	}
 
+.dark h1 {
+	color: white;
+}
+
 h2 {
-	font-weight: bold;
+	font-weight: normal;
 	font-size: 2em;
 	text-align: center;
 	color: rgb(100, 149, 237);
@@ -158,34 +166,46 @@ h4 {
 
 .app-wrapper,
 .app-content {
-	position: absolute;
 	width: 100%;
 	top: 0;
-	bottom: 0;
+}
+
+.app-wrapper {
+	background-color: white;
+	max-height: 1052px;
+}
+
+.content-wrapper {
+	background-color: white;
 }
 
 .app-content {
 	overflow-y: scroll;
+	background-color: white;
+}
+
+.dark .app-content {
+	background: transparent;
 }
 
 #sideMenu {
-	position: absolute;
-	width: 80px;
-	top: 0;
-	bottom: 124px;
-	/*background-color: rgb(0, 128, 191);*/
+	flex: 1;
+	-webkit-flex: 1;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(96%,rgba(0, 128, 191, 1)), color-stop(98%,rgba(0, 128, 191, 0.5)), color-stop(100%,transparent));
 }
 
 .main {
-	float: right;
-	position: absolute;
-	width: 640px;
-	margin: 0;
-	top: 0;
-	right: 0;
-	bottom: 124px;
+	flex: 8;
+	-webkit-flex: 8;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(96%,rgba(255, 255, 255, 1)), color-stop(98%,rgba(255, 255, 255, 0.5)), color-stop(100%,transparent));
+}
+
+#modals {
+	position: absolute;
+	width: 100%;
+	top: 85px;
+	bottom: 142px;
+	background: transparent;
 }
 
 /******** modifiers ********/
@@ -197,7 +217,6 @@ h4 {
 
 .no-scroll {
 	overflow: hidden;
-	bottom: 260px;
 }
 
 .hidden {
@@ -215,22 +234,42 @@ h4 {
 	transition: all .5s ease;
 }
 
-/******** Flex Containers ********/
-
-.flex-wrapper {
-	display: -webkit-flex;
-	display: flex;
-	-webkit-align-items: center;
-	align-items: center;
-	-webkit-justify-content: center;
-	justify-content: center;
-	width: 100%;
-	height: 100%;
+.center {
+	text-align: center;
 }
 
-.vertical {
+.no-sidebar .main {
+	flex: 1;
+	-webkit-flex: 1;
+}
+
+.flex-item {
+	flex: 1;
+	-webkit-flex: 1;
+}
+
+.no-flex {
+	flex: 0;
+	-webkit-flex: 0;
+}
+
+.dark {
+	color: white;
+	padding: 80px;
+}
+
+/******** Flex Containers ********/
+
+.flex-parent {
+	display: -webkit-flex;
+	display: flex;
+}
+
+.vertical-flex {
 	-webkit-flex-direction: column;
 	flex-direction: column;
+	-webkit-justify-content: center;
+	justify-content: center;
 }
 
 /******** Buttons *********/
@@ -243,10 +282,16 @@ input[type="button"] {
   padding: 2%;
   font-family: inherit;
   font-size: 2.5em;
+  color: rgb(0, 128, 191);
   text-align: left;
-  color: white;
   min-width: 150px;
 }
+
+.dark button,
+.dark input[type="button"] {
+  color: white;
+}
+
 
 .button-group {
 
@@ -261,7 +306,13 @@ input[type="button"] {
 	left: 0;
 }
 
-.button-group button:last-of-type {
+.dark .button-group button:last-of-type {
+	padding-right: 0;
+	position: absolute;
+	right: 0;
+}
+
+button.next {
 	padding-right: 0;
 	position: absolute;
 	right: 0;
@@ -325,7 +376,6 @@ input[type="button"] {
 #addGmail form {
 	-webkit-flex: 0;
 	flex: 0;
-	padding: 0 80px;
 	box-sizing: border-box;
 }
 
@@ -351,15 +401,6 @@ div.emailRight:hover {
 	background-size: auto;
 }
 
-.content {
-	width: 100%;
-	height: 100%;
-}
-
-ul {
-	position: relative;
-}
-
 /******** Form Styles ********/
 
 label {
@@ -383,16 +424,11 @@ input[type=password] {
 textarea,
 input[type=text],
 input[type=email],
-input[type=password],
-textarea:focus,
-input[type=text]:focus,
-input[type=email]:focus,
-input[type=password]:focus {
+input[type=password] {
   padding: 6px;
   font-weight: normal;
   font-size: 18px;
 	width: 100%;
-	border: none;
 	box-sizing: border-box;
 }
 
@@ -400,14 +436,14 @@ textarea:focus,
 input[type=text]:focus,
 input[type=email]:focus,
 input[type=password]:focus {
-	outline: 4px solid rgb(0, 128, 191);
+	border: 2px solid rgb(0, 128, 191);
   -webkit-transition: all 0.30s ease-in;
 }
 
 .checkbox {
   height: 1.2em;
   width: 1.2em;
-  margin: 0 10px 10px 0;
+  margin-right: 10px;
   padding: 12px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   background-color: white;
@@ -424,7 +460,7 @@ input[type=password]:focus {
 	box-shadow: none;
 }
 
-input[type="checkbox"].dark {
+.dark input[type="checkbox"] {
 	border: 2px solid white;
 	background: none;
 	box-shadow: none;
@@ -437,7 +473,7 @@ input[type="checkbox"]:checked {
 	background-repeat: no-repeat;
 }
 
-input[type="checkbox"].dark:checked {
+.dark input[type="checkbox"]:checked {
 	border-color: white;
 	background-image: url(../images/input_checkbox_checkmark_white.png);
 	background-position: center center;
@@ -460,6 +496,7 @@ input[type="checkbox"].dark:checked {
 	position: relative;
 	margin-bottom: 24px;
 	font-size: 20px;
+	width: inherit;
 }
 
 /******** End Form Style ********/
@@ -505,12 +542,11 @@ input[type="checkbox"].dark:checked {
 }
 
 .search-icon {
-	width: 175px;
-	line-height: 48px;
 	background-image: url(./user/blue/images/email/search_icon_white.png);
-	background-position-x: 106%;
-	background-position-y: center;
-	background-size: 36px 36px;
+}
+
+.main .search-icon {
+	background-image: url(../images/search_icon_blue.png);
 }
 
 .drafts-icon {
@@ -519,30 +555,35 @@ input[type="checkbox"].dark:checked {
 
 .compose-icon {
 	background-image: url(./user/blue/images/email/new_icon_white.png);
-	background-size: 32px;
 }
 
-#trash.icon {
-	background-image: url(./user/blue/images/email/trash_icon_white.png);
+.main .compose-icon {
+	background-image: url(../images/new_icon_blue.png);
+}
+
+.trash-icon {
+	background-image: url(../images/trash_icon_blue.png);
 }
 
 /******** List Views ********/
 
-.list.content header {
+.list.content {
+	overflow: hidden;
+	-webkit-justify-content: flex-start;
+	justify-content: flex-start;
+}
+
+.content header {
 	padding: 24px 24px 24px 52px;
 	box-sizing: border-box;
 }
 
-.list.content header h1 {
+.content header h1 {
 	color: #333;
 	text-align: left;
 	font-size: 36px; 
 	padding: 0;
 	float: left;
-}
-
-.controls {
-	display: block;
 }
 
 .main > .controls {
@@ -576,32 +617,20 @@ aside .controls li {
 	font-weight: normal;
 }
 
-section, h1 {
-	position: relative;
-	}	
-
-.app-content ul, .modal {
-	/*position: relative;*/
-	/*top:25%;*/
-	/*margin-top: -12.5%;*/
-}
-
 .themeColor {
 	background-position: right;
 	background-color: rgb(100, 149, 237);
 }
 
 .modal {
-	position: absolute;
-	left: 10%;
-	right: 10%;
-	top: 30%;
-	min-height: 10%;
-	margin: auto;
-	padding: 5%;
+	padding: 0;
 	box-sizing: border-box;
-	background-color: white;
-	border: 1px solid rgb(100, 149, 237)
+}
+
+.modal .app-content {
+	background-color: rgb(0, 128, 191);
+	padding: 40px;
+	box-sizing: border-box;
 }
 
 footer {
@@ -614,6 +643,8 @@ footer {
 
 .app-content header {
 	position: relative;
+	-webkit-flex: 0;
+	flex: 0;
 }
 
 .app-content header,
@@ -695,9 +726,36 @@ footer {
 	margin-bottom: 4%;
 }
 
-.compose .details {
-	margin: 0;
-	min-height: 0;
+.compose {
+	padding: 36px;
+	-webkit-flex: 1;
+	flex: 1;
+}
+
+.text-input {
+	border: 2px solid #E6E6E6;
+}
+
+.text-input:focus::-webkit-input-placeholder {
+  transition: text-indent 0.5s 0.5s ease; 
+  text-indent: -100%;
+  opacity: 1;
+}
+
+[placeholder]::-webkit-input-placeholder {
+	font-family: 'Droid Sans', sans-serif;
+}
+
+.text-input-area {
+	border-width: 2px 0;
+	margin-top: 40px;
+	margin-bottom: 20px;
+	-webkit-flex: 1;
+	flex: 1;
+}
+
+.text-input-area:focus {
+	border-width: 2px 0;
 }
 
 .description {
@@ -754,7 +812,7 @@ footer {
 
 #composeAttach li {
 	background-position: 4px center;
-	border: 1px solid lightgrey;
+	border: 1px solid #E6E6E6;
 	margin: 0 10px 10px 0;
 }
 
@@ -817,15 +875,9 @@ h3 {
 
 .content header .icon {
 	background-position: center center;
-	height: inherit;
-}
-
-.content header .icon.emailRight {
-	margin-right: 4%;
-}
-
-.content header ul {
-	height: 100%;
+	width: 32px;
+	height: 32px;
+	background-size: 32px;
 }
 
 .content header h3 {
@@ -836,15 +888,12 @@ h3 {
 }
 
 .content header .controls {
-	width: 40%;
+	float: right;
 }
 
-header h3,
-header .controls {
+.content header .controls li {
 	display: inline-block;
-	position: absolute;
-	top: 0;
-	bottom: 0;
+	margin-left: 20px;
 }
 
 h4 {
@@ -878,8 +927,8 @@ h4 {
 	background-image: url(./user/blue/images/email/next_icon_white.png);
 }
 
-#send.icon, #sendDraft.icon {
-	background-image: url(./user/blue/images/email/send_icon_white.png);
+.send-icon {
+	background-image: url(../images/send_icon_blue.png);
 }
 
 #attachmentButton.icon {
@@ -979,66 +1028,51 @@ h4 {
 	height: 92%;
 }
 
-.inbox, .email, .draftbox, .attachments {
+.list.content ul {
 	overflow-y: scroll;
 	overflow-x: hidden;
+	max-height: 1052px;
 }
 
-.inbox {
-	position: absolute;
-	top: 13%;
-	bottom: 8%;
-	width:100%;
-}
-
-.draftbox {
-	position: absolute;
-	bottom: 8%;
-	top: 13%;
-}
 
 #draftScreen .button-group {
-	/*position: absolute;*/
-	/*bottom: 0;*/
-	/*top: 87%;*/
-	/*width: 100%;*/
-	/*background-color: #eee;*/
 	margin: 0;
 	line-height: 72px;
 	text-align: left;
 }
 
 #draftScreen .button-group button {
-	color: cornFlowerBlue;
+	color: rgb(0, 128, 191);
 	background-color: white;
 	font-size: 1.25em; 
 }
 
 .email {
-	height: 92%;
-	width: 100%;
+	padding: 40px; 
+	box-sizing: border-box;
+}
+
+.email header {
+	padding: 0;
 }
 
 .email header, .email .body {
 	background-color: transparent;
-	margin: 2%;
-	padding-bottom: 2%;
-	height: auto;
 }
 
-.inbox-item, .draft-item, .email header, .attachments li {
-	border-bottom: 1px solid lightgrey;
+.list-item, .email header, .attachments li {
+	border-bottom: 1px solid #E6E6E6;
 }
 
-.inbox-item, .draft-item {
+.list-item {
 	padding: 10px 0;
 	margin: 0 10px;
 	min-height: 20px;
+	word-wrap: break-word;
+	word-break: break-all;
 }
 
-.inbox-item .checkbox,
-.attachments .checkbox,
-.draft-item .checkbox {
+.list-item .checkbox {
 	position: absolute;
 	top: 10px;
 	right: 10px;
@@ -1063,4 +1097,11 @@ h4 {
 
 #trash {
 	z-index: 1;
+}
+
+/* Mail View */
+
+.with-nav {
+	background-image: url(../images/back_icon_blue.png);
+	background-position: center center;
 }

@@ -72,20 +72,18 @@
 			<!-- Add New Account Screen -->
 			<div id="addAccount" class="flex-parent flex-item vertical-flex dark" style="visibility: hidden">
 			  <div id="addGmail" class="">
-					<!-- <a class="account-button" onclick="addAccount('Gmail')"> -->
-
 					<div class="">
 						<!-- Add Gmail Account Button -->
 						<div class="account-button" onclick="loadAddAccountForm()">
 							<div class="top">
 								<div class="white-separator"></div>
-								<img src="images/add_account_icon_white_lg.png" alt="add account icon white large">
+								<img src="images/add_account_icon_white_lg.png">
 								<div class="white-separator"></div>
 							</div>
 							<h1>Add Gmail Account</h1>
 							<div class="bottom">
 								<div class="white-separator"></div>
-								<img src="images/gmail_icon_white_lg.png" alt="gmail account icon white large">
+								<img src="images/gmail_icon_white_lg.png">
 								<div class="white-separator"></div>
 							</div>
 				    </div>
@@ -128,39 +126,73 @@
 			</div>
 
 			<!-- Choose Email Account Screen  -->
-			<div id="chooseEmailAccount" class="flex-parent flex-item vertical-flex">
-			  <section class="app-content flex-item">
-					<header><h1>Select An Email</h1></header>
-					<li id="accountTemplate" class="account template">
-						<p></p>
-						<input class="checkbox" type="checkbox" data-id="" value="">
+			<div id="chooseEmailAccount" class="flex-parent flex-item vertical-flex dark">
+			  <section class="app-content flex-item main">
+			  	<h2 class="previous" onclick="inboxButtonSelected()">Inbox</h2>
+
+				  <!-- Account Template -->
+					<li id="accountTemplate" class="template" data-id="" value="">
+						<h2 class="level1"></h2>
+						<ul class="level2 sub-menu">
+							<li class="label" id="deleteThisAccount" onclick="deleteThisAccount()">Remove account</li>
+							<li class="label" >Change password</li>
+							<li class="label" id="useThisAccount" onclick="useThisAccount(this)">Use this account</li>
+						</ul>
 					</li>
-					<div class="details">
-						<ul id="emailAccounts" class="AddEmailContact"></ul>
-					</div>
-					<div class="button-group center">
-						<button type="button" id="useThisAccount" onclick="useThisAccount()">Use This Account</button>
-						<button type="button" id="deleteThisAccount" onclick="deleteThisAccount()">Delete This Account</button>
-						<button type="button" id="AddAccount" onclick="loadAddAccountScreen()">Add Another Account</button>
-					</div>
+					<!-- End Account template -->
+
+					<h1>Accounts</h1>
+					<ul id="emailAccounts" class="AddEmailContact">
+						<!-- Demonstration Account -->
+						<li data-id="" value="">
+							<h2 class="level1">notanaccount@gmail.com</h2>
+							<ul class="level2 sub-menu">
+								<li class="label">Remove account</li>
+								<li class="label" >Change password</li>
+								<li class="label">Use this account</li>
+							</ul>
+						</li>
+					</ul>
+					<h1 id="AddAccount" onclick="loadAddAccountScreen()">Add Gmail Account</h1>
 				</section>
 			</div>
 
 			<!-- Inbox Screen  -->
 			<div id="inboxScreen" class="flex-parent flex-item" style="visibility: hidden">
 				<section class="app-content flex-parent flex-item no-scroll">
-					<aside id="sideMenu">
+					<aside class="side-menu">
 						<ul class="controls">
-							<li class="icon menu-icon" onclick="toggleSideMenu()"><span class="label">Menu</span></li>
-							<li class="icon inbox-icon" id="InboxButton" onclick="inboxButtonSelected()"><span class="label">Inbox</span></li>
-							<li class="icon accounts-icon" id="changeAccountButton" onclick="loadChangeAccountScreen()"><span class="label">Accounts</span></li>
-							<li class="icon folder-icon"><span class="label">Folders</span></li>
-							<li class="icon drafts-icon" id="draftButton" onclick="draftSelected()"><span class="label">Drafts</span><span class="label small count"></span></li>
-							<li class="icon settings-icon" id="Sync" onclick=""><span class="label">Settings</span></li>
-							<li class="icon sync-icon" id="Sync" onclick="syncEmails()"><span class="label">Sync Now</span></li>
+							<li id="menu-button" class="label" onclick="toggleSideMenu()"><span class="icon menu-icon"></span>Menu</li>
+							<li class="label" id="InboxButton" onclick="inboxButtonSelected()"><span class="icon inbox-icon"></span>Inbox</li>
+							<li class="label">
+							 <span class="accounts level1"><span class="icon accounts-icon"></span>Accounts</span>
+							 <ul class="level2 sub-menu">
+									<li class="label">Username</li>
+									<li class="label active">placeholderaccount@gmail.com</li>
+									<li class="label">thiswontwork@gmail.com</li>
+								</ul>
+							 </li>
+							<li  class="label">
+								<span class="folders level1"><span class="icon folder-icon"></span>Folders</span>
+								<ul class="level2 sub-menu">
+									<li class="label" id="draftButton" onclick="draftSelected()">Drafts<span class="small count"></span></li>
+									<li class="label">Sent</li>
+									<li class="label">Trash</li>
+									<li class="label">Important</li>
+								</ul>
+							</li>
+							<li class="label">
+							<span class="settings level1"><span class="icon settings-icon"></span>Settings</span>
+							<ul class="level2 sub-menu">
+									<li class="label" onclick="loadChangeAccountScreen()">Manage Accounts</li>
+									<li class="label">Factory Reset</li>
+								</ul>
+							</li>
+							<li class="label sync" onclick="syncEmails()"><span class="icon sync-icon"></span>Sync Now</li>
 						</ul>
 					</aside>
 					<section class="main flex-parent">
+					<div class="overlay"></div>
 						<div class="list content flex-parent vertical-flex flex-item">
 							<header>
 								<h1 id="InboxLabelCtrl"></h1>
@@ -193,15 +225,22 @@
 			<!-- Mail View Screen  -->
 			<div id="mailView" class="flex-parent flex-item">
 				<section class="app-content flex-parent flex-item">
-					<aside id="sideMenu">
+					<aside class="side-menu">
 						<ul class="controls">
-							<li class="icon menu-icon" onclick="toggleSideMenu()"><span class="label">Menu</span></li>
-							<li class="icon inbox-icon" id="InboxButton" onclick="inboxButtonSelected()"><span class="label">Inbox</span></li>
-							<li class="icon accounts-icon" id="changeAccountButton" onclick="loadChangeAccountScreen()"><span class="label">Accounts</span></li>
-							<li class="icon folder-icon"><span class="label">Folders</span></li>
-							<li class="icon drafts-icon" id="draftButton" onclick="draftSelected()"><span class="label">Drafts</span><span class="label small count"></span></li>
-							<li class="icon settings-icon" id="Sync" onclick=""><span class="label">Settings</span></li>
-							<li class="icon sync-icon" id="Sync" onclick="syncEmails()"><span class="label">Sync Now</span></li>
+							<li id="menu-button" class="label" onclick="toggleSideMenu()"><span class="icon menu-icon"></span>Menu</li>
+							<li class="label" id="InboxButton" onclick="inboxButtonSelected()"><span class="icon inbox-icon"></span>Inbox</li>
+							<li class="label" id="changeAccountButton" onclick="loadChangeAccountScreen()"><span class="icon accounts-icon"></span>Accounts</li>
+							<li class="label">
+								<span class="folders" onclick="toggleSubmenu(this)"><span class="icon folder-icon"></span>Folders</span>
+								<ul class="level2 sub-menu">
+									<li class="label" id="draftButton" onclick="draftSelected()">Drafts<span class="small count"></span></li>
+									<li class="label">Sent</li>
+									<li class="label">Trash</li>
+									<li class="label">Important</li>
+								</ul>
+							</li>
+							<li class="label" id="settings" onclick=""><span class="icon settings-icon"></span>Settings</li>
+							<li class="label sync" onclick="syncEmails()"><span class="icon sync-icon"></span>Sync Now</li>
 						</ul>
 					</aside>
 					<section class="main flex-parent">
@@ -272,15 +311,22 @@
 			<!-- Draft Screen  -->
 			<div id="draftScreen" class="flex-parent flex-item">
 				<section class="app-content flex-parent flex-item">
-					<aside id="sideMenu">
+					<aside class="side-menu">
 						<ul class="controls">
-							<li class="icon menu-icon" onclick="toggleSideMenu()"><span class="label">Menu</span></li>
-							<li class="icon inbox-icon" id="InboxButton" onclick="inboxButtonSelected()"><span class="label">Inbox</span></li>
-							<li class="icon accounts-icon" id="changeAccountButton" onclick="loadChangeAccountScreen()"><span class="label">Accounts</span></li>
-							<li class="icon folder-icon"><span class="label">Folders</span></li>
-							<li class="icon drafts-icon" id="draftButton" onclick="draftSelected()"><span class="label">Drafts</span><span class="label small count"></span></li>
-							<li class="icon settings-icon" id="Sync" onclick=""><span class="label">Settings</span></li>
-							<li class="icon sync-icon" id="Sync" onclick="syncEmails()"><span class="label">Sync Now</span></li>
+							<li id="menu-button" class="label" onclick="toggleSideMenu()"><span class="icon menu-icon"></span>Menu</li>
+							<li class="label" id="InboxButton" onclick="inboxButtonSelected()"><span class="icon inbox-icon"></span>Inbox</li>
+							<li class="label" id="changeAccountButton" onclick="loadChangeAccountScreen()"><span class="icon accounts-icon"></span>Accounts</li>
+							<li class="label">
+								<span class="folders" onclick="toggleSubmenu(this)"><span class="icon folder-icon"></span>Folders</span>
+								<ul class="level2 sub-menu">
+									<li class="label" id="draftButton" onclick="draftSelected()">Drafts<span class="small count"></span></li>
+									<li class="label">Sent</li>
+									<li class="label">Trash</li>
+									<li class="label">Important</li>
+								</ul>
+							</li>
+							<li class="label" id="settings" onclick=""><span class="icon settings-icon"></span>Settings</li>
+							<li class="label sync" onclick="syncEmails()"><span class="icon sync-icon"></span>Sync Now</li>
 						</ul>
 					</aside>
 					<section class="main">

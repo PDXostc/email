@@ -151,11 +151,13 @@
 				<section class="app-content flex-parent flex-item no-scroll">
 					<aside id="sideMenu">
 						<ul class="controls">
-							<li class="icon menu-icon"></li>
-							<li class="icon inbox-icon" id="InboxButton" onclick="inboxButtonSelected()"></li>
-							<li class="icon accounts-icon" id="changeAccountButton" onclick="loadChangeAccountScreen()"></li>
-							<li class="icon drafts-icon" id="draftButton" onclick="draftSelected()"></li>
-							<li class="icon sync-icon" id="Sync" onclick="syncEmails()"></li>
+							<li class="icon menu-icon" onclick="toggleSideMenu()"><span class="label">Menu</span></li>
+							<li class="icon inbox-icon" id="InboxButton" onclick="inboxButtonSelected()"><span class="label">Inbox</span></li>
+							<li class="icon accounts-icon" id="changeAccountButton" onclick="loadChangeAccountScreen()"><span class="label">Accounts</span></li>
+							<li class="icon folder-icon"><span class="label">Folders</span></li>
+							<li class="icon drafts-icon" id="draftButton" onclick="draftSelected()"><span class="label">Drafts</span><span class="label small count"></span></li>
+							<li class="icon settings-icon" id="Sync" onclick=""><span class="label">Settings</span></li>
+							<li class="icon sync-icon" id="Sync" onclick="syncEmails()"><span class="label">Sync Now</span></li>
 						</ul>
 					</aside>
 					<section class="main flex-parent">
@@ -189,15 +191,17 @@
 			</div>
 
 			<!-- Mail View Screen  -->
-			<div id="mailView" class="flex-parent flex-item" style="visibility: hidden">
+			<div id="mailView" class="flex-parent flex-item">
 				<section class="app-content flex-parent flex-item">
 					<aside id="sideMenu">
 						<ul class="controls">
-							<li class="icon menu-icon"></li>
-							<li class="icon inbox-icon" id="InboxButton" onclick="inboxButtonSelected()"></li>
-							<li class="icon accounts-icon" id="changeAccountButton" onclick="loadChangeAccountScreen()"></li>
-							<li class="icon drafts-icon" id="draftButton" onclick="draftSelected()"></li>
-							<li class="icon sync-icon" id="Sync" onclick="syncEmails()"></li>
+							<li class="icon menu-icon" onclick="toggleSideMenu()"><span class="label">Menu</span></li>
+							<li class="icon inbox-icon" id="InboxButton" onclick="inboxButtonSelected()"><span class="label">Inbox</span></li>
+							<li class="icon accounts-icon" id="changeAccountButton" onclick="loadChangeAccountScreen()"><span class="label">Accounts</span></li>
+							<li class="icon folder-icon"><span class="label">Folders</span></li>
+							<li class="icon drafts-icon" id="draftButton" onclick="draftSelected()"><span class="label">Drafts</span><span class="label small count"></span></li>
+							<li class="icon settings-icon" id="Sync" onclick=""><span class="label">Settings</span></li>
+							<li class="icon sync-icon" id="Sync" onclick="syncEmails()"><span class="label">Sync Now</span></li>
 						</ul>
 					</aside>
 					<section class="main flex-parent">
@@ -270,11 +274,13 @@
 				<section class="app-content flex-parent flex-item">
 					<aside id="sideMenu">
 						<ul class="controls">
-							<li class="icon menu-icon"></li>
-							<li class="icon inbox-icon" id="InboxButton" onclick="inboxButtonSelected()"></li>
-							<li class="icon accounts-icon" id="changeAccountButton" onclick="loadChangeAccountScreen()"></li>
-							<li class="icon drafts-icon" id="draftButton" onclick="draftSelected()"></li>
-							<li class="icon sync-icon" id="Sync" onclick="syncEmails()"></li>
+							<li class="icon menu-icon" onclick="toggleSideMenu()"><span class="label">Menu</span></li>
+							<li class="icon inbox-icon" id="InboxButton" onclick="inboxButtonSelected()"><span class="label">Inbox</span></li>
+							<li class="icon accounts-icon" id="changeAccountButton" onclick="loadChangeAccountScreen()"><span class="label">Accounts</span></li>
+							<li class="icon folder-icon"><span class="label">Folders</span></li>
+							<li class="icon drafts-icon" id="draftButton" onclick="draftSelected()"><span class="label">Drafts</span><span class="label small count"></span></li>
+							<li class="icon settings-icon" id="Sync" onclick=""><span class="label">Settings</span></li>
+							<li class="icon sync-icon" id="Sync" onclick="syncEmails()"><span class="label">Sync Now</span></li>
 						</ul>
 					</aside>
 					<section class="main">
@@ -309,7 +315,7 @@
 			
 		<div id="modals" class="app-wrapper flex-parent flex-item" style="visibility: hidden">
 			<!-- Delete Email Confirmation -->
-			<div id="deleteEmailPopDiv" class="modal flex-parent flex-item vertical-flex dark" style="visibility: hidden; display: none">
+			<div id="deleteEmailPopDiv" class="modal flex-parent flex-item vertical-flex dark" style="display: none">
 				<section class="app-content">
 				  <h1>Delete the selected message(s)?</h1>
 					<div class="button-group">
@@ -320,7 +326,7 @@
 			</div>
 
 			<!-- Delete Account Confirmation Screen" -->
-			<div id="deleteAccountDiv" class="modal flex-parent flex-item vertical-flex dark" style="visibility: hidden; display: none">
+			<div id="deleteAccountDiv" class="modal flex-parent flex-item vertical-flex dark" style="display: none">
 			  <section class="app-content">
 					<h1>Are you sure?</h1>
 					<div class="button-group">

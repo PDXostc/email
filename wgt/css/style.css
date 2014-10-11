@@ -133,6 +133,11 @@ body {
 	position: fixed;
 }
 
+li {
+	overflow: visible;
+	position: static;
+}
+
 /******** headings ********/
 
 h1 {
@@ -150,6 +155,7 @@ h1 {
 h2 {
 	font-weight: normal;
 	font-size: 2em;
+	line-height: 2em;
 }
 
 h3 {
@@ -159,6 +165,22 @@ h3 {
 
 h4 {
 	font-size: 1.17em;
+}
+
+/******** Flex Containers ********/
+
+.flex-parent {
+	display: -webkit-flex;
+	display: flex;
+	flex: 1;
+	-webkit-flex: 1;
+}
+
+.vertical-flex {
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	-webkit-justify-content: center;
+	justify-content: center;
 }
 
 /******** containers ********/
@@ -218,29 +240,17 @@ h4 {
   height: 100%;
   width: 100%;
   position: absolute;
+  visibility: hidden;
   opacity: 0;
   z-index: 1;
-}
-
-.expanded .main .overlay {
-  background: -webkit-gradient( linear, left top, right top, color-stop(0%,rgba(0,0,0,0.65)), color-stop(10%,rgba(0,0,0,0.5)), color-stop(100%,rgba(0,0,0,0.5)) );
-  opacity: 1;
   -webkit-transition: all .25s ease-out;
   transition: all .25s ease-out;
 }
 
-/******** Flex Containers ********/
-
-.flex-parent {
-	display: -webkit-flex;
-	display: flex;
-}
-
-.vertical-flex {
-	-webkit-flex-direction: column;
-	flex-direction: column;
-	-webkit-justify-content: center;
-	justify-content: center;
+.expanded .main .overlay {
+  background: -webkit-gradient( linear, left top, right top, color-stop(0%,rgba(0,0,0,0.65)), color-stop(10%,rgba(0,0,0,0.5)), color-stop(100%,rgba(0,0,0,0.5)) );
+  visibility: visible;
+  opacity: 1;
 }
 
 /******** Buttons *********/
@@ -296,9 +306,11 @@ button.next {
 }
 
 .previous {
-	background-image: url(../images/previous_icon_white.png);
+	background-image: url(../images/back_icon_white.png);
 	background-repeat: no-repeat;
 	background-position: 0 center;
+	padding-left: 24px;
+	background-size: 12px;
 }
 
 /******** Separators ********/
@@ -356,7 +368,26 @@ button.next {
 	box-sizing: border-box;
 }
 
-.account .level2 {
+.nested-menu .level2 {
+	padding: 0; 
+}
+
+.main h1 {
+	text-align: left;
+	width: inherit;
+	background-position: 0 center;
+	background-size: 48px;
+}
+
+.main h1 .label {
+	font-size: 1em;
+	margin-left: 72px;
+	display: block;
+	line-height: 60px;
+}
+
+.underline {
+	border-bottom: 1px solid rgba(255,255,255,0.5);
 }
 
 /******** Progress & Spinner Styles ********/
@@ -421,18 +452,18 @@ input[type=password]:focus {
 }
 
 .checkbox {
-  height: 1.2em;
+/*  height: 1.2em;
   width: 1.2em;
   margin-right: 10px;
   padding: 12px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   background-color: white;
-  box-shadow:inset 1px 1px 0 #fff, 0 1px 1px rgba(0,0,0,0.1);
+  box-shadow:inset 1px 1px 0 #fff, 0 1px 1px rgba(0,0,0,0.1);*/
 }
 
 .check-all {
-	width: 30px;
-	height: 30px;
+	width: 36px;
+	height: 36px;
 	border: 4px solid white;
 	float: right;
 	margin: 0;
@@ -447,10 +478,11 @@ input[type=password]:focus {
 }
 
 input[type="checkbox"]:checked {
-  border-color:rgba(0, 0, 0, 0.5);
-	background-image: url(../images/input_checkbox_checkmark_black.png);
+	background-image: url(../images/input_checkbox_checkmark_black_lg.png);
 	background-position: center center;
 	background-repeat: no-repeat;
+	background-size: 18px;
+	background-color: #e6e6e6;
 }
 
 .dark input[type="checkbox"]:checked {
@@ -459,10 +491,12 @@ input[type="checkbox"]:checked {
 	background-position: center center;
 	background-repeat: no-repeat;
 }
+
 #viewSubject{
        font-weight:bold;
        width:500px;
 }
+
 #emailDate{
        position: absolute;
        right:0px;
@@ -492,8 +526,18 @@ input[type="checkbox"]:checked {
 	width: 80px;
 	height: 80px;
 	float: left;
+}
+
+.icon, .icon-sm, .icon-lg {
 	background-repeat: no-repeat;
 	background-position: center;
+}
+
+.icon-sm {
+	background-size: 20px;
+	background-position-x: right;
+	height: 24px;
+	width: 24px;
 }
 
 .label {
@@ -514,11 +558,19 @@ input[type="checkbox"]:checked {
 
 .level2 .label {
 	font-size: 20px;
-	line-height: 40px;
-	border-bottom: 1px solid rgba(255,255,255,0.25);
+	line-height: normal;
+	padding: 10px 0; 
 	box-sizing: border-box;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+.dark .level2 .label {
+	border-bottom: 1px solid rgba(0,128,191,0.5);
+}
+
+.side-menu .level2 .label {
+	border-bottom: 1px solid rgba(255,255,255,0.25);
 }
 
 .count {
@@ -529,8 +581,27 @@ input[type="checkbox"]:checked {
 	background-image: url(../images/menu_icon_white.png);
 }
 
+.edit-icon-blue {
+	background-image: url(../images/edit_icon_blue.png);
+	float: right;
+	background-size: 24px;
+	background-position-x: right;
+}
+
 .accounts-icon {
-	background-image: url(./user/blue/images/email/users_icon_white.png);
+	background-image: url(../images/users_icon_white.png);
+}
+
+.accounts-icon-lg {
+	background-image: url(../images/users_icon_white_lg.png);
+}
+
+.add-gmail-icon-lg {
+	background-image: url(../images/add_gmail_icon_white_lg.png);
+}
+
+.nested-menu {
+	padding-left: 72px;
 }
 
 .accounts ~ .sub-menu > .label {
@@ -556,6 +627,10 @@ input[type="checkbox"]:checked {
 
 .inbox-icon {
 	background-image: url(./user/blue/images/email/inbox_icon_white.png);
+}
+
+.inbox-icon-blue {
+	background-image: url(../images/inbox_icon_blue.png);
 }
 
 .search-icon {
@@ -595,7 +670,7 @@ input[type="checkbox"]:checked {
 }
 
 .content header {
-	padding: 24px 24px 24px 52px;
+	padding: 24px 14px 24px 52px;
 	box-sizing: border-box;
 }
 
@@ -696,12 +771,6 @@ footer {
 }
 
 /******** Select Account Screen ********/
-
-#emailAccounts {
-	list-style: inside;
-	padding: 0;
-	margin: 0;
-}
 
 .account {
 }
@@ -853,10 +922,6 @@ footer {
 	background-repeat: no-repeat;
 }
 
-#emailAccounts {
-	overflow: auto;
-}
-
 .chooseEmailCheckBox {
 	position: absolute;
 	width: 40%;
@@ -864,25 +929,33 @@ footer {
 }
 
 
+.status, .attachment-indicator {
+	width: 16px;
+	height: 16px;
+	margin-top: 4px; 
+}
+
 .status {
-	left: 3%;
-	width: 3%;
-	height: 23%;
-	border-radius: 16px;
-	background-color: lightblue;
-	display: inline-block;
+	border-radius: 50%;
+	background-color: rgb(0, 128,191);
 	visibility: hidden;
 }
 
-.unread {
+.unread .status {
 	visibility: visible;
 }
 
+.attachment-indicator {
+	background-image: url(../images/attachment_icon_black_sm.png);
+	background-repeat: no-repeat;
+	background-position: bottom center;
+}
+
 h3 {
-	font-size: 1em;
-	color: darkSlateGray;
+	font-size: 1.5em;
 	overflow: hidden;
 	white-space: nowrap;
+	margin-bottom: 1%;
 }
 
 .content header .icon {
@@ -905,14 +978,14 @@ h3 {
 
 .content header .controls li {
 	display: inline-block;
-	margin-left: 20px;
+	margin-left: 24px;
 }
 
 h4 {
-	width: 80%;
-	font-size: .85em;
-	color: lightSlateGray;
+	font-size: 1.1em;
 	overflow: hidden;
+	font-weight: normal;
+	margin-bottom: 1%
 }
 
 .MessageItemBodyCheckBox {
@@ -935,8 +1008,12 @@ h4 {
 	background-image: url(./user/blue/images/email/forward_icon_white.png);
 }
 
-#next.icon {
+.next-icon {
 	background-image: url(./user/blue/images/email/next_icon_white.png);
+}
+
+.next-icon-blue {
+	background-image: url(../images/next_icon_blue.png);
 }
 
 .send-icon {
@@ -1077,17 +1154,58 @@ h4 {
 }
 
 .list-item {
-	padding: 10px 0;
-	margin: 0 10px;
-	min-height: 20px;
 	word-wrap: break-word;
 	word-break: break-all;
+	margin-right: 3px;
+	padding: 14px;
+}
+
+.list-item-subject {
+	text-overflow: ellipsis;
+}
+
+.list-item-body {
+	color: #555;
+	font-size: 1.1em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 .list-item .checkbox {
-	position: absolute;
-	top: 10px;
-	right: 10px;
+	padding: 0;
+	margin: 0;
+	height: 38px;
+	width: 38px;
+	max-width: 38px;
+	max-height: 38px;
+}
+
+.list-item .left-indicators {
+	flex: .625;
+	-webkit-flex: .625;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	align-items: center;
+	-webkit-align-items: center;
+}
+
+.list-item .right-indicators {
+	flex: .75;
+	-webkit-flex: .75;
+	text-align: right;
+	padding-right: 10px;
+}
+
+.list-item .checkbox {
+	flex: .5;
+	-webkit-flex: .5;
+}
+
+.list-item .preview {
+	flex: 5.875;
+	-webkit-flex: 5.875;
+	max-width: 461px;
 }
 
 .name {
@@ -1184,7 +1302,15 @@ h4 {
 	padding: 40px;
 }
 
+.dark .main {
+	margin-top: 10%;
+}
+
 .controls .small {
 	font-size: 16px;
 	font-weight: bold;
+}
+
+.right {
+	float: right;
 }

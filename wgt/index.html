@@ -68,9 +68,9 @@
 	<body>
 		<div id="topBarIcons"></div>
 		<!-- BEGIN HTML ELEMENTS style="visibility: hidden"-->
-		<div id="mainDiv" class="app-wrapper flex-parent flex-item">
+		<div id="mainDiv" class="app-wrapper flex-parent">
 			<!-- Add New Account Screen -->
-			<div id="addAccount" class="flex-parent flex-item vertical-flex dark" style="visibility: hidden">
+			<div id="addAccount" class="flex-parent vertical-flex dark" style="visibility: hidden">
 			  <div id="addGmail" class="">
 					<div class="">
 						<!-- Add Gmail Account Button -->
@@ -126,40 +126,40 @@
 			</div>
 
 			<!-- Choose Email Account Screen  -->
-			<div id="chooseEmailAccount" class="flex-parent flex-item vertical-flex dark">
-			  <section class="app-content flex-item main">
-			  	<h2 class="previous" onclick="inboxButtonSelected()">Inbox</h2>
+			<div id="chooseEmailAccount" class="flex-parent vertical-flex dark">
+		  	<h2 class="previous" onclick="inboxButtonSelected()">Inbox</h2>
+			  <section class="app-content main">
 
 				  <!-- Account Template -->
 					<li id="accountTemplate" class="template" data-id="" value="">
-						<h2 class="level1"></h2>
+						<h2 class="level1 underline"><span class="label"></span><span class="icon edit-icon-blue"></span></h2>
 						<ul class="level2 sub-menu">
-							<li class="label" id="deleteThisAccount" onclick="deleteThisAccount()">Remove account</li>
-							<li class="label" >Change password</li>
-							<li class="label" id="useThisAccount" onclick="useThisAccount(this)">Use this account</li>
+							<li class="label" id="deleteThisAccount" onclick="deleteThisAccount()">Remove account<span class="icon-sm right trash-icon"></span></li>
+							<li class="label">Change password<span class="icon-sm right next-icon-blue"></span></li>
+							<li class="label" id="useThisAccount" onclick="useThisAccount(this)">Use this account<span class="icon-sm right inbox-icon-blue"></span></li>
 						</ul>
 					</li>
 					<!-- End Account template -->
 
-					<h1>Accounts</h1>
-					<ul id="emailAccounts" class="AddEmailContact">
+					<h1 class="icon-lg accounts-icon-lg"><span class="label">Accounts</span></h1>
+					<ul id="emailAccounts" class="nested-menu">
 						<!-- Demonstration Account -->
-						<li data-id="" value="">
-							<h2 class="level1">notanaccount@gmail.com</h2>
+						<li data-id="" value="" style="list-style: none">
+							<h2 class="level1 underline"><span class="label">notanaccount@gmail.com</span><span class="icon edit-icon-blue"></span></h2>
 							<ul class="level2 sub-menu">
-								<li class="label">Remove account</li>
-								<li class="label" >Change password</li>
-								<li class="label">Use this account</li>
+								<li class="label">Remove account<span class="icon-sm right trash-icon"></span></li>
+								<li class="label">Change password<span class="icon-sm right next-icon-blue"></span></li>
+								<li class="label">Use this account<span class="icon-sm right inbox-icon-blue"></span></li>
 							</ul>
 						</li>
 					</ul>
-					<h1 id="AddAccount" onclick="loadAddAccountScreen()">Add Gmail Account</h1>
+					<h1 class="icon-lg add-gmail-icon-lg" id="AddAccount" onclick="loadAddAccountScreen()"><span class="label">Add Gmail Account</span></h1>
 				</section>
 			</div>
 
 			<!-- Inbox Screen  -->
-			<div id="inboxScreen" class="flex-parent flex-item" style="visibility: hidden">
-				<section class="app-content flex-parent flex-item no-scroll">
+			<div id="inboxScreen" class="flex-parent" style="visibility: hidden">
+				<section class="app-content flex-parent no-scroll">
 					<aside class="side-menu">
 						<ul class="controls">
 							<li id="menu-button" class="label" onclick="toggleSideMenu()"><span class="icon menu-icon"></span>Menu</li>
@@ -193,7 +193,7 @@
 					</aside>
 					<section class="main flex-parent">
 					<div class="overlay"></div>
-						<div class="list content flex-parent vertical-flex flex-item">
+						<div class="list content flex-parent vertical-flex">
 							<header>
 								<h1 id="InboxLabelCtrl"></h1>
 								<ul class="controls">
@@ -208,11 +208,19 @@
 								</ul>
 							</header>
 							<!-- 'Template' for email list item -->
-							<li id="inboxItemTemplate" class="list-item" data-id="">
-								<div class="status"></div>
-								<h3></h3>
-								<p></p>
-								<h4></h4>
+							<li id="inboxItemTemplate" class="list-item flex-parent" data-id="">
+								<div class="left-indicators flex-parent vertical-flex">
+									<div class="status"></div>
+									<div class="attachment-indicator"></div>
+								</div>
+								<div class="preview">
+									<h3 class="list-item-subject"></h3>
+									<h4 class="list-item-from"></h4>
+									<p class="list-item-body"></p>
+								</div>
+								<div class="right-indicators">
+									<p class="list-item-datetime"></p>
+								</div>
 								<input type="checkbox" class="checkbox">
 							</li>
 							<!-- End Template -->
@@ -223,15 +231,22 @@
 			</div>
 
 			<!-- Mail View Screen  -->
-			<div id="mailView" class="flex-parent flex-item">
-				<section class="app-content flex-parent flex-item">
+			<div id="mailView" class="flex-parent">
+				<section class="app-content flex-parent">
 					<aside class="side-menu">
 						<ul class="controls">
 							<li id="menu-button" class="label" onclick="toggleSideMenu()"><span class="icon menu-icon"></span>Menu</li>
 							<li class="label" id="InboxButton" onclick="inboxButtonSelected()"><span class="icon inbox-icon"></span>Inbox</li>
-							<li class="label" id="changeAccountButton" onclick="loadChangeAccountScreen()"><span class="icon accounts-icon"></span>Accounts</li>
 							<li class="label">
-								<span class="folders" onclick="toggleSubmenu(this)"><span class="icon folder-icon"></span>Folders</span>
+							 <span class="accounts level1"><span class="icon accounts-icon"></span>Accounts</span>
+							 <ul class="level2 sub-menu">
+									<li class="label">Username</li>
+									<li class="label active">placeholderaccount@gmail.com</li>
+									<li class="label">thiswontwork@gmail.com</li>
+								</ul>
+							 </li>
+							<li  class="label">
+								<span class="folders level1"><span class="icon folder-icon"></span>Folders</span>
 								<ul class="level2 sub-menu">
 									<li class="label" id="draftButton" onclick="draftSelected()">Drafts<span class="small count"></span></li>
 									<li class="label">Sent</li>
@@ -239,7 +254,13 @@
 									<li class="label">Important</li>
 								</ul>
 							</li>
-							<li class="label" id="settings" onclick=""><span class="icon settings-icon"></span>Settings</li>
+							<li class="label">
+							<span class="settings level1"><span class="icon settings-icon"></span>Settings</span>
+							<ul class="level2 sub-menu">
+									<li class="label" onclick="loadChangeAccountScreen()">Manage Accounts</li>
+									<li class="label">Factory Reset</li>
+								</ul>
+							</li>
 							<li class="label sync" onclick="syncEmails()"><span class="icon sync-icon"></span>Sync Now</li>
 						</ul>
 					</aside>
@@ -251,7 +272,7 @@
 									<li id="reply" class="icon" onclick="loadComposeScreen('Reply')"></li>
 									<li id="replyAll" class="icon" onclick="loadComposeScreen('replyAll')"></li>
 									<li id="forward" class="icon" onclick="loadComposeScreen('Forward')"></li>
-									<li id="next" class="icon emailRight" onclick="retriveMailFilterWithNextId()"></li>
+									<li id="next" class="icon next-icon" onclick="retriveMailFilterWithNextId()"></li>
 									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectCheckBox('All')"></li>
 								</ul>
 							</header>
@@ -270,10 +291,10 @@
 			</div>
 				
 			<!-- Compose Screen  -->
-			<div id="composeView" class="flex-parent flex-item vertical-flex" style="visibility: hidden">
-				<section class="app-content flex-parent flex-item no-sidebar">
-					<section class="main flex-parent flex-item">
-						<div class="content flex-parent flex-item vertical-flex">
+			<div id="composeView" class="flex-parent vertical-flex" style="visibility: hidden">
+				<section class="app-content flex-parent no-sidebar">
+					<section class="main flex-parent">
+						<div class="content flex-parent vertical-flex">
 							<header>
 								<h1 id="InboxComposeLabelCtrl" onclick="inboxButtonSelected()">Previous</h1>
 								<ul class="controls">
@@ -309,15 +330,22 @@
 			</div>
 
 			<!-- Draft Screen  -->
-			<div id="draftScreen" class="flex-parent flex-item">
-				<section class="app-content flex-parent flex-item">
+			<div id="draftScreen" class="flex-parent">
+				<section class="app-content flex-parent">
 					<aside class="side-menu">
 						<ul class="controls">
 							<li id="menu-button" class="label" onclick="toggleSideMenu()"><span class="icon menu-icon"></span>Menu</li>
 							<li class="label" id="InboxButton" onclick="inboxButtonSelected()"><span class="icon inbox-icon"></span>Inbox</li>
-							<li class="label" id="changeAccountButton" onclick="loadChangeAccountScreen()"><span class="icon accounts-icon"></span>Accounts</li>
 							<li class="label">
-								<span class="folders" onclick="toggleSubmenu(this)"><span class="icon folder-icon"></span>Folders</span>
+							 <span class="accounts level1"><span class="icon accounts-icon"></span>Accounts</span>
+							 <ul class="level2 sub-menu">
+									<li class="label">Username</li>
+									<li class="label active">placeholderaccount@gmail.com</li>
+									<li class="label">thiswontwork@gmail.com</li>
+								</ul>
+							 </li>
+							<li  class="label">
+								<span class="folders level1"><span class="icon folder-icon"></span>Folders</span>
 								<ul class="level2 sub-menu">
 									<li class="label" id="draftButton" onclick="draftSelected()">Drafts<span class="small count"></span></li>
 									<li class="label">Sent</li>
@@ -325,7 +353,13 @@
 									<li class="label">Important</li>
 								</ul>
 							</li>
-							<li class="label" id="settings" onclick=""><span class="icon settings-icon"></span>Settings</li>
+							<li class="label">
+							<span class="settings level1"><span class="icon settings-icon"></span>Settings</span>
+							<ul class="level2 sub-menu">
+									<li class="label" onclick="loadChangeAccountScreen()">Manage Accounts</li>
+									<li class="label">Factory Reset</li>
+								</ul>
+							</li>
 							<li class="label sync" onclick="syncEmails()"><span class="icon sync-icon"></span>Sync Now</li>
 						</ul>
 					</aside>
@@ -359,9 +393,9 @@
 			</div>
 		</div>
 			
-		<div id="modals" class="app-wrapper flex-parent flex-item" style="visibility: hidden">
+		<div id="modals" class="app-wrapper flex-parent" style="visibility: hidden">
 			<!-- Delete Email Confirmation -->
-			<div id="deleteEmailPopDiv" class="modal flex-parent flex-item vertical-flex dark" style="display: none">
+			<div id="deleteEmailPopDiv" class="modal flex-parent vertical-flex dark" style="display: none">
 				<section class="app-content">
 				  <h1>Delete the selected message(s)?</h1>
 					<div class="button-group">
@@ -372,7 +406,7 @@
 			</div>
 
 			<!-- Delete Account Confirmation Screen" -->
-			<div id="deleteAccountDiv" class="modal flex-parent flex-item vertical-flex dark" style="display: none">
+			<div id="deleteAccountDiv" class="modal flex-parent vertical-flex dark" style="display: none">
 			  <section class="app-content">
 					<h1>Are you sure?</h1>
 					<div class="button-group">

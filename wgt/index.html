@@ -160,7 +160,7 @@
 			<!-- Inbox Screen  -->
 			<div id="inboxScreen" class="flex-parent" style="visibility: hidden">
 				<section class="app-content flex-parent no-scroll">
-					<aside class="side-menu">
+					<aside class="side-menu flex-parent">
 						<ul class="controls">
 							<li id="menu-button" class="label" onclick="toggleSideMenu()"><span class="icon menu-icon"></span>Menu</li>
 							<li class="label" id="InboxButton" onclick="inboxButtonSelected()"><span class="icon inbox-icon"></span>Inbox</li>
@@ -196,18 +196,18 @@
 						</ul>
 					</aside>
 					<section class="main flex-parent">
-					<div class="overlay"></div>
+						<div class="overlay"></div>
 						<div class="list content flex-parent vertical-flex">
-							<header>
+							<header class="flex-parent">
 								<h1 id="InboxLabelCtrl"></h1>
-								<ul class="controls">
-									<li class="icon search-icon" id="searchMail" onclick="searchMailCall()">
-										<input type="text" id="searchMailText" style="display:none"></input>
+								<ul class="controls flex-parent">
+									<input class="search-input" type="text" id="searchMailText" style="display:none"></input>
+									<li class="icon search-icon" id="searchMail" onclick="displaySearchInput(this)">
 									</li>
 									<li class="icon compose-icon" id="composeButton" onclick="loadComposeScreen()"></li>
 									<!-- JS TODO: Send icon should only be visible when one or more items are checked -->
-									<li id="sendDraft" class="icon send-icon" onclick="console.log('JS TODO: Send icon should only be visible when one or more items are checked')"></li>
-									<li class="icon trash-icon" id="trash" onclick="deleteMail()"></li>
+									<li id="sendDraft" class="icon send-icon" onclick="console.log('JS TODO: Send icon should only be visible when one or more items are checked')" style="display: none"></li>
+									<li class="icon trash-icon" id="trash" onclick="deleteMail()" style="display:none"></li>
 									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectCheckBox('All')"></li>
 								</ul>
 							</header>
@@ -228,7 +228,7 @@
 								<input type="checkbox" class="checkbox">
 							</li>
 							<!-- End Template -->
-							<ul class="" id="inbox"></ul>
+							<ul class="flex-item" id="inbox"></ul>
 						</div>
 					</section>
 				</section>

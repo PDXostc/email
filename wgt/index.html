@@ -65,6 +65,26 @@
 		<!-- App-specific Email css -->
 		<link rel="stylesheet" type="text/css" href="./css/style.css" />
 	</head>
+
+	<!-- 'Template' for list item -->
+	<li id="listItemTemplate" class="list-item flex-parent" data-id="" style="display:none">
+		<div class="left-indicators flex-parent vertical-flex">
+			<div class="status"></div>
+			<div class="attachment-indicator"></div>
+		</div>
+		<div class="preview">
+			<h3 class="list-item-subject"></h3>
+			<h4 class="list-item-from"></h4>
+			<p class="list-item-body"></p>
+		</div>
+		<div class="right-indicators">
+			<p class="list-item-datetime"></p>
+		</div>
+		<input type="checkbox" class="checkbox">
+	</li>
+	<!-- End Template -->
+
+
 	<body>
 		<div id="topBarIcons"></div>
 		<!-- BEGIN HTML ELEMENTS style="visibility: hidden"-->
@@ -158,7 +178,7 @@
 			</div>
 
 			<!-- Inbox Screen  -->
-			<div id="inboxScreen" class="flex-parent" style="visibility: hidden">
+			<div id="inboxScreen" class="flex-parent">
 				<section class="app-content flex-parent no-scroll">
 					<aside class="side-menu flex-parent">
 						<ul class="controls">
@@ -197,38 +217,25 @@
 					</aside>
 					<section class="main flex-parent">
 						<div class="overlay"></div>
-						<div class="list content flex-parent vertical-flex">
+						<div class="content flex-parent vertical-flex">
 							<header class="flex-parent">
 								<h1 id="InboxLabelCtrl"></h1>
 								<ul class="controls flex-parent">
-									<input class="search-input" type="text" id="searchMailText" style="display:none"></input>
-									<li class="icon search-icon" id="searchMail" onclick="displaySearchInput(this)">
-									</li>
-									<li class="icon compose-icon" id="composeButton" onclick="loadComposeScreen()"></li>
-									<!-- JS TODO: Send icon should only be visible when one or more items are checked -->
-									<li id="sendDraft" class="icon send-icon" onclick="console.log('JS TODO: Send icon should only be visible when one or more items are checked')" style="display: none"></li>
-									<li class="icon trash-icon" id="trash" onclick="deleteMail()" style="display:none"></li>
+									<div class="search-group flex-parent" style="display:none">	
+										<input class="search-input" type="text" id="searchMailText" autofocus></input>
+										<li id="searchStart" class="icon search-icon" onclick="searchMailCall()"></li>
+									</div>
+									<div class="icons-group flex-parent">
+										<li class="icon compose-icon" id="composeButton" onclick="loadComposeScreen()"></li>
+										<li id="searchToggle" class="icon search-icon" onclick="displaySearchInput(this)"></li>
+										<!-- JS TODO: Send icon should only be visible when one or more items are checked -->
+										<li id="sendDraft" class="icon send-icon" onclick="console.log('JS TODO: Send icon should only be visible when one or more items are checked')" style="display: none"></li>
+										<li class="icon trash-icon" id="trash" onclick="deleteMail()" style="display:none"></li>
+									</div>
 									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectCheckBox('All')"></li>
 								</ul>
 							</header>
-							<!-- 'Template' for email list item -->
-							<li id="inboxItemTemplate" class="list-item flex-parent" data-id="">
-								<div class="left-indicators flex-parent vertical-flex">
-									<div class="status"></div>
-									<div class="attachment-indicator"></div>
-								</div>
-								<div class="preview">
-									<h3 class="list-item-subject"></h3>
-									<h4 class="list-item-from"></h4>
-									<p class="list-item-body"></p>
-								</div>
-								<div class="right-indicators">
-									<p class="list-item-datetime"></p>
-								</div>
-								<input type="checkbox" class="checkbox">
-							</li>
-							<!-- End Template -->
-							<ul class="flex-item" id="inbox"></ul>
+							<ul class="list flex-item" id="inbox"></ul>
 						</div>
 					</section>
 				</section>
@@ -336,7 +343,7 @@
 			<!-- Draft Screen  -->
 			<div id="draftScreen" class="flex-parent">
 				<section class="app-content flex-parent">
-					<aside class="side-menu">
+					<aside class="side-menu flex-parent">
 						<ul class="controls">
 							<li id="menu-button" class="label" onclick="toggleSideMenu()"><span class="icon menu-icon"></span>Menu</li>
 							<li class="label" id="InboxButton" onclick="inboxButtonSelected()"><span class="icon inbox-icon"></span>Inbox</li>
@@ -367,30 +374,28 @@
 							<li class="label sync" onclick="syncEmails()"><span class="icon sync-icon"></span>Sync Now</li>
 						</ul>
 					</aside>
-					<section class="main">
-						<div class="list content">
-							<header>
-								<h1 id="DraftLabelCtrl">Drafts</h1>
-								<ul class="controls">
-									<li class="icon search-icon" id="searchMail" onclick="searchMailCall()">
-										<input type="text" id="searchMailText" style="display:none"></input>
-									</li>
-									<li class="icon compose-icon" id="composeButton" onclick="loadComposeScreen()"></li>
-									<!-- JS TODO: Send icon should only be visible when one or more items are checked -->
-									<li id="sendDraft" class="icon send-icon" onclick="console.log('JS TODO: Send icon should only be visible when one or more items are checked')"></li>
-									<li class="icon trash-icon" id="trash" onclick="deleteMail()"></li>
+					<section class="main flex-parent">
+					<div class="overlay"></div>
+						<div class="content flex-parent vertical-flex">
+							<header class="flex-parent">
+								<h1 id="InboxLabelCtrl"></h1>
+								<ul class="controls flex-parent">
+									<div class="search-group flex-parent" style="display:none">	
+										<input class="search-input" type="text" id="searchMailText" autofocus></input>
+										<li id="searchStart" class="icon search-icon" onclick="searchMailCall()"></li>
+									</div>
+									<div class="icons-group flex-parent">
+										<li class="icon compose-icon" id="composeButton" onclick="loadComposeScreen()"></li>
+										<li id="searchToggle" class="icon search-icon" onclick="displaySearchInput(this)"></li>
+										<!-- JS TODO: Send icon should only be visible when one or more items are checked -->
+										<li id="sendDraft" class="icon send-icon" onclick="console.log('JS TODO: Send icon should only be visible when one or more items are checked')" style="display: none"></li>
+										<li class="icon trash-icon" id="trash" onclick="deleteMail()" style="display:none"></li>
+									</div>
 									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectCheckBox('All')"></li>
 								</ul>
 							</header>
-							<!-- 'Template' for draft list item -->
-							<li id="draftItemTemplate" class="list-item" data-id="">
-								<h3></h3>
-								<h4></h4>
-								<input type="checkbox" class="checkbox">
-							</li>
-							<!-- End Template -->
 							</ul>
-							<ul id="drafts"></ul>
+							<ul class="list flex-item" id="drafts"></ul>
 						</div>
 					</section>	
 				</section>

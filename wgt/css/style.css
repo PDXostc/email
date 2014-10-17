@@ -453,12 +453,8 @@ textarea:focus,
 input[type=text]:focus,
 input[type=email]:focus,
 input[type=password]:focus {
-	border: 2px solid rgb(0, 128, 191);
+	outline: 2px solid rgb(0, 128, 191);
   -webkit-transition: all 0.30s ease-in;
-}
-
-.checkbox {
-
 }
 
 .check-all {
@@ -667,12 +663,6 @@ input[type="checkbox"]:checked {
 
 .accounts ~ .sub-menu > .active {
 	opacity: 1;
-}
-
-.list.content {
-	overflow: hidden;
-	-webkit-justify-content: flex-start;
-	justify-content: flex-start;
 }
 
 .content header {
@@ -965,7 +955,9 @@ h3 {
 	width: 56%;
 }
 
-.content header .controls {
+.content header .controls,
+.search-group,
+.icons-group {
 	-webkit-align-items: center;
 	-webkit-justify-content: flex-end;
 	overflow: hidden;
@@ -1103,16 +1095,11 @@ h4 {
 	background-color: transparent;
 }
 
-#inboxItemTemplate,
-#draftItemTemplate {
-	display: none;
-}
-
 .email {
 	height: 92%;
 }
 
-.list.content ul {
+.content .list {
 	overflow-y: scroll;
 	overflow-x: hidden;
 	min-height: 635px;

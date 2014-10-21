@@ -232,9 +232,15 @@
 										<li id="sendDraft" class="icon send-icon" onclick="console.log('JS TODO: Send icon should only be visible when one or more items are checked')" style="display: none"></li>
 										<li class="icon trash-icon" id="trash" onclick="deleteMail()" style="display:none"></li>
 									</div>
-									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectCheckBox('All')"></li>
+									<li class="check-group"><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes(this)"></li>
 								</ul>
 							</header>
+							<div class="flex-parent results-header" style="display:none">
+								<h1>Results <span class="small" id="resultsCount">(##)</span></h1>
+								<ul class="controls flex-parent">
+									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes(this)"></li>
+								</ul>
+							</div>
 							<ul class="list flex-item" id="inbox"></ul>
 						</div>
 					</section>
@@ -284,7 +290,7 @@
 									<li id="replyAll" class="icon" onclick="loadComposeScreen('replyAll')"></li>
 									<li id="forward" class="icon" onclick="loadComposeScreen('Forward')"></li>
 									<li id="next" class="icon next-icon" onclick="retriveMailFilterWithNextId()"></li>
-									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectCheckBox('All')"></li>
+									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes(this)"></li>
 								</ul>
 							</header>
 							<article id="MailHandler" class="email">
@@ -391,7 +397,7 @@
 										<li id="sendDraft" class="icon send-icon" onclick="console.log('JS TODO: Send icon should only be visible when one or more items are checked')" style="display: none"></li>
 										<li class="icon trash-icon" id="trash" onclick="deleteMail()" style="display:none"></li>
 									</div>
-									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectCheckBox('All')"></li>
+									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes(this)"></li>
 								</ul>
 							</header>
 							</ul>

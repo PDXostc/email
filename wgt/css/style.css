@@ -435,6 +435,7 @@ input[type=text],
 input[type=email],
 input[type=password] {
 	-webkit-appearance: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 textarea,
@@ -670,7 +671,8 @@ input[type="checkbox"]:checked {
 	box-sizing: border-box;
 }
 
-.content header h1 {
+.content header h1,
+.results-header h1 {
 	color: #333;
 	text-align: left;
 	font-size: 36px; 
@@ -695,7 +697,10 @@ aside .controls li {
 
 input.search-input {
 	border: none;
-	width: auto;
+}
+
+.search-query {
+	position: relative;
 }
 
 .themeColor {
@@ -721,7 +726,8 @@ footer {
   width: 100%;
 }
 
-.content header {
+.content header,
+.results-header {
 	-webkit-align-items: center;
 	align-items: center;
 	-webkit-justify-content: space-between;
@@ -730,11 +736,16 @@ footer {
 }
 
 .content header,
+.results-header,
 .app-content footer {
 	background-color: #E6E6E6;
 	height: 80px;
 	max-height: 80px;
 	}
+
+.results-header {
+	border-top: 2px solid white;
+}
 
 /******** Add Account Details Screen ********/
 
@@ -805,6 +816,10 @@ footer {
 	border: 2px solid #E6E6E6;
 	overflow: hidden;
 	text-overflow: ellipsis; 
+}
+
+.text-input:focus {
+	text-overflow: clip;	
 }
 
 .text-input:focus::-webkit-input-placeholder {
@@ -956,11 +971,16 @@ h3 {
 }
 
 .content header .controls,
+.results-header .controls,
 .search-group,
 .icons-group {
 	-webkit-align-items: center;
 	-webkit-justify-content: flex-end;
 	overflow: hidden;
+}
+
+.search-group {
+	padding-left: 10%;
 }
 
 .content header .controls li {

@@ -26,9 +26,10 @@
 }
 
 .app-wrapper {
-	font-family: 'Droid Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
+	letter-spacing: -.1rem;
 	font-size: 1em !important;
-	font-weight: normal;
+	font-weight: 200;
 	width: 100%;
 	max-height: 1052px;
 	display: -webkit-flex;
@@ -55,56 +56,64 @@
 
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-ExtraLight.ttf') format('truetype');
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-ExtraLight.ttf')
+  		 format('truetype');
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Light.ttf') format('truetype');
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Light.ttf')
+  		 format('truetype');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-LightItalic.ttf') format('truetype');
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-LightItalic.ttf')
+  		 format('truetype');
   font-weight: 300;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf') format('truetype');
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf')
+       format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Italic.ttf') format('truetype');
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Italic.ttf')
+       format('truetype');
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Semibold.ttf') format('truetype');
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Semibold.ttf')
+       format('truetype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf') format('truetype');
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf')
+  		 format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Black.ttf') format('truetype');
+  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Black.ttf')
+  		 format('truetype');
   font-weight: 900;
   font-style: normal;
 }
@@ -139,11 +148,14 @@ li {
 	position: static;
 }
 
-/******** headings ********/
+/* Headings ***********************************************/
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 200;
+}
 
 h1 {
 	font-size: 3em;
-	font-weight: normal;
 	color: rgb(0, 128, 191);
 	text-align: center;
 	padding: 2% 0;
@@ -154,7 +166,6 @@ h1 {
 }
 
 h2 {
-	font-weight: normal;
 	font-size: 2em;
 	line-height: 2em;
 }
@@ -168,7 +179,7 @@ h4 {
 	font-size: 1.17em;
 }
 
-/******** Flex Containers ********/
+/* Flex Containers ****************************************/
 
 .flex-parent {
 	display: -webkit-flex;
@@ -191,7 +202,7 @@ h4 {
 	justify-content: flex-start;
 }
 
-/******** containers ********/
+/* Containers *********************************************/
 
 .app-content {
 	width: 100%;
@@ -252,9 +263,18 @@ h4 {
 }
 
 .expanded .main .overlay {
-  background: -webkit-gradient( linear, left top, right top, color-stop(0%,rgba(0,0,0,0.65)), color-stop(10%,rgba(0,0,0,0.5)), color-stop(100%,rgba(0,0,0,0.5)) );
+  background: -webkit-gradient(
+  	linear, left top, right top, 
+  	color-stop(0%,rgba(0,0,0,0.65)),
+  	color-stop(10%,rgba(0,0,0,0.5)), 
+  	color-stop(100%,rgba(0,0,0,0.5)) );
   visibility: visible;
   opacity: 1;
+}
+
+.options-group {
+	display: flex;
+	display: -webkit-flex;
 }
 
 /******** Buttons *********/
@@ -443,7 +463,7 @@ input[type=text],
 input[type=email],
 input[type=password] {
   padding: 6px;
-  font-weight: normal;
+  font-weight: 200;
   font-family: 'Droid Sans' sans-serif;
   font-size: 18px;
 	width: 100%;
@@ -488,19 +508,6 @@ input[type="checkbox"]:checked {
 	background-repeat: no-repeat;
 }
 
-#viewSubject{
-       font-weight:bold;
-       width:500px;
-}
-
-#emailDate{
-       position: absolute;
-       right:0px;
-       top:0px;
-}
-#progressDiv{
-       top:112px;
-}
 .input-group {
 	border: none;
 	position: relative;
@@ -538,9 +545,9 @@ input[type="checkbox"]:checked {
 
 .content header .icon {
 	background-position: center center;
-	width: 32px;
+	width: 40px;
 	height: 32px;
-	background-size: 32px;
+	background-size: 48px;
 	float: none;
 }
 
@@ -614,6 +621,35 @@ input[type="checkbox"]:checked {
 
 .trash-icon {
 	background-image: url(../images/trash_icon_blue.png);
+}
+
+.replyall-icon {
+	background-image: url(../images/replyall_icon_blue.png);
+}
+
+.reply-icon {
+	background-image: url(../images/reply_icon_blue.png);
+}
+
+.forward-icon {
+	background-image: url(../images/forward_icon_blue.png);
+}
+
+.next-icon {
+	background-image: url(./user/blue/images/email/next_icon_white.png);
+}
+
+.next-icon-blue {
+	background-image: url(../images/next_icon_blue.png);
+}
+
+.send-icon {
+	background-image: url(../images/send_icon_blue.png);
+}
+
+.content header .options-icon {
+	background-image: url(../images/options_icon_blue.png);
+	background-position: center bottom;
 }
 
 /******** Lists ********/
@@ -868,54 +904,15 @@ footer {
 	background-color: #eee;
 }
 
-#composeAttach {
-	position: absolute;
-	bottom: 0;
-	padding: 10px; 
-	max-height: 100px;
-	overflow-y: scroll;
-	background-color: #eee;
-}
-
-#composeAttach li {
-	display: inline-block;
-	background-size: 24px;
-	padding: 10px 10px 10px 28px;
-	font-size: .75em;
-}
-
 .attachments li {
 	height: 48px;
 	line-height: 48px;
 	padding: 10px 0 10px 48px;
 }
 
-.attachments li,
-#composeAttach li {
+.attachments li {
 	background-repeat: no-repeat;
 	margin: 0 10px;
-}
-
-#composeAttach li {
-	background-position: 4px center;
-	border: 1px solid #E6E6E6;
-	margin: 0 10px 10px 0;
-}
-
-.pdf-file {
-	background-image: url(./user/blue/images/email/pdf_file_icon_black.png);
-}
-
-.jpeg-file {
-	background-image: url(./user/blue/images/email/jpg_file_icon_black.png);
-}
-
-.text-file {
-	background-image: url(./user/blue/images/email/text_file_icon_black.png);
-}
-
-#gif-file {
-	background-image: url(./user/blue/images/email/gif_file_icon_black.png);
 }
 
 .mailDivPart {
@@ -963,17 +960,11 @@ h3 {
 	margin-bottom: 1%;
 }
 
-.content header h3 {
-	color: white;
-	margin-left: 4%;
-	padding: 4% 0;
-	width: 56%;
-}
-
 .content header .controls,
 .results-header .controls,
 .search-group,
-.icons-group {
+.icons-group,
+.options-group {
 	-webkit-align-items: center;
 	-webkit-justify-content: flex-end;
 	overflow: hidden;
@@ -991,7 +982,6 @@ h3 {
 h4 {
 	font-size: 1.1em;
 	overflow: hidden;
-	font-weight: normal;
 	margin-bottom: 1%
 }
 
@@ -1002,36 +992,6 @@ h4 {
 	width: 25%;
 	height: 25%;
 }
-
-#replyAll.icon {
-	background-image: url(./user/blue/images/email/replyall_icon_white.png);
-}
-
-#reply.icon {
-	background-image: url(./user/blue/images/email/reply_icon_white.png);
-}
-
-#forward.icon {
-	background-image: url(./user/blue/images/email/forward_icon_white.png);
-}
-
-.next-icon {
-	background-image: url(./user/blue/images/email/next_icon_white.png);
-}
-
-.next-icon-blue {
-	background-image: url(../images/next_icon_blue.png);
-}
-
-.send-icon {
-	background-image: url(../images/send_icon_blue.png);
-}
-
-#attachmentButton.icon {
-	background-image: url(./user/blue/images/email/attachment_icon_white.png);
-	background-position: center center;
-}
-
 
 .MailHandler {
 	background-color: white;
@@ -1077,17 +1037,6 @@ h4 {
 	background-repeat: no-repeat;
 }
 
-#structureMail {
-	position: absolute;
-	top: 15%;
-	left: 10%;
-	width: 85%;
-	height: 20%;
-	background-image: url(./user/blue/images/email/add_account_box_bg.png);
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-}
-
 .attachName {
 	font-size: 60%;
 }
@@ -1101,19 +1050,6 @@ h4 {
 	background-repeat: no-repeat;
 }
 
-#bodyDetails {
-	position: absolute;
-	top: 36%;
-	left: 10%;
-	width: 85%;
-	height: 40%;
-	resize: none;
-	font-size: 200%;
-	border: none ! important;
-	box-shadow: none ! important;
-	outline: none ! important;
-	background-color: transparent;
-}
 
 .email {
 	height: 92%;
@@ -1139,24 +1075,24 @@ h4 {
 	font-size: 1.25em; 
 }
 
-.email {
-	padding: 40px; 
-	box-sizing: border-box;
-}
-
 .email header {
 	padding: 0;
+	margin-top: 20px;
 }
 
 .email header, .email .body {
 	background-color: transparent;
 }
 
-.list-item, .email header, .attachments li {
+.list-item,
+.mail-item,
+.email header,
+.attachments li {
 	border-bottom: 1px solid #E6E6E6;
 }
 
-.list-item {
+.list-item,
+.mail-item {
 	word-wrap: break-word;
 	word-break: break-all;
 	margin-right: 3px;
@@ -1165,16 +1101,20 @@ h4 {
 	-webkit-flex: 0;
 }
 
-.list-item-subject {
+.item-subject {
 	text-overflow: ellipsis;
 }
 
-.list-item-body {
+.item-body {
 	color: #555;
 	font-size: 1.1em;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
+}
+
+.email .item-body {
+	padding: 20px;
 }
 
 .list-item .checkbox {
@@ -1186,20 +1126,34 @@ h4 {
 	max-height: 38px;
 }
 
-.list-item .left-indicators {
+.left-indicators {
 	flex: .625;
 	-webkit-flex: .625;
 	justify-content: space-between;
 	-webkit-justify-content: space-between;
 	align-items: center;
 	-webkit-align-items: center;
+	align-self: flex-start;
+	-webkit-align-self: flex-start;
 }
 
-.list-item .right-indicators {
+.right-indicators {
 	flex: .75;
 	-webkit-flex: .75;
 	text-align: right;
 	padding-right: 10px;
+	align-self: flex-start;
+	-webkit-align-self: flex-start;
+}
+
+.email .left-indicators,
+.email .right-indicators {
+	flex: .5;
+	-webkit-flex: .5;
+}
+
+.email .right-indicators {
+	margin-right: 40px;
 }
 
 .list-item .checkbox {
@@ -1207,10 +1161,17 @@ h4 {
 	-webkit-flex: .5;
 }
 
-.list-item .preview {
+.preview {
 	flex: 5.875;
 	-webkit-flex: 5.875;
 	max-width: 461px;
+	align-self: flex-start;
+	-webkit-align-self: flex-start;
+}
+
+.preview {
+	flex: 7;
+	-webkit-flex: 7;
 }
 
 .name {
@@ -1228,10 +1189,6 @@ h4 {
 	background-image: url(./user/blue/images/email/send_icon.png);
 	background-size: auto 100%;
 	background-repeat: no-repeat;
-}
-
-#trash {
-	z-index: 1;
 }
 
 /* Mail View */

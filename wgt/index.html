@@ -73,12 +73,12 @@
 			<div class="attachment-indicator"></div>
 		</div>
 		<div class="preview">
-			<h3 class="list-item-subject"></h3>
-			<h4 class="list-item-from"></h4>
-			<p class="list-item-body"></p>
+			<h3 class="item-subject"></h3>
+			<h4 class="item-from"></h4>
+			<p class="item-body"></p>
 		</div>
 		<div class="right-indicators">
-			<p class="list-item-datetime"></p>
+			<p class="item-datetime"></p>
 		</div>
 		<input type="checkbox" class="checkbox">
 	</li>
@@ -250,7 +250,7 @@
 			<!-- Mail View Screen  -->
 			<div id="mailView" class="flex-parent">
 				<section class="app-content flex-parent">
-					<aside class="side-menu">
+					<aside class="side-menu flex-parent">
 						<ul class="controls">
 							<li id="menu-button" class="label" onclick="toggleSideMenu()"><span class="icon menu-icon"></span>Menu</li>
 							<li class="label" id="InboxButton" onclick="inboxButtonSelected()"><span class="icon inbox-icon"></span>Inbox</li>
@@ -282,24 +282,38 @@
 						</ul>
 					</aside>
 					<section class="main flex-parent">
-						<div class="content flex-item">
-							<header>
+						<div class="overlay"></div>
+						<div class="content flex-parent vertical-flex">
+							<header class="flex-parent">
 								<h1 id="InboxFullViewLabelCtrl" onclick="inboxButtonSelected()"></h1>
-								<ul class="controls">
-									<li id="reply" class="icon" onclick="loadComposeScreen('Reply')"></li>
-									<li id="replyAll" class="icon" onclick="loadComposeScreen('replyAll')"></li>
-									<li id="forward" class="icon" onclick="loadComposeScreen('Forward')"></li>
-									<li id="next" class="icon next-icon" onclick="retriveMailFilterWithNextId()"></li>
-									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes(this)"></li>
+								<ul class="controls flex-parent">
+									<div class="icons-group flex-parent">
+										<li id="reply" class="icon reply-icon" onclick="loadComposeScreen('Reply')"></li>
+										<li class="icon trash-icon" id="trash" onclick="deleteMail()"></li>
+										<li class="icon options-icon" onclick="toggleOptions(this)"></li>
+									</div>
+									<div class="options-group" style="display:none">
+										<li id="replyAll" class="icon replyall-icon" onclick="loadComposeScreen('replyAll')"></li>
+										<li id="forward" class="icon forward-icon" onclick="loadComposeScreen('Forward')"></li>
+									</div>
+									<li id="next" class="icon next-icon-blue" onclick="retriveMailFilterWithNextId()"></li>
 								</ul>
 							</header>
-							<article id="MailHandler" class="email">
-								<header>
-									<p><div id="viewSubject"></div><div id="emailDate"></div></p>
-									<p>From: <span id="viewFrom"></span></p>
-									<p>To: <span id="viewTo"></span></p>
+							<article id="MailHandler" class="email flex-parent vertical-flex">
+								<header class="mail-item flex-parent">
+									<div class="left-indicators flex-parent vertical-flex">
+										<div class="attachment-indicator"></div>
+									</div>
+									<div class="preview">
+										<h3 id="viewSubject" class="item-subject"></h3>
+										<h4 class="list-item-from">From: <span id="viewFrom"></span></h4>
+										<p>To: <span id="viewTo"></span></p>
+									</div>
+									<div class="right-indicators">
+										<p id="emailDate" class="item-datetime"></p>
+									</div>
 								</header>
-								<p id="mailBody" class="body"></p>
+								<p id="mailBody" class="item-body flex-item"></p>
 								<div id="viewAttachment"></div>
 							</article>
 						</div>

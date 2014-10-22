@@ -1147,6 +1147,19 @@ footer {
 }
 
 /* Side Menu */
+.multi-line-label {
+	line-height: normal;
+	align-self: center;
+	-webkit-align-self: center;
+	width: 0;
+}
+
+.active-account {
+	display: block;
+	font-size: 1.15rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 
 .side-menu .controls {
 	position: absolute;

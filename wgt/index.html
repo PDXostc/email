@@ -182,24 +182,37 @@
 				<section class="app-content flex-parent no-scroll">
 					<aside class="side-menu flex-parent">
 						<ul class="controls">
-							<li id="menu-button" class="label" onclick="toggleSideMenu()"><span class="icon menu-icon"></span>Menu</li>
+							<li id="menu-button" class="label" onclick="toggleSideMenu()">
+								<span class="icon menu-icon"></span>Menu
+							</li>
 							<div class="side-menu-scroll">
-								<li class="label" id="InboxButton" onclick="inboxButtonSelected()"><span class="icon inbox-icon"></span>Inbox</li>
+								<li class="label flex-parent" id="InboxButton" onclick="inboxButtonSelected()">
+									<div class="icon inbox-icon"></div>
+									<div class="flex-item multi-line-label">Inbox
+										<span class="active-account">activeaccount@here.com</span>
+									</div>
+								</li>
 								<li id="sideMenuAccounts" class="label">
-								 <span class="accounts level1"><span class="icon accounts-icon"></span>Accounts</span>
-								 <ul class="level2 sub-menu">
+									<span class="accounts level1">
+								 		<span class="icon accounts-icon"></span>Accounts
+							 		</span>
+									<ul class="level2 sub-menu">
 										<li class="label">Username</li>
 										<li class="label active">placeholderaccount@gmail.com</li>
 										<li class="label">thiswontwork@gmail.com</li>
 									</ul>
-								 </li>
+								</li>
 								<li id="sideMenuFolders" class="label">
-									<span class="folders level1"><span class="icon folder-icon"></span>Folders</span>
+									<span class="folders level1">
+										<span class="icon folder-icon"></span>Folders
+									</span>
 									<ul class="level2 sub-menu">
 										<!-- Template for Folder list item -->
 										<li id="folderItemTemplate" class="label template"></li>
 										<!-- End template for Folder list item-->
-										<li class="label" id="draftButton" onclick="draftSelected()">Drafts<span class="small count"></span></li>
+										<li class="label" id="draftButton" onclick="draftSelected()">Drafts
+											<span class="small count"></span>
+										</li>
 										<li class="label">Sent</li>
 										<li class="label">Trash</li>
 										<li class="label">Important</li>
@@ -207,14 +220,18 @@
 									</ul>
 								</li>
 								<li id="sideMenuSettings" class="label">
-									<span class="settings level1"><span class="icon settings-icon"></span>Settings</span>
+									<span class="settings level1">
+										<span class="icon settings-icon"></span>Settings
+									</span>
 									<ul class="level2 sub-menu">
 										<li class="label" onclick="loadChangeAccountScreen()">Manage Accounts</li>
 										<li class="label">Factory Reset</li>
 									</ul>
 								</li>
 							</div>
-							<li class="label sync" onclick="syncEmails()"><span class="icon sync-icon"></span>Sync Now</li>
+							<li class="label sync" onclick="syncEmails()">
+								<span class="icon sync-icon"></span>Sync Now
+							</li>
 						</ul>
 					</aside>
 					<section class="main flex-parent">
@@ -254,33 +271,56 @@
 				<section class="app-content flex-parent">
 					<aside class="side-menu flex-parent">
 						<ul class="controls">
-							<li id="menu-button" class="label" onclick="toggleSideMenu()"><span class="icon menu-icon"></span>Menu</li>
-							<li class="label" id="InboxButton" onclick="inboxButtonSelected()"><span class="icon inbox-icon"></span>Inbox</li>
-							<li class="label">
-							 <span class="accounts level1"><span class="icon accounts-icon"></span>Accounts</span>
-							 <ul class="level2 sub-menu">
-									<li class="label">Username</li>
-									<li class="label active">placeholderaccount@gmail.com</li>
-									<li class="label">thiswontwork@gmail.com</li>
-								</ul>
-							 </li>
-							<li  class="label">
-								<span class="folders level1"><span class="icon folder-icon"></span>Folders</span>
-								<ul class="level2 sub-menu">
-									<li class="label" id="draftButton" onclick="draftSelected()">Drafts<span class="small count"></span></li>
-									<li class="label">Sent</li>
-									<li class="label">Trash</li>
-									<li class="label">Important</li>
-								</ul>
+							<li id="menu-button" class="label" onclick="toggleSideMenu()">
+								<span class="icon menu-icon"></span>Menu
 							</li>
-							<li class="label">
-							<span class="settings level1"><span class="icon settings-icon"></span>Settings</span>
-							<ul class="level2 sub-menu">
-									<li class="label" onclick="loadChangeAccountScreen()">Manage Accounts</li>
-									<li class="label">Factory Reset</li>
-								</ul>
+							<div class="side-menu-scroll">
+								<li class="label flex-parent" id="InboxButton" onclick="inboxButtonSelected()">
+									<div class="icon inbox-icon"></div>
+									<div class="flex-item multi-line-label">Inbox
+										<span class="active-account">activeaccount@here.com</span>
+									</div>
+								</li>
+								<li id="sideMenuAccounts" class="label">
+									<span class="accounts level1">
+								 		<span class="icon accounts-icon"></span>Accounts
+							 		</span>
+									<ul class="level2 sub-menu">
+										<li class="label">Username</li>
+										<li class="label active">placeholderaccount@gmail.com</li>
+										<li class="label">thiswontwork@gmail.com</li>
+									</ul>
+								</li>
+								<li id="sideMenuFolders" class="label">
+									<span class="folders level1">
+										<span class="icon folder-icon"></span>Folders
+									</span>
+									<ul class="level2 sub-menu">
+										<!-- Template for Folder list item -->
+										<li id="folderItemTemplate" class="label template"></li>
+										<!-- End template for Folder list item-->
+										<li class="label" id="draftButton" onclick="draftSelected()">Drafts
+											<span class="small count"></span>
+										</li>
+										<li class="label">Sent</li>
+										<li class="label">Trash</li>
+										<li class="label">Important</li>
+										<li class="label" onclick="addNewFolderItem('Fake Folder ')">+ Folder</li>
+									</ul>
+								</li>
+								<li id="sideMenuSettings" class="label">
+									<span class="settings level1">
+										<span class="icon settings-icon"></span>Settings
+									</span>
+									<ul class="level2 sub-menu">
+										<li class="label" onclick="loadChangeAccountScreen()">Manage Accounts</li>
+										<li class="label">Factory Reset</li>
+									</ul>
+								</li>
+							</div>
+							<li class="label sync" onclick="syncEmails()">
+								<span class="icon sync-icon"></span>Sync Now
 							</li>
-							<li class="label sync" onclick="syncEmails()"><span class="icon sync-icon"></span>Sync Now</li>
 						</ul>
 					</aside>
 					<section class="main flex-parent">
@@ -367,33 +407,56 @@
 				<section class="app-content flex-parent">
 					<aside class="side-menu flex-parent">
 						<ul class="controls">
-							<li id="menu-button" class="label" onclick="toggleSideMenu()"><span class="icon menu-icon"></span>Menu</li>
-							<li class="label" id="InboxButton" onclick="inboxButtonSelected()"><span class="icon inbox-icon"></span>Inbox</li>
-							<li class="label">
-							 <span class="accounts level1"><span class="icon accounts-icon"></span>Accounts</span>
-							 <ul class="level2 sub-menu">
-									<li class="label">Username</li>
-									<li class="label active">placeholderaccount@gmail.com</li>
-									<li class="label">thiswontwork@gmail.com</li>
-								</ul>
-							 </li>
-							<li  class="label">
-								<span class="folders level1"><span class="icon folder-icon"></span>Folders</span>
-								<ul class="level2 sub-menu">
-									<li class="label" id="draftButton" onclick="draftSelected()">Drafts<span class="small count"></span></li>
-									<li class="label">Sent</li>
-									<li class="label">Trash</li>
-									<li class="label">Important</li>
-								</ul>
+							<li id="menu-button" class="label" onclick="toggleSideMenu()">
+								<span class="icon menu-icon"></span>Menu
 							</li>
-							<li class="label">
-							<span class="settings level1"><span class="icon settings-icon"></span>Settings</span>
-							<ul class="level2 sub-menu">
-									<li class="label" onclick="loadChangeAccountScreen()">Manage Accounts</li>
-									<li class="label">Factory Reset</li>
-								</ul>
+							<div class="side-menu-scroll">
+								<li class="label flex-parent" id="InboxButton" onclick="inboxButtonSelected()">
+									<div class="icon inbox-icon"></div>
+									<div class="flex-item multi-line-label">Inbox
+										<span class="active-account">activeaccount@here.com</span>
+									</div>
+								</li>
+								<li id="sideMenuAccounts" class="label">
+									<span class="accounts level1">
+								 		<span class="icon accounts-icon"></span>Accounts
+							 		</span>
+									<ul class="level2 sub-menu">
+										<li class="label">Username</li>
+										<li class="label active">placeholderaccount@gmail.com</li>
+										<li class="label">thiswontwork@gmail.com</li>
+									</ul>
+								</li>
+								<li id="sideMenuFolders" class="label">
+									<span class="folders level1">
+										<span class="icon folder-icon"></span>Folders
+									</span>
+									<ul class="level2 sub-menu">
+										<!-- Template for Folder list item -->
+										<li id="folderItemTemplate" class="label template"></li>
+										<!-- End template for Folder list item-->
+										<li class="label" id="draftButton" onclick="draftSelected()">Drafts
+											<span class="small count"></span>
+										</li>
+										<li class="label">Sent</li>
+										<li class="label">Trash</li>
+										<li class="label">Important</li>
+										<li class="label" onclick="addNewFolderItem('Fake Folder ')">+ Folder</li>
+									</ul>
+								</li>
+								<li id="sideMenuSettings" class="label">
+									<span class="settings level1">
+										<span class="icon settings-icon"></span>Settings
+									</span>
+									<ul class="level2 sub-menu">
+										<li class="label" onclick="loadChangeAccountScreen()">Manage Accounts</li>
+										<li class="label">Factory Reset</li>
+									</ul>
+								</li>
+							</div>
+							<li class="label sync" onclick="syncEmails()">
+								<span class="icon sync-icon"></span>Sync Now
 							</li>
-							<li class="label sync" onclick="syncEmails()"><span class="icon sync-icon"></span>Sync Now</li>
 						</ul>
 					</aside>
 					<section class="main flex-parent">

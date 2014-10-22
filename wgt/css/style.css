@@ -19,6 +19,10 @@
 *
 */
 
+html {
+	font-size: 62.5%;
+}
+
 .panel {
 	top: 190px;
 	left:35px;
@@ -26,9 +30,8 @@
 }
 
 .app-wrapper {
-	font-family: 'Source Sans Pro', sans-serif;
-	letter-spacing: -.1rem;
-	font-size: 1em !important;
+	font-family: 'Droid Sans', sans-serif;
+	font-size: 1rem !important;
 	font-weight: 200;
 	width: 100%;
 	max-height: 1052px;
@@ -44,79 +47,11 @@
 	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#00476a), color-stop(100%,#000000)); /* Chrome,Safari4+ */
 	background: -webkit-radial-gradient(center, ellipse cover,  #00476a 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
 	background: radial-gradient(ellipse at center,  #00476a 0%,#000000 100%); /* W3C */
+	-webkit-mask: -webkit-gradient(linear, left 98%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
 
 /******** global ********/
 
-/* Fonts */
-
-/* Adobe Source Sans */
-/* SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007 */
-/* http://scripts.sil.org/OFL */
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-ExtraLight.ttf')
-  		 format('truetype');
-  font-weight: 200;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Light.ttf')
-  		 format('truetype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-LightItalic.ttf')
-  		 format('truetype');
-  font-weight: 300;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf')
-       format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Italic.ttf')
-       format('truetype');
-  font-weight: 400;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Semibold.ttf')
-       format('truetype');
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf')
-  		 format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Source Sans Pro';
-  src: url('car/fonts/Source_Sans_Pro/SourceSansPro-Black.ttf')
-  		 format('truetype');
-  font-weight: 900;
-  font-style: normal;
-}
 
 /******** Common Overrides ********/
 
@@ -155,28 +90,44 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-	font-size: 3em;
+	font-size: 3rem;
 	color: rgb(0, 128, 191);
 	text-align: center;
-	padding: 2% 0;
-	}
+}
 
 .dark h1 {
 	color: white;
+	margin-top: 5%;
 }
 
 h2 {
-	font-size: 2em;
-	line-height: 2em;
+	font-size: 4rem;
 }
 
 h3 {
-	font-size: 1.5em;
+	font-size: 2rem;
+	font-weight: 600;
+	letter-spacing: normal;
 	color: inherit;
+	overflow: hidden;
+	padding-bottom: .1em;
+	white-space: nowrap;
 }
 
 h4 {
-	font-size: 1.17em;
+	font-size: 1.5rem;
+	overflow: hidden;
+	padding-bottom: .2em;
+	color: rgba(0, 0, 0, .5);
+}
+
+h4 span {
+	color: rgba(0, 0, 0, 1);
+}
+
+p {
+	font-size: 1.5rem;
+	color: rgba(0,0,0,0.75);
 }
 
 /* Flex Containers ****************************************/
@@ -286,7 +237,7 @@ input[type="button"] {
   background: none;
   padding: 2%;
   font-family: inherit;
-  font-size: 2.5em;
+  font-size: 2.5rem;
   color: rgb(0, 128, 191);
   text-align: left;
   min-width: 150px;
@@ -404,7 +355,8 @@ button.next {
 }
 
 .main h1 .label {
-	font-size: 1em;
+	font-size: 4rem;
+	font-weight: 400;
 	margin-left: 72px;
 	display: block;
 	line-height: 60px;
@@ -412,6 +364,10 @@ button.next {
 
 .underline {
 	border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+
+.underline .label {
+	line-height: normal;
 }
 
 /******** Progress & Spinner Styles ********/
@@ -439,7 +395,7 @@ div.emailRight:hover {
 /******** Form Styles ********/
 
 label {
-	font-size: 24px;
+	font-size: 2.5rem;
 	line-height: 38px;
 }
 
@@ -465,7 +421,7 @@ input[type=password] {
   padding: 6px;
   font-weight: 200;
   font-family: 'Droid Sans' sans-serif;
-  font-size: 18px;
+  font-size: 1.5rem;
 	width: 100%;
 	box-sizing: border-box;
 }
@@ -512,7 +468,7 @@ input[type="checkbox"]:checked {
 	border: none;
 	position: relative;
 	margin-bottom: 24px;
-	font-size: 20px;
+	font-size: 2rem;
 	width: inherit;
 }
 
@@ -537,10 +493,10 @@ input[type="checkbox"]:checked {
 }
 
 .icon-sm {
-	background-size: 20px;
+	background-size: 36px;
 	background-position-x: right;
-	height: 24px;
-	width: 24px;
+	height: 36px;
+	width: 36px;
 }
 
 .content header .icon {
@@ -559,7 +515,7 @@ input[type="checkbox"]:checked {
 	background-image: url(../images/edit_icon_blue.png);
 	float: right;
 	background-size: 24px;
-	background-position-x: right;
+	background-position: bottom;
 }
 
 .accounts-icon {
@@ -589,7 +545,7 @@ input[type="checkbox"]:checked {
 
 .inbox-icon {
 	background-image: url(./user/blue/images/email/inbox_icon_white.png);
-
+	background-size: 48px;
 }
 
 .inbox-icon-blue {
@@ -656,12 +612,19 @@ input[type="checkbox"]:checked {
 
 .label {
 	color: white;
-	font-size: 24px;
+	font-size: 2.5rem;
 	line-height: 80px;
+	font-weight: 400;
+	letter-spacing: normal;
 }
 
 .level1 {
 	display: block;
+	padding-bottom: 10px;
+}
+
+.level1 .label {
+	font-weight: 400;
 }
 
 .level2 {
@@ -670,12 +633,12 @@ input[type="checkbox"]:checked {
 }
 
 .level2 .label {
-	font-size: 20px;
 	line-height: normal;
 	padding: 10px 0; 
 	box-sizing: border-box;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	opacity: .75;
 }
 
 .dark .level2 .label {
@@ -711,7 +674,7 @@ input[type="checkbox"]:checked {
 .results-header h1 {
 	color: #333;
 	text-align: left;
-	font-size: 36px; 
+	font-size: 4rem; 
 	padding: 0;
 	float: left;
 }
@@ -889,7 +852,7 @@ footer {
 
 #progressDiv {
 	position: absolute;
-	font-size: 150%;
+	font-size: 1.5rem;
 	display: block;
 	padding: 4% 0;
 	width: 100%;
@@ -953,13 +916,6 @@ footer {
 	background-position: bottom center;
 }
 
-h3 {
-	font-size: 1.5em;
-	overflow: hidden;
-	white-space: nowrap;
-	margin-bottom: 1%;
-}
-
 .content header .controls,
 .results-header .controls,
 .search-group,
@@ -979,12 +935,6 @@ h3 {
 	margin-left: 24px;
 }
 
-h4 {
-	font-size: 1.1em;
-	overflow: hidden;
-	margin-bottom: 1%
-}
-
 .MessageItemBodyCheckBox {
 	position: absolute;
 	top: 32%;
@@ -1002,12 +952,12 @@ h4 {
 .ViewMailLabelCtrl {
 	position: absolute;
 	font-weight: bold;
-	font-size: 8px;
+	font-size: .75rem;
 	color: white;
 }
 
 .MailCtrl {
-	font-size: 150%;
+	font-size: 1.5rem;
 	font-weight: bold;
 	white-space: nowrap;
 	line-height: 150%;
@@ -1016,11 +966,11 @@ h4 {
 }
 
 .MailCtrlValue {
-	font-size: 100%;
+	font-size: 1rem;
 }
 
 .MailBodyValue {
-	font-size: 100%;
+	font-size: 1rem;
 	height: 45%;
 	width: 95%;
 	overflow-y: visible;
@@ -1038,7 +988,7 @@ h4 {
 }
 
 .attachName {
-	font-size: 60%;
+	font-size: .75rem;
 }
 
 .attachDivClass {
@@ -1072,7 +1022,7 @@ h4 {
 #draftScreen .button-group button {
 	color: rgb(0, 128, 191);
 	background-color: white;
-	font-size: 1.25em; 
+	font-size: 1.25rem; 
 }
 
 .email header {
@@ -1106,8 +1056,6 @@ h4 {
 }
 
 .item-body {
-	color: #555;
-	font-size: 1.1em;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
@@ -1206,8 +1154,18 @@ h4 {
 	height: 100%;
 }
 
+.side-menu-scroll {
+	overflow-y: scroll;
+	position: absolute;
+	top: 82px;
+	width: 100%;
+	bottom: 100px;
+	-webkit-mask: -webkit-gradient(linear, left 90%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+}
+
 #menu-button {
 	outline: 2px solid white;
+	height: 80px;
 }
 
 /******** modifiers ********/
@@ -1265,11 +1223,11 @@ h4 {
 }
 
 .dark .main {
-	margin-top: 10%;
+	margin-top: 5%;
 }
 
 .controls .small {
-	font-size: 16px;
+	font-size: 1.5rem;
 	font-weight: bold;
 }
 

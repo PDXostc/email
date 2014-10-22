@@ -332,11 +332,11 @@
 									<div class="icons-group flex-parent">
 										<li id="reply" class="icon reply-icon" onclick="loadComposeScreen('Reply')"></li>
 										<li class="icon trash-icon" id="trash" onclick="deleteMail()"></li>
+										<div class="options-group" style="display:none">
+											<li id="replyAll" class="icon replyall-icon" onclick="loadComposeScreen('replyAll')"></li>
+											<li id="forward" class="icon forward-icon" onclick="loadComposeScreen('Forward')"></li>
+										</div>
 										<li class="icon options-icon" onclick="toggleOptions(this)"></li>
-									</div>
-									<div class="options-group" style="display:none">
-										<li id="replyAll" class="icon replyall-icon" onclick="loadComposeScreen('replyAll')"></li>
-										<li id="forward" class="icon forward-icon" onclick="loadComposeScreen('Forward')"></li>
 									</div>
 									<li id="next" class="icon next-icon-blue" onclick="retriveMailFilterWithNextId()"></li>
 								</ul>

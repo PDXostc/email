@@ -146,7 +146,7 @@
 			</div>
 
 			<!-- Choose Email Account Screen  -->
-			<div id="chooseEmailAccount" class="flex-parent vertical-flex dark">
+			<div id="chooseEmailAccount" class="view flex-parent vertical-flex dark">
 		  	<h2 class="previous" onclick="inboxButtonSelected()">Inbox</h2>
 			  <section class="app-content main">
 
@@ -178,7 +178,8 @@
 			</div>
 
 			<!-- Inbox Screen  -->
-			<div id="inboxScreen" class="flex-parent">
+			<div id="inboxScreen" class="view flex-parent vertical-flex">
+				<section class="notification label"><h1 class="label">Notification Message</h1></section>
 				<section class="app-content flex-parent no-scroll">
 					<aside class="side-menu flex-parent">
 						<ul class="controls">
@@ -267,7 +268,7 @@
 			</div>
 
 			<!-- Mail View Screen  -->
-			<div id="mailView" class="flex-parent">
+			<div id="mailView" class="view flex-parent">
 				<section class="app-content flex-parent">
 					<aside class="side-menu flex-parent">
 						<ul class="controls">
@@ -331,7 +332,7 @@
 								<ul class="controls flex-parent">
 									<div class="icons-group flex-parent">
 										<li id="reply" class="icon reply-icon" onclick="loadComposeScreen('Reply')"></li>
-										<li class="icon trash-icon" id="trash" onclick="deleteMail()"></li>
+										<li class="icon trash-icon" id="trash" onclick="deleteMail(this)"></li>
 										<div class="options-group" style="display:none">
 											<li id="replyAll" class="icon replyall-icon" onclick="loadComposeScreen('replyAll')"></li>
 											<li id="forward" class="icon forward-icon" onclick="loadComposeScreen('Forward')"></li>
@@ -341,7 +342,7 @@
 									<li id="next" class="icon next-icon-blue" onclick="retriveMailFilterWithNextId()"></li>
 								</ul>
 							</header>
-							<article id="MailHandler" class="email flex-parent vertical-flex">
+							<article id="MailHandler" class="email flex-parent vertical-flex" data-id="">
 								<header class="mail-item flex-parent">
 									<div class="left-indicators flex-parent vertical-flex">
 										<div class="attachment-indicator"></div>
@@ -364,7 +365,7 @@
 			</div>
 				
 			<!-- Compose Screen  -->
-			<div id="composeView" class="flex-parent vertical-flex" style="visibility: hidden">
+			<div id="composeView" class="view flex-parent vertical-flex" style="visibility: hidden">
 				<section class="app-content flex-parent no-sidebar">
 					<section class="main flex-parent">
 						<div class="content flex-parent vertical-flex">
@@ -403,7 +404,7 @@
 			</div>
 
 			<!-- Draft Screen  -->
-			<div id="draftScreen" class="flex-parent">
+			<div id="draftScreen" class="view flex-parent">
 				<section class="app-content flex-parent">
 					<aside class="side-menu flex-parent">
 						<ul class="controls">

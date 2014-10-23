@@ -95,6 +95,11 @@ h1 {
 	text-align: center;
 }
 
+.notification h1 {
+	color: white;
+	font-size: 3rem;
+}
+
 .dark h1 {
 	color: white;
 	margin-top: 5%;
@@ -226,6 +231,13 @@ p {
 .options-group {
 	display: flex;
 	display: -webkit-flex;
+}
+
+.notification {
+	height: 80px;
+	background-color: rgb(0, 128, 191);
+	box-shadow: 0 0 20px 0 #444 inset;
+	display: none;
 }
 
 /******** Buttons *********/
@@ -748,10 +760,6 @@ footer {
 
 /******** Add Account Details Screen ********/
 
-#addAccountDetailsDiv.inner {
-  padding: 0;
-}
-
 #emailAccountsHeader {
 	top: 8%;
 	left: 18%;
@@ -1013,13 +1021,13 @@ footer {
 }
 
 
-#draftScreen .button-group {
+#draft .button-group {
 	margin: 0;
 	line-height: 72px;
 	text-align: left;
 }
 
-#draftScreen .button-group button {
+#draft .button-group button {
 	color: rgb(0, 128, 191);
 	background-color: white;
 	font-size: 1.25rem; 

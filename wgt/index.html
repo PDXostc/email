@@ -94,7 +94,7 @@
 			  <div id="addGmail" class="">
 					<div class="">
 						<!-- Add Gmail Account Button -->
-						<div class="account-button" onclick="loadAddAccountForm()">
+						<div class="account-button" onclick="toggleAddAccountForm()">
 							<div class="top">
 								<div class="white-separator"></div>
 								<img src="images/add_account_icon_white_lg.png">
@@ -103,7 +103,7 @@
 							<h1>Add Gmail Account</h1>
 							<div class="bottom">
 								<div class="white-separator"></div>
-								<img src="images/gmail_icon_white_lg.png">
+								<img src="images/email_icon_white_lg.png">
 								<div class="white-separator"></div>
 							</div>
 				    </div>
@@ -111,12 +111,12 @@
 				    <form id="credentialsForm" class="no-display half-sec-transition">
 							<div class="input-group">
 								<label for="EmailAddressTextbox">Email address</label>
-								<input id="EmailAddressTextbox" required type="email">
+								<input class="large-input" id="EmailAddressTextbox" required type="email">
 							</div>
 							
 							<div class="input-group">
 								<label for="PasswordTextbox">Password</label>
-								<input id="PasswordTextbox" required type="password">
+								<input class="large-input" id="PasswordTextbox" required type="password">
 							</div>
 
 							<div class="input-group">
@@ -128,8 +128,8 @@
 								<input id="DescriptionTextbox" value="noDescription" type="text">
 							</div>
 
-							<div class="button-group">
-								<button type="button" id="useThisAccount" onclick="useThisAccount()">Cancel</button>
+							<div class="button-group flex-parent">
+								<button type="button" id="useThisAccount" onclick="toggleAddAccountForm()">Cancel</button>
 								<button class="next" type="button" id="SaveAccountCtrl" onclick="saveDetails()">Next</button>
 							</div>
 						</form>
@@ -173,7 +173,7 @@
 							</ul>
 						</li>
 					</ul>
-					<h1 class="icon-lg add-gmail-icon-lg" id="AddAccount" onclick="loadAddAccountScreen()"><span class="label">Add Gmail Account</span></h1>
+					<h1 class="icon-lg add-email-icon-lg" id="AddAccount" onclick="loadAddAccountScreen()"><span class="label">Add Email Account</span></h1>
 				</section>
 			</div>
 
@@ -369,11 +369,13 @@
 				<section class="app-content flex-parent no-sidebar">
 					<section class="main flex-parent">
 						<div class="content flex-parent vertical-flex">
-							<header>
+							<header class="flex-parent">
 								<h1 id="InboxComposeLabelCtrl" onclick="inboxButtonSelected()">Previous</h1>
-								<ul class="controls">
-									<li class="icon send-icon" id="send" onclick="sendMail()"></li>
-									<li class="icon trash-icon" id="trash" onclick="deleteMailFromCompose()"></li>
+								<ul class="controls flex-parent">
+									<div class="icons-group flex-parent">
+										<li class="icon trash-icon" id="trash" onclick="deleteMailFromCompose()"></li>
+										<li class="icon send-icon" id="send" onclick="sendMail()"></li>
+									</div>
 								</ul>
 							</header>
 							<form class="compose flex-parent vertical-flex">
@@ -381,22 +383,22 @@
 								<div class="input-group">
 									<input class="text-input" id="composeFrom" type="text">
 								</div>
-								<div class="input-group">
+								<div class="input-group flex-parent">
 									<input class="text-input" id="composeTo" type="text" placeholder="To">
 								</div>
 								<div id="ccBcc" style="display: none">
-									<div class="input-group">
+									<div class="input-group flex-parent">
 										<input class="text-input" id="composeCc" type="text" placeholder="cc">
 									</div>
-									<div class="input-group">
+									<div class="input-group flex-parent">
 										<input class="text-input" id="composeBcc" type="text" placeholder="bcc">
 									</div>
 								</div>
-								<div class="input-group">
+								<div class="input-group flex-parent">
 									<input class="text-input" id="composeSubject" type="text" placeholder="Subject">
 								</div>
 							</div>
-							<textarea class="text-input text-input-area" id="composeBody" placeholder="Compose"></textarea>
+							<textarea class="text-input-area" id="composeBody" placeholder="Compose"></textarea>
 						</form>
 						</div>
 					</section>
@@ -503,8 +505,10 @@
 			<!-- Delete Account Confirmation Screen" -->
 			<div id="deleteAccountDiv" class="modal flex-parent vertical-flex dark" style="display: none">
 			  <section class="app-content">
+			  <img src="images/trash_icon_white_lg.png">
 					<h1>Are you sure?</h1>
-					<div class="button-group">
+					<p><span class="account-name">notwork@gmail.com</span> will be removed from this application. Your emails will still reside in account.</p>
+					<div class="button-group flex-parent">
 						<button type="button" class="" onclick="deleteAccountNo()">Cancel</button>
 						<button type="button" class="next" onclick="deleteAccountYes()">Delete</button>
 					</div>

@@ -381,10 +381,11 @@
 							<form class="compose flex-parent vertical-flex">
 							<div class="mail-header">
 								<div class="input-group">
-									<input class="text-input" id="composeFrom" type="text">
+									<input class="text-input" id="composeFrom" type="text" placeholder="From">
 								</div>
 								<div class="input-group flex-parent">
 									<input class="text-input" id="composeTo" type="text" placeholder="To">
+									<span class="input-toggle" onclick="toggleCcBcc(this)"><span class="icon dropdown-icon"></span></span>
 								</div>
 								<div id="ccBcc" style="display: none">
 									<div class="input-group flex-parent">
@@ -494,10 +495,12 @@
 			<!-- Delete Email Confirmation -->
 			<div id="deleteEmailPopDiv" class="modal flex-parent vertical-flex dark" style="display: none">
 				<section class="app-content">
-				  <h1>Delete the selected message(s)?</h1>
-					<div class="button-group">
-						<button type="button" id="deleteEmailNoDiv" class="" onclick="deleteEmailNo()">No</button>
-						<button type="button" id="deleteEmailYesDiv" class="next" onclick="deleteEmailYes()">Yes</button>
+				<img src="images/trash_icon_white_lg.png">
+				  <h1>Are you sure?</h1>
+				  <p>Email will be moved to the trash folder and deleted after 30 days.</p>
+					<div class="button-group flex-parent">
+						<button type="button" id="deleteEmailNoDiv" onclick="deleteEmailNo()">Cancel</button>
+						<button type="button" id="deleteEmailYesDiv" class="next" onclick="deleteEmailYes()">Delete</button>
 					</div>
 				</section>
 			</div>
@@ -509,7 +512,7 @@
 					<h1>Are you sure?</h1>
 					<p><span class="account-name">notwork@gmail.com</span> will be removed from this application. Your emails will still reside in account.</p>
 					<div class="button-group flex-parent">
-						<button type="button" class="" onclick="deleteAccountNo()">Cancel</button>
+						<button type="button" onclick="deleteAccountNo()">Cancel</button>
 						<button type="button" class="next" onclick="deleteAccountYes()">Delete</button>
 					</div>
 				</section>

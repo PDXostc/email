@@ -48,6 +48,7 @@ html {
 	background: -webkit-radial-gradient(center, ellipse cover,  #00476a 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
 	background: radial-gradient(ellipse at center,  #00476a 0%,#000000 100%); /* W3C */
 	-webkit-mask: -webkit-gradient(linear, left 98%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+	transition: all 0.25s ease-out;
 }
 
 /******** global ********/
@@ -188,7 +189,7 @@ p {
 }
 
 .side-menu {
-	transition: all 0.15s ease-in-out;
+	transition: all 0.25s ease-out;
 	background-color: rgb(0, 128, 191);
 	white-space: nowrap;
 	overflow: hidden;
@@ -454,6 +455,12 @@ input[type=password] {
 	border: 2px solid #e6e6e6;
 }
 
+.input-toggle {
+	position: absolute;
+	right: 0;
+	height: 100%;
+}
+
 #composeView header {
 	padding: 0 36px;
 }
@@ -641,6 +648,18 @@ input[type="checkbox"]:checked {
 
 .send-icon {
 	background-image: url(../images/send_icon_blue.png);
+}
+
+.dropdown-icon {
+	background-image: url(../images/dropdown_icon_grey.png);
+	height: inherit;
+	width: 48px;
+	background-size: 36px;
+}
+
+.dropdown-icon-up {
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
 }
 
 .content header .options-icon {

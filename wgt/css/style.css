@@ -461,6 +461,7 @@ input.large-input {
 	font-size: 3rem;
 	padding: 12px;
 	line-height: 1.25em;
+	border-width: 0;
 }
 
 .check-all {

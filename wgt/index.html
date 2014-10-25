@@ -100,7 +100,7 @@
 								<img src="images/add_account_icon_white_lg.png">
 								<div class="white-separator"></div>
 							</div>
-							<h1>Add Gmail Account</h1>
+							<h1>Add Email Account</h1>
 							<div class="bottom">
 								<div class="white-separator"></div>
 								<img src="images/email_icon_white_lg.png">
@@ -111,12 +111,12 @@
 				    <form id="credentialsForm" class="no-display half-sec-transition">
 							<div class="input-group">
 								<label for="EmailAddressTextbox">Email address</label>
-								<input class="large-input" id="EmailAddressTextbox" required type="email">
+								<input class="large-input text-input" id="EmailAddressTextbox" required type="email">
 							</div>
 							
 							<div class="input-group">
 								<label for="PasswordTextbox">Password</label>
-								<input class="large-input" id="PasswordTextbox" required type="password">
+								<input class="large-input text-input" id="PasswordTextbox" required type="password">
 							</div>
 
 							<div class="input-group">
@@ -513,7 +513,7 @@
 					<p><span class="account-name">notwork@gmail.com</span> will be removed from this application. Your emails will still reside in account.</p>
 					<div class="button-group flex-parent">
 						<button type="button" onclick="deleteAccountNo()">Cancel</button>
-						<button type="button" class="next" onclick="deleteAccountYes()">Delete</button>
+						<button type="button" class="next" onclick="deleteAccountYes(this)">Delete</button>
 					</div>
 				</section>
 			</div>

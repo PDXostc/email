@@ -129,7 +129,7 @@
 							</div>
 
 							<div class="button-group">
-								<button type="button" id="useThisAccount" onclick="useThisAccount()">Cancel</button>
+								<button type="button" id="useThisAccount" onclick="refreshChangeAccountScreen()">Cancel</button>
 								<button class="next" type="button" id="SaveAccountCtrl" onclick="saveDetails()">Next</button>
 							</div>
 						</form>
@@ -146,7 +146,7 @@
 			</div>
 
 			<!-- Choose Email Account Screen  -->
-			<div id="chooseEmailAccount" class="view flex-parent vertical-flex dark">
+			<div id="chooseEmailAccount" class="view no-display flex-parent vertical-flex dark">
 		  	<h2 class="previous" onclick="inboxButtonSelected()">Inbox</h2>
 			  <section class="app-content main">
 
@@ -154,7 +154,7 @@
 					<li id="accountTemplate" class="template" data-id="" value="">
 						<h2 class="level1 underline"><span class="label"></span><span class="icon-sm edit-icon-blue"></span></h2>
 						<ul class="level2 sub-menu">
-							<li class="label" id="deleteThisAccount" onclick="deleteThisAccount()">Remove account<span class="icon-sm right trash-icon"></span></li>
+							<li class="label" id="deleteThisAccount" onclick="deleteThisAccount(this)">Remove account<span class="icon-sm right trash-icon"></span></li>
 							<li class="label">Change password<span class="icon-sm right next-icon-blue"></span></li>
 							<li class="label" id="useThisAccount" onclick="useThisAccount(this)">Use this account<span class="icon-sm right inbox-icon-blue"></span></li>
 						</ul>
@@ -162,17 +162,7 @@
 					<!-- End Account template -->
 
 					<h1 class="icon-lg accounts-icon-lg"><span class="label">Accounts</span></h1>
-					<ul id="emailAccounts" class="nested-menu">
-						<!-- Demonstration Account -->
-						<li data-id="" value="" style="list-style: none">
-							<h2 class="level1 underline"><span class="label">notanaccount@gmail.com</span><span class="icon-sm edit-icon-blue"></span></h2>
-							<ul class="level2 sub-menu">
-								<li class="label">Remove account<span class="icon-sm right trash-icon"></span></li>
-								<li class="label">Change password<span class="icon-sm right next-icon-blue"></span></li>
-								<li class="label">Use this account<span class="icon-sm right inbox-icon-blue"></span></li>
-							</ul>
-						</li>
-					</ul>
+					<ul id="emailAccounts" class="nested-menu"></ul>
 					<h1 class="icon-lg add-gmail-icon-lg" id="AddAccount" onclick="loadAddAccountScreen()"><span class="label">Add Gmail Account</span></h1>
 				</section>
 			</div>
@@ -193,7 +183,7 @@
 										<span class="active-account">activeaccount@here.com</span>
 									</div>
 								</li>
-								<li id="sideMenuAccounts" class="label">
+								<li id="sideMenuAccounts" class="sideMenuAccounts label">
 									<span class="accounts level1">
 								 		<span class="icon accounts-icon"></span>Accounts
 							 		</span>
@@ -226,7 +216,7 @@
 									</span>
 									<ul class="level2 sub-menu">
 										<li class="label" onclick="loadChangeAccountScreen()">Manage Accounts</li>
-										<li class="label">Factory Reset</li>
+										<li class="account label" value="-1" onclick="loadDeleteAccConfirmationScreen(this)">Factory Reset</li>
 									</ul>
 								</li>
 							</div>
@@ -282,7 +272,7 @@
 										<span class="active-account">activeaccount@here.com</span>
 									</div>
 								</li>
-								<li id="sideMenuAccounts" class="label">
+								<li id="sideMenuAccounts" class="sideMenuAccounts label">
 									<span class="accounts level1">
 								 		<span class="icon accounts-icon"></span>Accounts
 							 		</span>
@@ -315,7 +305,7 @@
 									</span>
 									<ul class="level2 sub-menu">
 										<li class="label" onclick="loadChangeAccountScreen()">Manage Accounts</li>
-										<li class="label">Factory Reset</li>
+										<li class="label" onclick="loadDeleteAccConfirmationScreen()">Factory Reset</li>
 									</ul>
 								</li>
 							</div>
@@ -370,7 +360,7 @@
 					<section class="main flex-parent">
 						<div class="content flex-parent vertical-flex">
 							<header>
-								<h1 id="InboxComposeLabelCtrl" onclick="inboxButtonSelected()">Previous</h1>
+								<h1 id="InboxComposeLabelCtrl" onclick="inboxButtonSelectedFromCompose()">Previous</h1>
 								<ul class="controls">
 									<li class="icon send-icon" id="send" onclick="sendMail()"></li>
 									<li class="icon trash-icon" id="trash" onclick="deleteMailFromCompose()"></li>
@@ -418,7 +408,7 @@
 										<span class="active-account">activeaccount@here.com</span>
 									</div>
 								</li>
-								<li id="sideMenuAccounts" class="label">
+								<li id="sideMenuAccounts" class="sideMenuAccounts label">
 									<span class="accounts level1">
 								 		<span class="icon accounts-icon"></span>Accounts
 							 		</span>
@@ -451,7 +441,7 @@
 									</span>
 									<ul class="level2 sub-menu">
 										<li class="label" onclick="loadChangeAccountScreen()">Manage Accounts</li>
-										<li class="label">Factory Reset</li>
+										<li class="label" onclick="loadDeleteAccConfirmationScreen()">Factory Reset</li>
 									</ul>
 								</li>
 							</div>
@@ -464,7 +454,7 @@
 					<div class="overlay"></div>
 						<div class="content flex-parent vertical-flex">
 							<header class="flex-parent">
-								<h1 id="InboxLabelCtrl"></h1>
+								<h1 id="InboxLabelCtrl">Drafts</h1>
 								<ul class="controls flex-parent">
 									<div class="search-group flex-parent" style="display:none">	
 										<input class="search-input" type="text" id="searchMailText" autofocus></input>

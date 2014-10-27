@@ -133,15 +133,7 @@
 								<button class="next" type="button" id="SaveAccountCtrl" onclick="saveDetails()">Next</button>
 							</div>
 						</form>
-
-						<!-- Add Account Progress -->
-						<div class="progress no-display">
-							<img class="spinner" src="images/spinner_icon_white.png">
-							<h1>Retrieving email<br>from your account...</h1>
-						</div>
 					</div>
-
-
 			  </div>
 			</div>
 
@@ -517,7 +509,16 @@
 					</div>
 				</section>
 			</div>
+
+			<!-- Add Account Progress -->
+			<div id="addAccountProgress" class="progress modal flex-parent vertical-flex dark" style="display: none">
+			<section class="app-content">
+				<img class="spinner" src="images/spinner_icon_white.png">
+				<h1>Retrieving email<br>from your account...</h1>
+			</section>
+			</div>
 		</div>
+
 		<!-- END HTML ELEMENTS -->
 		<div id="bottomPanel" class="bottomPanel bottomPanelImg"></div>
 	</body>

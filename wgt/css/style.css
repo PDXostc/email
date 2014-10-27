@@ -392,8 +392,8 @@ input[type="button"] {
 }
 
 .progress .spinner {
-	-webkit-animation: spin 1.25s linear infinite;
-	animation: spin 1.25s linear infinite;
+	-webkit-animation: spin 0.65s linear infinite;
+	animation: spin 0.65s linear infinite;
 }
 
 /******** Overrides audiocontrols.css ********/

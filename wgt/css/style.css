@@ -103,7 +103,7 @@ h1 {
 
 .dark h1 {
 	color: white;
-	margin: 5% 0;
+	margin: 20px 0;
 	font-size: 4rem;
 }
 
@@ -326,7 +326,7 @@ input[type="button"] {
 }
 
 .account-button h1 {
-	padding: 5% 0;
+	padding: 20px 0;
 }
 
 .account-button img {

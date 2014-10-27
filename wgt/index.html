@@ -109,19 +109,22 @@
 				    </div>
 				    <!-- Credentials Form -->
 				    <form id="credentialsForm" class="no-display half-sec-transition">
-							<div class="input-group">
-								<label for="EmailAddressTextbox">Email address</label>
-								<input class="large-input text-input" id="EmailAddressTextbox" required type="email">
+							<label for="EmailAddressTextbox">Email address</label>
+							<div class="input-group flex-parent">
+								<input class="large-input text-input" id="EmailAddressTextbox" required type="email" autofocus>
+								<span class="clear"></span>
 							</div>
 							
-							<div class="input-group">
-								<label for="PasswordTextbox">Password</label>
+							<label for="PasswordTextbox">Password</label>
+							<div class="input-group flex-parent">
 								<input class="large-input text-input" id="PasswordTextbox" required type="password">
+								<span class="clear"></span>
 							</div>
 
-							<div class="input-group" style="display: none">
+							<div class="input-group flex-parent" style="display: none">
 								<input id="UsernameTextbox" value="noUsername" type="text">
 								<input id="DescriptionTextbox" value="noDescription" type="text">
+								<span class="clear"></span>
 							</div>
 
 							<div class="button-group flex-parent">
@@ -229,8 +232,11 @@
 							<header class="flex-parent">
 								<h1 id="InboxLabelCtrl"></h1>
 								<ul class="controls flex-parent">
-									<div class="search-group flex-parent" style="display:none">	
-										<input class="search-input text-input" type="text" id="searchMailText"></input>
+									<div class="search-group flex-parent" style="display:none">
+										<div class="input-group flex-parent">
+											<input class="search-input text-input" type="text" id="searchMailText">
+											<span class="clear"></span>
+										</div>
 										<li id="searchStart" class="icon search-icon" onclick="searchMailCall()"></li>
 									</div>
 									<div class="icons-group flex-parent">
@@ -368,23 +374,30 @@
 							</header>
 							<form class="compose flex-parent vertical-flex">
 							<div class="mail-header">
-								<div class="input-group">
+								<div class="input-group flex-parent">
 									<input class="text-input" id="composeFrom" type="text" placeholder="From">
+									<span class="clear"></span>
 								</div>
 								<div class="input-group flex-parent">
 									<input class="text-input" id="composeTo" type="text" placeholder="To">
-									<span class="input-toggle" onclick="toggleCcBcc(this)"><span class="icon dropdown-icon"></span></span>
+									<span class="input-toggle" onclick="toggleCcBcc(this)">
+										<span class="icon dropdown-icon"></span>
+									</span>
+									<span class="clear"></span>
 								</div>
 								<div id="ccBcc" style="display: none">
 									<div class="input-group flex-parent">
 										<input class="text-input" id="composeCc" type="text" placeholder="cc">
+										<span class="clear"></span>
 									</div>
 									<div class="input-group flex-parent">
 										<input class="text-input" id="composeBcc" type="text" placeholder="bcc">
+										<span class="clear"></span>
 									</div>
 								</div>
 								<div class="input-group flex-parent">
 									<input class="text-input" id="composeSubject" type="text" placeholder="Subject">
+									<span class="clear"></span>
 								</div>
 							</div>
 							<textarea class="text-input-area" id="composeBody" placeholder="Compose"></textarea>
@@ -513,7 +526,19 @@
 				<h1 id="progressMessage"></h1>
 			</section>
 			</div>
+
+			<!-- Add Account Error Screen -->
+			<div id="addAccountErrorAlert" class="modal flex-parent vertical-flex dark" style="display: none">
+			  <section class="app-content">
+					<h1>Could not connect.</h1>
+					<p>Either your email address or password is incorrect or your email service is unresponsive. Please try again.</p>
+					<div class="button-single flex-parent">
+						<button type="button" class="next" onclick="loadAddAccountScreen()">OK</button>
+					</div>
+				</section>
+			</div>
 		</div>
+
 		<!-- END HTML ELEMENTS -->
 		<div id="bottomPanel" class="bottomPanel bottomPanelImg"></div>
 	</body>

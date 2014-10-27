@@ -498,7 +498,7 @@
 			</div>
 
 			<!-- Delete Account Confirmation Screen" -->
-			<div id="deleteAccountDiv" class="modal flex-parent vertical-flex dark" style="display: none">
+			<div id="deleteAccountConfirm" class="modal flex-parent vertical-flex dark" style="display: none">
 			  <section class="app-content">
 			  <img src="images/trash_icon_white_lg.png">
 					<h1>Are you sure?</h1>
@@ -510,14 +510,13 @@
 				</section>
 			</div>
 
-			<!-- Add Account Progress -->
-			<div id="addAccountProgress" class="progress modal flex-parent vertical-flex dark" style="display: none">
+			<!-- Progress Modal -->
+			<div id="progress" class="progress modal flex-parent vertical-flex dark" style="display: none">
 			<section class="app-content">
 				<img class="spinner" src="images/spinner_icon_white.png">
-				<h1>Retrieving email<br>from your account...</h1>
+				<h1 id="progressMessage"></h1>
 			</section>
 			</div>
-		</div>
 
 		<!-- END HTML ELEMENTS -->
 		<div id="bottomPanel" class="bottomPanel bottomPanelImg"></div>

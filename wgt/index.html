@@ -90,7 +90,7 @@
 		<!-- BEGIN HTML ELEMENTS style="visibility: hidden"-->
 		<div id="mainDiv" class="app-wrapper flex-parent">
 			<!-- Add New Account Screen -->
-			<div id="addAccount" class="flex-parent vertical-flex dark" style="visibility: hidden">
+			<div id="addAccount" class="flex-parent vertical-flex dark" style="display: none">
 			  <div id="addGmail" class="">
 					<div class="">
 						<!-- Add Gmail Account Button -->
@@ -109,15 +109,15 @@
 				    </div>
 				    <!-- Credentials Form -->
 				    <form id="credentialsForm" class="no-display half-sec-transition">
-							<label for="EmailAddressTextbox">Email address</label>
+							<label for="emailAddress">Email address</label>
 							<div class="input-group flex-parent">
-								<input class="large-input text-input" id="EmailAddressTextbox" required type="email" autofocus>
+								<input class="large-input text-input" id="emailAddress" required type="email" autofocus>
 								<span class="clear"></span>
 							</div>
 							
-							<label for="PasswordTextbox">Password</label>
+							<label for="emailPassword">Password</label>
 							<div class="input-group flex-parent">
-								<input class="large-input text-input" id="PasswordTextbox" required type="password">
+								<input class="large-input text-input" id="emailPassword" required type="password">
 								<span class="clear"></span>
 							</div>
 
@@ -129,7 +129,7 @@
 
 							<div class="button-group flex-parent">
 								<button type="button" id="useThisAccount" onclick="toggleAddAccountForm()">Cancel</button>
-								<button class="next" type="button" id="SaveAccountCtrl" onclick="saveDetails()">Next</button>
+								<button class="next" type="button" id="SaveAccountCtrl" onclick="saveDetails()" disabled>Next</button>
 							</div>
 						</form>
 					</div>

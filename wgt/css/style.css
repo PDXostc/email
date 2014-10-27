@@ -270,9 +270,12 @@ input[type="button"] {
 .dark input[type="button"] {
   color: white;
   font-size: 4rem;
-  padding-right: 40px;
+  padding-right: 48px;
 }
 
+.next:disabled {
+	opacity: .5;
+}
 
 .button-group {
 	justify-content: space-between;

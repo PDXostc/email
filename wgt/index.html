@@ -173,20 +173,23 @@
 				<section class="notification label"><h1 class="label">Notification Message</h1></section>
 				<section class="app-content flex-parent no-scroll">
 					<aside class="side-menu flex-parent">
-						<ul class="controls">
-							<li id="menu-button" class="label" onclick="toggleSideMenu()">
-								<span class="icon menu-icon"></span>Menu
+						<ul class="controls flex-parent vertical-flex-spaced">
+							<li id="menu-button" onclick="toggleSideMenu()">
+								<span class="icon menu-icon"></span>
+								<div class="label">Menu</div>
 							</li>
-							<div class="side-menu-scroll">
-								<li class="label flex-parent" id="InboxButton" onclick="inboxButtonSelected()">
+							<div class="side-menu-scroll flex-item">
+								<li class="flex-parent" id="InboxButton" onclick="inboxButtonSelected()">
 									<div class="icon inbox-icon"></div>
-									<div class="flex-item multi-line-label">Inbox
+									<div class="flex-item multi-line-label">
+										<div class="label">Inbox</div>
 										<span class="active-account">activeaccount@here.com</span>
 									</div>
 								</li>
-								<li id="sideMenuAccounts" class="label">
+								<li id="sideMenuAccounts">
 									<span class="accounts level1">
-								 		<span class="icon accounts-icon"></span>Accounts
+								 		<span class="icon accounts-icon"></span>
+								 		<div class="label">Accounts</div>
 							 		</span>
 									<ul class="level2 sub-menu">
 										<li class="label">Username</li>
@@ -194,26 +197,35 @@
 										<li class="label">thiswontwork@gmail.com</li>
 									</ul>
 								</li>
-								<li id="sideMenuFolders" class="label">
+								<li id="sideMenuFolders">
 									<span class="folders level1">
-										<span class="icon folder-icon"></span>Folders
+										<span class="icon folder-icon"></span>
+										<div class="label">Folders</div>
 									</span>
 									<ul class="level2 sub-menu">
 										<!-- Template for Folder list item -->
-										<li id="folderItemTemplate" class="label template"></li>
+										<li id="folderItemTemplate" class="label template" onclick="">
+											<div class="folder label">
+												<span class="folder-name"></span>
+												<span class="small count"></span>
+											</div>
+										</li>
 										<!-- End template for Folder list item-->
-										<li class="label" id="draftButton" onclick="draftSelected()">Drafts
-											<span class="small count"></span>
+										<li id="draftButton" onclick="draftSelected()">
+											<div class="folder label">
+												<span class="folder-name">Drafts</span>
+												<span class="small count"></span>
+											</div>
 										</li>
 										<li class="label">Sent</li>
 										<li class="label">Trash</li>
 										<li class="label">Important</li>
-										<li class="label" onclick="addNewFolderItem('Fake Folder ')">+ Folder</li>
 									</ul>
 								</li>
-								<li id="sideMenuSettings" class="label">
+								<li id="sideMenuSettings">
 									<span class="settings level1">
-										<span class="icon settings-icon"></span>Settings
+										<span class="icon settings-icon"></span>
+										<div class="label">Settings</div>
 									</span>
 									<ul class="level2 sub-menu">
 										<li class="label" onclick="loadChangeAccountScreen()">Manage Accounts</li>
@@ -221,8 +233,15 @@
 									</ul>
 								</li>
 							</div>
-							<li class="label sync" onclick="syncEmails()">
-								<span class="icon sync-icon"></span>Sync Now
+							<li class="flex-parent sync" onclick="syncEmails()">
+								<div class="icon sync-icon"></div>
+									<div class="flex-item multi-line-label">
+										<span class="label sync-label">Sync Now</span>
+										<span class="last-sync">
+											Last synced:<br>
+											<span class="last-sync-datetime">Today 9:32pm</span>
+										</span>
+									</div>								
 							</li>
 						</ul>
 					</aside>
@@ -265,11 +284,11 @@
 			<div id="mailView" class="view flex-parent">
 				<section class="app-content flex-parent">
 					<aside class="side-menu flex-parent">
-						<ul class="controls">
+						<ul class="controls flex-parent vertical-flex-spaced">
 							<li id="menu-button" class="label" onclick="toggleSideMenu()">
 								<span class="icon menu-icon"></span>Menu
 							</li>
-							<div class="side-menu-scroll">
+							<div class="side-menu-scroll flex-item">
 								<li class="label flex-parent" id="InboxButton" onclick="inboxButtonSelected()">
 									<div class="icon inbox-icon"></div>
 									<div class="flex-item multi-line-label">Inbox
@@ -313,8 +332,15 @@
 									</ul>
 								</li>
 							</div>
-							<li class="label sync" onclick="syncEmails()">
-								<span class="icon sync-icon"></span>Sync Now
+							<li class="label flex-parent sync" onclick="syncEmails()">
+								<div class="icon sync-icon"></div>
+									<div class="flex-item multi-line-label">
+										<span class="sync-label">Sync Now</span>
+										<span class="last-sync">
+											Last synced:<br>
+											<span class="last-sync-datetime">Today 9:32pm</span>
+										</span>
+									</div>								
 							</li>
 						</ul>
 					</aside>
@@ -411,11 +437,11 @@
 			<div id="draftScreen" class="view flex-parent">
 				<section class="app-content flex-parent">
 					<aside class="side-menu flex-parent">
-						<ul class="controls">
+						<ul class="controls flex-parent vertical-flex-spaced">
 							<li id="menu-button" class="label" onclick="toggleSideMenu()">
 								<span class="icon menu-icon"></span>Menu
 							</li>
-							<div class="side-menu-scroll">
+							<div class="side-menu-scroll flex-item">
 								<li class="label flex-parent" id="InboxButton" onclick="inboxButtonSelected()">
 									<div class="icon inbox-icon"></div>
 									<div class="flex-item multi-line-label">Inbox
@@ -459,8 +485,15 @@
 									</ul>
 								</li>
 							</div>
-							<li class="label sync" onclick="syncEmails()">
-								<span class="icon sync-icon"></span>Sync Now
+							<li class="label flex-parent sync" onclick="syncEmails()">
+								<div class="icon sync-icon"></div>
+									<div class="flex-item multi-line-label">
+										<span class="sync-label">Sync Now</span>
+										<span class="last-sync">
+											Last synced:<br>
+											<span class="last-sync-datetime">Today 9:32pm</span>
+										</span>
+									</div>								
 							</li>
 						</ul>
 					</aside>

@@ -1012,7 +1012,7 @@ footer {
 	visibility: visible;
 }
 
-.attachment-indicator {
+.attach .attachment-indicator {
 	background-image: url(../images/attachment_icon_black_sm.png);
 	background-repeat: no-repeat;
 	background-position: bottom center;

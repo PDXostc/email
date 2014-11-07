@@ -135,7 +135,7 @@
 
 							<div class="button-group flex-parent">
 								<button type="button" id="useThisAccount" onclick="refreshChangeAccountScreen()">Cancel</button>
-								<button class="next" type="button" id="SaveAccountCtrl" onclick="saveDetails()" >Next</button>
+								<button class="next" type="button" id="SaveAccountCtrl" onclick="saveDetails()" disabled>Next</button>
 							</div>
 						</form>
 
@@ -227,9 +227,6 @@
 												<span class="small count"></span>
 											</div>
 										</li>
-										<li class="label">Sent</li>
-										<li class="label">Trash</li>
-										<li class="label">Important</li>
 									</ul>
 								</li>
 								<li id="sideMenuSettings">
@@ -272,7 +269,6 @@
 									<div class="icons-group flex-parent">
 										<li class="icon compose-icon" id="composeButton" onclick="loadComposeScreen('draft')"></li>
 										<li id="searchToggle" class="icon search-icon" onclick="displaySearchInput()"></li>
-										<li id="sendDraft" class="icon send-icon" onclick="console.log('JS TODO: Send icon should only be visible when one or more items are checked')" style="display: none"></li>
 										<li class="icon trash-icon" id="trash" onclick="deleteMail()" style="display:none"></li>
 									</div>
 									<li class="check-group"><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes(this)"></li>
@@ -375,7 +371,7 @@
 											<li id="replyAll" class="icon replyall-icon" onclick="loadComposeScreen('replyAll')"></li>
 											<li id="forward" class="icon forward-icon" onclick="loadComposeScreen('forward')"></li>
 										</div>
-										<li class="icon trash-icon" id="trash" onclick="deleteMail(this)"></li>
+										<li class="icon trash-icon" id="trash" onclick="deleteMail()"></li>
 										<!-- <li class="icon options-icon" onclick="toggleOptions(this)"></li> -->
 									</div>
 									<li class="icon back-icon" onclick="retrieveMailFilterWithPrevId()"></li>
@@ -400,7 +396,7 @@
 										<p>To: <span id="viewTo"></span></p>
 									</div>
 								</header>
-								<p id="mailBody" class="item-body flex-item"></p>
+								<p id="mailBody" class="mail-body flex-item"></p>
 								<div id="viewAttachment"></div>
 							</article>
 						</div>
@@ -532,10 +528,13 @@
 					<div class="overlay"></div>
 						<div class="content flex-parent vertical-flex-top">
 							<header class="flex-parent">
-								<h1 id="InboxLabelCtrl" class="flex-item">Drafts</h1>
+								<h1 id="InboxLabelCtrl" class="flex-item"></h1>
 								<ul class="controls flex-parent">
-									<div class="search-group flex-parent" style="display: none">	
-										<input class="search-input text-input" type="text" id="searchMailText"></input>
+									<div class="search-group flex-parent" style="display: none">
+										<div class="input-group flex-parent">
+											<input class="search-input text-input" type="text" id="searchMailText">
+											<span class="clear" onclick="clearInput()"></span>
+										</div>
 										<li id="searchStart" class="icon search-icon" onclick="searchMailCall()"></li>
 									</div>
 									<div class="icons-group flex-parent">
@@ -544,7 +543,7 @@
 										<li id="sendDraft" class="icon send-icon" onclick="console.log('JS TODO: Send icon should only be visible when one or more items are checked')" style="display: none"></li>
 										<li class="icon trash-icon" id="trash" onclick="deleteMail()" style="display:none"></li>
 									</div>
-									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes(this)"></li>
+									<li class="check-group"><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes(this)"></li>
 								</ul>
 							</header>
 							</ul>

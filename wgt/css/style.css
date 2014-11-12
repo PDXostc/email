@@ -280,7 +280,7 @@ input[type="button"] {
   -webkit-appearance: none;
   border: none;
   background: none;
-  padding: 2%;
+  padding: 2% 0;
   font-family: inherit;
   font-size: 2.5rem;
   color: rgb(0, 128, 191);

@@ -597,6 +597,17 @@
 					</div>
 				</section>
 			</div>
+
+			<div id="noAccountsAlert" class="modal flex-parent vertical-flex dark" style="display: none">
+			  <section class="app-content">
+					<h1>No accounts added.</h1>
+					<p>Would you like to exit the application or add an account?</p>
+					<div class="button-group flex-parent">
+						<button type="button" onclick="$('#bottomPanel').bottomPanel('onBackButtonClick');">Exit Email</button>
+						<button type="button" class="next" onclick="hideNoAccountsAlert()">Add Account</button>
+					</div>
+				</section>
+			</div>
 		</div>
 
 		<!-- END HTML ELEMENTS -->

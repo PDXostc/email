@@ -49,6 +49,7 @@ html {
 	background: -webkit-radial-gradient(center, ellipse cover,  #00476a 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
 	background: radial-gradient(ellipse at center,  #00476a 0%,#000000 100%); /* W3C */
 	-webkit-mask: -webkit-gradient(linear, left 98%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+	-webkit-transition: all .3s ease;
 }
 
 /******** global ********/
@@ -239,7 +240,7 @@ p {
   visibility: hidden;
   opacity: 0;
   z-index: 1;
-  webkit-transition: all .75s ease-in;
+  -webkit-transition: all .3s ease;
 }
 
 .expanded .main .overlay {

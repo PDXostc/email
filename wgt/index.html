@@ -227,6 +227,24 @@
 												<span class="small count"></span>
 											</div>
 										</li>
+										<li>
+											<div class="folder label">
+												<span class="folder-name">Sent</span>
+												<span class="small count"></span>
+											</div>
+										</li>
+										<li>
+											<div class="folder label">
+												<span class="folder-name">Important</span>
+												<span class="small count"></span>
+											</div>
+										</li>
+										<li>
+											<div class="folder label">
+												<span class="folder-name">Trash</span>
+												<span class="small count"></span>
+											</div>
+										</li>
 									</ul>
 								</li>
 								<li id="sideMenuSettings">
@@ -465,7 +483,7 @@
 									<div class="icon inbox-icon"></div>
 									<div class="flex-item multi-line-label">
 										<div class="label">Inbox</div>
-										<span class="active-account">activeaccount@here.com</span>
+										<span class="active-account"></span>
 									</div>
 								</li>
 								<li class="label side-menu-accounts">
@@ -528,7 +546,7 @@
 					<div class="overlay"></div>
 						<div class="content flex-parent vertical-flex-top">
 							<header class="flex-parent">
-								<h1 id="InboxLabelCtrl" class="flex-item"></h1>
+								<h1 id="InboxLabelCtrl" class="flex-item">Drafts</h1>
 								<ul class="controls flex-parent">
 									<div class="search-group flex-parent" style="display: none">
 										<div class="input-group flex-parent">
@@ -540,7 +558,7 @@
 									<div class="icons-group flex-parent">
 										<li class="icon compose-icon" id="composeButton" onclick="loadComposeScreen('draft')"></li>
 										<li id="searchToggle" class="icon search-icon" onclick="displaySearchInput()"></li>
-										<li id="sendDraft" class="icon send-icon" onclick="console.log('JS TODO: Send icon should only be visible when one or more items are checked')" style="display: none"></li>
+										<li id="sendDraft" class="icon send-icon" style="display: none"></li>
 										<li class="icon trash-icon" id="trash" onclick="deleteMail()" style="display:none"></li>
 									</div>
 									<li class="check-group"><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes(this)"></li>

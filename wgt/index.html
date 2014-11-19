@@ -218,7 +218,7 @@
 										<span class="active-account"></span>
 									</div>
 								</li>
-								<li id="sideMenuAccounts" class="label">
+								<li class="label side-menu-accounts">
 									<span class="accounts level1">
 								 		<span class="icon accounts-icon"></span>
 								 		<div class="label">Accounts</div>
@@ -248,6 +248,24 @@
 												<span class="small count"></span>
 											</div>
 										</li>
+										<li>
+											<div class="folder label">
+												<span class="folder-name">Sent</span>
+												<span class="small count"></span>
+											</div>
+										</li>
+										<li>
+											<div class="folder label">
+												<span class="folder-name">Important</span>
+												<span class="small count"></span>
+											</div>
+										</li>
+										<li>
+											<div class="folder label">
+												<span class="folder-name">Trash</span>
+												<span class="small count"></span>
+											</div>
+										</li>
 									</ul>
 								</li>
 								<li id="sideMenuSettings">
@@ -268,7 +286,7 @@
 										<span class="label sync-label">Sync Now</span>
 										<span class="last-sync">
 											Last synced:<br>
-											<span class="last-sync-datetime">Today 9:32pm</span>
+											<span class="last-sync-datetime">Not yet synced.</span>
 										</span>
 									</div>								
 							</li>
@@ -324,7 +342,7 @@
 										<span class="active-account">activeaccount@here.com</span>
 									</div>
 								</li>
-								<li id="sideMenuAccounts" class="label">
+								<li class="label side-menu-accounts">
 									<span class="accounts level1">
 								 		<span class="icon accounts-icon"></span>
 								 		<div class="label">Accounts</div>
@@ -486,10 +504,10 @@
 									<div class="icon inbox-icon"></div>
 									<div class="flex-item multi-line-label">
 										<div class="label">Inbox</div>
-										<span class="active-account">activeaccount@here.com</span>
+										<span class="active-account"></span>
 									</div>
 								</li>
-								<li id="sideMenuAccounts" class="label">
+								<li class="label side-menu-accounts">
 									<span class="accounts level1">
 								 		<span class="icon accounts-icon"></span>
 								 		<div class="label">Accounts</div>
@@ -549,7 +567,7 @@
 					<div class="overlay"></div>
 						<div class="content flex-parent vertical-flex-top">
 							<header class="flex-parent">
-								<h1 id="InboxLabelCtrl" class="flex-item"></h1>
+								<h1 id="InboxLabelCtrl" class="flex-item">Drafts</h1>
 								<ul class="controls flex-parent">
 									<div class="search-group flex-parent" style="display: none">
 										<div class="input-group flex-parent">
@@ -561,7 +579,7 @@
 									<div class="icons-group flex-parent">
 										<li class="icon compose-icon" id="composeButton" onclick="loadComposeScreen('draft')"></li>
 										<li id="searchToggle" class="icon search-icon" onclick="displaySearchInput()"></li>
-										<li id="sendDraft" class="icon send-icon" onclick="console.log('JS TODO: Send icon should only be visible when one or more items are checked')" style="display: none"></li>
+										<li id="sendDraft" class="icon send-icon" style="display: none"></li>
 										<li class="icon trash-icon" id="trash" onclick="deleteMail()" style="display:none"></li>
 									</div>
 									<li class="check-group"><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes(this)"></li>
@@ -615,6 +633,17 @@
 					<p>Either your email address or password is incorrect or your email service is unresponsive. Please try again.</p>
 					<div class="button-single flex-parent">
 						<button type="button" class="next" onclick="loadAddAccountScreen()">OK</button>
+					</div>
+				</section>
+			</div>
+
+			<div id="noAccountsAlert" class="modal flex-parent vertical-flex dark" style="display: none">
+			  <section class="app-content">
+					<h1>No accounts added.</h1>
+					<p>Would you like to exit the application or add an account?</p>
+					<div class="button-group flex-parent">
+						<button type="button" onclick="$('#bottomPanel').bottomPanel('onBackButtonClick');">Exit Email</button>
+						<button type="button" class="next" onclick="hideNoAccountsAlert()">Add Account</button>
 					</div>
 				</section>
 			</div>

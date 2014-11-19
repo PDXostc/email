@@ -1316,6 +1316,7 @@ footer {
 
 .preview .item-datetime {
 	line-height: 2.75rem;
+	width:83px;
 }
 
 .name {

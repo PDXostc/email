@@ -124,18 +124,18 @@
 						<div class="account-button" onclick="toggleAddAccountForm()">
 							<div class="top">
 								<div class="white-separator"></div>
-								<img src="images/add_account_icon_white_lg.png">
+								<div class="icon add-account-icon-lg"></div>
 								<div class="white-separator"></div>
 							</div>
 							<h1>Add Email Account</h1>
 							<div class="bottom">
 								<div class="white-separator"></div>
-								<img src="images/email_icon_white_lg.png">
+								<div class="icon add-email-icon-lg"></div>
 								<div class="white-separator"></div>
 							</div>
 				    </div>
 				    <!-- Credentials Form -->
-				    <form id="credentialsForm" class="no-display half-sec-transition">
+				    <form id="credentialsForm" class="no-display">
 							<label for="emailAddress">Email address</label>
 							<div class="input-group flex-parent">
 								<input class="large-input text-input" id="emailAddress" type="email" required autofocus>
@@ -159,15 +159,7 @@
 								<button class="next" type="button" id="SaveAccountCtrl" onclick="saveDetails()" disabled>Next</button>
 							</div>
 						</form>
-
-						<!-- Add Account Progress -->
-						<div class="progress no-display">
-							<img class="spinner" src="images/spinner_icon_white.png">
-							<h1>Retrieving email<br>from your account...</h1>
-						</div>
 					</div>
-
-
 			  </div>
 			</div>
 
@@ -188,7 +180,7 @@
 
 					<h1 class="icon-lg accounts-icon-lg"><span class="label">Accounts</span></h1>
 					<ul id="emailAccounts" class="nested-menu"></ul>
-					<h1 class="icon-lg add-email-icon-lg" id="AddAccount" onclick="loadAddAccountScreen()"><span class="label">Add Email Account</span></h1>
+					<h1 class="icon-lg add-email-icon" id="AddAccount" onclick="loadAddAccountScreen()"><span class="label">Add Email Account</span></h1>
 					<h1 class="icon-lg" onclick="loadDeleteAccConfirmationScreen()"><span class="factory-reset label">Factory Reset</span></h1>
 					<h1 class="icon-lg" onclick="$('#bottomPanel').bottomPanel('onBackButtonClick');"><span class="label">Exit Email</span></h1>
 				</section>
@@ -310,13 +302,13 @@
 										<li id="searchToggle" class="icon search-icon" onclick="displaySearchInput()"></li>
 										<li class="icon trash-icon" id="trash" onclick="deleteMail()" style="display:none"></li>
 									</div>
-									<li class="check-group"><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes(this)"></li>
+									<li class="check-group"><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes()"></li>
 								</ul>
 							</header>
 							<div class="flex-parent results-header" style="display:none">
 								<h1 class="flex-item">Results <span class="small" id="resultsCount">(##)</span></h1>
 								<ul class="controls flex-parent">
-									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes(this)"></li>
+									<li><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes()"></li>
 								</ul>
 							</div>
 							<ul class="list flex-item" id="inbox"></ul>
@@ -582,7 +574,7 @@
 										<li id="sendDraft" class="icon send-icon" style="display: none"></li>
 										<li class="icon trash-icon" id="trash" onclick="deleteMail()" style="display:none"></li>
 									</div>
-									<li class="check-group"><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes(this)"></li>
+									<li class="check-group"><input type="checkbox" class="checkbox check-all" id="CheckBoxSelectAll" onclick="selectAllCheckBoxes()"></li>
 								</ul>
 							</header>
 							</ul>
@@ -597,10 +589,12 @@
 			<!-- Delete Email Confirmation -->
 			<div id="deleteEmailPopDiv" class="modal flex-parent vertical-flex dark" style="display: none">
 				<section class="app-content">
-				  <h1>Delete the selected message(s)?</h1>
-					<div class="button-group">
-						<button type="button" id="deleteEmailNoDiv" class="" onclick="deleteEmailNo()">No</button>
-						<button type="button" id="deleteEmailYesDiv" class="next" onclick="deleteEmailYes()">Yes</button>
+					<div class="icon trash-icon-white-lg"></div>
+				  <h1>Are you sure?</h1>
+					<p>Email will be moved to the trash folder and deleted after 30 days.</p>
+					<div class="button-group flex-parent">
+						<button type="button" onclick="deleteEmailNo()">Cancel</button>
+						<button type="button" class="next" onclick="deleteEmailYes()">Delete</button>
 					</div>
 				</section>
 			</div>
@@ -608,7 +602,7 @@
 			<!-- Delete Account Confirmation Screen" -->
 			<div id="deleteAccountConfirm" class="modal flex-parent vertical-flex dark" style="display: none">
 			  <section class="app-content">
-			  <img src="images/trash_icon_white_lg.png">
+			  <div class="icon trash-icon-white-lg"></div>
 					<h1>Are you sure?</h1>
 					<p><span class="account-name"></span> will be removed from this application. Your emails will still reside in account.</p>
 					<div class="button-group flex-parent">
@@ -621,7 +615,7 @@
 			<!-- Progress Modal -->
 			<div id="progress" class="progress modal flex-parent vertical-flex dark" style="display: none">
 			<section class="app-content">
-				<img class="spinner" src="images/spinner_icon_white.png">
+				<div class="spinner"></div>
 				<h1 id="progressMessage"></h1>
 			</section>
 			</div>

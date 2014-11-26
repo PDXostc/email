@@ -23,12 +23,6 @@ html {
 	font-size: 62.5%;
 }
 
-.panel {
-	top: 190px;
-	left:35px;
-	position: absolute;
-}
-
 .app-wrapper {
 	font-family: 'Droid Sans', sans-serif;
 	font-size: 1rem !important;
@@ -52,10 +46,7 @@ html {
 	-webkit-transition: all 0s;
 }
 
-/******** global ********/
-
-
-/******** Common Overrides ********/
+/* Common Overrides ***************************************/
 
 body {
 	height: 1280px !important;
@@ -106,8 +97,11 @@ h1 {
 	color: white;
 	margin: 20px 0;
 	font-size: 4rem;
-	background-position: left center;
-	background-size: 48px;
+}
+
+.main h1 {
+	text-align: left;
+	width: inherit;
 }
 
 h2 {
@@ -155,6 +149,16 @@ p {
 	display: flex;
 	flex: 1;
 	-webkit-flex: 1;
+}
+
+.flex-item {
+	flex: 1;
+	-webkit-flex: 1;
+}
+
+.no-flex {
+	flex: 0;
+	-webkit-flex: 0;
 }
 
 .vertical-flex {
@@ -274,7 +278,7 @@ p {
 	padding-left: 80px
 }
 
-/******** Buttons *********/
+/* Buttons  ***********************************************/
 
 button,
 input[type="button"] {
@@ -319,7 +323,6 @@ input[type="button"] {
 	background-image: url(../images/next_icon_white.png);
 	background-repeat: no-repeat;
 	background-position: center right;
-	background-size: 36px;
 }
 
 .previous {
@@ -327,14 +330,13 @@ input[type="button"] {
 	background-repeat: no-repeat;
 	background-position: 0 center;
 	padding-left: 36px;
-	background-size: 30px;
 }
 
 .dark .previous {
 	background-image: url(../images/back_icon_white.png);
 }
 
-/******** Separators ********/
+/* Separators *********************************************/
 
 .white-separator {
 	height: 1px;
@@ -343,7 +345,7 @@ input[type="button"] {
 	flex: 1;
 }
 
-/******** #addAccount Styles ********/
+/* #addAccount Styles *************************************/
 
 .account-button {
 	display: block;
@@ -389,25 +391,6 @@ input[type="button"] {
 	box-sizing: border-box;
 }
 
-.nested-menu .level2 {
-	padding: 0; 
-}
-
-.main h1 {
-	text-align: left;
-	width: inherit;
-	/*background-position: 0 center;*/
-	/*background-size: 48px;*/
-}
-
-.main h1 .label {
-	font-size: 4rem;
-	font-weight: 400;
-	margin-left: 72px;
-	display: block;
-	line-height: 60px;
-}
-
 .underline {
 	border-bottom: 1px solid rgba(255,255,255,0.5);
 }
@@ -416,11 +399,18 @@ input[type="button"] {
 	line-height: normal;
 }
 
-/******** Progress & Spinner Styles ********/
+/* Progress & Spinner Styles ******************************/
 
 .progress {
 	width: 100%;
 	text-align: center;
+}
+
+.spinner {
+	width: 80px;
+	height: 80px;
+	margin: auto;
+	background-image: url(../images/spinner_icon_white_lg.png);
 }
 
 .spinner.on {
@@ -433,17 +423,7 @@ input[type="button"] {
 	animation: none;
 }
 
-/******** Overrides audiocontrols.css ********/
-
-div.emailRight:hover { 
-	background: none;
-}
-
-.emailRight:active, .emailLeft:active {
-	background-size: auto;
-}
-
-/******** Form Styles ********/
+/* Form Styles ********************************************/
 
 label {
 	font-size: 2.5rem;
@@ -476,22 +456,10 @@ label {
 	-webkit-user-select: auto;
 }
 
-.caret-icon {
-	background-image: url(../images/custom_caret_grey.png);
-	height: inherit;
-	width: 48px;
-	background-size: 36px;
-	margin-left: 4px;
-}
-
 .input-toggle {
 	position: absolute;
 	right: 0;
 	height: 100%;
-}
-
-#composeView header {
-	padding: 0 36px;
 }
 
 input.large-input {
@@ -499,53 +467,6 @@ input.large-input {
 	padding: 12px;
 	line-height: 1.25em;
 	box-sizing: border-box;
-}
-
-.check-all {
-	width: 36px;
-	height: 36px;
-}
-
-.check-all, .dark .checkbox {
-	border: 4px solid white;
-	margin: 0;
-	background: none;
-	box-shadow: none;
-}
-
-.dark .checkbox {
-	width: 24px;
-	height: 24px;
-	margin-right: 10px;
-	background-color: transparent;
-}
-
-.dark .checkbox {
-	border: 2px solid white;
-	background: none;
-	box-shadow: none;
-}
-
-.checkbox:checked {
-	background-image: url(../images/input_checkbox_checkmark_black_lg.png);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: 12px;
-	background-color: transparent;
-}
-
-.list-item .checkbox:checked {
-	background-image: url(../images/input_checkbox_checkmark_checked_lg.png);
-	background-size: 38px;
-	background-position-y: top;
-}
-
-.dark .checkbox:checked {
-	border-color: white;
-	background-image: url(../images/input_checkbox_checkmark_white.png);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-color: transparent;
 }
 
 .input-group {
@@ -563,400 +484,11 @@ input.large-input {
 	height: 100%;
 	background-image: url(../images/clear_icon_grey.png);
 	background-repeat: no-repeat;
-	background-size: 20px;
 	background-position: center;
 }
 
 .input-toggle + .clear {
 	right: 48px;
-}
-
-/******** End Form Style ********/
-
-.template {
-	display: none;
-}
-
-
-/****** Icons ********/
-
-.icon {
-	width: 80px;
-	height: 80px;
-	float: left;
-}
-
-.icon, .icon-sm, .icon-lg {
-	background-repeat: no-repeat;
-	background-position: center;
-}
-
-.icon-sm {
-	background-size: 36px;
-	background-position-x: right;
-	height: 36px;
-	width: 36px;
-}
-
-.content header .icon {
-	background-position: center center;
-	width: 40px;
-	height: 32px;
-	float: none;
-}
-
-.menu-icon {
-	background-image: url(../images/menu_icon_white.png);
-}
-
-.edit-icon-blue {
-	background-image: url(../images/edit_icon_blue.png);
-	float: right;
-	background-size: 24px;
-	background-position: bottom;
-}
-
-.accounts-icon {
-	background-image: url(../images/users_icon_white.png);
-}
-
-.accounts-icon-lg {
-	background-image: url(../images/users_icon_white_lg.png);
-}
-
-.add-email-icon-lg {
-	background-image: url(../images/add_email_icon_white_lg.png);
-}
-
-.sync-icon {
-	background-image: url(./user/blue/images/email/refresh_icon_white.png);
-}
-
-.syncing {
-	background-image: url(../images/spinner_icon_white.png);
-	background-size: 48px;
-
-}
-
-.sync {
-	-webkit-flex: 0;
-	flex: 0;
-	margin-bottom: 40px;
-}
-
-.settings-icon {
-	background-image: url(../images/settings_icon_white.png);
-}
-
-.inbox-icon {
-	background-image: url(./user/blue/images/email/inbox_icon_white.png);
-	background-size: 48px;
-	height: 36px;
-}
-
-.inbox-icon-blue {
-	background-image: url(../images/inbox_icon_blue.png);
-}
-
-.main header .search-icon {
-	background-image: url(../images/search_icon_blue.png);
-	width: auto;
-	background-position: center right;
-	padding-right: 40px;
-}
-
-.drafts-icon {
-	background-image: url(./user/blue/images/email/draft_icon_white.png);
-}
-
-.folder-icon {
-	background-image: url(../images/folder_icon_white.png);
-}
-
-.compose-icon {
-	background-image: url(./user/blue/images/email/new_icon_white.png);
-}
-
-.main .compose-icon {
-	background-image: url(../images/new_icon_blue.png);
-}
-
-.trash-icon {
-	background-image: url(../images/trash_icon_blue.png);
-}
-
-.trash-icon-white {
-	background-image: url(../images/trash_icon_white.png);
-}
-
-.replyall-icon {
-	background-image: url(../images/replyall_icon_blue.png);
-}
-
-.reply-icon {
-	background-image: url(../images/reply_icon_blue.png);
-}
-
-.forward-icon {
-	background-image: url(../images/forward_icon_blue.png);
-}
-
-.next-icon {
-	background-image: url(../images/next_icon_black.png);
-}
-
-.back-icon {
-	background-image: url(../images/back_icon_black.png);
-}
-
-#mailView .next-icon,
-#mailView .back-icon {
-	background-size: 32px;
-	width: 24px;
-}
-
-.send-icon {
-	background-image: url(../images/send_icon_blue.png);
-}
-
-.send-icon-white {
-	background-image: url(../images/send_icon_white.png);
-}
-
-.dropdown-icon {
-	background-image: url(../images/dropdown_icon_grey.png);
-	height: inherit;
-	width: 48px;
-	background-size: 36px;
-}
-
-.dropdown-icon-up {
-	transform: rotate(180deg);
-	-webkit-transform: rotate(180deg);
-}
-
-.content header .options-icon {
-	background-image: url(../images/options_icon_blue.png);
-	background-position: center bottom;
-}
-
-/******** Lists ********/
-
-.label {
-	color: white;
-	font-size: 2.5rem;
-	line-height: 80px;
-	font-weight: 400;
-	letter-spacing: normal;
-}
-
-.level1 {
-	display: block;
-	padding-bottom: 10px;
-}
-
-.side-menu .level1 {
-	padding-top: 36px;
-}
-
-.level1 .label {
-	font-weight: 400;
-}
-
-.level2 {
-	display: none;
-	padding: 0 20px;
-}
-
-.level2 .label {
-	line-height: normal;
-	padding: 10px 0; 
-	box-sizing: border-box;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	opacity: .75;
-}
-
-.dark .level2 .label {
-	border-bottom: 1px solid rgba(0,128,191,0.5);
-}
-
-.side-menu .level1 .icon {
-	height: 36px;
-}
-
-.side-menu .level1 .label {
-	line-height: 36px;
-}
-
-.side-menu .level2 .label {
-	border-bottom: 1px solid rgba(255,255,255,0.25);
-	max-width: 200px;
-	font-size: 2rem;
-}
-
-.count {
-	float: right;
-}
-
-.nested-menu {
-	padding-left: 72px;
-}
-
-.accounts ~ .sub-menu > .label {
-	opacity: 0.5;
-}
-
-.accounts ~ .sub-menu > .active {
-	opacity: 1;
-}
-
-.content header {
-	box-sizing: border-box;
-}
-
-.content header h1,
-.results-header h1 {
-	color: #333;
-	text-align: left;
-	font-size: 3.5rem; 
-	float: left;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	width: 0;
-	min-height: 3.5rem;
-}
-
-.main > .controls {
-	height: 6%;
-}
-
-.main > .content, {
-	position: absolute;
-	bottom: 0;
-	height: 94%;
-	width: 100%;
-}
-
-aside .controls li {
-	overflow: visible;
-}
-
-.search-query {
-	position: relative;
-}
-
-.themeColor {
-	background-position: right;
-	background-color: rgb(100, 149, 237);
-}
-
-.modal.dark {
-	padding: 0;
-	box-sizing: border-box;
-}
-
-.modal .app-content {
-	background-color: rgb(0, 128, 191);
-	padding: 40px;
-	color: white;
-	text-align: center;
-	box-sizing: border-box;
-}
-
-.modal .account-name {
-	font-weight: bold;
-	display: block;
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
-.content header,
-.results-header {
-	-webkit-align-items: center;
-	align-items: center;
-	-webkit-justify-content: space-between;
-	justify-content: space-between;
-	padding: 0 18px 0 36px;
-}
-
-.content header,
-.results-header,
-.app-content footer {
-	background-color: #E6E6E6;
-	height: 80px;
-	max-height: 80px;
-	}
-
-.results-header {
-	border-top: 2px solid white;
-}
-
-/******** Add Account Details Screen ********/
-
-#emailAccountsHeader {
-	top: 8%;
-	left: 18%;
-	width: 64%;
-	height: 4%;
-	background-image: url(./user/blue/images/email/SelectEmailtouseordelete.png);
-	background-size: auto 100%;
-}
-
-.chooseEmailAccountBgImg {
-	background-image: url(./user/blue/images/email/chooseAccountScreen.png);
-	background-size: auto 100%;
-	height: 100%;
-	width: 100%;
-}
-
-/******** Select Account Screen ********/
-
-.account {
-}
-
-.account p {
-	display: inline-block;
-}
-
-.account input[type="checkbox"] {
-	float: right;
-}
-
-/******** Inbox Screen ********/
-
-.mass-selection {
-	height: 5%;
-}
-
-.inboxBgImg {
-	background-image: url(./user/blue/images/email/Inbox.png);
-	background-size: auto 100%;
-	height: 100%;
-	width: 100%;
-}
-
-.details {
-	padding: 5%;
-	margin: 5%;
-	background-color: rgb(218,255,255);
-	min-height: 50%;
-}
-
-.details div {
-	margin-bottom: 4%;
-}
-
-.compose {
-	padding: 36px;
-	-webkit-flex: 1;
-	flex: 1;
 }
 
 .search-input {
@@ -1000,6 +532,341 @@ footer {
 	border-color: rgb(0,128,191);
 }
 
+/* Checkboxes *********************************************/
+
+.check-all {
+	width: 36px;
+	height: 36px;
+}
+
+.check-all, .dark .checkbox {
+	border: 4px solid white;
+	margin: 0;
+	background: none;
+	box-shadow: none;
+}
+
+.dark .checkbox {
+	width: 24px;
+	height: 24px;
+	margin-right: 10px;
+	background-color: transparent;
+}
+
+.dark .checkbox {
+	border: 2px solid white;
+	background: none;
+	box-shadow: none;
+}
+
+.checkbox:checked {
+	background-image: url(../images/input_checkbox_checkmark_black.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-color: transparent;
+}
+
+.list-item .checkbox:checked {
+	background-image: url(../images/input_checkbox_checked_black_lg.png);
+	background-position: center;
+}
+
+.dark .checkbox:checked {
+	border-color: white;
+	background-image: url(../images/input_checkbox_checkmark_white.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-color: transparent;
+}
+
+/* Icons **************************************************/
+
+.icon {
+	width: 80px;
+	height: 80px;
+	float: left;
+}
+
+.icon, .icon-sm, .icon-lg {
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.icon-sm {
+	height: 36px;
+	width: 36px;
+}
+
+.content header .icon {
+	background-position: center center;
+	width: 40px;
+	height: 32px;
+	float: none;
+}
+
+.menu-icon {
+	background-image: url(../images/menu_icon_white.png);
+}
+
+.edit-icon-blue {
+	background-image: url(../images/edit_icon_blue.png);
+	background-position: bottom;
+	float: right;
+}
+
+.accounts-icon {
+	background-image: url(../images/users_icon_white.png);
+}
+
+.accounts-icon-lg {
+	background-position: left top;
+	background-image: url(../images/users_icon_white_lg.png);
+}
+
+.add-email-icon {
+	background-position: left center;
+	background-image: url(../images/add_email_icon_white.png);
+}
+
+.add-email-icon-lg {
+	background-position: 12px top;
+	background-image: url(../images/add_email_icon_white_lg.png);
+	width: 100px;
+}
+
+.add-account-icon-lg {
+	background-position: center bottom;
+	background-image: url(../images/add_account_icon_white_lg.png);
+	width: 100px;
+}
+
+.sync-icon {
+	background-image: url(../images//refresh_icon_white.png);
+}
+
+.syncing {
+	background-image: url(../images/spinner_icon_white.png);
+}
+
+.sync {
+	-webkit-flex: 0;
+	flex: 0;
+	margin-bottom: 40px;
+}
+
+.settings-icon {
+	background-image: url(../images/settings_icon_white.png);
+}
+
+.inbox-icon {
+	background-image: url(../images/inbox_icon_white.png);
+	height: 36px;
+}
+
+.inbox-icon-blue {
+	background-image: url(../images/inbox_icon_blue.png);
+}
+
+.main header .search-icon {
+	background-image: url(../images/search_icon_blue.png);
+	width: auto;
+	background-position: center right;
+	padding-right: 40px;
+}
+
+.drafts-icon {
+	background-image: url(./user/blue/images/email/draft_icon_white.png);
+}
+
+.folder-icon {
+	background-image: url(../images/folder_icon_white.png);
+}
+
+.compose-icon {
+	background-image: url(../images/new_icon_blue.png);
+}
+
+.trash-icon {
+	background-image: url(../images/trash_icon_blue.png);
+}
+
+.trash-icon-white {
+	background-image: url(../images/trash_icon_white.png);
+}
+
+.trash-icon-white-lg {
+	background-image: url(../images/trash_icon_white_lg.png);
+}
+
+.replyall-icon {
+	background-image: url(../images/replyall_icon_blue.png);
+}
+
+.reply-icon {
+	background-image: url(../images/reply_icon_blue.png);
+}
+
+.forward-icon {
+	background-image: url(../images/forward_icon_blue.png);
+}
+
+.next-icon {
+	background-image: url(../images/next_icon_black.png);
+}
+
+.back-icon {
+	background-image: url(../images/back_icon_black.png);
+}
+
+#mailView .next-icon,
+#mailView .back-icon {
+	width: 24px;
+}
+
+.send-icon {
+	background-image: url(../images/send_icon_blue.png);
+}
+
+.send-icon-white {
+	background-image: url(../images/send_icon_white.png);
+}
+
+.dropdown-icon {
+	background-image: url(../images/dropdown_icon_grey.png);
+	height: inherit;
+	width: 48px;
+}
+
+.dropdown-icon-up {
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+}
+
+.content header .options-icon {
+	background-image: url(../images/options_icon_blue.png);
+	background-position: center bottom;
+}
+
+/* Lists **************************************************/
+
+.label {
+	color: white;
+	font-size: 2.5rem;
+	line-height: 80px;
+	font-weight: 400;
+	letter-spacing: normal;
+}
+
+.main h1 .label {
+	font-size: 4rem;
+	font-weight: 400;
+	margin-left: 72px;
+	display: block;
+	line-height: 60px;
+}
+
+.level1 {
+	display: block;
+	padding-bottom: 10px;
+}
+
+.level1 .label {
+	font-weight: 400;
+}
+
+.side-menu .level1 {
+	padding-top: 36px;
+}
+
+.level2 {
+	display: none;
+	padding: 0 20px;
+}
+
+.level2 .label {
+	line-height: normal;
+	padding: 10px 0; 
+	box-sizing: border-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	opacity: .75;
+}
+
+.dark .level2 .label {
+	border-bottom: 1px solid rgba(0,128,191,0.5);
+}
+
+.side-menu .level1 .icon {
+	height: 36px;
+}
+
+.side-menu .level1 .label {
+	line-height: 36px;
+}
+
+.side-menu .level2 .label {
+	border-bottom: 1px solid rgba(255,255,255,0.25);
+	max-width: 200px;
+	font-size: 2rem;
+}
+
+.count {
+	float: right;
+}
+
+.nested-menu {
+	padding-left: 72px;
+}
+
+.nested-menu .level2 {
+	padding: 0; 
+}
+
+.accounts ~ .sub-menu > .label {
+	opacity: 0.5;
+}
+
+.accounts ~ .sub-menu > .active {
+	opacity: 1;
+}
+
+aside .controls li {
+	overflow: visible;
+}
+
+/* Containers *********************************************/
+
+.content header {
+	box-sizing: border-box;
+}
+
+.content header h1,
+.results-header h1 {
+	color: #333;
+	text-align: left;
+	font-size: 3.5rem; 
+	float: left;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 0;
+	min-height: 3.5rem;
+}
+
+.main > .controls {
+	height: 6%;
+}
+
+#composeView header {
+	padding: 0 36px;
+}
+
+.compose {
+	padding: 36px;
+	-webkit-flex: 1;
+	flex: 1;
+}
+
 .description {
 	position: absolute;
 	width: 67%;
@@ -1007,49 +874,69 @@ footer {
 	padding: 3px;
 }
 
-#progressDiv {
-	position: absolute;
-	font-size: 1.5rem;
-	display: block;
-	padding: 4% 0;
-	width: 100%;
-	bottom: 0;
-	background-color: rgba(200, 200, 200, 0.85);
+/*Search Styles *******************************************/
+
+.search-query {
+	position: relative;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.content header,
+.results-header {
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	padding: 0 18px 0 36px;
+}
+
+.content header,
+.results-header,
+.app-content footer {
+	background-color: #E6E6E6;
+	height: 80px;
+	max-height: 80px;
+}
+
+.results-header {
+	border-top: 2px solid white;
+}
+
+/* Modals *************************************************/
+
+.modal {
+	min-height: 500px;
+}
+.modal.dark {
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.modal .app-content {
+	background-color: rgb(0, 128, 191);
+	padding: 40px;
+	color: white;
 	text-align: center;
+	box-sizing: border-box;
 }
 
-.attachments {
-	top: 8%;
-	height: 77%;
-	background-color: #eee;
+.modal .account-name {
+	font-weight: bold;
+	display: block;
 }
 
-.attachments li {
-	height: 48px;
-	line-height: 48px;
-	padding: 10px 0 10px 48px;
+.modal .icon {
+	float: none;
+	margin: auto;
 }
 
-.attachments li {
-	background-repeat: no-repeat;
-	margin: 0 10px;
-}
-
-.mailDivPart {
-	position: absolute;
-	left: 10%;
-	width: 10%;
-	height: 10%;
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-}
-
-.chooseEmailCheckBox {
-	position: absolute;
-	width: 40%;
-	height: 40%;
-}
-
+/* Inbox Screen *******************************************/
 
 .status, .attachment-indicator {
 	width: 16px;
@@ -1103,58 +990,6 @@ footer {
 	margin-right: 0;
 }
 
-.MessageItemBodyCheckBox {
-	position: absolute;
-	top: 32%;
-	left: 80%;
-	width: 25%;
-	height: 25%;
-}
-
-.MailHandler {
-	background-color: white;
-	width: 86%;
-	height: 75%;
-}
-
-.ViewMailLabelCtrl {
-	position: absolute;
-	font-weight: bold;
-	font-size: .75rem;
-	color: white;
-}
-
-.MailCtrl {
-	font-size: 1.5rem;
-	font-weight: bold;
-	white-space: nowrap;
-	line-height: 150%;
-	overflow: hidden;
-	width: 95%;
-}
-
-.MailCtrlValue {
-	font-size: 1rem;
-}
-
-.MailBodyValue {
-	font-size: 1rem;
-	height: 45%;
-	width: 95%;
-	overflow-y: visible;
-	overflow-x: visible;
-}
-
-.MailAttachmentDiv {
-	position: absolute;
-	top: 72%;
-	left: 2%;
-	width: 25%;
-	height: 15%;
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-}
-
 .attachName {
 	font-size: .75rem;
 }
@@ -1167,12 +1002,6 @@ footer {
 	background-size: auto 100%;
 	background-repeat: no-repeat;
 }
-
-
-.email {
-	height: 92%;
-}
-
 .content .list {
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -1183,7 +1012,6 @@ footer {
 		color-stop(100%,rgba(230, 230, 230, 1))
 	);
 }
-
 
 #draft .button-group {
 	margin: 0;
@@ -1219,12 +1047,12 @@ footer {
 
 .list-item,
 .mail-item {
+	flex: 0;
+	-webkit-flex: 0;
 	word-wrap: break-word;
 	word-break: break-all;
 	margin-right: 3px;
 	padding: 14px;
-	flex: 0;
-	-webkit-flex: 0;
 	background-color: white;
 }
 
@@ -1251,10 +1079,7 @@ footer {
 .list-item .checkbox {
 	padding: 0;
 	margin: 0;
-	/*height: 38px;*/
-	/*width: 38px;*/
 	max-width: 38px;
-	/*max-height: 38px;*/
 }
 
 .left-indicators {
@@ -1264,8 +1089,6 @@ footer {
 	-webkit-justify-content: space-between;
 	align-items: center;
 	-webkit-align-items: center;
-	/*align-self: flex-start;*/
-	/*-webkit-align-self: flex-start;*/
 }
 
 .right-indicators {
@@ -1290,6 +1113,8 @@ footer {
 .list-item .checkbox {
 	flex: 1;
 	-webkit-flex: 1;
+	margin: -14px;
+	padding: 0 14px;
 }
 
 .preview {
@@ -1325,25 +1150,8 @@ footer {
 	left: 15%;
 }
 
-.sendDiv {
-	position: absolute;
-	top: 7%;
-	left: 80%;
-	width: 5%;
-	height: 5%;
-	background-image: url(./user/blue/images/email/send_icon.png);
-	background-size: auto 100%;
-	background-repeat: no-repeat;
-}
+/* Side Menu **********************************************/
 
-/* Mail View */
-
-.with-nav {
-	background-image: url(../images/back_icon_blue.png);
-	background-position: center center;
-}
-
-/* Side Menu */
 .multi-line-label .label {
 	line-height: normal;
 }
@@ -1358,7 +1166,8 @@ footer {
 	width: 0;
 }
 
-.active-account, .last-sync {
+.active-account,
+.last-sync {
 	display: block;
 	font-size: 1.15rem;
 	overflow: hidden;
@@ -1373,7 +1182,11 @@ footer {
 	overflow-y: scroll;
 	overflow-x: hidden; 
 	padding-top: 20px;
-	-webkit-mask: -webkit-gradient(linear, left 90%, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+	-webkit-mask: -webkit-gradient(
+		linear, left 90%, left bottom, 
+		from(rgba(0,0,0,1)), 
+		to(rgba(0,0,0,0))
+	);
 }
 
 #menu-button {
@@ -1381,7 +1194,7 @@ footer {
 	height: 80px;
 }
 
-/******** modifiers ********/
+/* Modifiers **********************************************/
 
 .expanded {
 	width: 880px;
@@ -1404,11 +1217,6 @@ footer {
 	display: none;
 }
 
-.half-sec-transition {
-	-webkit-transition: all 0s ease;
-	transition: all 0s ease;
-}
-
 .center {
 	text-align: center;
 }
@@ -1416,16 +1224,6 @@ footer {
 .no-sidebar .main {
 	flex: 1;
 	-webkit-flex: 1;
-}
-
-.flex-item {
-	flex: 1;
-	-webkit-flex: 1;
-}
-
-.no-flex {
-	flex: 0;
-	-webkit-flex: 0;
 }
 
 .dark {
@@ -1445,4 +1243,8 @@ footer {
 
 .right {
 	float: right;
+}
+
+.template {
+	display: none;
 }
